@@ -1,6 +1,6 @@
 # Changelog
 
-[中文](/docs-i18n/CHANGELOG_CN.md) | [English](/CHANGELOG.md)
+[中文](/docs/zh-cn/CHANGELOG.md) | [English](/CHANGELOG.md)
 
 All release version update records are listed in this file.
 

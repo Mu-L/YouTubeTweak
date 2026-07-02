@@ -8,7 +8,7 @@ YouTube Tweak
 
 <h3 align="center">Packed with all the features you want: lock video quality, speed buttons, show commenter names, auto-translate comments, hide distractions, and more.</h3>
 
-[English](/README.md) | [中文](/docs-i18n/README_CN.md)
+[English](/README.md) | [中文](/docs/zh-cn/README.md)
 
 > [!WARNING]
 > This project is under active development, and bugs are inevitable. If you have any issues or suggestions, please open an issue on GitHub.

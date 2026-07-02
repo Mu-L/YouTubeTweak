@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"sources": {
 		"en": "CHANGELOG.md",
-		"zh-CN": "docs-i18n/CHANGELOG_CN.md"
+		"zh-CN": "docs/zh-cn/CHANGELOG.md"
 	},
 	"releases": [
 		{

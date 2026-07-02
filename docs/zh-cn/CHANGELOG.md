@@ -1,6 +1,6 @@
 # 更新日志
 
-[中文](/docs-i18n/CHANGELOG_CN.md) | [English](/CHANGELOG.md)
+[中文](/docs/zh-cn/CHANGELOG.md) | [English](/CHANGELOG.md)
 
 所有的Release版本的更新记录在此文件中。
 

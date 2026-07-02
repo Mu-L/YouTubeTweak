@@ -8,7 +8,7 @@ YouTube Tweak
 
 <h4 align="center">一个提升YouTube使用体验的浏览器扩展：锁定视频质量、速度按钮、显示评论者姓名、自动翻译评论、隐藏干扰项等等。</h4>
 
-[English](/README.md) | [中文](/docs-i18n/README_CN.md)
+[English](/README.md) | [中文](/docs/zh-cn/README.md)
 
 > [!WARNING]
 > 本项目处于积极开发中，难免会有一些Bug。如果您遇到任何问题或有任何建议，请在GitHub上打开一个Issue。
