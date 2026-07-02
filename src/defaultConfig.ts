@@ -12,6 +12,7 @@ enum VideoQuality {
 
 type MiniPlayerSize = "360x203" | "420x236" | "480x270" | "560x315" | "640x360" | "720x405";
 type MiniPlayerPosition = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
+export type PlayerHideButtonMode = "auto" | "hide" | "show";
 
 export type Config = {
 	"player.ui.enableSpeedButtons": boolean;
@@ -20,14 +21,14 @@ export type Config = {
 	"player.ui.speedSliderStep": number;
 	"player.ui.speedButtons": Array<0.25 | 0.5 | 0.75 | 1 | 1.25 | 1.5 | 1.75 | 2 | 2.25 | 2.5 | 2.75 | 3 | 5 | 10>;
 	"player.ui.enableVolumeBooster": boolean;
-	"player.ui.hideButton.autoplay": boolean;
-	"player.ui.hideButton.subtitles": boolean;
-	"player.ui.hideButton.settings": boolean;
-	"player.ui.hideButton.miniPlayer": boolean;
-	"player.ui.hideButton.pip": boolean;
-	"player.ui.hideButton.size": boolean;
-	"player.ui.hideButton.remote": boolean;
-	"player.ui.hideButton.fullscreen": boolean;
+	"player.ui.hideButton.autoplay": PlayerHideButtonMode;
+	"player.ui.hideButton.subtitles": PlayerHideButtonMode;
+	"player.ui.hideButton.settings": PlayerHideButtonMode;
+	"player.ui.hideButton.miniPlayer": PlayerHideButtonMode;
+	"player.ui.hideButton.pip": PlayerHideButtonMode;
+	"player.ui.hideButton.size": PlayerHideButtonMode;
+	"player.ui.hideButton.remote": PlayerHideButtonMode;
+	"player.ui.hideButton.fullscreen": PlayerHideButtonMode;
 	"player.ui.hideCeElement": boolean;
 	"player.ui.progress.enable": boolean;
 	"player.ui.progress.height": number;
@@ -87,14 +88,14 @@ const config: Config = {
 	"player.ui.speedSliderStep": 0.25,
 	"player.ui.speedButtons": [0.5, 1, 1.5, 2],
 	"player.ui.enableVolumeBooster": true,
-	"player.ui.hideButton.autoplay": false,
-	"player.ui.hideButton.subtitles": false,
-	"player.ui.hideButton.settings": false,
-	"player.ui.hideButton.miniPlayer": true,
-	"player.ui.hideButton.pip": true,
-	"player.ui.hideButton.size": true,
-	"player.ui.hideButton.remote": true,
-	"player.ui.hideButton.fullscreen": false,
+	"player.ui.hideButton.autoplay": "auto",
+	"player.ui.hideButton.subtitles": "auto",
+	"player.ui.hideButton.settings": "auto",
+	"player.ui.hideButton.miniPlayer": "hide",
+	"player.ui.hideButton.pip": "hide",
+	"player.ui.hideButton.size": "hide",
+	"player.ui.hideButton.remote": "hide",
+	"player.ui.hideButton.fullscreen": "auto",
 	"player.ui.hideCeElement": true,
 	"player.ui.progress.enable": true,
 	"player.ui.progress.height": 2,
@@ -146,5 +147,26 @@ const config: Config = {
 
 	"yttweak.enableChromeApiStatusChecker": true,
 };
+
+export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unknown>) {
+	const normalizedConfig = { ...rawConfig } as Record<string, unknown>;
+	for (const key of [
+		"player.ui.hideButton.autoplay",
+		"player.ui.hideButton.subtitles",
+		"player.ui.hideButton.settings",
+		"player.ui.hideButton.miniPlayer",
+		"player.ui.hideButton.pip",
+		"player.ui.hideButton.size",
+		"player.ui.hideButton.remote",
+		"player.ui.hideButton.fullscreen",
+	]) {
+		if (normalizedConfig[key] === true) normalizedConfig[key] = "hide";
+		if (normalizedConfig[key] === false) normalizedConfig[key] = "auto";
+	}
+	if (normalizedConfig["player.ui.hideButton.subtitles"] === "show") {
+		normalizedConfig["player.ui.hideButton.subtitles"] = "auto";
+	}
+	return normalizedConfig as Partial<Config>;
+}
 
 export default config;

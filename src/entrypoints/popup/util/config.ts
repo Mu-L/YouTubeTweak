@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { toRaw } from "vue";
 import { createLogger } from "@/logger";
-import defaultConfig from "@/defaultConfig";
+import defaultConfig, { normalizeConfig } from "@/defaultConfig";
 
 import type { PiniaPlugin } from "pinia";
 
@@ -17,7 +17,7 @@ export default defineStore("config", {
 	actions: {
 		loadStorage(init = false) {
 			browser.storage.sync.get(STORAGE_KEY).then((res) => {
-				this.$patch(res[STORAGE_KEY] || {});
+				this.$patch(normalizeConfig(res[STORAGE_KEY] || {}));
 				logger.info("loadStorage ->", res[STORAGE_KEY]);
 
 				if (init) {

@@ -75,6 +75,11 @@
 				"size": "إخفاء زر وضع المسرح",
 				"remote": "إخفاء زر الإرسال إلى التلفاز",
 				"fullscreen": "إخفاء زر ملء الشاشة"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

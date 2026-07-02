@@ -75,6 +75,11 @@
 				"size": "극장 모드 버튼 숨기기",
 				"remote": "TV로 전송 버튼 숨기기",
 				"fullscreen": "전체화면 버튼 숨기기"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

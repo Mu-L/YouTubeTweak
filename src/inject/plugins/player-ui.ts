@@ -2,6 +2,7 @@ import { bodyClass, secToMMDD } from "../util/helper";
 import type { Plugin } from "../types";
 import { videoPlayer } from "../mainWorld";
 import config from "../config";
+import type { Config, PlayerHideButtonMode } from "@/defaultConfig";
 
 let progress: HTMLDivElement;
 let progressPercent: HTMLDivElement;
@@ -13,6 +14,16 @@ const MIN_PROGRESS_TAG_FONT_SIZE = 8;
 const MAX_PROGRESS_TAG_FONT_SIZE = 48;
 const MIN_PROGRESS_TAG_OFFSET = 0;
 const MAX_PROGRESS_TAG_OFFSET = 200;
+const BUTTON_VISIBILITY_CLASSES: Array<[keyof Config, string, string]> = [
+	["player.ui.hideButton.autoplay", "yttweak-hide-button-autoplay", "yttweak-show-button-autoplay"],
+	["player.ui.hideButton.subtitles", "yttweak-hide-button-subtitles", "yttweak-show-button-subtitles"],
+	["player.ui.hideButton.settings", "yttweak-hide-button-settings", "yttweak-show-button-settings"],
+	["player.ui.hideButton.miniPlayer", "yttweak-hide-button-miniPlayer", "yttweak-show-button-miniPlayer"],
+	["player.ui.hideButton.pip", "yttweak-hide-button-pip", "yttweak-show-button-pip"],
+	["player.ui.hideButton.size", "yttweak-hide-button-size", "yttweak-show-button-size"],
+	["player.ui.hideButton.remote", "yttweak-hide-button-remote", "yttweak-show-button-remote"],
+	["player.ui.hideButton.fullscreen", "yttweak-hide-button-fullscreen", "yttweak-show-button-fullscreen"],
+];
 const MIN_PROGRESS_HEIGHT = 1;
 const MAX_PROGRESS_HEIGHT = 20;
 
@@ -76,15 +87,24 @@ function updateProgressTagStyle() {
 	progressTag.style.setProperty("--yttweak-progress-tag-right", isLeft ? "auto" : `var(--yttweak-progress-tag-offset)`);
 }
 
+function syncButtonVisibility() {
+	for (const [key, hideClassName, showClassName] of BUTTON_VISIBILITY_CLASSES) {
+		const mode = config.get(key) as PlayerHideButtonMode | boolean;
+		document.body.classList.toggle(hideClassName, mode === "hide" || mode === true);
+		document.body.classList.toggle(showClassName, mode === "show");
+	}
+}
+
 export default {
-	"player.ui.hideButton.autoplay": bodyClass("yttweak-hide-button-autoplay"),
-	"player.ui.hideButton.subtitles": bodyClass("yttweak-hide-button-subtitles"),
-	"player.ui.hideButton.settings": bodyClass("yttweak-hide-button-settings"),
-	"player.ui.hideButton.miniPlayer": bodyClass("yttweak-hide-button-miniPlayer"),
-	"player.ui.hideButton.pip": bodyClass("yttweak-hide-button-pip"),
-	"player.ui.hideButton.size": bodyClass("yttweak-hide-button-size"),
-	"player.ui.hideButton.remote": bodyClass("yttweak-hide-button-remote"),
-	"player.ui.hideButton.fullscreen": bodyClass("yttweak-hide-button-fullscreen"),
+	"player.ui.hideButton": {
+		setup: syncButtonVisibility,
+		configUpdate(oldConfig: Partial<Config>, newConfig: Partial<Config>) {
+			if (BUTTON_VISIBILITY_CLASSES.some(([key]) => oldConfig[key] !== newConfig[key])) {
+				syncButtonVisibility();
+			}
+			return false;
+		},
+	},
 	"player.ui.hideCeElement": bodyClass("yttweak-hide-ce_element"),
 	"player.ui.progress.enable": {
 		videoSrcChange() {

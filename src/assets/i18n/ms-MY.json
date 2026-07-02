@@ -75,6 +75,11 @@
 				"size": "Sembunyikan butang mod teater",
 				"remote": "Sembunyikan butang cast ke TV",
 				"fullscreen": "Sembunyikan butang skrin penuh"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

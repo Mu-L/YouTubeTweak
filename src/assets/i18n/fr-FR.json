@@ -75,6 +75,11 @@
 				"size": "Masquer le bouton du mode théâtre",
 				"remote": "Masquer le bouton du cast du télévision",
 				"fullscreen": "Masquer le bouton du plein écran"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

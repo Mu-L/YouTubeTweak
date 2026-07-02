@@ -75,6 +75,11 @@
 				"size": "دکمه حالت تئاتر را مخفی کن",
 				"remote": "دکمه پخش روی تلویزیون را مخفی کن",
 				"fullscreen": "دکمه تمام‌صفحه را مخفی کن"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

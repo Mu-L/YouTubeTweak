@@ -1,4 +1,4 @@
-import DefaultConfig from "../defaultConfig";
+import DefaultConfig, { normalizeConfig } from "../defaultConfig";
 import { createLogger } from "../logger";
 import wirelessRedstone from "./wirelessRedstone";
 const logger = createLogger("config");
@@ -27,7 +27,7 @@ export default {
 				if (this.skipUpdateEvent) return (this.skipUpdateEvent = false);
 
 				if (data.settings) {
-					this.config = { ...this.config, ...data.settings.newValue };
+					this.config = { ...this.config, ...normalizeConfig(data.settings.newValue) };
 				}
 				if (data.memory) {
 					this.memory = { ...this.memory, ...data.memory.newValue };
@@ -39,7 +39,7 @@ export default {
 				"getConfig",
 				["settings", "memory"],
 				(result: { settings: Partial<Config>; memory: Record<string, any> }) => {
-					this.config = { ...DefaultConfig, ...(result.settings ?? {}) };
+					this.config = { ...DefaultConfig, ...normalizeConfig(result.settings ?? {}) };
 					this.memory = result.memory ?? {};
 
 					resolve(this.config);

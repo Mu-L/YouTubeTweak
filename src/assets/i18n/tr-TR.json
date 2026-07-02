@@ -75,6 +75,11 @@
 				"size": "Tiyatro modu düğmesini gizle",
 				"remote": "TV'ye yayınla düğmesini gizle",
 				"fullscreen": "Tam ekran düğmesini gizle"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

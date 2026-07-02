@@ -65,16 +65,21 @@
 			}
 		},
 		"hidePlayerButtons": {
-			"title": "隐藏按钮",
+			"title": "按钮显示方式",
 			"checkbox": {
-				"autoplay": "隐藏「自动播放」按钮",
-				"subtitles": "隐藏「字幕」按钮",
-				"settings": "隐藏「设置」按钮",
-				"miniPlayer": "隐藏「迷你播放器」按钮",
-				"pip": "隐藏「画中画」按钮",
-				"size": "隐藏「剧场模式」按钮",
-				"remote": "隐藏「在电视上播放」按钮",
-				"fullscreen": "隐藏「全屏」按钮"
+				"autoplay": "自动播放按钮",
+				"subtitles": "字幕按钮",
+				"settings": "设置按钮",
+				"miniPlayer": "迷你播放器按钮",
+				"pip": "画中画按钮",
+				"size": "剧场模式按钮",
+				"remote": "在电视上播放按钮",
+				"fullscreen": "全屏按钮"
+			},
+			"option": {
+				"auto": "自动",
+				"hide": "隐藏",
+				"show": "强制启用"
 			}
 		},
 		"ui": {

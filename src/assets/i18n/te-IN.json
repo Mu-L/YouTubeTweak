@@ -75,6 +75,11 @@
 				"size": "థియేటర్ మోడ్ బటన్ను దాచు",
 				"remote": "టీవీకి కాస్ట్ బటన్ను దాచు",
 				"fullscreen": "ఫుల్‌స్క్రీన్ బటన్ను దాచు"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

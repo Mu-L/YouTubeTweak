@@ -75,6 +75,11 @@
 				"size": "تھیئٹر موڈ بٹن لُکاؤ",
 				"remote": "ٹی وی اُتے کاسٹ بٹن لُکاؤ",
 				"fullscreen": "فل سکرین بٹن لُکاؤ"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

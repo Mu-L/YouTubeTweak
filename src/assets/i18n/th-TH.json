@@ -75,6 +75,11 @@
 				"size": "ซ่อนปุ่มโหมดโรงภาพยนตร์",
 				"remote": "ซ่อนปุ่มส่งขึ้นทีวี",
 				"fullscreen": "ซ่อนปุ่มเต็มจอ"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

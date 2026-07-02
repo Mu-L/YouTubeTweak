@@ -75,6 +75,11 @@
 				"size": "থিয়েটার মোড বোতাম লুকান",
 				"remote": "টিভিতে কাস্ট বোতাম লুকান",
 				"fullscreen": "ফুলস্ক্রিন বোতাম লুকান"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

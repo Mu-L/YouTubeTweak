@@ -65,16 +65,21 @@
 			}
 		},
 		"hidePlayerButtons": {
-			"title": "Hide buttons",
+			"title": "Button visibility",
 			"checkbox": {
-				"autoplay": "Hide autoplay button",
-				"subtitles": "Hide subtitles button",
-				"settings": "Hide settings button",
-				"miniPlayer": "Hide mini player button",
-				"pip": "Hide picture-in-picture button",
-				"size": "Hide theater mode button",
-				"remote": "Hide cast to TV button",
-				"fullscreen": "Hide fullscreen button"
+				"autoplay": "Autoplay button",
+				"subtitles": "Subtitles button",
+				"settings": "Settings button",
+				"miniPlayer": "Mini player button",
+				"pip": "Picture-in-picture button",
+				"size": "Theater mode button",
+				"remote": "Cast to TV button",
+				"fullscreen": "Fullscreen button"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

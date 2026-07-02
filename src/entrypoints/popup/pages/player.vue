@@ -135,6 +135,11 @@
 				>
 					<input type="checkbox" v-model="config[`player.ui.hideButton.${key}`]" />
 					<span>{{ $t(`player.hidePlayerButtons.checkbox.${key}`) }}</span>
+					<select class="w-100" v-model="config[`player.ui.hideButton.${key}`]">
+						<option value="auto">{{ $t("player.hidePlayerButtons.option.auto") }}</option>
+						<option value="hide">{{ $t("player.hidePlayerButtons.option.hide") }}</option>
+						<option v-if="key !== 'subtitles'" value="show">{{ $t("player.hidePlayerButtons.option.show") }}</option>
+					</select>
 				</label>
 			</div>
 		</div>
@@ -199,8 +204,9 @@ import { computed, ref } from "vue";
 import MiniPlayerSettingsCard from "../components/player/MiniPlayerSettingsCard.vue";
 import VolumeBoosterSettingsCard from "../components/player/VolumeBoosterSettingsCard.vue";
 import useConfigStore from "../util/config";
+import type { PlayerHideButtonMode } from "@/defaultConfig";
 const config = useConfigStore() as {
-	[key: `player.ui.hideButton.${string}`]: boolean;
+	[key: `player.ui.hideButton.${string}`]: PlayerHideButtonMode;
 } & ReturnType<typeof useConfigStore>;
 
 const progressTagPositions = [

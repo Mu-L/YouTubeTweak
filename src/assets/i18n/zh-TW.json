@@ -65,16 +65,21 @@
 			}
 		},
 		"hidePlayerButtons": {
-			"title": "隱藏按鈕",
+			"title": "按鈕顯示方式",
 			"checkbox": {
-				"autoplay": "隱藏自動播放按鈕",
-				"subtitles": "隱藏字幕按鈕",
-				"settings": "隱藏設置按鈕",
-				"miniPlayer": "隱藏迷你播放器按鈕",
-				"pip": "隱藏畫中畫按鈕",
-				"size": "隱藏寬畫幅 (劇場模式) 按鈕",
-				"remote": "隱藏遠程播放 (在電視上播放) 按鈕",
-				"fullscreen": "隱藏全屏按鈕"
+				"autoplay": "自動播放按鈕",
+				"subtitles": "字幕按鈕",
+				"settings": "設定按鈕",
+				"miniPlayer": "迷你播放器按鈕",
+				"pip": "子母畫面按鈕",
+				"size": "劇場模式按鈕",
+				"remote": "在電視上播放按鈕",
+				"fullscreen": "全螢幕按鈕"
+			},
+			"option": {
+				"auto": "自動",
+				"hide": "隱藏",
+				"show": "強制啟用"
 			}
 		},
 		"ui": {

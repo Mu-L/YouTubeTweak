@@ -75,6 +75,11 @@
 				"size": "Ocultar botão de modo teatro",
 				"remote": "Ocultar botão de transmitir para a TV",
 				"fullscreen": "Ocultar botão de tela cheia"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {

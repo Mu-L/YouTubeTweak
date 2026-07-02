@@ -75,6 +75,11 @@
 				"size": "थिएटर मोड बटन छुपाएँ",
 				"remote": "टीवी पर कास्ट बटन छुपाएँ",
 				"fullscreen": "फुलस्क्रीन बटन छुपाएँ"
+			},
+			"option": {
+				"auto": "Auto",
+				"hide": "Hide",
+				"show": "Force enable"
 			}
 		},
 		"ui": {
