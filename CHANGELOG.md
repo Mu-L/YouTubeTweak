@@ -6,6 +6,18 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.1.9] - 2026-07-03
+
+### Added
+
+- **Changelog:** Added the built-in changelog popup and unread prompt for new versions, allowing users to view changes for the current version inside the extension.
+- **Settings UI:** Added quick entry points to feature documentation, allowing users to open the corresponding help document directly from each setting.
+- **Player buttons:** Added player button display modes, with support for Auto, Hide, and Force enable options.
+
+### Fixed
+
+- **Custom CSS:** Fixed a possible error in the custom CSS editor in the popup window.
+
 ## [1.1.8] - 2026-07-03
 
 ### Updated

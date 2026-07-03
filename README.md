@@ -1,12 +1,12 @@
 <h1 align="center">
 
-![](web-store/img/banner.png)
+![](/web-store/img/banner.png)
 <br/>
 YouTube Tweak
 
 </h1>
 
-<h3 align="center">Packed with all the features you want: lock video quality, speed buttons, show commenter names, auto-translate comments, hide distractions, and more.</h3>
+<h4 align="center">A browser extension that improves the YouTube experience: lock video quality, speed buttons, show commenter names, auto-translate comments, hide distractions, and more.</h4>
 
 [English](/README.md) | [中文](/docs/zh-cn/README.md)
 
@@ -20,8 +20,8 @@ YouTube Tweak
 
 ## 🥰 About
 
-This browser extension is specifically designed for **YouTube PC Web**, aiming to enhance the overall user experience, fix usability issues, and provide advanced customization options for power users.
-It is fully **open-source** under the **MIT License**, with all source code publicly available for anyone to review, modify, or reuse.
+This browser extension is specifically designed for **YouTube** users, aiming to optimize the experience, fix inconveniences in the official design, and provide more customization features for advanced users.
+The project uses the **MIT open-source license**, with fully public and transparent source code that anyone can freely review, modify, or build upon.
 
 We make the following commitments:
 
@@ -49,12 +49,12 @@ You can view features of this extension on the extension store — or simply ins
 | ----------------- | -------------------------------------------------------------------------------------- |
 | GitHub Repository | [github.com/xlch88/YouTubeTweak](https://github.com/xlch88/YouTubeTweak)               |
 | Issues            | [github.com/xlch88/YouTubeTweak/issues](https://github.com/xlch88/YouTubeTweak/issues) |
-| Functions         | [FUNCTIONS.md](/docs/FUNCTIONS.md)                                                     |
+| Feature list      | [FUNCTIONS.md](/FUNCTIONS.md)                                                          |
 | Changelog         | [CHANGELOG.md](/CHANGELOG.md)                                                          |
 | Translators       | [TRANSLATORS.md](/TRANSLATORS.md)                                                      |
-| Todo              | [TODO.md](/docs/TODO.md)                                                               |
+| Planned work      | [TODO.md](/TODO.md)                                                                    |
 | Website           | [yttweak.com](https://yttweak.com)                                                     |
-| Telegram Group    | [t.me/YouTubeTweak](https://t.me/YouTubeTweak)                                         |
+| Telegram group    | [t.me/YouTubeTweak](https://t.me/YouTubeTweak)                                         |
 
 ## ⭐ Star history
 

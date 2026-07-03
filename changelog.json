@@ -7,6 +7,78 @@
 	},
 	"releases": [
 		{
+			"version": "1.1.9",
+			"date": "2026-07-03",
+			"changes": {
+				"zh-CN": {
+					"added": [
+						{
+							"scope": "更新日志",
+							"text": "新增内置更新日志弹窗和新版本未读提示，支持在扩展内查看当前版本变化。"
+						},
+						{
+							"scope": "设置界面",
+							"text": "新增功能说明快捷入口，支持从各项设置直接打开对应帮助文档。"
+						},
+						{
+							"scope": "播放器按钮",
+							"text": "新增播放器按钮显示模式，支持自动、隐藏和强制启用三种选项。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "自定义 CSS",
+							"text": "修复自定义 CSS 编辑器在弹出窗口中可能报错的问题。"
+						}
+					]
+				},
+				"en": {
+					"added": [
+						{
+							"scope": "Changelog",
+							"text": "Added the built-in changelog popup and unread prompt for new versions, allowing users to view changes for the current version inside the extension."
+						},
+						{
+							"scope": "Settings UI",
+							"text": "Added quick entry points to feature documentation, allowing users to open the corresponding help document directly from each setting."
+						},
+						{
+							"scope": "Player buttons",
+							"text": "Added player button display modes, with support for Auto, Hide, and Force enable options."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "Custom CSS",
+							"text": "Fixed a possible error in the custom CSS editor in the popup window."
+						}
+					]
+				},
+				"ja": {
+					"added": [
+						{
+							"scope": "更新履歴",
+							"text": "内蔵更新履歴ポップアップと新バージョン未読通知を追加し、拡張機能内で現在バージョンの変更内容を確認できるようにしました。"
+						},
+						{
+							"scope": "設定画面",
+							"text": "機能説明へのクイック入口を追加し、各設定から対応するヘルプドキュメントを直接開けるようにしました。"
+						},
+						{
+							"scope": "プレーヤーボタン",
+							"text": "プレーヤーボタンの表示モードを追加し、自動、非表示、強制有効の 3 つのオプションに対応しました。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "カスタム CSS",
+							"text": "カスタム CSS エディターがポップアップウィンドウ内でエラーになる場合がある問題を修正しました。"
+						}
+					]
+				}
+			}
+		},
+		{
 			"version": "1.1.8",
 			"date": "2026-07-03",
 			"changes": {
