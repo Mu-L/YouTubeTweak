@@ -24,6 +24,9 @@
 			"title": "인사이트"
 		}
 	},
+	"common": {
+		"getHelp": "도움말 보기"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "화질 고정",

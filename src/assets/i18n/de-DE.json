@@ -24,6 +24,9 @@
 			"title": "Einblicke"
 		}
 	},
+	"common": {
+		"getHelp": "Hilfe erhalten"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Qualität sperren",

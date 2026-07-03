@@ -24,6 +24,9 @@
 			"title": "Аналітика"
 		}
 	},
+	"common": {
+		"getHelp": "Отримати допомогу"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Блокувати якість",

@@ -24,6 +24,9 @@
 			"title": "Thống kê"
 		}
 	},
+	"common": {
+		"getHelp": "Nhận trợ giúp"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Khóa chất lượng",

@@ -24,6 +24,9 @@
 			"title": "インサイト"
 		}
 	},
+	"common": {
+		"getHelp": "ヘルプを表示"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "画質を固定",

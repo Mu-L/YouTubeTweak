@@ -1,10 +1,14 @@
 <template>
 	<section id="page-translate">
 		<div class="card">
-			<div class="card-title">{{ $t("translate.common.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("translate.common.title") }}</span>
+				<DocsHelpLink anchor="translate-settings" />
+			</div>
 			<div class="card-body">
 				<label class="form-item form-item-select">
 					<span>{{ $t("comment.context.select.targetLanguage") }}: </span>
+					<DocsHelpLink anchor="translate-settings-target-language" />
 					<select v-model="config['comment.targetLanguage']">
 						<option value="auto">{{ $t("comment.context.select.option.auto") }}</option>
 						<option v-for="(v, k) in locales" :value="k" :key="k">{{ v }}</option>
@@ -13,6 +17,7 @@
 
 				<label class="form-item form-item-select">
 					<span style="white-space: break-spaces">{{ $t("comment.context.select.neverTranslate") }}</span>
+					<DocsHelpLink anchor="translate-settings-never-translate" />
 					<select v-model="config['comment.neverTranslateLanguages']" multiple>
 						<option v-for="(v, k) in locales" :value="k" :key="k">{{ v }}</option>
 					</select>
@@ -20,11 +25,15 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-title">{{ $t("translate.subtitle.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("translate.subtitle.title") }}</span>
+				<DocsHelpLink anchor="translate-subtitle" />
+			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.timedtext']" />
 					<span>{{ $t("translate.enable.checkbox.timedtext") }}</span>
+					<DocsHelpLink anchor="translate-subtitle-enable" />
 				</label>
 				<label class="form-item form-item-select">
 					<span>{{ $t("translate.subtitle.select.mode") }}: </span>
@@ -36,15 +45,20 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-title">{{ $t("translate.comment.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("translate.comment.title") }}</span>
+				<DocsHelpLink anchor="translate-comment" />
+			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.autoTranslate']" />
 					<span>{{ $t("comment.context.checkbox.autoTranslate") }}</span>
+					<DocsHelpLink anchor="translate-comment-content" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.lineByLineTranslate']" />
 					<span>{{ $t("comment.context.checkbox.lineByLineTranslate") }}</span>
+					<DocsHelpLink anchor="translate-comment-line-by-line" />
 				</label>
 			</div>
 		</div>
@@ -52,6 +66,7 @@
 </template>
 
 <script setup lang="ts">
+import DocsHelpLink from "../components/DocsHelpLink.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
 const locales: Record<string, string> = {

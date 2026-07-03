@@ -24,6 +24,9 @@
 			"title": "Wawasan"
 		}
 	},
+	"common": {
+		"getHelp": "Dapatkan bantuan"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Kunci kualiti",

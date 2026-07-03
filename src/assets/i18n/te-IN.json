@@ -24,6 +24,9 @@
 			"title": "అవలోకనలు"
 		}
 	},
+	"common": {
+		"getHelp": "సహాయం పొందండి"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "నాణ్యతను లాక్ చేయి",

@@ -24,6 +24,9 @@
 			"title": "Aperçu"
 		}
 	},
+	"common": {
+		"getHelp": "Obtenir de l’aide"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Verrouiller la qualité",

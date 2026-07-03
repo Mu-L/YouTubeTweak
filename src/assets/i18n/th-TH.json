@@ -24,6 +24,9 @@
 			"title": "ข้อมูลเชิงลึก"
 		}
 	},
+	"common": {
+		"getHelp": "รับความช่วยเหลือ"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "ล็อกคุณภาพ",

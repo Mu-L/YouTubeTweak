@@ -24,6 +24,9 @@
 			"title": "洞察"
 		}
 	},
+	"common": {
+		"getHelp": "获取帮助"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "锁定画质",

@@ -24,6 +24,9 @@
 			"title": "ইনসাইটস"
 		}
 	},
+	"common": {
+		"getHelp": "সাহায্য নিন"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "গুণমান লক করুন",

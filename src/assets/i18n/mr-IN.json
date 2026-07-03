@@ -24,6 +24,9 @@
 			"title": "आकलन"
 		}
 	},
+	"common": {
+		"getHelp": "मदत मिळवा"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "गुणवत्ता लॉक करा",

@@ -24,6 +24,9 @@
 			"title": "உள்ளறிவு"
 		}
 	},
+	"common": {
+		"getHelp": "உதவி பெறுங்கள்"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "தரத்தை பூட்டு",

@@ -24,6 +24,9 @@
 			"title": "بصیرت"
 		}
 	},
+	"common": {
+		"getHelp": "مدد حاصل کریں"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "کوالٹی لاک کرو",

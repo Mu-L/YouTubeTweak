@@ -24,6 +24,9 @@
 			"title": "بینش‌ها"
 		}
 	},
+	"common": {
+		"getHelp": "دریافت راهنما"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "قفل کیفیت",

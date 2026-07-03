@@ -38,6 +38,9 @@
 		0 3px 6px 0 rgba(0, 0, 0, 0.07);
 
 	.card-title {
+		display: flex;
+		align-items: center;
+		gap: 6px;
 		font-weight: bold;
 		border-bottom: 1px solid #eee;
 		background: rgb(249, 250, 253);
@@ -45,6 +48,18 @@
 		padding: 10px;
 		font-size: 13px;
 		border-radius: 5px 5px 0 0;
+
+		.docs-help-link {
+			margin-left: 0;
+		}
+
+		&:hover,
+		&:focus-within {
+			.docs-help-link {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
 	}
 	.card-body {
 		p {
@@ -57,23 +72,38 @@
 .form-item {
 	display: flex;
 	align-items: center;
+	gap: 6px;
+
+	.docs-help-link {
+		margin-left: 0;
+	}
 
 	&:hover input[type="checkbox"]:not(:checked):not(:focus):not(:disabled) {
 		background-color: rgba(#000, 0.1);
 	}
 
+	&:hover,
+	&:focus-within {
+		.docs-help-link {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+
 	&.form-item-select {
 		padding-top: 5px;
-		gap: 15px;
-		justify-content: space-between;
+		justify-content: flex-start;
 
 		span {
 			word-wrap: nowrap;
 			white-space: nowrap;
 		}
 
-		select,
-		input {
+		> select,
+		> input,
+		> .speed-slider-step-custom {
+			flex: 0 0 auto;
+			margin-left: auto;
 			width: 100%;
 			max-width: 50%;
 		}
@@ -84,4 +114,53 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
+}
+
+.config-memory-checkbox {
+	.docs-help-link {
+		margin-left: 0;
+	}
+
+	&:hover,
+	&:focus-within {
+		.docs-help-link {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+}
+
+.docs-help-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	border: 1px solid #b8beca;
+	border-radius: 50%;
+	background: white;
+	color: #8a8f98;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: none;
+	transition:
+		opacity 0.15s,
+		background 0.15s,
+		color 0.15s,
+		border-color 0.15s;
+
+	&.is-hovering,
+	&:focus-visible {
+		opacity: 1;
+		pointer-events: auto;
+		background: #8a8f98;
+		color: white;
+		border-color: #8a8f98;
+		outline: none;
+	}
 }

@@ -24,6 +24,9 @@
 			"title": "İçgörüler"
 		}
 	},
+	"common": {
+		"getHelp": "Yardım al"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Kaliteyi kilitle",

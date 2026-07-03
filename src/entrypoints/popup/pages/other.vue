@@ -1,11 +1,15 @@
 <template>
 	<section id="other">
 		<div class="card">
-			<div class="card-title">{{ $t("other.index.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("other.index.title") }}</span>
+				<DocsHelpLink anchor="other-home" />
+			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['index.videoPerRow.enable']" />
 					<span> {{ $t("other.index.checkbox.videoPerRow") }} </span>
+					<DocsHelpLink anchor="other-home-video-per-row" />
 					<input
 						type="number"
 						style="width: 50px; margin-left: 5px"
@@ -19,72 +23,97 @@
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("other.comment.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("other.comment.title") }}</span>
+				<DocsHelpLink anchor="other-comment" />
+			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.nickname']" />
 					<span>{{ $t("other.comment.checkbox.showNickname") }}</span>
+					<DocsHelpLink anchor="other-comment-nickname" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.autoShowMore']" />
 					<span>{{ $t("comment.context.checkbox.autoShowMore") }}</span>
+					<DocsHelpLink anchor="other-comment-auto-more" />
 				</label>
 			</div>
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("other.antiAD.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("other.antiAD.title") }}</span>
+				<DocsHelpLink anchor="other-anti-ad" />
+			</div>
 			<div class="card-body">
 				<p>{{ $t("other.antiAD.tips.enable") }}</p>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['other.antiAD.enable']" />
 					<span> {{ $t("other.antiAD.checkbox.enable") }} </span>
+					<DocsHelpLink anchor="other-anti-ad-image" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['other.antiAD.enableVideo']" />
 					<span> {{ $t("other.antiAD.checkbox.enableVideo") }} </span>
+					<DocsHelpLink anchor="other-anti-ad-video" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['other.antiAD.enableMerch']" />
 					<span> {{ $t("other.antiAD.checkbox.enableMerch") }} </span>
+					<DocsHelpLink anchor="other-anti-ad-merch" />
 				</label>
 			</div>
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("other.shorts.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("other.shorts.title") }}</span>
+				<DocsHelpLink anchor="other-shorts" />
+			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['shorts-blocker.enable.index']" />
 					<span> {{ $t("other.shorts.checkbox.enableIndex") }} </span>
+					<DocsHelpLink anchor="other-shorts-home-search" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['shorts-blocker.enable.watch']" />
 					<span> {{ $t("other.shorts.checkbox.enableWatch") }} </span>
+					<DocsHelpLink anchor="other-shorts-watch" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['shorts-blocker.enable.menu']" />
 					<span> {{ $t("other.shorts.checkbox.enableMenu") }} </span>
+					<DocsHelpLink anchor="other-shorts-menu" />
 				</label>
 			</div>
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("other.rollback.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("other.rollback.title") }}</span>
+				<DocsHelpLink anchor="other-rollback" />
+			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['rollback.playerUI']" />
 					<span>{{ $t("other.rollback.checkbox.playerUI") }}</span>
+					<DocsHelpLink anchor="other-rollback-player-layout" />
 				</label>
 			</div>
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("other.customCss.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("other.customCss.title") }}</span>
+				<DocsHelpLink anchor="other-custom-css" />
+			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['other.customCss.enable']" />
 					<span>{{ $t("other.customCss.checkbox.enable") }}</span>
+					<DocsHelpLink anchor="other-custom-css-inject" />
 				</label>
 				<pre
 					ref="customCssEditor"
@@ -107,6 +136,7 @@ import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { CodeJar } from "codejar";
 import Prism from "prismjs/components/prism-core";
 import "prismjs/components/prism-css";
+import DocsHelpLink from "../components/DocsHelpLink.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
 const customCssEditor = ref<HTMLElement | null>(null);

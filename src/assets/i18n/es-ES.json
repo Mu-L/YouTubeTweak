@@ -24,6 +24,9 @@
 			"title": "Perspectivas"
 		}
 	},
+	"common": {
+		"getHelp": "Obtener ayuda"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Bloquear calidad",

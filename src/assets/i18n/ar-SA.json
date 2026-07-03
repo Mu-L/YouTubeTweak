@@ -24,6 +24,9 @@
 			"title": "الرؤى"
 		}
 	},
+	"common": {
+		"getHelp": "الحصول على المساعدة"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "تثبيت الجودة",

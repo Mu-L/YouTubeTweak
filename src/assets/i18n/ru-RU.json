@@ -24,6 +24,9 @@
 			"title": "Инсайты"
 		}
 	},
+	"common": {
+		"getHelp": "Получить помощь"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Фиксировать качество",

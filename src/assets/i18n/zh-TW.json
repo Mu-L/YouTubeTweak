@@ -24,6 +24,9 @@
 			"title": "洞察"
 		}
 	},
+	"common": {
+		"getHelp": "取得說明"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "鎖定解析度",

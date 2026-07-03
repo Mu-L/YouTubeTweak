@@ -1,10 +1,14 @@
 <template>
 	<div class="card">
-		<div class="card-title">{{ $t("player.volumeBooster.title") }}</div>
+		<div class="card-title">
+			<span>{{ $t("player.volumeBooster.title") }}</span>
+			<DocsHelpLink anchor="player-volume-booster" />
+		</div>
 		<div class="card-body">
 			<label class="form-item">
 				<input type="checkbox" v-model="config['player.ui.enableVolumeBooster']" />
 				<span>{{ $t("player.volumeBooster.checkbox.showControl") }}</span>
+				<DocsHelpLink anchor="player-volume-booster-gain" />
 			</label>
 
 			<label class="form-item">
@@ -25,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+import DocsHelpLink from "../DocsHelpLink.vue";
 import useConfigStore from "../../util/config";
 
 const config = useConfigStore();

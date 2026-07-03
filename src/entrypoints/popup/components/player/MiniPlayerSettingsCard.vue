@@ -1,10 +1,14 @@
 <template>
 	<div class="card">
-		<div class="card-title">{{ $t("player.miniPlayer.title") }}</div>
+		<div class="card-title">
+			<span>{{ $t("player.miniPlayer.title") }}</span>
+			<DocsHelpLink anchor="player-mini-player" />
+		</div>
 		<div class="card-body">
 			<label class="form-item">
 				<input type="checkbox" v-model="config['player.miniPlayer.enable']" />
 				<span>{{ $t("player.miniPlayer.checkbox.enable") }}</span>
+				<DocsHelpLink anchor="player-mini-player-scroll" />
 			</label>
 
 			<p>{{ $t("player.miniPlayer.tips.enable") }}</p>
@@ -47,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+import DocsHelpLink from "../DocsHelpLink.vue";
 import useConfigStore from "../../util/config";
 
 const config = useConfigStore();

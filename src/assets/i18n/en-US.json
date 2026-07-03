@@ -24,6 +24,9 @@
 			"title": "Insights"
 		}
 	},
+	"common": {
+		"getHelp": "Get help"
+	},
 	"player": {
 		"lockQuality": {
 			"title": "Lock quality",

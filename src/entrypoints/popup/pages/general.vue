@@ -19,7 +19,10 @@
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("general.about.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("general.about.title") }}</span>
+				<DocsHelpLink anchor="general-about" />
+			</div>
 			<div class="card-body about">
 				<img src="@/assets/img/logo.svg" alt="logo" />
 				<p class="title">YouTube Tweak</p>
@@ -37,7 +40,10 @@
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("general.language.title") }} (Language)</div>
+			<div class="card-title">
+				<span>{{ $t("general.language.title") }} (Language)</span>
+				<DocsHelpLink anchor="general-language" />
+			</div>
 			<div class="card-body">
 				<select class="w-100" @change="setLocale" v-model="locale">
 					<option v-for="(name, key) of locales" :key="key" :value="key">{{ name }}</option>
@@ -49,7 +55,10 @@
 		</div>
 
 		<div class="card">
-			<div class="card-title">{{ $t("general.config.title") }}</div>
+			<div class="card-title">
+				<span>{{ $t("general.config.title") }}</span>
+				<DocsHelpLink anchor="general-config" />
+			</div>
 			<div class="card-body config">
 				<button class="btn" @click="showConfigModal('export')">{{ $t("general.config.button.exportConfig") }} ⤴️</button>
 				<button class="btn" @click="showConfigModal('import')">{{ $t("general.config.button.importConfig") }} ⤵️</button>
@@ -73,10 +82,12 @@
 				<label v-if="configModalType === 'export'" class="config-memory-checkbox">
 					<input type="checkbox" v-model="configModalExportMemory" @change="updateExportConfigValue" />
 					<span>{{ $t("general.config.modal.exportMemory") }}</span>
+					<DocsHelpLink anchor="general-config-export" />
 				</label>
 				<label v-else-if="importConfigHasMemoryChunk" class="config-memory-checkbox">
 					<input type="checkbox" v-model="configModalImportMemory" />
 					<span>{{ $t("general.config.modal.importMemoryConfirm") }}</span>
+					<DocsHelpLink anchor="general-config-import" />
 				</label>
 				<div class="buttons">
 					<button class="btn" @click="configModalType = configModalValue = ''">
@@ -94,6 +105,7 @@
 </template>
 
 <script setup lang="ts">
+import DocsHelpLink from "../components/DocsHelpLink.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
 
