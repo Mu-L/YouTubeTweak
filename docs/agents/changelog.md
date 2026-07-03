@@ -193,7 +193,7 @@ docs/zh-cn/CHANGELOG.md
 
 ### 写入JSON格式化文件 `changelog.json`
 
-读取当前 `docs/zh-cn/changelog.json`，解析其格式，并将内容更新写入该文件。
+读取当前项目的 `/changelog.json`，解析其格式，并将内容更新写入该文件。
 
 ## 最终回复
 

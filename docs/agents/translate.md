@@ -30,7 +30,7 @@ changelog.json
 ```text
 /CHANGELOG.md (英语)
 /FUNCTIONS.md (英语)
-/changelog.json
+/changelog.json (多语言)
 docs/ja/CHANGELOG.md
 docs/ja/FUNCTIONS.md
 docs/ja/README.md

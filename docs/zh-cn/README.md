@@ -49,7 +49,8 @@ YouTube Tweak
 | --------------- | -------------------------------------------------------------------------------------- |
 | GitHub仓库      | [github.com/xlch88/YouTubeTweak](https://github.com/xlch88/YouTubeTweak)               |
 | 问题反馈        | [github.com/xlch88/YouTubeTweak/issues](https://github.com/xlch88/YouTubeTweak/issues) |
-| 更新日志        | [CHANGELOG.md](/CHANGELOG.md)                                                          |
+| 功能列表        | [FUNCTIONS.md](/docs/zh-cn/FUNCTIONS.md)                                               |
+| 更新日志        | [CHANGELOG.md](/docs/zh-cn/CHANGELOG.md)                                               |
 | 翻译贡献者      | [TRANSLATORS.md](/TRANSLATORS.md)                                                      |
 | 预计开发内容    | [TODO.md](/TODO.md)                                                                    |
 | 网站            | [yttweak.com](https://yttweak.com)                                                     |
