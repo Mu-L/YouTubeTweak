@@ -1,27 +1,29 @@
 // hide player buttons
-body.yttweak-hide-button-autoplay .ytp-autonav-toggle {
-	display: none !important;
-}
-body.yttweak-hide-button-subtitles .ytp-subtitles-button {
-	display: none !important;
-}
-body.yttweak-hide-button-settings .ytp-settings-button {
-	display: none !important;
-}
-body.yttweak-hide-button-miniPlayer .ytp-miniplayer-button {
-	display: none !important;
-}
-body.yttweak-hide-button-pip .ytp-pip-button {
-	display: none !important;
-}
-body.yttweak-hide-button-size .ytp-size-button {
-	display: none !important;
-}
-body.yttweak-hide-button-remote .ytp-remote-button {
-	display: none !important;
-}
-body.yttweak-hide-button-fullscreen .ytp-fullscreen-button {
-	display: none !important;
+body {
+	&:is(.yttweak-hide-button-autoplay) .ytp-autonav-toggle,
+	&:is(.yttweak-hide-button-subtitles) .ytp-subtitles-button,
+	&:is(.yttweak-hide-button-settings) .ytp-settings-button,
+	&:is(.yttweak-hide-button-miniPlayer) .ytp-miniplayer-button,
+	&:is(.yttweak-hide-button-pip) .ytp-pip-button,
+	&:is(.yttweak-hide-button-size) .ytp-size-button,
+	&:is(.yttweak-hide-button-remote) .ytp-remote-button,
+	&:is(.yttweak-hide-button-fullscreen) .ytp-fullscreen-button {
+		display: none !important;
+	}
+
+	&:is(.yttweak-show-button-autoplay) .ytp-autonav-toggle,
+	&:is(.yttweak-show-button-subtitles) .ytp-subtitles-button,
+	&:is(.yttweak-show-button-settings) .ytp-settings-button,
+	&:is(.yttweak-show-button-miniPlayer) .ytp-miniplayer-button,
+	&:is(.yttweak-show-button-pip) .ytp-pip-button,
+	&:is(.yttweak-show-button-size) .ytp-size-button,
+	&:is(.yttweak-show-button-remote) .ytp-remote-button,
+	&:is(.yttweak-show-button-fullscreen) .ytp-fullscreen-button {
+		display: inline-block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+	}
 }
 
 // play end
