@@ -121,7 +121,7 @@
 					role="textbox"
 					:aria-label="$t('other.customCss.title')"
 					aria-multiline="true"
-					:data-placeholder="$t('other.customCss.placeholder')"
+					:data-placeholder="customCssPlaceholder"
 					@focus="startCustomCssEdit"
 					@blur="saveCustomCss"
 				></pre>
@@ -132,14 +132,20 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { CodeJar } from "codejar";
 import Prism from "prismjs/components/prism-core";
 import "prismjs/components/prism-css";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
+const { tm } = useI18n();
 const customCssEditor = ref<HTMLElement | null>(null);
+const customCssPlaceholder = computed(() => {
+	const message = tm("other.customCss.placeholder");
+	return typeof message === "string" ? message : "";
+});
 let customCssDraft = config["other.customCss.value"];
 let customCssJar: CodeJar | null = null;
 let isEditingCustomCss = false;
@@ -148,8 +154,8 @@ watch(
 	() => config["other.customCss.value"],
 	(value) => {
 		if (!isEditingCustomCss) {
-			customCssDraft = value;
-			updateCustomCssEditorCode(value);
+			customCssDraft = String(value ?? "");
+			updateCustomCssEditorCode(String(value ?? ""));
 		}
 	},
 );
@@ -199,16 +205,12 @@ function initCustomCssEditor() {
 	const editor = customCssEditor.value;
 	if (!editor) return;
 
-	customCssJar = CodeJar(
-		editor,
-		highlightCustomCss,
-		{
-			tab: "\t",
-			catchTab: true,
-			spellcheck: false,
-			addClosing: false,
-		},
-	);
+	customCssJar = CodeJar(editor, highlightCustomCss, {
+		tab: "\t",
+		catchTab: true,
+		spellcheck: false,
+		addClosing: false,
+	});
 	customCssJar.onUpdate((code) => {
 		customCssDraft = code;
 	});
