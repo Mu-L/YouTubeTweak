@@ -126,8 +126,6 @@ git log --reverse <PREVIOUS_RELEASE_COMMIT_ID>..HEAD
 - 每条内容必须能从 commit 或 diff 中找到依据。
 - 如果某个分类没有内容，则不要输出该分类标题。
 
----
-
 ## 输出格式
 
 严格使用以下格式：
@@ -176,8 +174,6 @@ git log --reverse <PREVIOUS_RELEASE_COMMIT_ID>..HEAD
 - **回退:** 修复开启旧版播放界面布局后，非 16:9 视频被塞进 16:9 外壳里显示的问题。
 ```
 
----
-
 ## 写入文件要求
 
 将生成的更新日志追加到：
@@ -195,7 +191,9 @@ docs/zh-cn/CHANGELOG.md
 - 写入前先读取文件，判断现有格式和插入位置。
 - 写入后检查文件内容，确认格式正确。
 
----
+### 写入JSON格式化文件 `changelog.json`
+
+读取当前 `docs/zh-cn/changelog.json`，解析其格式，并将内容更新写入该文件。
 
 ## 最终回复
 

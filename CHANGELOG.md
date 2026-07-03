@@ -1,10 +1,26 @@
 # Changelog
 
-[中文](/docs/zh-cn/CHANGELOG.md) | [English](/CHANGELOG.md)
+[中文](/docs/zh-cn/CHANGELOG.md) | [English](/CHANGELOG.md) | [日本語](/docs/ja/CHANGELOG.md)
 
 All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
+
+## [1.1.8] - 2026-07-03
+
+### Updated
+
+- **Settings UI:** Improved the prompt display for configuration import/export and update check results.
+- **Player controls:** Improved how the player control bar is shown when using custom controls such as speed, rotation, and mirroring.
+
+### Added
+
+- **Speed control:** Added a speed slider, with support for continuous drag-based speed adjustment, mouse wheel speed adjustment, and custom wheel step sizes.
+- **Video zoom:** Added video zoom with the mouse wheel. After zooming in, the video can be dragged to move the view.
+- **Player function buttons:** Added a video screenshot button, with support for saving the current video frame as a PNG image.
+- **Player buttons:** Added player button display modes, with support for automatic, hidden, and force-enabled states.
+- **Custom CSS:** Added a custom CSS editor, with support for injecting custom styles into YouTube.
+- **Configuration management:** Added options to export/import memory data, with support for migrating per-channel speed, subtitle, and other memories together with settings.
 
 ## [1.1.7] - 2026-06-12
 

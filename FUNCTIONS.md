@@ -2,6 +2,8 @@
 
 # Feature Guide
 
+[中文](/docs/zh-cn/FUNCTIONS.md) | [English](/FUNCTIONS.md) | [日本語](/docs/ja/FUNCTIONS.md)
+
 YouTube Tweak is a browser extension for enhancing the YouTube web experience. This document follows the category order in the extension popup panel and focuses on what each feature does, what happens after it is enabled, which scenarios it fits, and which limitations to note.
 
 This extension mainly takes effect on the desktop YouTube website. Some features only apply on video watch pages, the homepage, search pages, comment areas, or Shorts-related areas. The exact scope is explained in the corresponding feature sections.

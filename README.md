@@ -30,6 +30,8 @@ We make the following commitments:
 - **No access to personal information** — all settings, caches, and preferences are stored locally in your browser;
 - **Full user control** — every feature can be enabled or disabled at your discretion.
 
+Our goal is simple: bring YouTube back to a pure video-watching experience instead of a playground for ads and algorithms.
+
 You can view features of this extension on the extension store — or simply install it and experience them yourself!
 
 ## ✨ Get this extension
@@ -47,9 +49,10 @@ You can view features of this extension on the extension store — or simply ins
 | ----------------- | -------------------------------------------------------------------------------------- |
 | GitHub Repository | [github.com/xlch88/YouTubeTweak](https://github.com/xlch88/YouTubeTweak)               |
 | Issues            | [github.com/xlch88/YouTubeTweak/issues](https://github.com/xlch88/YouTubeTweak/issues) |
+| Functions         | [FUNCTIONS.md](/docs/FUNCTIONS.md)                                                     |
 | Changelog         | [CHANGELOG.md](/CHANGELOG.md)                                                          |
 | Translators       | [TRANSLATORS.md](/TRANSLATORS.md)                                                      |
-| Todo              | [TODO.md](/TODO.md)                                                                    |
+| Todo              | [TODO.md](/docs/TODO.md)                                                               |
 | Website           | [yttweak.com](https://yttweak.com)                                                     |
 | Telegram Group    | [t.me/YouTubeTweak](https://t.me/YouTubeTweak)                                         |
 

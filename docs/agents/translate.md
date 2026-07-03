@@ -20,6 +20,7 @@ docs/zh-cn
 CHANGELOG.md
 FUNCTIONS.md
 README.md
+changelog.json
 ```
 
 ## 输出目录与文件路径
@@ -29,6 +30,7 @@ README.md
 ```text
 /CHANGELOG.md (英语)
 /FUNCTIONS.md (英语)
+/changelog.json
 docs/ja/CHANGELOG.md
 docs/ja/FUNCTIONS.md
 docs/ja/README.md
@@ -65,6 +67,7 @@ docs/ja/README.md
     - 不要无意义地整篇重译或重排。
 
 10. 若目标翻译文件不存在，则基于母版完整创建。
+11. 对于目标文档内已经存在的内容，不需要进行润色，仅进行追加。
 
 ## Markdown 与代码保护规则
 
