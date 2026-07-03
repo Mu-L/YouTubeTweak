@@ -319,6 +319,24 @@
 				"busy": "Đang kiểm tra quá thường xuyên, hãy thử lại sau."
 			}
 		},
+		"changelog": {
+			"title": "Ghi chú phiên bản mới",
+			"manualTitle": "Nhật ký thay đổi",
+			"subtitle": "Thay đổi từ v{from} đến v{to}",
+			"currentSubtitle": "Phiên bản hiện tại v{version}",
+			"loading": "Đang tải nhật ký thay đổi...",
+			"empty": "Không tìm thấy mục nhật ký thay đổi nào cho khoảng phiên bản này.",
+			"error": "Không thể tải nhật ký thay đổi. Vui lòng thử lại sau.",
+			"buttons": {
+				"view": "Xem nhật ký thay đổi",
+				"close": "Đóng"
+			},
+			"groups": {
+				"added": "Đã thêm",
+				"updated": "Đã cập nhật",
+				"fixed": "Đã sửa"
+			}
+		},
 		"about": {
 			"title": "Giới thiệu",
 			"link": {

@@ -319,6 +319,24 @@
 				"busy": "Semak kemas kini terlalu kerap, cuba lagi kemudian."
 			}
 		},
+		"changelog": {
+			"title": "Nota versi baharu",
+			"manualTitle": "Log perubahan",
+			"subtitle": "Perubahan daripada v{from} kepada v{to}",
+			"currentSubtitle": "Versi semasa v{version}",
+			"loading": "Memuatkan log perubahan...",
+			"empty": "Tiada entri log perubahan ditemui untuk julat versi ini.",
+			"error": "Gagal memuatkan log perubahan. Sila cuba lagi kemudian.",
+			"buttons": {
+				"view": "Lihat log perubahan",
+				"close": "Tutup"
+			},
+			"groups": {
+				"added": "Ditambah",
+				"updated": "Dikemas kini",
+				"fixed": "Dibaiki"
+			}
+		},
 		"about": {
 			"title": "Perihal",
 			"link": {

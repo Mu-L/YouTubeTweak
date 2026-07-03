@@ -38,7 +38,11 @@
 </template>
 
 <script setup lang="ts">
+import { markChangelogVersionRead } from "@/util/versionNotice";
+
 const APP_INFO = window.__APP_INFO__;
+
+markChangelogVersionRead().catch(() => {});
 </script>
 
 <style lang="scss">

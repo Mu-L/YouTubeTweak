@@ -5,8 +5,8 @@
 				<b>{{ $t("general.update.tips.0", { version: waitUpdate }) }}</b>
 				<br />
 				{{ $t("general.update.tips.1") }}
-				<a href="">{{ $t("general.update.buttons.log") }}</a>
 			</p>
+			<button @click="showChangelog('manual')" class="btn">{{ $t("general.update.buttons.log") }}</button>
 			<button @click="updateNow()" class="btn btn-green">{{ $t("general.update.buttons.update") }}</button>
 		</div>
 
@@ -16,6 +16,20 @@
 				<br />
 				{{ $t("general.warning.tips.fetchHooker") }}
 			</p>
+		</div>
+
+		<div ref="sponsorCard" class="tips tips-sponsor" v-if="sponsorCardVisible">
+			<p>
+				<b>{{ $t("general.sponsor.tips.title") }}</b>
+				<br />
+				{{ $t("general.sponsor.tips.description") }}
+			</p>
+			<div class="sponsor-actions">
+				<button type="button" class="sponsor-button">{{ $t("general.sponsor.buttons.sponsor") }}</button>
+				<button type="button" class="sponsor-dismiss" @click="sponsorCardVisible = false">
+					{{ $t("general.sponsor.buttons.noThanks") }}
+				</button>
+			</div>
 		</div>
 
 		<div class="card">
@@ -30,12 +44,24 @@
 					v{{ APP_INFO.version }}<br /><span>Build at {{ APP_INFO.build }}</span>
 				</p>
 				<p>Copyright &copy; {{ new Date().getFullYear() }} <a href="https://dark495.me/" target="_blank">Dark495</a></p>
-				<p class="link">
-					<a href="https://github.com/xlch88/YouTubeTweak" target="_blank">⭐{{ $t("general.about.link.github") }}</a> |
-					<a href="https://github.com/xlch88/YouTubeTweak/releases" target="_blank">📓{{ $t("general.about.link.changelog") }}</a>
-					|
-					<a href="https://github.com/xlch88/YouTubeTweak/issues" target="_blank">❓{{ $t("general.about.link.issue") }}</a>
-				</p>
+				<div class="about-links">
+					<a class="about-link about-link-source" href="https://github.com/xlch88/YouTubeTweak" target="_blank">
+						<span class="about-link-icon">⭐</span>
+						<span>{{ $t("general.about.link.github") }}</span>
+					</a>
+					<button class="about-link about-link-changelog" @click="showChangelog('manual')">
+						<span class="about-link-icon">📓</span>
+						<span>{{ $t("general.about.link.changelog") }}</span>
+					</button>
+					<a class="about-link about-link-issue" href="https://github.com/xlch88/YouTubeTweak/issues" target="_blank">
+						<span class="about-link-icon">❓</span>
+						<span>{{ $t("general.about.link.issue") }}</span>
+					</a>
+					<button class="about-link about-link-sponsor" @click="showSponsorCard()">
+						<span class="about-link-icon">💖</span>
+						<span>{{ $t("general.about.link.sponsor") }}</span>
+					</button>
+				</div>
 			</div>
 		</div>
 
@@ -48,7 +74,7 @@
 				<select class="w-100" @change="setLocale" v-model="locale">
 					<option v-for="(name, key) of locales" :key="key" :value="key">{{ name }}</option>
 				</select>
-				<a :href="`https://github.com/xlch88/YoutubeTweak/blob/main/TRANSLATORS.md#${locale}`" target="_blank">{{
+				<a :href="`https://github.com/xlch88/YoutubeTweak/blob/main/docs/TRANSLATORS.md#${locale}`" target="_blank">{{
 					$t("general.language.link.translator")
 				}}</a>
 			</div>
@@ -66,45 +92,92 @@
 			</div>
 		</div>
 
-		<div class="config-modal" v-if="configModalType">
-			<div class="config-modal-body">
-				<textarea
-					ref="configTextarea"
-					spellcheck="false"
-					autocorrect="off"
-					autocapitalize="off"
-					autocomplete="off"
-					v-model="configModalValue"
-					:placeholder="
-						configModalType === 'import' ? $t('general.config.modal.importTips') : $t('general.config.modal.exportTips')
-					"
-				></textarea>
-				<label v-if="configModalType === 'export'" class="config-memory-checkbox">
-					<input type="checkbox" v-model="configModalExportMemory" @change="updateExportConfigValue" />
-					<span>{{ $t("general.config.modal.exportMemory") }}</span>
-					<DocsHelpLink anchor="general-config-export" />
-				</label>
-				<label v-else-if="importConfigHasMemoryChunk" class="config-memory-checkbox">
-					<input type="checkbox" v-model="configModalImportMemory" />
-					<span>{{ $t("general.config.modal.importMemoryConfirm") }}</span>
-					<DocsHelpLink anchor="general-config-import" />
-				</label>
-				<div class="buttons">
-					<button class="btn" @click="configModalType = configModalValue = ''">
-						{{ $t("general.config.button.cancel") }}
-					</button>
-					<button class="btn" :disabled="configModalBusy" @click="configModalSubmit()">
-						{{ configModalType === "import" ? $t("general.config.button.submit") : $t("general.config.button.copy") }}
-					</button>
+		<transition name="modal-fade">
+			<div class="config-modal" v-if="configModalType">
+				<div class="config-modal-body">
+					<textarea
+						ref="configTextarea"
+						spellcheck="false"
+						autocorrect="off"
+						autocapitalize="off"
+						autocomplete="off"
+						v-model="configModalValue"
+						:placeholder="
+							configModalType === 'import' ? $t('general.config.modal.importTips') : $t('general.config.modal.exportTips')
+						"
+					></textarea>
+					<label v-if="configModalType === 'export'" class="config-memory-checkbox">
+						<input type="checkbox" v-model="configModalExportMemory" @change="updateExportConfigValue" />
+						<span>{{ $t("general.config.modal.exportMemory") }}</span>
+						<DocsHelpLink anchor="general-config-export" />
+					</label>
+					<label v-else-if="importConfigHasMemoryChunk" class="config-memory-checkbox">
+						<input type="checkbox" v-model="configModalImportMemory" />
+						<span>{{ $t("general.config.modal.importMemoryConfirm") }}</span>
+						<DocsHelpLink anchor="general-config-import" />
+					</label>
+					<div class="buttons">
+						<button class="btn" @click="configModalType = configModalValue = ''">
+							{{ $t("general.config.button.cancel") }}
+						</button>
+						<button class="btn" :disabled="configModalBusy" @click="configModalSubmit()">
+							{{ configModalType === "import" ? $t("general.config.button.submit") : $t("general.config.button.copy") }}
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</transition>
+
+		<transition name="modal-fade">
+			<div class="changelog-modal" v-if="changelogModalVisible">
+				<div class="changelog-modal-body">
+					<div class="changelog-modal-header">
+						<div>
+							<h2>{{ changelogModalTitle }}</h2>
+							<p>
+								<span>{{ changelogModalSubtitle }}</span>
+								<a class="changelog-github-link" :href="changelogGithubUrl" target="_blank">CHANGELOG.md</a>
+							</p>
+						</div>
+						<button class="changelog-modal-close" :aria-label="$t('general.changelog.buttons.close')" @click="closeChangelog()">
+							&times;
+						</button>
+					</div>
+					<div class="changelog-modal-content">
+						<div class="changelog-status" v-if="changelogLoading">{{ $t("general.changelog.loading") }}</div>
+						<div class="changelog-status changelog-error" v-else-if="changelogError">{{ changelogError }}</div>
+						<div class="changelog-list" v-else-if="changelogReleases.length">
+							<article class="changelog-release" v-for="release in changelogReleases" :key="release.version">
+								<h3>
+									v{{ release.version }}
+									<span v-if="release.date">{{ release.date }}</span>
+								</h3>
+								<section class="changelog-group" v-for="group in release.groups" :key="`${release.version}-${group.type}`">
+									<h4>{{ $t(`general.changelog.groups.${group.type}`) }}</h4>
+									<ul>
+										<li v-for="(item, index) in group.items" :key="index">
+											<b v-if="item.scope">{{ item.scope }}</b>
+											<span>{{ item.text }}</span>
+										</li>
+									</ul>
+								</section>
+							</article>
+						</div>
+						<div class="changelog-status" v-else>{{ $t("general.changelog.empty") }}</div>
+					</div>
+					<div class="changelog-modal-footer">
+						<button class="btn" @click="closeChangelog()">{{ $t("general.changelog.buttons.close") }}</button>
+					</div>
+				</div>
+			</div>
+		</transition>
 
 		<div class="page-toast" v-if="toastMessage">{{ toastMessage }}</div>
 	</section>
 </template>
 
 <script setup lang="ts">
+import { CHANGELOG_URL, READ_CHANGELOG_VERSION_STORAGE_KEY, compareVersions, markChangelogVersionRead } from "@/util/versionNotice";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
@@ -112,7 +185,7 @@ const config = useConfigStore();
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 
-import { inject, ref, computed, watch } from "vue";
+import { inject, ref, computed, watch, nextTick } from "vue";
 const setTab = inject("setTab") as (v: string) => void;
 
 import { locales, i18n, loadLocaleMessages } from "../util/i18n";
@@ -120,6 +193,8 @@ const language = locales;
 const locale = ref(i18n.global.locale as string);
 
 const APP_INFO = window.__APP_INFO__;
+const sponsorCard = ref<HTMLElement>();
+const sponsorCardVisible = ref(false);
 
 const warningFetchHooker = computed(() => {
 	return config["other.antiAD.enableVideo"] || config["translate.enable.timedtext"];
@@ -152,6 +227,12 @@ function setLocale(e: Event) {
 		document.documentElement.lang = locale.value;
 		localStorage.setItem("lang", locale.value);
 	});
+}
+
+async function showSponsorCard() {
+	sponsorCardVisible.value = true;
+	await nextTick();
+	sponsorCard.value?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 const configModalType = ref("");
@@ -319,9 +400,297 @@ function updateNow() {
 		browser.runtime.reload();
 	});
 }
+
+type ChangelogItem = {
+	scope?: string;
+	text: string;
+};
+type ChangelogGroupType = "added" | "updated" | "fixed";
+type ChangelogRelease = {
+	version: string;
+	date?: string;
+	changes: Record<string, Partial<Record<ChangelogGroupType, ChangelogItem[]>>>;
+};
+type ChangelogMode = "unread" | "manual";
+
+const changelogGroupTypes: ChangelogGroupType[] = ["added", "updated", "fixed"];
+const changelogModalVisible = ref(false);
+const changelogLoading = ref(false);
+const changelogError = ref("");
+const changelogMode = ref<ChangelogMode>("manual");
+const changelogFromVersion = ref("");
+const changelogReleases = ref<
+	Array<{
+		version: string;
+		date?: string;
+		groups: Array<{
+			type: ChangelogGroupType;
+			items: ChangelogItem[];
+		}>;
+	}>
+>([]);
+let changelogRequestId = 0;
+
+const changelogModalTitle = computed(() => {
+	return changelogMode.value === "unread" ? t("general.changelog.title") : t("general.changelog.manualTitle");
+});
+const changelogModalSubtitle = computed(() => {
+	if (changelogMode.value === "unread" && changelogFromVersion.value) {
+		return t("general.changelog.subtitle", { from: changelogFromVersion.value, to: APP_INFO.version });
+	}
+	return t("general.changelog.currentSubtitle", { version: APP_INFO.version });
+});
+const changelogGithubUrl = computed(() => {
+	if (locale.value.startsWith("zh")) return "https://github.com/xlch88/YouTubeTweak/blob/main/docs/zh-cn/CHANGELOG.md";
+	if (locale.value.startsWith("ja")) return "https://github.com/xlch88/YouTubeTweak/blob/main/docs/ja/CHANGELOG.md";
+	return "https://github.com/xlch88/YouTubeTweak/blob/main/CHANGELOG.md";
+});
+
+function getReleaseChanges(release: ChangelogRelease): Partial<Record<ChangelogGroupType, ChangelogItem[]>> {
+	return (
+		release.changes[locale.value] ||
+		release.changes[locale.value.split("-")[0]] ||
+		release.changes.en ||
+		Object.values(release.changes)[0] ||
+		{}
+	);
+}
+
+function buildChangelogReleases(releases: ChangelogRelease[], fromVersion: string) {
+	return releases
+		.filter((release) => {
+			if (compareVersions(release.version, APP_INFO.version) > 0) return false;
+			return !fromVersion || compareVersions(release.version, fromVersion) > 0;
+		})
+		.sort((left, right) => compareVersions(right.version, left.version))
+		.map((release) => {
+			const changes = getReleaseChanges(release);
+			return {
+				version: release.version,
+				date: release.date,
+				groups: changelogGroupTypes
+					.map((type) => ({
+						type,
+						items: changes[type] || [],
+					}))
+					.filter((group) => group.items.length > 0),
+			};
+		})
+		.filter((release) => release.groups.length > 0);
+}
+
+async function showChangelog(mode: ChangelogMode) {
+	const requestId = ++changelogRequestId;
+	const data = await browser.storage.local.get(READ_CHANGELOG_VERSION_STORAGE_KEY);
+	changelogMode.value = mode;
+	changelogFromVersion.value =
+		mode === "unread" && typeof data[READ_CHANGELOG_VERSION_STORAGE_KEY] === "string" ? data[READ_CHANGELOG_VERSION_STORAGE_KEY] : "";
+	changelogModalVisible.value = true;
+	changelogLoading.value = true;
+	changelogError.value = "";
+	changelogReleases.value = [];
+
+	try {
+		const response = await fetch(CHANGELOG_URL, { cache: "no-store" });
+		if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+		const changelog = (await response.json()) as { releases?: ChangelogRelease[] };
+		if (requestId === changelogRequestId) {
+			changelogReleases.value = buildChangelogReleases(changelog.releases || [], changelogFromVersion.value);
+		}
+	} catch (e) {
+		if (requestId === changelogRequestId) {
+			changelogError.value = t("general.changelog.error");
+		}
+	} finally {
+		if (requestId === changelogRequestId) {
+			changelogLoading.value = false;
+		}
+	}
+}
+
+function closeChangelog() {
+	changelogRequestId++;
+	changelogModalVisible.value = false;
+	markChangelogVersionRead().catch(() => {});
+}
+
+if (new URLSearchParams(window.location.search).get("changelog") === "1") {
+	showChangelog("unread");
+}
 </script>
 
 <style lang="scss" scoped>
+.tips-sponsor {
+	scroll-margin-top: 8px;
+	background: linear-gradient(120deg, #ff79ba 0%, #ffd3e7 46%, #ff9dcc 100%);
+	background-size: 180% 180%;
+	border: 1px solid rgba(#d63384, 0.24);
+	box-shadow:
+		0 7px 16px rgba(#d63384, 0.14),
+		inset 0 1px 0 rgba(white, 0.5);
+	color: #51112e;
+	animation: sponsor-card-breathe 1.8s ease-in-out infinite;
+
+	p {
+		margin: 0;
+		line-height: 1.55;
+	}
+
+	b {
+		color: #8f164d;
+	}
+
+	.sponsor-actions {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-top: 4px;
+
+		button {
+			appearance: none;
+			border: none;
+			font-family: inherit;
+			font-weight: 700;
+			cursor: pointer;
+			transition:
+				background 0.15s,
+				box-shadow 0.15s,
+				color 0.15s,
+				transform 0.15s;
+
+			&:hover {
+				transform: translateY(-1px);
+			}
+
+			&:active {
+				transform: translateY(0);
+			}
+		}
+
+		.sponsor-button {
+			position: relative;
+			overflow: hidden;
+			min-height: 28px;
+			padding: 6px 14px;
+			border-radius: 999px;
+			background: linear-gradient(135deg, #d63384 0%, #ef4c9b 56%, #b92770 100%);
+			box-shadow:
+				0 5px 12px rgba(#d63384, 0.26),
+				inset 0 1px 0 rgba(white, 0.38);
+			color: white;
+			font-size: 12px;
+			animation: sponsor-button-pulse 1.5s ease-in-out infinite;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: -55%;
+				left: -40%;
+				width: 34%;
+				height: 210%;
+				background: linear-gradient(90deg, transparent, rgba(white, 0.58), transparent);
+				pointer-events: none;
+				transform: rotate(24deg) translateX(-160%);
+				animation: sponsor-button-shine 1.7s ease-in-out infinite;
+			}
+
+			&:hover {
+				background: linear-gradient(135deg, #e63891 0%, #ff62aa 56%, #c92c7a 100%);
+				box-shadow:
+					0 8px 16px rgba(#d63384, 0.32),
+					inset 0 1px 0 rgba(white, 0.48);
+				transform: translateY(-2px) scale(1.03);
+			}
+
+			&:hover::after {
+				animation-duration: 0.9s;
+			}
+
+			&:active {
+				box-shadow:
+					0 4px 10px rgba(#d63384, 0.28),
+					inset 0 2px 4px rgba(#7a123f, 0.2);
+				transform: translateY(0) scale(0.98);
+			}
+		}
+
+		.sponsor-dismiss {
+			padding: 5px 2px;
+			background: transparent;
+			color: rgba(#51112e, 0.72);
+			font-size: 12px;
+
+			&:hover {
+				color: #8f164d;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+@keyframes sponsor-button-pulse {
+	0%,
+	100% {
+		box-shadow:
+			0 5px 12px rgba(#d63384, 0.26),
+			inset 0 1px 0 rgba(white, 0.38);
+	}
+
+	50% {
+		box-shadow:
+			0 7px 16px rgba(#d63384, 0.3),
+			inset 0 1px 0 rgba(white, 0.44);
+	}
+}
+
+@keyframes sponsor-card-breathe {
+	0%,
+	100% {
+		background-position: 0% 50%;
+		box-shadow:
+			0 8px 16px rgba(#d63384, 0.18),
+			inset 0 1px 0 rgba(white, 0.5);
+		transform: translateY(0);
+	}
+
+	50% {
+		background-position: 100% 50%;
+		box-shadow:
+			0 15px 26px rgba(#d63384, 0.28),
+			inset 0 1px 0 rgba(white, 0.64);
+		transform: translateY(-3px) scale(1.015);
+	}
+}
+
+@keyframes sponsor-button-shine {
+	0%,
+	45% {
+		transform: rotate(24deg) translateX(-160%);
+	}
+
+	75%,
+	100% {
+		transform: rotate(24deg) translateX(520%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tips-sponsor {
+		animation: none;
+
+		.sponsor-actions {
+			button,
+			.sponsor-button,
+			.sponsor-button::after {
+				animation: none;
+				transition: none;
+			}
+		}
+	}
+}
+
 .about {
 	display: flex;
 	flex-direction: column;
@@ -336,18 +705,127 @@ function updateNow() {
 	p {
 		margin: 10px 0;
 		text-align: center;
+
 		&.title {
 			font-size: 20px;
 			font-weight: bolder;
 			margin-top: 10px;
 			color: black;
 		}
+
 		&.version {
 			font-size: 15px;
 			margin-bottom: 20px;
 			cursor: pointer;
+
 			span {
 				color: rgba(#000, 0.5);
+			}
+		}
+	}
+
+	.about-links {
+		max-width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 6px;
+		margin-top: 10px;
+		padding-bottom: 6px;
+
+		.about-link {
+			appearance: none;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 4px;
+			min-height: 25px;
+			padding: 4px 9px;
+			border: 1px solid;
+			border-radius: 999px;
+			background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+			font-size: 11px;
+			font-weight: 600;
+			font-family: inherit;
+			line-height: 1.3;
+			text-align: center;
+			white-space: nowrap;
+			cursor: pointer;
+			transition:
+				background 0.15s,
+				border-color 0.15s,
+				box-shadow 0.15s,
+				transform 0.15s;
+
+			&:hover {
+				background: white;
+				transform: translateY(-1px);
+			}
+
+			&:active {
+				transform: translateY(0);
+			}
+
+			.about-link-icon {
+				font-size: 12px;
+				line-height: 1;
+			}
+
+			&.about-link-source {
+				border-color: #f6c343;
+				color: #b58100;
+				box-shadow:
+					0 0 0 1px rgba(246, 195, 67, 0.08),
+					0 3px 10px rgba(246, 195, 67, 0.14);
+
+				&:hover {
+					box-shadow:
+						0 0 0 1px rgba(246, 195, 67, 0.18),
+						0 5px 14px rgba(246, 195, 67, 0.24);
+				}
+			}
+
+			&.about-link-changelog {
+				border-color: #409eff;
+				color: #1f74d6;
+				box-shadow:
+					0 0 0 1px rgba(64, 158, 255, 0.08),
+					0 3px 10px rgba(64, 158, 255, 0.14);
+
+				&:hover {
+					box-shadow:
+						0 0 0 1px rgba(64, 158, 255, 0.18),
+						0 5px 14px rgba(64, 158, 255, 0.24);
+				}
+			}
+
+			&.about-link-issue {
+				border-color: #f56c6c;
+				color: #d9363e;
+				box-shadow:
+					0 0 0 1px rgba(245, 108, 108, 0.08),
+					0 3px 10px rgba(245, 108, 108, 0.14);
+
+				&:hover {
+					box-shadow:
+						0 0 0 1px rgba(245, 108, 108, 0.18),
+						0 5px 14px rgba(245, 108, 108, 0.24);
+				}
+			}
+
+			&.about-link-sponsor {
+				display: none;
+				border-color: #d63384;
+				color: #b92770;
+				box-shadow:
+					0 0 0 1px rgba(214, 51, 132, 0.08),
+					0 3px 10px rgba(214, 51, 132, 0.14);
+
+				&:hover {
+					box-shadow:
+						0 0 0 1px rgba(214, 51, 132, 0.18),
+						0 5px 14px rgba(214, 51, 132, 0.24);
+				}
 			}
 		}
 	}
@@ -358,6 +836,26 @@ function updateNow() {
 	gap: 5px;
 	.btn {
 		flex: 1;
+	}
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+	transition: opacity 0.16s ease;
+
+	.config-modal-body,
+	.changelog-modal-body {
+		transition: transform 0.16s ease;
+	}
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+	opacity: 0;
+
+	.config-modal-body,
+	.changelog-modal-body {
+		transform: translateY(8px) scale(0.98);
 	}
 }
 
@@ -402,6 +900,169 @@ function updateNow() {
 			display: flex;
 			gap: 10px;
 			height: 30px;
+			button {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.changelog-modal {
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(black, 0.7);
+	padding: 10px;
+
+	.changelog-modal-body {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		background: white;
+		border-radius: 6px;
+		overflow: hidden;
+
+		.changelog-modal-header {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 10px;
+			padding: 12px;
+			border-bottom: 1px solid #eee;
+			background: rgb(249, 250, 253);
+
+			h2 {
+				margin: 0;
+				font-size: 16px;
+				line-height: 1.3;
+			}
+
+			p {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 6px;
+				margin: 4px 0 0;
+				color: #7e8299;
+				font-size: 12px;
+				line-height: 1.4;
+
+				.changelog-github-link {
+					color: #599bff;
+					font-weight: 600;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			.changelog-modal-close {
+				width: 28px;
+				height: 28px;
+				flex: 0 0 auto;
+				border: none;
+				border-radius: 5px;
+				background: transparent;
+				color: #606266;
+				font-size: 24px;
+				line-height: 24px;
+				cursor: pointer;
+
+				&:hover {
+					background: rgba(#000, 0.08);
+				}
+			}
+		}
+
+		.changelog-modal-content {
+			flex: 1;
+			overflow-y: auto;
+			padding: 12px;
+
+			.changelog-status {
+				min-height: 120px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #7e8299;
+				text-align: center;
+				line-height: 1.5;
+
+				&.changelog-error {
+					color: #c0392b;
+				}
+			}
+
+			.changelog-list {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+
+				.changelog-release {
+					padding-bottom: 12px;
+					border-bottom: 1px solid #eee;
+
+					&:last-child {
+						border-bottom: none;
+						padding-bottom: 0;
+					}
+
+					h3 {
+						display: flex;
+						align-items: baseline;
+						gap: 8px;
+						margin: 0 0 8px;
+						font-size: 15px;
+						line-height: 1.3;
+
+						span {
+							color: #909399;
+							font-size: 11px;
+							font-weight: normal;
+						}
+					}
+
+					.changelog-group {
+						margin-top: 8px;
+
+						h4 {
+							margin: 0 0 5px;
+							color: #606266;
+							font-size: 12px;
+							line-height: 1.3;
+						}
+
+						ul {
+							margin: 0;
+							padding-left: 18px;
+
+							li {
+								margin-top: 4px;
+								color: #303133;
+								line-height: 1.45;
+								user-select: text;
+
+								b {
+									margin-right: 5px;
+									color: #409eff;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.changelog-modal-footer {
+			padding: 10px 12px;
+			border-top: 1px solid #eee;
+			background: rgb(249, 250, 253);
+
 			button {
 				width: 100%;
 			}

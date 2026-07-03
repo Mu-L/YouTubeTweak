@@ -26,8 +26,11 @@ const isHovering = ref(false);
 
 function openDocs() {
 	const locale = localStorage.getItem("lang") || document.documentElement.lang;
-	const docsPath =
-		locale === "en-US" ? "docs/en/FUNCTIONS.md" : locale === "ja-JP" ? "docs/ja/FUNCTIONS.md" : "docs/zh-cn/FUNCTIONS.md";
+	const docsPath = locale.startsWith("zh")
+		? "docs/zh-cn/FUNCTIONS.md"
+		: locale.startsWith("ja")
+			? "docs/ja/FUNCTIONS.md"
+			: "docs/en/FUNCTIONS.md";
 	const url = `https://github.com/xlch88/YouTubeTweak/blob/main/${docsPath}#${props.anchor}`;
 
 	browser.tabs.create({ url }).catch(() => {

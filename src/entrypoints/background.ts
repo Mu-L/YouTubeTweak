@@ -1,6 +1,9 @@
 import { defineBackground } from "wxt/utils/define-background";
+import { syncVersionNoticeBadge } from "@/util/versionNotice";
 
 export default defineBackground(() => {
+	syncVersionNoticeBadge().catch(() => {});
+
 	browser.runtime.onInstalled.addListener((details) => {
 		switch (details.reason) {
 			case "install":
@@ -9,6 +12,7 @@ export default defineBackground(() => {
 
 			case "update":
 				browser.storage.local.set({ waitUpdate: false }).catch(() => {});
+				syncVersionNoticeBadge().catch(() => {});
 
 				browser.storage.local
 					.get("needReloadTabs")

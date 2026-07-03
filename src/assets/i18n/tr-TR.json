@@ -319,6 +319,24 @@
 				"busy": "Çok sık kontrol ediliyor, lütfen daha sonra tekrar deneyin."
 			}
 		},
+		"changelog": {
+			"title": "Yeni sürüm notları",
+			"manualTitle": "Değişiklik günlüğü",
+			"subtitle": "v{from} ile v{to} arasındaki değişiklikler",
+			"currentSubtitle": "Geçerli sürüm v{version}",
+			"loading": "Değişiklik günlüğü yükleniyor...",
+			"empty": "Bu sürüm aralığı için değişiklik günlüğü girişi bulunamadı.",
+			"error": "Değişiklik günlüğü yüklenemedi. Lütfen daha sonra tekrar deneyin.",
+			"buttons": {
+				"view": "Değişiklik günlüğünü görüntüle",
+				"close": "Kapat"
+			},
+			"groups": {
+				"added": "Eklendi",
+				"updated": "Güncellendi",
+				"fixed": "Düzeltildi"
+			}
+		},
 		"about": {
 			"title": "Hakkında",
 			"link": {

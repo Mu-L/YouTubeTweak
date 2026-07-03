@@ -319,6 +319,24 @@
 				"busy": "Zu häufige Update-Prüfung, bitte später erneut versuchen."
 			}
 		},
+		"changelog": {
+			"title": "Hinweise zur neuen Version",
+			"manualTitle": "Änderungsprotokoll",
+			"subtitle": "Änderungen von v{from} bis v{to}",
+			"currentSubtitle": "Aktuelle Version v{version}",
+			"loading": "Änderungsprotokoll wird geladen...",
+			"empty": "Für diesen Versionsbereich wurden keine Einträge gefunden.",
+			"error": "Änderungsprotokoll konnte nicht geladen werden. Bitte versuche es später erneut.",
+			"buttons": {
+				"view": "Änderungsprotokoll anzeigen",
+				"close": "Schließen"
+			},
+			"groups": {
+				"added": "Hinzugefügt",
+				"updated": "Aktualisiert",
+				"fixed": "Behoben"
+			}
+		},
 		"about": {
 			"title": "Über",
 			"link": {

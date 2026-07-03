@@ -319,12 +319,31 @@
 				"busy": "Checking for updates too frequently, please try again later."
 			}
 		},
+		"changelog": {
+			"title": "New version notes",
+			"manualTitle": "Changelog",
+			"subtitle": "Changes from v{from} to v{to}",
+			"currentSubtitle": "Current version v{version}",
+			"loading": "Loading changelog...",
+			"empty": "No changelog entries were found for this version range.",
+			"error": "Failed to load the changelog. Please try again later.",
+			"buttons": {
+				"view": "View changelog",
+				"close": "Close"
+			},
+			"groups": {
+				"added": "Added",
+				"updated": "Updated",
+				"fixed": "Fixed"
+			}
+		},
 		"about": {
 			"title": "About",
 			"link": {
 				"github": "Github",
 				"issue": "Issues",
-				"changelog": "Changelog"
+				"changelog": "Changelog",
+				"sponsor": "Sponsor"
 			}
 		},
 		"config": {
@@ -361,6 +380,16 @@
 			"tips": {
 				"title": "⚠ Warning",
 				"fetchHooker": "Some features (such as bilingual subtitles and blocking video ads) use HTTP request rewriting and may cause page issues. If you run into problems while browsing, try turning off this feature."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 If YouTube Tweak makes your day easier, consider sponsoring it",
+				"description": "Every bit of support helps keep fixes, YouTube breakage follow-ups, and small comfort features moving."
+			},
+			"buttons": {
+				"sponsor": "Sponsor now",
+				"noThanks": "No, thanks"
 			}
 		}
 	},

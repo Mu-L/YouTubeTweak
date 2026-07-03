@@ -319,6 +319,24 @@
 				"busy": "アップデートのチェック頻度が高すぎるため、しばらくしてからもう一度お試しください。"
 			}
 		},
+		"changelog": {
+			"title": "新バージョンのお知らせ",
+			"manualTitle": "更新履歴",
+			"subtitle": "v{from} から v{to} までの変更内容",
+			"currentSubtitle": "現在のバージョン v{version}",
+			"loading": "更新履歴を読み込み中...",
+			"empty": "このバージョン範囲の更新履歴は見つかりませんでした。",
+			"error": "更新履歴の取得に失敗しました。後でもう一度お試しください。",
+			"buttons": {
+				"view": "更新履歴を見る",
+				"close": "閉じる"
+			},
+			"groups": {
+				"added": "追加",
+				"updated": "更新",
+				"fixed": "修正"
+			}
+		},
 		"about": {
 			"title": "YouTube Tweakについて",
 			"link": {

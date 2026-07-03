@@ -41,9 +41,13 @@ function tabClick(key: string) {
 const action = ref("popup");
 
 const params = new URLSearchParams(window.location.search);
-let actionParam = params.get("action");
+const actionParam = params.get("action");
 if (actionParam) {
 	action.value = actionParam;
+}
+const tabParam = params.get("tab");
+if (tabParam && tabs[tabParam]) {
+	tab.value = tabParam;
 }
 
 if (!(window === window.top && browser?.extension?.getViews({ type: "popup" })?.includes(window))) {

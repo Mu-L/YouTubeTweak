@@ -166,6 +166,9 @@ export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unkn
 	if (normalizedConfig["player.ui.hideButton.subtitles"] === "show") {
 		normalizedConfig["player.ui.hideButton.subtitles"] = "auto";
 	}
+	if (typeof normalizedConfig["other.customCss.value"] !== "string") {
+		normalizedConfig["other.customCss.value"] = "";
+	}
 	return normalizedConfig as Partial<Config>;
 }
 

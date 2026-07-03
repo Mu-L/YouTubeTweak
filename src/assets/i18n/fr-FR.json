@@ -319,6 +319,24 @@
 				"busy": "Vous recherchez des mises à jour trop fréquemment. Veuillez réessayer plus tard."
 			}
 		},
+		"changelog": {
+			"title": "Notes de la nouvelle version",
+			"manualTitle": "Journal des modifications",
+			"subtitle": "Modifications de v{from} à v{to}",
+			"currentSubtitle": "Version actuelle v{version}",
+			"loading": "Chargement du journal des modifications...",
+			"empty": "Aucune entrée du journal des modifications n’a été trouvée pour cette plage de versions.",
+			"error": "Échec du chargement du journal des modifications. Veuillez réessayer plus tard.",
+			"buttons": {
+				"view": "Voir le journal des modifications",
+				"close": "Fermer"
+			},
+			"groups": {
+				"added": "Ajouts",
+				"updated": "Mises à jour",
+				"fixed": "Corrections"
+			}
+		},
 		"about": {
 			"title": "A propos de",
 			"link": {

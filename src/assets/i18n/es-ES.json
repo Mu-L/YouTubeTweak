@@ -319,6 +319,24 @@
 				"busy": "Has comprobado las actualizaciones con demasiada frecuencia; inténtalo de nuevo más tarde."
 			}
 		},
+		"changelog": {
+			"title": "Notas de la nueva versión",
+			"manualTitle": "Registro de cambios",
+			"subtitle": "Cambios de v{from} a v{to}",
+			"currentSubtitle": "Versión actual v{version}",
+			"loading": "Cargando registro de cambios...",
+			"empty": "No se encontraron entradas del registro de cambios para este rango de versiones.",
+			"error": "No se pudo cargar el registro de cambios. Inténtalo de nuevo más tarde.",
+			"buttons": {
+				"view": "Ver registro de cambios",
+				"close": "Cerrar"
+			},
+			"groups": {
+				"added": "Añadido",
+				"updated": "Actualizado",
+				"fixed": "Corregido"
+			}
+		},
 		"about": {
 			"title": "Acerca de",
 			"link": {

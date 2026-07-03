@@ -319,6 +319,24 @@
 				"busy": "更新檢查過於頻繁，請稍後再試。"
 			}
 		},
+		"changelog": {
+			"title": "新版本說明",
+			"manualTitle": "更新日誌",
+			"subtitle": "從 v{from} 到 v{to} 的更新內容",
+			"currentSubtitle": "目前版本 v{version}",
+			"loading": "正在取得更新日誌...",
+			"empty": "沒有找到這個版本範圍內的更新日誌。",
+			"error": "更新日誌取得失敗，請稍後再試。",
+			"buttons": {
+				"view": "查看更新日誌",
+				"close": "關閉"
+			},
+			"groups": {
+				"added": "新增",
+				"updated": "更新",
+				"fixed": "修復"
+			}
+		},
 		"about": {
 			"title": "關於",
 			"link": {

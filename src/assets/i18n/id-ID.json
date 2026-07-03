@@ -319,6 +319,24 @@
 				"busy": "Terlalu sering memeriksa pembaruan, coba lagi nanti."
 			}
 		},
+		"changelog": {
+			"title": "Catatan versi baru",
+			"manualTitle": "Catatan perubahan",
+			"subtitle": "Perubahan dari v{from} ke v{to}",
+			"currentSubtitle": "Versi saat ini v{version}",
+			"loading": "Memuat catatan perubahan...",
+			"empty": "Tidak ada entri catatan perubahan untuk rentang versi ini.",
+			"error": "Gagal memuat catatan perubahan. Coba lagi nanti.",
+			"buttons": {
+				"view": "Lihat catatan perubahan",
+				"close": "Tutup"
+			},
+			"groups": {
+				"added": "Ditambahkan",
+				"updated": "Diperbarui",
+				"fixed": "Diperbaiki"
+			}
+		},
 		"about": {
 			"title": "Tentang",
 			"link": {

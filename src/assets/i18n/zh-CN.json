@@ -319,12 +319,31 @@
 				"busy": "更新检查过于频繁，请稍后再试。"
 			}
 		},
+		"changelog": {
+			"title": "新版本说明",
+			"manualTitle": "更新日志",
+			"subtitle": "从 v{from} 到 v{to} 的更新内容",
+			"currentSubtitle": "当前版本 v{version}",
+			"loading": "正在获取更新日志...",
+			"empty": "没有找到这个版本范围内的更新日志。",
+			"error": "更新日志获取失败，请稍后再试。",
+			"buttons": {
+				"view": "查看更新日志",
+				"close": "关闭"
+			},
+			"groups": {
+				"added": "新增",
+				"updated": "更新",
+				"fixed": "修复"
+			}
+		},
 		"about": {
 			"title": "关于",
 			"link": {
 				"github": "源代码",
 				"issue": "问题反馈",
-				"changelog": "更新日志"
+				"changelog": "更新日志",
+				"sponsor": "赞助"
 			}
 		},
 		"config": {
@@ -361,6 +380,16 @@
 			"tips": {
 				"title": "⚠ 警告",
 				"fetchHooker": "部分功能（如双语字幕、屏蔽视频广告）使用了http请求重写功能，可能会造成页面异常！如果您浏览页面时遇到问题，请尝试关闭此功能。"
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 喜欢这个插件的话，考虑赞助一下吧",
+				"description": "每一份赞助都会变成继续修 bug、适配 YouTube 抽风改版、把小功能打磨到顺手的动力。"
+			},
+			"buttons": {
+				"sponsor": "立即赞助",
+				"noThanks": "不，谢谢"
 			}
 		}
 	},

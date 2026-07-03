@@ -319,6 +319,24 @@
 				"busy": "Verificando atualizações com muita frequência, tente novamente mais tarde."
 			}
 		},
+		"changelog": {
+			"title": "Notas da nova versão",
+			"manualTitle": "Registro de alterações",
+			"subtitle": "Alterações de v{from} para v{to}",
+			"currentSubtitle": "Versão atual v{version}",
+			"loading": "Carregando registro de alterações...",
+			"empty": "Nenhuma entrada do registro de alterações foi encontrada para este intervalo de versões.",
+			"error": "Falha ao carregar o registro de alterações. Tente novamente mais tarde.",
+			"buttons": {
+				"view": "Ver registro de alterações",
+				"close": "Fechar"
+			},
+			"groups": {
+				"added": "Adicionado",
+				"updated": "Atualizado",
+				"fixed": "Corrigido"
+			}
+		},
 		"about": {
 			"title": "Sobre",
 			"link": {
