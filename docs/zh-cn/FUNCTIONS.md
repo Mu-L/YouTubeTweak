@@ -2,6 +2,8 @@
 
 # 功能说明
 
+[中文](/docs/zh-cn/FUNCTIONS.md) | [English](/FUNCTIONS.md) | [日本語](/docs/ja/FUNCTIONS.md)
+
 YouTube Tweak 是一个用于增强 YouTube 网页版体验的浏览器扩展。本文按照扩展弹出面板里的分类顺序整理，重点说明每个功能有什么用、开启后会发生什么、适合什么场景，以及需要注意的限制。
 
 本扩展主要在桌面版 YouTube 网页中生效。部分功能只在视频播放页、首页、搜索页、评论区或 Shorts 相关区域生效，具体范围会在对应功能里说明。
