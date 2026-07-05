@@ -1,0 +1,9 @@
+# Local Apple app build artifacts
+.DS_Store
+Build/
+DerivedData/
+DerivedData-iOS/
+buildServer.json
+YouTubeTweakExtension/dist/
+**/xcuserdata/
+**/*.xcuserstate

@@ -1,0 +1,143 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build macOS Debug",
+      "type": "shell",
+      "command": "xcodebuild",
+      "args": [
+        "-project",
+        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
+        "-scheme",
+        "YouTubeTweak",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "${workspaceFolder}/apple-app/DerivedData",
+        "-allowProvisioningUpdates",
+        "build"
+      ],
+      "options": {
+        "env": {
+          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "Run macOS App",
+      "type": "shell",
+      "command": "open",
+      "args": [
+        "-n",
+        "${workspaceFolder}/apple-app/Build/Products/Debug/YouTubeTweak.app"
+      ],
+      "dependsOn": "Build macOS Debug",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build macOS Release",
+      "type": "shell",
+      "command": "xcodebuild",
+      "args": [
+        "-project",
+        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
+        "-scheme",
+        "YouTubeTweak",
+        "-configuration",
+        "Release",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "${workspaceFolder}/apple-app/DerivedData",
+        "-allowProvisioningUpdates",
+        "build"
+      ],
+      "options": {
+        "env": {
+          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "Build iOS Debug No Signing",
+      "type": "shell",
+      "command": "xcodebuild",
+      "args": [
+        "-project",
+        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
+        "-scheme",
+        "YouTubeTweak",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "generic/platform=iOS",
+        "-derivedDataPath",
+        "${workspaceFolder}/apple-app/DerivedData-iOS",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "options": {
+        "env": {
+          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
+        }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "Open Xcode Project",
+      "type": "shell",
+      "command": "open",
+      "args": [
+        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate Xcode Build Server Config",
+      "type": "shell",
+      "command": "xcode-build-server",
+      "args": [
+        "config",
+        "-project",
+        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
+        "-scheme",
+        "YouTubeTweak",
+        "--build_root",
+        "${workspaceFolder}/apple-app/DerivedData"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/apple-app",
+        "env": {
+          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean Local DerivedData",
+      "type": "shell",
+      "command": "rm",
+      "args": [
+        "-rf",
+        "${workspaceFolder}/apple-app/Build",
+        "${workspaceFolder}/apple-app/DerivedData",
+        "${workspaceFolder}/apple-app/DerivedData-iOS"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

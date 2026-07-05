@@ -28,7 +28,9 @@ web-ext.config.ts
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/launch.json
 !.vscode/settings.json
+!.vscode/tasks.json
 .idea
 .DS_Store
 *.suo
@@ -36,3 +38,15 @@ web-ext.config.ts
 *.njsproj
 *.sln
 *.sw?
+
+# Apple app / Xcode local build artifacts
+apple-app/.vscode/
+apple-app/.DS_Store
+apple-app/**/.DS_Store
+apple-app/DerivedData/
+apple-app/DerivedData-iOS/
+apple-app/buildServer.json
+apple-app/**/*.xcuserstate
+apple-app/**/xcuserdata/
+apple-app/**/DerivedData/
+apple-app/**/Build/
