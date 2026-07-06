@@ -13,6 +13,14 @@
 		"build:safari": "vue-tsc --noEmit && wxt zip -b safari",
 		"build:all": "npm i && vue-tsc --noEmit && wxt build && tsx build/chrome-crx3.ts && wxt zip -b edge && wxt zip -b firefox",
 		"compile": "vue-tsc --noEmit",
+		"build:mac:debug": "npm run apple:icons && DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild -project apple-app/YouTubeTweakExtension.xcodeproj -scheme YouTubeTweak -configuration Debug -destination 'platform=macOS' -derivedDataPath apple-app/DerivedData -allowProvisioningUpdates build",
+		"build:mac:release": "npm run apple:icons && DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild -project apple-app/YouTubeTweakExtension.xcodeproj -scheme YouTubeTweak -configuration Release -destination 'platform=macOS' -derivedDataPath apple-app/DerivedData -allowProvisioningUpdates build",
+		"build:ios:debug:no-sign": "npm run apple:icons && DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild -project apple-app/YouTubeTweakExtension.xcodeproj -scheme YouTubeTweak -configuration Debug -destination 'generic/platform=iOS' -derivedDataPath apple-app/DerivedData-iOS CODE_SIGNING_ALLOWED=NO build",
+		"dev:mac": "npm run build:safari && npm run apple:icons && npm run build:mac:debug && exec apple-app/Build/Products/Debug/YouTubeTweak.app/Contents/MacOS/YouTubeTweak",
+		"apple:icons": "node build/apple-icons.mjs",
+		"apple:open:xcode": "open apple-app/YouTubeTweakExtension.xcodeproj",
+		"apple:build-server": "cd apple-app && DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcode-build-server config -project YouTubeTweakExtension.xcodeproj -scheme YouTubeTweak --build_root DerivedData",
+		"apple:clean": "rm -rf apple-app/Build apple-app/DerivedData apple-app/DerivedData-iOS",
 		"postinstall": "wxt prepare"
 	},
 	"devDependencies": {

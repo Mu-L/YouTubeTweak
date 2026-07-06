@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "无法打开 Safari 扩展设置：%@",
+	"status.openIOSSettings": "请在设置中打开 Safari 扩展，并在访问 youtube.com 时按提示授权。",
+	"mac.instruction.enable": "首次安装后，请点击按钮启用本扩展。",
+	"mac.instruction.authorize": "随后打开 youtube.com，并根据 Safari 提示授权 youtube.com 域名。",
+	"mac.instruction.help": "如有疑问，请查看功能说明或报告问题。",
+	"ios.instruction.enable": "首次安装后，请点击上面的按钮启用本扩展。",
+	"ios.instruction.authorize": "随后打开 youtube.com，并根据 Safari 提示\n授权 youtube.com 域名。",
+	"ios.instruction.help": "如有疑问，请点击这里，查看视频教程。",
+	"button.enableExtension": "启用 YouTubeTweak 扩展",
+	"button.openExtensionSettings": "进入 YouTubeTweak 扩展设置",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "报告问题",
+	"footer.functions": "功能说明",
+	"footer.changelog": "更新日志",
+	"footer.website": "Website"
+}

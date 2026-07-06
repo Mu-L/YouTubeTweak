@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "無法開啟 Safari 擴充功能設定：%@",
+	"status.openIOSSettings": "請在設定中開啟 Safari 擴充功能，並在開啟 YouTube 時依提示授權 youtube.com。",
+	"mac.instruction.enable": "首次安裝後，請點擊按鈕啟用此擴充功能。",
+	"mac.instruction.authorize": "接著開啟 youtube.com，並依 Safari 提示授權 youtube.com 網域。",
+	"mac.instruction.help": "如有疑問，請查看功能說明或回報問題。",
+	"ios.instruction.enable": "首次安裝後，請點擊上方按鈕啟用此擴充功能。",
+	"ios.instruction.authorize": "接著開啟 youtube.com，並依 Safari 提示\n授權 youtube.com 網域。",
+	"ios.instruction.help": "如有疑問，請點擊這裡查看影片教學。",
+	"button.enableExtension": "啟用 YouTubeTweak 擴充功能",
+	"button.openExtensionSettings": "進入 YouTubeTweak 擴充功能設定",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "回報問題",
+	"footer.functions": "功能說明",
+	"footer.changelog": "更新日誌",
+	"footer.website": "Website"
+}

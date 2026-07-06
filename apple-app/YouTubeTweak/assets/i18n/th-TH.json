@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "ไม่สามารถเปิดการตั้งค่าส่วนขยาย Safari ได้: %@",
+	"status.openIOSSettings": "เปิดส่วนขยาย Safari ในการตั้งค่า จากนั้นอนุญาต youtube.com เมื่อมีคำขอหลังจากเปิด YouTube",
+	"mac.instruction.enable": "หลังติดตั้งครั้งแรก ให้คลิกปุ่มเพื่อเปิดใช้งานส่วนขยายนี้",
+	"mac.instruction.authorize": "จากนั้นเปิด youtube.com และอนุญาตโดเมน youtube.com เมื่อ Safari แจ้งเตือน",
+	"mac.instruction.help": "หากมีคำถาม โปรดอ่านคำอธิบายฟีเจอร์หรือรายงานปัญหา",
+	"ios.instruction.enable": "หลังติดตั้งครั้งแรก ให้แตะปุ่มด้านบนเพื่อเปิดใช้งานส่วนขยายนี้",
+	"ios.instruction.authorize": "จากนั้นเปิด youtube.com และอนุญาต\nโดเมน youtube.com เมื่อ Safari แจ้งเตือน",
+	"ios.instruction.help": "หากมีคำถาม แตะที่นี่เพื่อดูวิดีโอสอนใช้งาน",
+	"button.enableExtension": "เปิดใช้ส่วนขยาย YouTubeTweak",
+	"button.openExtensionSettings": "เปิดการตั้งค่าส่วนขยาย YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "รายงานปัญหา",
+	"footer.functions": "ฟีเจอร์",
+	"footer.changelog": "บันทึกการเปลี่ยนแปลง",
+	"footer.website": "เว็บไซต์"
+}

@@ -12,6 +12,7 @@ export default defineConfig({
 	autoIcons: {
 		baseIconPath: "assets/img/logo.svg",
 		grayscaleOnDevelopment: false,
+		sizes: [16, 32, 64, 128, 256, 512, 1024],
 	},
 
 	webExt: {

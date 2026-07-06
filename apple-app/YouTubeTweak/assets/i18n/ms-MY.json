@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Gagal membuka tetapan sambungan Safari: %@",
+	"status.openIOSSettings": "Hidupkan sambungan Safari dalam Tetapan, kemudian benarkan youtube.com apabila digesa selepas membuka YouTube.",
+	"mac.instruction.enable": "Selepas pemasangan pertama, klik butang untuk menghidupkan sambungan ini.",
+	"mac.instruction.authorize": "Kemudian buka youtube.com dan benarkan domain youtube.com apabila Safari meminta kebenaran.",
+	"mac.instruction.help": "Jika ada soalan, lihat panduan fungsi atau laporkan isu.",
+	"ios.instruction.enable": "Selepas pemasangan pertama, ketik butang di atas untuk menghidupkan sambungan ini.",
+	"ios.instruction.authorize": "Kemudian buka youtube.com dan benarkan\ndomain youtube.com apabila Safari meminta kebenaran.",
+	"ios.instruction.help": "Jika ada soalan, ketik di sini untuk menonton tutorial video.",
+	"button.enableExtension": "Hidupkan Sambungan YouTubeTweak",
+	"button.openExtensionSettings": "Buka Tetapan Sambungan YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "Laporkan Isu",
+	"footer.functions": "Fungsi",
+	"footer.changelog": "Log perubahan",
+	"footer.website": "Laman web"
+}

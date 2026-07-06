@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Не удалось открыть настройки расширения Safari: %@",
+	"status.openIOSSettings": "Включите расширение Safari в Настройках, затем разрешите youtube.com при запросе после открытия YouTube.",
+	"mac.instruction.enable": "После первой установки нажмите кнопку, чтобы включить это расширение.",
+	"mac.instruction.authorize": "Затем откройте youtube.com и разрешите домен youtube.com, когда Safari запросит доступ.",
+	"mac.instruction.help": "Если есть вопросы, прочитайте описание функций или сообщите о проблеме.",
+	"ios.instruction.enable": "После первой установки нажмите кнопку выше, чтобы включить это расширение.",
+	"ios.instruction.authorize": "Затем откройте youtube.com и разрешите\nдомен youtube.com, когда Safari запросит доступ.",
+	"ios.instruction.help": "Если есть вопросы, нажмите здесь, чтобы посмотреть видеоинструкцию.",
+	"button.enableExtension": "Включить расширение YouTubeTweak",
+	"button.openExtensionSettings": "Открыть настройки расширения YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "Сообщить о проблеме",
+	"footer.functions": "Функции",
+	"footer.changelog": "Журнал изменений",
+	"footer.website": "Сайт"
+}

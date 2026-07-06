@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Failed to open Safari extension settings: %@",
+	"status.openIOSSettings": "Open the Safari extension in Settings, then allow youtube.com when prompted after opening YouTube.",
+	"mac.instruction.enable": "After the first installation, click the button to enable this extension.",
+	"mac.instruction.authorize": "Then open youtube.com and allow the youtube.com domain when Safari prompts you.",
+	"mac.instruction.help": "If you have questions, read the feature guide or report an issue.",
+	"ios.instruction.enable": "After the first installation, tap the button above to enable this extension.",
+	"ios.instruction.authorize": "Then open youtube.com and allow\nthe youtube.com domain when Safari prompts you.",
+	"ios.instruction.help": "If you have questions, tap here to watch the video tutorial.",
+	"button.enableExtension": "Enable YouTubeTweak Extension",
+	"button.openExtensionSettings": "Open YouTubeTweak Extension Settings",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "Report Issue",
+	"footer.functions": "Features",
+	"footer.changelog": "Changelog",
+	"footer.website": "Website"
+}

@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Safari ایکسٹینشن سیٹنگز نہیں کھل سکیں: %@",
+	"status.openIOSSettings": "Settings میں Safari ایکسٹینشن آن کریں، پھر YouTube کھولنے پر اشارہ ملے تو youtube.com کی اجازت دیں۔",
+	"mac.instruction.enable": "پہلی تنصیب کے بعد، اس ایکسٹینشن کو آن کرنے کے لیے بٹن پر کلک کریں۔",
+	"mac.instruction.authorize": "پھر youtube.com کھولیں اور Safari کے اشارے پر youtube.com ڈومین کی اجازت دیں۔",
+	"mac.instruction.help": "اگر سوال ہو تو فیچر گائیڈ دیکھیں یا مسئلہ رپورٹ کریں۔",
+	"ios.instruction.enable": "پہلی تنصیب کے بعد، اس ایکسٹینشن کو آن کرنے کے لیے اوپر والے بٹن پر ٹیپ کریں۔",
+	"ios.instruction.authorize": "پھر youtube.com کھولیں اور Safari کے اشارے پر\nyoutube.com ڈومین کی اجازت دیں۔",
+	"ios.instruction.help": "اگر سوال ہو تو ویڈیو ٹیوٹوریل دیکھنے کے لیے یہاں ٹیپ کریں۔",
+	"button.enableExtension": "YouTubeTweak ایکسٹینشن آن کریں",
+	"button.openExtensionSettings": "YouTubeTweak ایکسٹینشن سیٹنگز کھولیں",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "مسئلہ رپورٹ کریں",
+	"footer.functions": "فیچرز",
+	"footer.changelog": "تبدیلیوں کی فہرست",
+	"footer.website": "ویب سائٹ"
+}

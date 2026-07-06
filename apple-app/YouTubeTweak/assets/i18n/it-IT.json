@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Impossibile aprire le impostazioni dell’estensione Safari: %@",
+	"status.openIOSSettings": "Attiva l’estensione Safari in Impostazioni, poi consenti youtube.com quando richiesto dopo aver aperto YouTube.",
+	"mac.instruction.enable": "Dopo la prima installazione, fai clic sul pulsante per attivare questa estensione.",
+	"mac.instruction.authorize": "Poi apri youtube.com e consenti il dominio youtube.com quando Safari lo richiede.",
+	"mac.instruction.help": "In caso di domande, consulta le funzioni o segnala un problema.",
+	"ios.instruction.enable": "Dopo la prima installazione, tocca il pulsante in alto per attivare questa estensione.",
+	"ios.instruction.authorize": "Poi apri youtube.com e consenti\nil dominio youtube.com quando Safari lo richiede.",
+	"ios.instruction.help": "In caso di domande, tocca qui per guardare il video tutorial.",
+	"button.enableExtension": "Attiva estensione YouTubeTweak",
+	"button.openExtensionSettings": "Apri impostazioni estensione YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "Segnala problema",
+	"footer.functions": "Funzioni",
+	"footer.changelog": "Registro modifiche",
+	"footer.website": "Sito web"
+}

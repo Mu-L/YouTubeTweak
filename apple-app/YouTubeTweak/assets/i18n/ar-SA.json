@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "تعذر فتح إعدادات إضافة Safari: %@",
+	"status.openIOSSettings": "افتح إضافة Safari في الإعدادات، ثم امنح الإذن لنطاق youtube.com عند فتح YouTube.",
+	"mac.instruction.enable": "بعد التثبيت لأول مرة، انقر الزر لتفعيل هذه الإضافة.",
+	"mac.instruction.authorize": "بعد ذلك افتح youtube.com وامنح الإذن لنطاق youtube.com عند ظهور مطالبة Safari.",
+	"mac.instruction.help": "إذا كانت لديك أسئلة، راجع وصف الميزات أو أبلغ عن مشكلة.",
+	"ios.instruction.enable": "بعد التثبيت لأول مرة، انقر الزر أعلاه لتفعيل هذه الإضافة.",
+	"ios.instruction.authorize": "بعد ذلك افتح youtube.com، وامنح الإذن\nلنطاق youtube.com عند ظهور مطالبة Safari.",
+	"ios.instruction.help": "إذا كانت لديك أسئلة، انقر هنا لمشاهدة فيديو الشرح.",
+	"button.enableExtension": "تفعيل إضافة YouTubeTweak",
+	"button.openExtensionSettings": "فتح إعدادات إضافة YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "الإبلاغ عن مشكلة",
+	"footer.functions": "الميزات",
+	"footer.changelog": "سجل التغييرات",
+	"footer.website": "الموقع"
+}

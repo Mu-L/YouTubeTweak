@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Safari ఎక్స్‌టెన్షన్ సెట్టింగ్‌లను తెరవలేకపోయాం: %@",
+	"status.openIOSSettings": "Settings లో Safari ఎక్స్‌టెన్షన్‌ను ఆన్ చేసి, YouTube తెరిచిన తర్వాత అడిగితే youtube.com కు అనుమతి ఇవ్వండి.",
+	"mac.instruction.enable": "మొదటి ఇన్‌స్టాలేషన్ తర్వాత, ఈ ఎక్స్‌టెన్షన్‌ను ఆన్ చేయడానికి బటన్ క్లిక్ చేయండి.",
+	"mac.instruction.authorize": "తర్వాత youtube.com తెరిచి, Safari అడిగినప్పుడు youtube.com డొమైన్‌కు అనుమతి ఇవ్వండి.",
+	"mac.instruction.help": "ప్రశ్నలు ఉంటే, ఫీచర్ గైడ్ చూడండి లేదా సమస్యను నివేదించండి.",
+	"ios.instruction.enable": "మొదటి ఇన్‌స్టాలేషన్ తర్వాత, ఈ ఎక్స్‌టెన్షన్‌ను ఆన్ చేయడానికి పై బటన్‌ను ట్యాప్ చేయండి.",
+	"ios.instruction.authorize": "తర్వాత youtube.com తెరిచి, Safari అడిగినప్పుడు\nyoutube.com డొమైన్‌కు అనుమతి ఇవ్వండి.",
+	"ios.instruction.help": "ప్రశ్నలు ఉంటే, వీడియో ట్యుటోరియల్ చూడడానికి ఇక్కడ ట్యాప్ చేయండి.",
+	"button.enableExtension": "YouTubeTweak ఎక్స్‌టెన్షన్‌ను ఆన్ చేయండి",
+	"button.openExtensionSettings": "YouTubeTweak ఎక్స్‌టెన్షన్ సెట్టింగ్‌లు తెరవండి",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "సమస్యను నివేదించండి",
+	"footer.functions": "ఫీచర్లు",
+	"footer.changelog": "మార్పుల చిట్టా",
+	"footer.website": "వెబ్‌సైట్"
+}

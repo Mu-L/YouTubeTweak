@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Safari拡張機能の設定を開けませんでした: %@",
+	"status.openIOSSettings": "設定でSafari拡張機能を有効にし、YouTubeを開いたときの案内に従ってyoutube.comを許可してください。",
+	"mac.instruction.enable": "初回インストール後、この拡張機能を有効にするにはボタンをクリックしてください。",
+	"mac.instruction.authorize": "その後 youtube.com を開き、Safariの案内に従って youtube.com ドメインを許可してください。",
+	"mac.instruction.help": "不明な点がある場合は、機能説明を確認するか問題を報告してください。",
+	"ios.instruction.enable": "初回インストール後、この拡張機能を有効にするには上のボタンをタップしてください。",
+	"ios.instruction.authorize": "その後 youtube.com を開き、Safariの案内に従って\nyoutube.com ドメインを許可してください。",
+	"ios.instruction.help": "不明な点がある場合は、ここをタップして動画チュートリアルを確認してください。",
+	"button.enableExtension": "YouTubeTweak拡張機能を有効にする",
+	"button.openExtensionSettings": "YouTubeTweak拡張機能の設定を開く",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "問題を報告",
+	"footer.functions": "機能",
+	"footer.changelog": "更新履歴",
+	"footer.website": "Website"
+}

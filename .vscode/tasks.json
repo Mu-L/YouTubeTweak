@@ -4,26 +4,11 @@
     {
       "label": "Build macOS Debug",
       "type": "shell",
-      "command": "xcodebuild",
+      "command": "npm",
       "args": [
-        "-project",
-        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
-        "-scheme",
-        "YouTubeTweak",
-        "-configuration",
-        "Debug",
-        "-destination",
-        "platform=macOS",
-        "-derivedDataPath",
-        "${workspaceFolder}/apple-app/DerivedData",
-        "-allowProvisioningUpdates",
-        "build"
+        "run",
+        "apple:build:mac:debug"
       ],
-      "options": {
-        "env": {
-          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
-        }
-      },
       "group": {
         "kind": "build",
         "isDefault": true
@@ -35,37 +20,21 @@
     {
       "label": "Run macOS App",
       "type": "shell",
-      "command": "open",
+      "command": "npm",
       "args": [
-        "-n",
-        "${workspaceFolder}/apple-app/Build/Products/Debug/YouTubeTweak.app"
+        "run",
+        "apple:run:mac"
       ],
-      "dependsOn": "Build macOS Debug",
       "problemMatcher": []
     },
     {
       "label": "Build macOS Release",
       "type": "shell",
-      "command": "xcodebuild",
+      "command": "npm",
       "args": [
-        "-project",
-        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
-        "-scheme",
-        "YouTubeTweak",
-        "-configuration",
-        "Release",
-        "-destination",
-        "platform=macOS",
-        "-derivedDataPath",
-        "${workspaceFolder}/apple-app/DerivedData",
-        "-allowProvisioningUpdates",
-        "build"
+        "run",
+        "apple:build:mac:release"
       ],
-      "options": {
-        "env": {
-          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
-        }
-      },
       "problemMatcher": [
         "$gcc"
       ]
@@ -73,26 +42,11 @@
     {
       "label": "Build iOS Debug No Signing",
       "type": "shell",
-      "command": "xcodebuild",
+      "command": "npm",
       "args": [
-        "-project",
-        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
-        "-scheme",
-        "YouTubeTweak",
-        "-configuration",
-        "Debug",
-        "-destination",
-        "generic/platform=iOS",
-        "-derivedDataPath",
-        "${workspaceFolder}/apple-app/DerivedData-iOS",
-        "CODE_SIGNING_ALLOWED=NO",
-        "build"
+        "run",
+        "apple:build:ios:debug:no-sign"
       ],
-      "options": {
-        "env": {
-          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
-        }
-      },
       "problemMatcher": [
         "$gcc"
       ]
@@ -100,42 +54,30 @@
     {
       "label": "Open Xcode Project",
       "type": "shell",
-      "command": "open",
+      "command": "npm",
       "args": [
-        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj"
+        "run",
+        "apple:open:xcode"
       ],
       "problemMatcher": []
     },
     {
       "label": "Generate Xcode Build Server Config",
       "type": "shell",
-      "command": "xcode-build-server",
+      "command": "npm",
       "args": [
-        "config",
-        "-project",
-        "${workspaceFolder}/apple-app/YouTubeTweakExtension.xcodeproj",
-        "-scheme",
-        "YouTubeTweak",
-        "--build_root",
-        "${workspaceFolder}/apple-app/DerivedData"
+        "run",
+        "apple:build-server"
       ],
-      "options": {
-        "cwd": "${workspaceFolder}/apple-app",
-        "env": {
-          "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
-        }
-      },
       "problemMatcher": []
     },
     {
       "label": "Clean Local DerivedData",
       "type": "shell",
-      "command": "rm",
+      "command": "npm",
       "args": [
-        "-rf",
-        "${workspaceFolder}/apple-app/Build",
-        "${workspaceFolder}/apple-app/DerivedData",
-        "${workspaceFolder}/apple-app/DerivedData-iOS"
+        "run",
+        "apple:clean"
       ],
       "problemMatcher": []
     }

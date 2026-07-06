@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Gagal membuka pengaturan ekstensi Safari: %@",
+	"status.openIOSSettings": "Aktifkan ekstensi Safari di Pengaturan, lalu izinkan youtube.com saat diminta setelah membuka YouTube.",
+	"mac.instruction.enable": "Setelah pemasangan pertama, klik tombol untuk mengaktifkan ekstensi ini.",
+	"mac.instruction.authorize": "Lalu buka youtube.com dan izinkan domain youtube.com saat Safari meminta izin.",
+	"mac.instruction.help": "Jika ada pertanyaan, baca panduan fitur atau laporkan masalah.",
+	"ios.instruction.enable": "Setelah pemasangan pertama, ketuk tombol di atas untuk mengaktifkan ekstensi ini.",
+	"ios.instruction.authorize": "Lalu buka youtube.com dan izinkan\ndomain youtube.com saat Safari meminta izin.",
+	"ios.instruction.help": "Jika ada pertanyaan, ketuk di sini untuk menonton video tutorial.",
+	"button.enableExtension": "Aktifkan Ekstensi YouTubeTweak",
+	"button.openExtensionSettings": "Buka Pengaturan Ekstensi YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "Laporkan Masalah",
+	"footer.functions": "Fitur",
+	"footer.changelog": "Catatan Perubahan",
+	"footer.website": "Situs web"
+}

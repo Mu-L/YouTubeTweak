@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Safari এক্সটেনশন সেটিংস খুলতে ব্যর্থ: %@",
+	"status.openIOSSettings": "সেটিংসে Safari এক্সটেনশন চালু করুন, তারপর YouTube খুললে youtube.com ডোমেইনের অনুমতি দিন।",
+	"mac.instruction.enable": "প্রথমবার ইনস্টল করার পর, এই এক্সটেনশন চালু করতে বোতামটি ক্লিক করুন।",
+	"mac.instruction.authorize": "তারপর youtube.com খুলুন এবং Safari দেখালে youtube.com ডোমেইনের অনুমতি দিন।",
+	"mac.instruction.help": "প্রশ্ন থাকলে ফিচার বিবরণ দেখুন বা সমস্যা রিপোর্ট করুন।",
+	"ios.instruction.enable": "প্রথমবার ইনস্টল করার পর, এই এক্সটেনশন চালু করতে উপরের বোতামটি চাপুন।",
+	"ios.instruction.authorize": "তারপর youtube.com খুলুন এবং Safari দেখালে\nyoutube.com ডোমেইনের অনুমতি দিন।",
+	"ios.instruction.help": "প্রশ্ন থাকলে, ভিডিও টিউটোরিয়াল দেখতে এখানে চাপুন।",
+	"button.enableExtension": "YouTubeTweak এক্সটেনশন চালু করুন",
+	"button.openExtensionSettings": "YouTubeTweak এক্সটেনশন সেটিংসে যান",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "সমস্যা রিপোর্ট",
+	"footer.functions": "ফিচার",
+	"footer.changelog": "পরিবর্তন তালিকা",
+	"footer.website": "ওয়েবসাইট"
+}

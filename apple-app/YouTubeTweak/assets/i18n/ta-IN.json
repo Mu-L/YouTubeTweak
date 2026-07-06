@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Safari நீட்டிப்பு அமைப்புகளைத் திறக்க முடியவில்லை: %@",
+	"status.openIOSSettings": "Settings இல் Safari நீட்டிப்பை இயக்கி, YouTube திறந்தபின் கேட்கும்போது youtube.com-க்கு அனுமதி அளிக்கவும்.",
+	"mac.instruction.enable": "முதல் நிறுவலுக்குப் பிறகு, இந்த நீட்டிப்பை இயக்க பொத்தானைக் கிளிக் செய்யவும்.",
+	"mac.instruction.authorize": "பின்னர் youtube.com ஐத் திறந்து, Safari கேட்கும்போது youtube.com டொமைனுக்கு அனுமதி அளிக்கவும்.",
+	"mac.instruction.help": "கேள்விகள் இருந்தால், அம்ச வழிகாட்டியைப் பார்க்கவும் அல்லது சிக்கலைப் புகாரளிக்கவும்.",
+	"ios.instruction.enable": "முதல் நிறுவலுக்குப் பிறகு, இந்த நீட்டிப்பை இயக்க மேலுள்ள பொத்தானைத் தட்டவும்.",
+	"ios.instruction.authorize": "பின்னர் youtube.com ஐத் திறந்து, Safari கேட்கும்போது\nyoutube.com டொமைனுக்கு அனுமதி அளிக்கவும்.",
+	"ios.instruction.help": "கேள்விகள் இருந்தால், வீடியோ வழிகாட்டியைப் பார்க்க இங்கே தட்டவும்.",
+	"button.enableExtension": "YouTubeTweak நீட்டிப்பை இயக்கு",
+	"button.openExtensionSettings": "YouTubeTweak நீட்டிப்பு அமைப்புகளைத் திற",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "சிக்கலைப் புகாரளி",
+	"footer.functions": "அம்சங்கள்",
+	"footer.changelog": "மாற்றப் பதிவு",
+	"footer.website": "இணையதளம்"
+}

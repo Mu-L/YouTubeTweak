@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Não foi possível abrir os ajustes da extensão do Safari: %@",
+	"status.openIOSSettings": "Ative a extensão do Safari em Ajustes e permita youtube.com quando solicitado ao abrir o YouTube.",
+	"mac.instruction.enable": "Após a primeira instalação, clique no botão para ativar esta extensão.",
+	"mac.instruction.authorize": "Depois abra youtube.com e permita o domínio youtube.com quando o Safari solicitar.",
+	"mac.instruction.help": "Se tiver dúvidas, veja as funções ou relate um problema.",
+	"ios.instruction.enable": "Após a primeira instalação, toque no botão acima para ativar esta extensão.",
+	"ios.instruction.authorize": "Depois abra youtube.com e permita\no domínio youtube.com quando o Safari solicitar.",
+	"ios.instruction.help": "Se tiver dúvidas, toque aqui para assistir ao tutorial em vídeo.",
+	"button.enableExtension": "Ativar extensão YouTubeTweak",
+	"button.openExtensionSettings": "Abrir ajustes da extensão YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "Relatar problema",
+	"footer.functions": "Funções",
+	"footer.changelog": "Registro de alterações",
+	"footer.website": "Site"
+}

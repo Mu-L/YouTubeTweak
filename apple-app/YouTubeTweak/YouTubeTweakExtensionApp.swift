@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import SafariServices
 
@@ -11,8 +12,114 @@ private let safariExtensionIdentifier = "me.dark495.yttweak.Extension"
 private let appVersion = "1.1.9"
 private let buildNumber = "1109"
 
+private enum L10n {
+    private static let supportedLanguages = [
+        "ar-SA",
+        "bn-BD",
+        "de-DE",
+        "en-US",
+        "es-ES",
+        "fa-IR",
+        "fr-FR",
+        "hi-IN",
+        "id-ID",
+        "it-IT",
+        "ja-JP",
+        "ko-KR",
+        "mr-IN",
+        "ms-MY",
+        "pa-PK",
+        "pt-BR",
+        "ru-RU",
+        "ta-IN",
+        "te-IN",
+        "th-TH",
+        "tr-TR",
+        "uk-UA",
+        "vi-VN",
+        "zh-CN",
+        "zh-TW",
+    ]
+
+    static let defaultLanguageCode = preferredLanguageCode()
+    static let languageOptions = supportedLanguages.map { (code: $0, title: $0) }
+
+    private static let fallbackLanguage = "zh-CN"
+    private static let bundledStrings = Dictionary(
+        uniqueKeysWithValues: supportedLanguages.compactMap { language -> (String, [String: String])? in
+            guard let strings = loadStrings(for: language) else { return nil }
+            return (language, strings)
+        }
+    )
+    private static let fallbackStrings = bundledStrings[fallbackLanguage] ?? [:]
+
+    static func t(_ key: String, language: String? = nil) -> String {
+        let language = language ?? defaultLanguageCode
+        return bundledStrings[language]?[key] ?? fallbackStrings[key] ?? key
+    }
+
+    static func format(_ key: String, language: String? = nil, _ arguments: CVarArg...) -> String {
+        String(format: t(key, language: language), arguments: arguments)
+    }
+
+    private static func loadStrings(for language: String) -> [String: String]? {
+        guard let url = Bundle.main.url(
+            forResource: language,
+            withExtension: "json",
+            subdirectory: "assets/i18n"
+        ) else {
+            return nil
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            return try JSONDecoder().decode([String: String].self, from: data)
+        } catch {
+            NSLog("Failed to load app localization %@: %@", language, error.localizedDescription)
+            return nil
+        }
+    }
+
+    private static func preferredLanguageCode() -> String {
+        for rawLanguage in Locale.preferredLanguages {
+            let normalized = rawLanguage.replacingOccurrences(of: "_", with: "-")
+
+            if supportedLanguages.contains(normalized) {
+                return normalized
+            }
+
+            if normalized.hasPrefix("zh-Hant") || normalized.hasPrefix("zh-TW") || normalized.hasPrefix("zh-HK") {
+                return "zh-TW"
+            }
+
+            if normalized.hasPrefix("zh-Hans") || normalized.hasPrefix("zh-CN") {
+                return "zh-CN"
+            }
+
+            let languageCode = normalized.split(separator: "-").first.map(String.init) ?? normalized
+            if languageCode == "zh" {
+                return "zh-CN"
+            }
+
+            if languageCode == "pt" {
+                return "pt-BR"
+            }
+
+            if let matchedLanguage = supportedLanguages.first(where: { $0.hasPrefix("\(languageCode)-") }) {
+                return matchedLanguage
+            }
+        }
+
+        return fallbackLanguage
+    }
+}
+
 @main
 struct YouTubeTweakExtensionApp: App {
+    #if os(macOS)
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    #endif
+
     var body: some Scene {
         WindowGroup {
             YouTubeTweakHomeView()
@@ -20,24 +127,80 @@ struct YouTubeTweakExtensionApp: App {
     }
 }
 
+#if os(macOS)
+private final class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        if let image = bundleIconImage {
+            NSApplication.shared.applicationIconImage = image
+        }
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        true
+    }
+
+    private var bundleIconImage: NSImage? {
+        let iconNames = ["CFBundleIconFile", "CFBundleIconName"]
+            .compactMap { Bundle.main.object(forInfoDictionaryKey: $0) as? String }
+
+        for iconName in iconNames {
+            let resourceName = iconName.hasSuffix(".icns")
+                ? String(iconName.dropLast(5))
+                : iconName
+
+            if let iconURL = Bundle.main.url(forResource: resourceName, withExtension: "icns"),
+               let image = NSImage(contentsOf: iconURL) {
+                return image
+            }
+        }
+
+        return NSImage(named: NSImage.applicationIconName)
+    }
+}
+#endif
+
 private struct YouTubeTweakHomeView: View {
     @Environment(\.openURL) private var openURL
     @State private var statusText: String?
     @State private var isOpeningSafari = false
+    #if DEBUG
+    @State private var selectedLanguageCode = L10n.defaultLanguageCode
+    #endif
 
     var body: some View {
+        content
+            #if DEBUG
+            .overlay(alignment: .topTrailing) {
+                DebugLanguagePicker(selectedLanguageCode: $selectedLanguageCode)
+                    .padding(12)
+            }
+            #endif
+    }
+
+    @ViewBuilder
+    private var content: some View {
         #if os(macOS)
         MacInstallView(
             statusText: statusText,
             isOpeningSafari: isOpeningSafari,
+            languageCode: activeLanguageCode,
             openSafariExtensionSettings: openSafariExtensionSettings
         )
         #else
         IOSInstallView(
             statusText: statusText,
             isOpeningSafari: isOpeningSafari,
+            languageCode: activeLanguageCode,
             openSafariExtensionSettings: openSafariExtensionSettings
         )
+        #endif
+    }
+
+    private var activeLanguageCode: String? {
+        #if DEBUG
+        selectedLanguageCode
+        #else
+        nil
         #endif
     }
 
@@ -52,7 +215,11 @@ private struct YouTubeTweakHomeView: View {
 
                 if let error {
                     NSLog("Failed to open Safari extension preferences: %@", error.localizedDescription)
-                    statusText = "无法打开 Safari 扩展设置：\(error.localizedDescription)"
+                    statusText = L10n.format(
+                        "status.openSafariPreferencesFailed",
+                        language: activeLanguageCode,
+                        error.localizedDescription
+                    )
                 } else {
                     NSApplication.shared.terminate(nil)
                 }
@@ -63,15 +230,40 @@ private struct YouTubeTweakHomeView: View {
             openURL(settingsURL)
         }
         isOpeningSafari = false
-        statusText = "请在设置中打开 Safari 扩展，并在访问 youtube.com 时按提示授权。"
+        statusText = L10n.t("status.openIOSSettings", language: activeLanguageCode)
         #endif
     }
 }
+
+#if DEBUG
+private struct DebugLanguagePicker: View {
+    @Binding var selectedLanguageCode: String
+
+    var body: some View {
+        Picker("Language", selection: $selectedLanguageCode) {
+            ForEach(L10n.languageOptions, id: \.code) { language in
+                Text(language.title)
+                    .tag(language.code)
+            }
+        }
+        .labelsHidden()
+        .pickerStyle(.menu)
+        .controlSize(.small)
+        .frame(width: 104)
+        .background(
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .fill(Color.white.opacity(0.92))
+        )
+        .accessibilityLabel("Language")
+    }
+}
+#endif
 
 #if os(macOS)
 private struct MacInstallView: View {
     let statusText: String?
     let isOpeningSafari: Bool
+    let languageCode: String?
     let openSafariExtensionSettings: () -> Void
 
     var body: some View {
@@ -83,15 +275,15 @@ private struct MacInstallView: View {
                     .font(.system(size: 30, weight: .semibold))
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("首次安装后，请点击按钮启用本扩展。")
-                    Text("随后打开 youtube.com，并根据 Safari 提示授权 youtube.com 域名。")
-                    Text("如有疑问，请查看功能说明或报告问题。")
+                    Text(L10n.t("mac.instruction.enable", language: languageCode))
+                    Text(L10n.t("mac.instruction.authorize", language: languageCode))
+                    Text(L10n.t("mac.instruction.help", language: languageCode))
                 }
                 .font(.system(size: 15))
                 .foregroundStyle(Color(red: 0.42, green: 0.42, blue: 0.42))
                 .lineSpacing(4)
 
-                Button("启用 YouTubeTweak 扩展") {
+                Button(L10n.t("button.enableExtension", language: languageCode)) {
                     openSafariExtensionSettings()
                 }
                 .buttonStyle(InstallButtonStyle())
@@ -99,7 +291,7 @@ private struct MacInstallView: View {
                 .frame(width: 320)
                 .padding(.top, 4)
 
-                UnderlinedTextButton("进入 YouTubeTweak 扩展设置") {
+                UnderlinedTextButton(L10n.t("button.openExtensionSettings", language: languageCode)) {
                     openSafariExtensionSettings()
                 }
                 .disabled(isOpeningSafari)
@@ -113,7 +305,7 @@ private struct MacInstallView: View {
 
                 Spacer(minLength: 0)
 
-                FooterLinksView()
+                FooterLinksView(languageCode: languageCode)
 
                 Text("YouTubeTweak V\(appVersion)(\(buildNumber))")
                     .font(.system(size: 14))
@@ -134,6 +326,7 @@ private struct MacInstallView: View {
 private struct IOSInstallView: View {
     let statusText: String?
     let isOpeningSafari: Bool
+    let languageCode: String?
     let openSafariExtensionSettings: () -> Void
 
     var body: some View {
@@ -143,7 +336,7 @@ private struct IOSInstallView: View {
             ExtensionIconView(size: 128, cornerRadius: 22)
                 .padding(.bottom, 74)
 
-            Button("启用 YouTubeTweak 扩展") {
+            Button(L10n.t("button.enableExtension", language: languageCode)) {
                 openSafariExtensionSettings()
             }
             .buttonStyle(InstallButtonStyle())
@@ -152,9 +345,9 @@ private struct IOSInstallView: View {
             .padding(.bottom, 36)
 
             VStack(spacing: 8) {
-                Text("首次安装后，请点击上面的按钮启用本扩展。")
-                Text("随后打开 youtube.com，并根据 Safari 提示\n授权 youtube.com 域名。")
-                Text("如有疑问，请点击这里，查看视频教程。")
+                Text(L10n.t("ios.instruction.enable", language: languageCode))
+                Text(L10n.t("ios.instruction.authorize", language: languageCode))
+                Text(L10n.t("ios.instruction.help", language: languageCode))
             }
             .font(.system(size: 16, weight: .regular))
             .foregroundStyle(Color(red: 0.46, green: 0.46, blue: 0.46))
@@ -163,7 +356,7 @@ private struct IOSInstallView: View {
             .padding(.horizontal, 34)
             .padding(.bottom, 42)
 
-            UnderlinedTextButton("进入 YouTubeTweak 扩展设置") {
+            UnderlinedTextButton(L10n.t("button.openExtensionSettings", language: languageCode)) {
                 openSafariExtensionSettings()
             }
             .disabled(isOpeningSafari)
@@ -179,7 +372,7 @@ private struct IOSInstallView: View {
 
             Spacer(minLength: 0)
 
-            FooterLinksView()
+            FooterLinksView(languageCode: languageCode)
                 .padding(.bottom, 22)
 
             Text("YouTubeTweak V\(appVersion)(\(buildNumber))")
@@ -230,21 +423,127 @@ private struct ExtensionIconView: View {
 
     #if os(macOS)
     private var extensionIconImage: NSImage? {
-        guard let iconURL else { return nil }
-        return NSImage(contentsOf: iconURL)
+        ExtensionIconSource.nsImage
     }
     #else
     private var extensionIconImage: UIImage? {
-        guard let iconURL else { return nil }
-        return UIImage(contentsOfFile: iconURL.path)
+        ExtensionIconSource.uiImage
+    }
+    #endif
+}
+
+private enum ExtensionIconSource {
+    #if os(macOS)
+    static var nsImage: NSImage? {
+        for iconURL in iconURLs {
+            if let image = NSImage(contentsOf: iconURL) {
+                return image
+            }
+        }
+
+        return NSImage(named: NSImage.applicationIconName)
+    }
+    #elseif os(iOS)
+    static var uiImage: UIImage? {
+        for iconURL in iconURLs {
+            if let image = UIImage(contentsOfFile: iconURL.path) {
+                return image
+            }
+        }
+
+        return nil
     }
     #endif
 
-    private var iconURL: URL? {
+    private static var iconURLs: [URL] {
+        [
+            bundledExtensionIconURL,
+            outputIconURL,
+        ].compactMap { $0 }
+    }
+
+    private static var outputIconURL: URL? {
+        guard let iconsDirectory = outputIconsDirectory else { return nil }
+        return preferredIconURL(in: iconsDirectory)
+    }
+
+    private static var outputIconsDirectory: URL? {
+        let outputName: String
+        #if DEBUG
+        outputName = "safari-mv2-dev"
+        #else
+        outputName = "safari-mv2"
+        #endif
+
+        for projectRoot in localProjectRootCandidates {
+            let iconsDirectory = projectRoot
+                .appendingPathComponent(".output", isDirectory: true)
+                .appendingPathComponent(outputName, isDirectory: true)
+                .appendingPathComponent("icons", isDirectory: true)
+
+            if FileManager.default.fileExists(atPath: iconsDirectory.path) {
+                return iconsDirectory
+            }
+        }
+
+        return nil
+    }
+
+    private static var bundledExtensionIconURL: URL? {
         guard let plugInsURL = Bundle.main.builtInPlugInsURL else { return nil }
         let extensionURL = plugInsURL.appendingPathComponent("YouTubeTweakExtension.appex")
-        return Bundle(url: extensionURL)?
-            .url(forResource: "128", withExtension: "png", subdirectory: "icons")
+        guard let iconsDirectory = Bundle(url: extensionURL)?
+            .resourceURL?
+            .appendingPathComponent("icons", isDirectory: true)
+        else {
+            return nil
+        }
+
+        return preferredIconURL(in: iconsDirectory)
+    }
+
+    private static var localProjectRootCandidates: [URL] {
+        var roots: [URL] = []
+        let startURLs = [
+            URL(fileURLWithPath: FileManager.default.currentDirectoryPath, isDirectory: true),
+            Bundle.main.executableURL,
+            Bundle.main.bundleURL,
+            Bundle.main.resourceURL,
+        ].compactMap { $0 }
+
+        for startURL in startURLs {
+            var currentURL = startURL
+
+            for _ in 0..<12 {
+                if currentURL.lastPathComponent == "apple-app" {
+                    roots.append(currentURL.deletingLastPathComponent())
+                    break
+                }
+
+                let parentURL = currentURL.deletingLastPathComponent()
+                if parentURL.path == currentURL.path {
+                    break
+                }
+                currentURL = parentURL
+            }
+        }
+
+        return roots.reduce(into: []) { uniqueRoots, root in
+            if !uniqueRoots.contains(where: { $0.standardizedFileURL == root.standardizedFileURL }) {
+                uniqueRoots.append(root)
+            }
+        }
+    }
+
+    private static func preferredIconURL(in iconsDirectory: URL) -> URL? {
+        for iconSize in ["1024", "512", "256", "128", "64", "48", "32", "16"] {
+            let url = iconsDirectory.appendingPathComponent("\(iconSize).png")
+            if FileManager.default.fileExists(atPath: url.path) {
+                return url
+            }
+        }
+
+        return nil
     }
 }
 
@@ -316,13 +615,15 @@ private struct UnderlinedTextButton: View {
 }
 
 private struct FooterLinksView: View {
+    let languageCode: String?
+
     var body: some View {
         HStack(spacing: 14) {
-            FooterLink("GitHub", url: "https://github.com/xlch88/YouTubeTweak")
-            FooterLink("报告问题", url: "https://github.com/xlch88/YouTubeTweak/issues")
-            FooterLink("功能说明", url: "https://yttweak.com/FUNCTIONS.md")
-            FooterLink("更新日志", url: "https://yttweak.com/CHANGELOG.md")
-            FooterLink("Website", url: "https://yttweak.com")
+            FooterLink(L10n.t("footer.github", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak")
+            FooterLink(L10n.t("footer.reportIssue", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak/issues")
+            FooterLink(L10n.t("footer.functions", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak/blob/main/FUNCTIONS.md")
+            FooterLink(L10n.t("footer.changelog", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak/blob/main/CHANGELOG.md")
+            FooterLink(L10n.t("footer.website", language: languageCode), url: "https://yttweak.com")
         }
     }
 }

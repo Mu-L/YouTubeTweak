@@ -7,3 +7,4 @@ buildServer.json
 YouTubeTweakExtension/dist/
 **/xcuserdata/
 **/*.xcuserstate
+YouTubeTweak/Assets.xcassets/**/*.png

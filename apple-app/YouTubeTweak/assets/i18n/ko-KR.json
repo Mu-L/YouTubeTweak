@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Safari 확장 설정을 열지 못했습니다: %@",
+	"status.openIOSSettings": "설정에서 Safari 확장을 켠 다음 YouTube를 열 때 표시되는 안내에 따라 youtube.com을 허용하세요.",
+	"mac.instruction.enable": "처음 설치한 뒤 버튼을 클릭해 이 확장을 활성화하세요.",
+	"mac.instruction.authorize": "그런 다음 youtube.com을 열고 Safari 안내에 따라 youtube.com 도메인을 허용하세요.",
+	"mac.instruction.help": "궁금한 점이 있으면 기능 설명을 보거나 문제를 신고하세요.",
+	"ios.instruction.enable": "처음 설치한 뒤 위 버튼을 탭해 이 확장을 활성화하세요.",
+	"ios.instruction.authorize": "그런 다음 youtube.com을 열고 Safari 안내에 따라\nyoutube.com 도메인을 허용하세요.",
+	"ios.instruction.help": "궁금한 점이 있으면 여기를 탭해 동영상 튜토리얼을 보세요.",
+	"button.enableExtension": "YouTubeTweak 확장 활성화",
+	"button.openExtensionSettings": "YouTubeTweak 확장 설정 열기",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "문제 신고",
+	"footer.functions": "기능",
+	"footer.changelog": "변경 내역",
+	"footer.website": "웹사이트"
+}

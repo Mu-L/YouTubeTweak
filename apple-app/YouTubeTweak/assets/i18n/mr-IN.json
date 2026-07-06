@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "Safari विस्तार सेटिंग्ज उघडता आल्या नाहीत: %@",
+	"status.openIOSSettings": "Settings मध्ये Safari विस्तार सुरू करा, नंतर YouTube उघडल्यावर विचारल्यास youtube.com ला परवानगी द्या.",
+	"mac.instruction.enable": "पहिल्यांदा इंस्टॉल केल्यानंतर, हा विस्तार सुरू करण्यासाठी बटणावर क्लिक करा.",
+	"mac.instruction.authorize": "यानंतर youtube.com उघडा आणि Safari विचारल्यास youtube.com डोमेनला परवानगी द्या.",
+	"mac.instruction.help": "प्रश्न असल्यास, फीचर मार्गदर्शक पाहा किंवा समस्या नोंदवा.",
+	"ios.instruction.enable": "पहिल्यांदा इंस्टॉल केल्यानंतर, हा विस्तार सुरू करण्यासाठी वरील बटणावर टॅप करा.",
+	"ios.instruction.authorize": "यानंतर youtube.com उघडा आणि Safari विचारल्यास\nyoutube.com डोमेनला परवानगी द्या.",
+	"ios.instruction.help": "प्रश्न असल्यास, व्हिडिओ ट्यूटोरियल पाहण्यासाठी येथे टॅप करा.",
+	"button.enableExtension": "YouTubeTweak विस्तार सुरू करा",
+	"button.openExtensionSettings": "YouTubeTweak विस्तार सेटिंग्ज उघडा",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "समस्या नोंदवा",
+	"footer.functions": "फीचर्स",
+	"footer.changelog": "बदल नोंद",
+	"footer.website": "वेबसाइट"
+}

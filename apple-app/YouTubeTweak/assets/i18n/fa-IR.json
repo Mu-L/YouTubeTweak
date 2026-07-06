@@ -1,0 +1,17 @@
+{
+	"status.openSafariPreferencesFailed": "تنظیمات افزونه Safari باز نشد: %@",
+	"status.openIOSSettings": "افزونه Safari را در Settings فعال کنید، سپس هنگام باز کردن YouTube مجوز youtube.com را بدهید.",
+	"mac.instruction.enable": "پس از نصب اولیه، برای فعال کردن این افزونه روی دکمه کلیک کنید.",
+	"mac.instruction.authorize": "سپس youtube.com را باز کنید و وقتی Safari درخواست کرد، دامنه youtube.com را مجاز کنید.",
+	"mac.instruction.help": "اگر پرسشی دارید، راهنمای قابلیت‌ها را ببینید یا مشکل را گزارش کنید.",
+	"ios.instruction.enable": "پس از نصب اولیه، برای فعال کردن این افزونه روی دکمه بالا بزنید.",
+	"ios.instruction.authorize": "سپس youtube.com را باز کنید و وقتی Safari درخواست کرد،\nدامنه youtube.com را مجاز کنید.",
+	"ios.instruction.help": "اگر پرسشی دارید، برای دیدن آموزش ویدیویی اینجا بزنید.",
+	"button.enableExtension": "فعال کردن افزونه YouTubeTweak",
+	"button.openExtensionSettings": "باز کردن تنظیمات افزونه YouTubeTweak",
+	"footer.github": "GitHub",
+	"footer.reportIssue": "گزارش مشکل",
+	"footer.functions": "قابلیت‌ها",
+	"footer.changelog": "تغییرات",
+	"footer.website": "وب‌سایت"
+}
