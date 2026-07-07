@@ -221,10 +221,7 @@ private struct YouTubeTweakHomeView: View {
         )
         #else
         IOSInstallView(
-            statusText: statusText,
-            isOpeningSafari: isOpeningSafari,
-            languageCode: activeLanguageCode,
-            openSafariExtensionSettings: openSafariExtensionSettings
+            languageCode: activeLanguageCode
         )
         #endif
     }
@@ -358,6 +355,9 @@ private struct MacInstallView: View {
                 .font(.system(size: 15))
                 .foregroundStyle(Color(red: 0.42, green: 0.42, blue: 0.42))
                 .lineSpacing(4)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
                 Button(L10n.t("button.enableExtension", language: languageCode)) {
                     openSafariExtensionSettings()
@@ -398,10 +398,7 @@ private struct MacInstallView: View {
 
 #if os(iOS)
 private struct IOSInstallView: View {
-    let statusText: String?
-    let isOpeningSafari: Bool
     let languageCode: String?
-    let openSafariExtensionSettings: () -> Void
 
     var body: some View {
         GeometryReader { geometry in
@@ -467,29 +464,15 @@ private struct IOSInstallView: View {
             .multilineTextAlignment(.leading)
 
             Button(L10n.t("button.enableExtension", language: languageCode)) {
-                openSafariExtensionSettings()
+                openIOSHelp(anchor: "safari-enable")
             }
             .buttonStyle(InstallButtonStyle())
-            .disabled(isOpeningSafari)
             .frame(maxWidth: .infinity)
             .padding(.top, 4)
 
             UnderlinedTextButton(L10n.t("button.openExtensionSettings", language: languageCode)) {
-                openSafariExtensionSettings()
+                openIOSHelp(anchor: "safari-setting")
             }
-            .disabled(isOpeningSafari)
-
-            Text(statusText ?? L10n.t("status.openIOSSettings", language: languageCode))
-                .font(.system(size: 12))
-                .foregroundStyle(.red)
-                .lineLimit(nil)
-                .fixedSize(horizontal: false, vertical: true)
-                .multilineTextAlignment(.leading)
-                .frame(maxWidth: .infinity, minHeight: 34, alignment: .topLeading)
-                .opacity(statusText == nil ? 0 : 1)
-                .transaction { transaction in
-                    transaction.animation = nil
-                }
 
             FooterLinksView(languageCode: languageCode)
                 .padding(.top, 16)
@@ -505,6 +488,26 @@ private struct IOSInstallView: View {
             .fixedSize(horizontal: false, vertical: true)
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func openIOSHelp(anchor: String) {
+        let normalizedLanguageCode = languageCode ?? L10n.defaultLanguageCode
+        let docsPath: String
+
+        if normalizedLanguageCode.hasPrefix("zh") {
+            docsPath = "docs/zh-cn/help/ios.md"
+        } else if normalizedLanguageCode.hasPrefix("ja") {
+            docsPath = "docs/ja/help/ios.md"
+        } else {
+            docsPath = "docs/en/help/ios.md"
+        }
+
+        if let url = URL(string: "https://github.com/xlch88/YouTubeTweak/blob/main/\(docsPath)#\(anchor)") {
+            AppDebugLog.write("iOS help link tapped: \(url.absoluteString)")
+            UIApplication.shared.open(url, options: [:]) { success in
+                AppDebugLog.write("Opening iOS help link completed: \(success ? "success" : "failed")")
+            }
+        }
     }
 }
 #endif
@@ -740,14 +743,35 @@ private struct UnderlinedTextButton: View {
 private struct FooterLinksView: View {
     let languageCode: String?
 
+    private var separatorColor: Color {
+        #if os(iOS)
+        Color(red: 0.52, green: 0.52, blue: 0.52)
+        #else
+        Color(red: 0.72, green: 0.72, blue: 0.72)
+        #endif
+    }
+
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 9) {
             FooterLink(L10n.t("footer.github", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak")
+            Circle()
+                .fill(separatorColor)
+                .frame(width: 3.5, height: 3.5)
             FooterLink(L10n.t("footer.reportIssue", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak/issues")
+            Circle()
+                .fill(separatorColor)
+                .frame(width: 3.5, height: 3.5)
             FooterLink(L10n.t("footer.functions", language: languageCode), url: localizedGitHubDocsURL(filename: "FUNCTIONS.md"))
+            Circle()
+                .fill(separatorColor)
+                .frame(width: 3.5, height: 3.5)
             FooterLink(L10n.t("footer.changelog", language: languageCode), url: localizedGitHubDocsURL(filename: "CHANGELOG.md"))
+            Circle()
+                .fill(separatorColor)
+                .frame(width: 3.5, height: 3.5)
             FooterLink(L10n.t("footer.website", language: languageCode), url: "https://yttweak.com")
         }
+        .font(.system(size: 14))
         .fixedSize(horizontal: false, vertical: true)
     }
 
@@ -811,7 +835,7 @@ private struct FooterLink: View {
     }
 
     var body: some View {
-        Button(title) {
+        Button {
             if let url = URL(string: url) {
                 #if os(macOS)
                 openURL(url)
@@ -826,6 +850,10 @@ private struct FooterLink: View {
                 AppDebugLog.write("Invalid footer link URL: \(url)")
                 #endif
             }
+        } label: {
+            Text(title)
+                .lineLimit(1)
+                .fixedSize(horizontal: true, vertical: false)
         }
         .buttonStyle(.plain)
         .font(.system(size: 14))

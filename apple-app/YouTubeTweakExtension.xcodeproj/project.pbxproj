@@ -233,7 +233,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -euo pipefail\nOUTPUT_NAME=\"safari-mv2\"\nif [ \"${CONFIGURATION:-}\" = \"Debug\" ] && { [ \"${PLATFORM_NAME:-}\" = \"macosx\" ] || [ \"${PLATFORM_NAME:-}\" = \"iphoneos\" ]; }; then\n    OUTPUT_NAME=\"safari-mv2-dev\"\nfi\nDIST_DIR=\"${SRCROOT}/../.output/${OUTPUT_NAME}\"\nRESOURCE_DIR=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nif [ ! -d \"$DIST_DIR\" ]; then\n    echo \"error: Missing Safari extension output: $DIST_DIR\"\n    echo \"Run npm run build:safari, or npm run dev:safari for Debug hot reload.\"\n    exit 1\nfi\nmkdir -p \"$RESOURCE_DIR\"\nfor item in manifest.json popup.html background.js chunks content-scripts icons _locales assets; do\n    rm -rf \"$RESOURCE_DIR/$item\"\ndone\n/usr/bin/rsync -a --exclude='.DS_Store' \"$DIST_DIR/\" \"$RESOURCE_DIR/\"\n";
+			shellScript = "set -euo pipefail\nexport PATH=\"/opt/homebrew/bin:/opt/brew/bin:/usr/local/bin:$PATH\"\nOUTPUT_NAME=\"safari-mv2\"\nif [ \"${CONFIGURATION:-}\" = \"Debug\" ] && { [ \"${PLATFORM_NAME:-}\" = \"macosx\" ] || [ \"${PLATFORM_NAME:-}\" = \"iphoneos\" ]; }; then\n    OUTPUT_NAME=\"safari-mv2-dev\"\nelse\n    echo \"Running npm run build:safari before copying Safari extension output...\"\n    (cd \"${SRCROOT}/..\" && npm run build:safari)\nfi\nDIST_DIR=\"${SRCROOT}/../.output/${OUTPUT_NAME}\"\nRESOURCE_DIR=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nif [ ! -d \"$DIST_DIR\" ]; then\n    echo \"error: Missing Safari extension output: $DIST_DIR\"\n    echo \"Run npm run build:safari, or npm run dev:safari for Debug hot reload.\"\n    exit 1\nfi\nmkdir -p \"$RESOURCE_DIR\"\nfor item in manifest.json popup.html background.js chunks content-scripts icons _locales assets; do\n    rm -rf \"$RESOURCE_DIR/$item\"\ndone\n/usr/bin/rsync -a --exclude='.DS_Store' \"$DIST_DIR/\" \"$RESOURCE_DIR/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -275,7 +275,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1109;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweak/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = YouTubeTweak;
@@ -343,8 +345,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1109;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweakExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
