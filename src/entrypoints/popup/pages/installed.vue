@@ -1,5 +1,11 @@
 <template>
-	<section id="page-installed" :class="{ 'macos-user-agent': isMacOSUserAgent, 'ipad-user-agent': isIPadUserAgent }">
+	<section
+		id="page-installed"
+		:class="{
+			'macos-user-agent': installedHint.platform === 'macos',
+			'ipad-user-agent': installedHint.platform === 'ipad',
+		}"
+	>
 		<div class="installed">
 			<img src="@/assets/img/logo.svg" alt="logo" />
 			<p class="title">YouTube Tweak</p>
@@ -31,30 +37,79 @@
 		</svg>
 
 		<svg
+			v-if="installedHint.icon === 'apple'"
 			id="extension-icon-hint"
 			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 24 24"
-			aria-hidden="true"
-		>
-			<path
-				d="M9 4C9 2.89543 9.89543 2 11 2C12.1046 2 13 2.89543 13 4V6H18V11H20C21.1046 11 22 11.8954 22 13C22 14.1046 21.1046 15 20 15H18V20H13V18C13 16.8954 12.1046 16 11 16C9.89543 16 9 16.8954 9 18V20H4V15H6C7.10457 15 8 14.1046 8 13C8 11.8954 7.10457 11 6 11H4V6H9V4Z"
-				fill="#828282"
-			/>
-		</svg>
-
-		<svg
-			id="ipad-extension-icon-hint"
-			xmlns="http://www.w3.org/2000/svg"
+			class="apple-extension-icon-hint"
 			viewBox="0 0 80 80"
 			aria-hidden="true"
 		>
 			<path
 				d="M57.25 28.27C60.62 28.44 62.91 26.86 66.34 28.89C72.18 32.35 71.59 40.96 66.19 44.46C63.2 46.4 60.06 44.51 57.08 45.25C55.1 49.58 57.96 54.73 53.41 58.17C50.88 60.08 47.2 59.39 44.25 59.39C36.92 59.4 29.58 59.47 22.25 59.46C18.83 59.45 14.78 59.23 13.26 55.51C12.12 52.74 11.63 39.75 14.96 38.72C18.02 37.77 26.75 44.78 26.79 36.76C26.84 27.81 17.78 35.4 14.85 34.39C11.71 33.3 12.25 20.54 13.07 17.78C14.13 14.21 18.63 13.45 21.75 13.42C29.08 13.35 36.42 13.44 43.75 13.44C47.23 13.45 51.05 12.98 53.97 15.28C58.19 18.6 54.91 24.4 57.25 28.27ZM17.58 45.25C16.72 47.67 16.3 52.77 18.87 54.38C21.79 56.22 35.2 54.95 39.25 54.95C42.26 54.95 47.01 55.84 49.79 54.59C55.01 52.24 48.65 42.23 53.39 39.15C56.28 37.26 66.42 45.69 65.95 36.25C65.52 27.75 56.34 35.95 53.55 34.2C48.96 31.33 54.32 20.59 50.02 18.74C45.98 17.01 32.18 18.17 27.25 18.17C24.73 18.17 21.29 17.53 19 18.75C16.29 20.2 16.56 25.93 17.84 28.25C20.34 28.33 22.37 26.86 24.97 27.78C32.06 30.28 33.56 40.15 27.1 44.34C23.99 46.35 20.72 44.39 17.58 45.25Z"
-				fill="#2d2f33"
+				fill="#898989"
 				fill-rule="evenodd"
-				stroke="#2d2f33"
+				stroke="#898989"
 				stroke-linejoin="round"
 				stroke-width="0.25"
+			/>
+		</svg>
+
+		<svg
+			v-else-if="installedHint.icon === 'chrome'"
+			id="extension-icon-hint"
+			xmlns="http://www.w3.org/2000/svg"
+			class="browser-extension-icon-hint"
+			preserveAspectRatio="xMidYMid meet"
+			focusable="false"
+			viewBox="0 -960 960 960"
+			aria-hidden="true"
+		>
+			<path
+				d="M216-135.869q-33.287 0-56.709-23.422-23.422-23.422-23.422-56.709v-172.304q37.609-2 63.218-28.424 25.608-26.424 25.608-63.272t-25.608-63.272q-25.609-26.424-63.218-28.424V-744q0-33.287 23.422-56.709 23.422-23.422 56.709-23.422h161.065q2.631-40.956 31.96-69.315 29.329-28.359 70.75-28.359t70.975 28.199q29.554 28.199 32.185 69.475H744q33.287 0 56.709 23.422 23.422 23.422 23.422 56.709v161.065q40.956 2.631 69.315 31.96 28.359 29.329 28.359 70.75t-28.199 70.975q-28.199 29.554-69.475 32.185V-216q0 33.287-23.422 56.709-23.422 23.422-56.709 23.422H216Zm2.87-83.001h522.26v-522.26H218.87v108.652q42.13 22.63 65.597 63.772 23.468 41.141 23.468 88.706 0 49.01-23.468 90.168Q261-348.674 218.87-327.283v108.413ZM480-480Z"
+				fill="#898989"
+			/>
+		</svg>
+
+		<svg
+			v-else-if="installedHint.icon === 'firefox'"
+			id="extension-icon-hint"
+			xmlns="http://www.w3.org/2000/svg"
+			class="browser-extension-icon-hint"
+			viewBox="0 0 20 20"
+			aria-hidden="true"
+		>
+			<path
+				d="m15.5 5-2 0 0-1.873c0-1.594-1.183-2.961-2.693-3.112A3.003 3.003 0 0 0 7.5 2.999L7.5 5l-3 0A2.5 2.5 0 0 0 2 7.5l0 2.25c0 .69.56 1.25 1.25 1.25l1.623 0c.833 0 1.544.59 1.62 1.343a1.49 1.49 0 0 1-.379 1.163c-.285.314-.69.494-1.113.494L3.25 14C2.56 14 2 14.56 2 15.25l0 2.25A2.5 2.5 0 0 0 4.5 20l11 0a2.5 2.5 0 0 0 2.5-2.5l0-10A2.5 2.5 0 0 0 15.5 5zm1 12.7-.8.8-11.4 0-.8-.8 0-2.2 1.501 0c.846 0 1.657-.36 2.225-.988a3.01 3.01 0 0 0 .759-2.318C7.834 10.683 6.467 9.5 4.873 9.5L3.5 9.5l0-2.2.8-.8 3.7 0a1 1 0 0 0 1-1l0-2.501a1.502 1.502 0 0 1 1.657-1.492c.753.075 1.343.787 1.343 1.62L12 5.5a1 1 0 0 0 1 1l2.7 0 .8.8 0 10.4z"
+				fill="#898989"
+			/>
+		</svg>
+
+		<svg
+			v-else-if="installedHint.icon === 'edge'"
+			id="extension-icon-hint"
+			xmlns="http://www.w3.org/2000/svg"
+			class="browser-extension-icon-hint"
+			viewBox="0 0 20 20"
+			aria-hidden="true"
+		>
+			<path
+				d="M11.1 2c-1.07.08-1.94.9-2.08 1.94V4H6.35A1.5 1.5 0 005 5.5v2.27h-.06A2.25 2.25 0 003 10v.16c.08 1.06.9 1.93 1.94 2.07H5v2.42A1.5 1.5 0 006.5 16h2.02v.06A2.25 2.25 0 0010.75 18h.16a2.25 2.25 0 002.07-1.94V16h2.52c.83 0 1.5-.67 1.5-1.5v-3.25h-1.87A1.25 1.25 0 0114 10v-.12c.06-.63.6-1.13 1.25-1.13H17V5.36A1.5 1.5 0 0015.5 4h-2.02v-.06A2.25 2.25 0 0011.25 2h-.15zm.15 1c.69 0 1.25.56 1.25 1.25V5h3l.1.01a.5.5 0 01.4.5v2.24h-.75c-1.17 0-2.15.9-2.24 2.07l-.01.16c0 1.2.9 2.17 2.07 2.26l.16.01H16v2.25a.5.5 0 01-.5.5H12v.75a1.25 1.25 0 01-2.5 0V15h-3a.5.5 0 01-.5-.5v-3.25h-.75a1.25 1.25 0 010-2.5H6V5.5c0-.27.23-.5.5-.5H10v-.75c0-.69.56-1.25 1.25-1.25z"
+				fill="#898989"
+				fill-rule="nonzero"
+			/>
+		</svg>
+
+		<svg
+			v-else
+			id="extension-icon-hint"
+			xmlns="http://www.w3.org/2000/svg"
+			class="browser-extension-icon-hint"
+			viewBox="0 0 24 24"
+			aria-hidden="true"
+		>
+			<path
+				d="M9 4C9 2.89543 9.89543 2 11 2C12.1046 2 13 2.89543 13 4V6H18V11H20C21.1046 11 22 11.8954 22 13C22 14.1046 21.1046 15 20 15H18V20H13V18C13 16.8954 12.1046 16 11 16C9.89543 16 9 16.8954 9 18V20H4V15H6C7.10457 15 8 14.1046 8 13C8 11.8954 7.10457 11 6 11H4V6H9V4Z"
+				fill="#898989"
 			/>
 		</svg>
 	</section>
@@ -64,8 +119,16 @@
 import { markChangelogVersionRead } from "@/util/versionNotice";
 
 const APP_INFO = window.__APP_INFO__;
-const isIPadUserAgent = /iPad/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
-const isMacOSUserAgent = /Macintosh|Mac OS X/.test(navigator.userAgent) && !isIPadUserAgent;
+const installedHint = (() => {
+	const isIPad = /iPad/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+	if (isIPad) return { icon: "apple", platform: "ipad" };
+	if (/Firefox\//.test(navigator.userAgent)) return { icon: "firefox", platform: "default" };
+	if (/Edg\//.test(navigator.userAgent)) return { icon: "edge", platform: "default" };
+	if (/(?:Chrome|CriOS|Chromium)\//.test(navigator.userAgent) && !/(?:OPR|Opera|SamsungBrowser)\//.test(navigator.userAgent)) return { icon: "chrome", platform: "default" };
+	if (/Macintosh|Mac OS X/.test(navigator.userAgent)) return { icon: "apple", platform: "macos" };
+	return { icon: "default", platform: "default" };
+})();
 
 markChangelogVersionRead().catch(() => {});
 </script>
@@ -114,16 +177,12 @@ markChangelogVersionRead().catch(() => {});
 	width: 150px;
 }
 
-#extension-icon-hint {
+.browser-extension-icon-hint {
 	position: fixed;
 	right: 207px;
 	top: 74px;
 	width: 42px;
 	height: 42px;
-}
-
-#ipad-extension-icon-hint {
-	display: none;
 }
 
 #page-installed {
@@ -135,12 +194,7 @@ markChangelogVersionRead().catch(() => {});
 			width: 280px;
 		}
 
-		#extension-icon-hint {
-			display: none;
-		}
-
-		#ipad-extension-icon-hint {
-			display: block;
+		.apple-extension-icon-hint {
 			position: fixed;
 			right: auto;
 			left: 332px;
@@ -158,12 +212,7 @@ markChangelogVersionRead().catch(() => {});
 			width: 240px;
 		}
 
-		#extension-icon-hint {
-			display: none;
-		}
-
-		#ipad-extension-icon-hint {
-			display: block;
+		.apple-extension-icon-hint {
 			position: fixed;
 			right: auto;
 			left: 60.8vw;
