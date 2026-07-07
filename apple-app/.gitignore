@@ -4,6 +4,7 @@ Build/
 DerivedData/
 DerivedData-iOS/
 buildServer.json
+.compile
 YouTubeTweakExtension/dist/
 **/xcuserdata/
 **/*.xcuserstate

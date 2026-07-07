@@ -24,7 +24,7 @@
 		"build:mac:debug": "tsx build/apple.ts build:mac:debug",
 		"apple:icons": "tsx build/apple.ts icons",
 		"apple:open:xcode": "open apple-app/YouTubeTweakExtension.xcodeproj",
-		"apple:build-server": "cd apple-app && DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcode-build-server config -project YouTubeTweakExtension.xcodeproj -scheme YouTubeTweak --build_root DerivedData",
+		"apple:build-server": "tsx build/apple.ts build-server",
 		"apple:clean": "rm -rf apple-app/Build apple-app/DerivedData apple-app/DerivedData-iOS",
 		"postinstall": "wxt prepare"
 	},

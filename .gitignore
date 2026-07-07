@@ -41,6 +41,7 @@ web-ext.config.ts
 
 # Apple app / Xcode local build artifacts
 buildServer.json
+.compile
 build/local-dev.yttweak.com.key
 build/local-dev.yttweak.com.pem
 apple-app/.ios-device-id
@@ -50,6 +51,7 @@ apple-app/**/.DS_Store
 apple-app/DerivedData/
 apple-app/DerivedData-iOS/
 apple-app/buildServer.json
+apple-app/.compile
 apple-app/**/*.xcuserstate
 apple-app/**/xcuserdata/
 apple-app/**/DerivedData/

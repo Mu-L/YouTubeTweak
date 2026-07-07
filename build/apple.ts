@@ -74,7 +74,7 @@ function run(commandName: string, args: string[], live = false) {
 
 function runForResult(commandName: string, args: string[]) {
 	console.log(`> ${commandName} ${args.join(" ")}`);
-	const result = spawnSync(commandName, args, { env, encoding: "utf8" });
+	const result = spawnSync(commandName, args, { env, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
 	if (result.stdout) process.stdout.write(result.stdout);
 	if (result.stderr) process.stderr.write(result.stderr);
 	if (result.error) throw result.error;
@@ -199,6 +199,31 @@ function runXcodeBuildWithProvisioningRetry(args: string[]) {
 	if (retryResult.status !== 0) {
 		explainAppleDeviceError(retryResult);
 		process.exit(retryResult.status || 1);
+	}
+}
+
+function syncBuildServer() {
+	fixXcodeScriptModes();
+	const buildResult = runForResult("xcodebuild", [...macBuildArgs("Debug").slice(0, -1), "CODE_SIGNING_ALLOWED=NO", "clean", "build"]);
+	if (buildResult.status !== 0) {
+		explainAppleDeviceError(buildResult);
+		process.exit(buildResult.status || 1);
+	}
+
+	const buildLog = `${buildResult.stdout || ""}\n${buildResult.stderr || ""}`;
+	for (const cwd of [root, abs("apple-app")]) {
+		console.log(`> xcode-build-server parse (${cwd})`);
+		const parseResult = spawnSync("xcode-build-server", ["parse"], {
+			cwd,
+			env,
+			input: buildLog,
+			encoding: "utf8",
+			maxBuffer: 64 * 1024 * 1024,
+		});
+		if (parseResult.stdout) process.stdout.write(parseResult.stdout);
+		if (parseResult.stderr) process.stderr.write(parseResult.stderr);
+		if (parseResult.error) throw parseResult.error;
+		if (parseResult.status !== 0) process.exit(parseResult.status || 1);
 	}
 }
 
@@ -734,6 +759,7 @@ function usage() {
 		"build:ios:debug",
 		"build:mac",
 		"build:mac:debug",
+		"build-server",
 	]) {
 		console.error(`  ${name}`);
 	}
@@ -767,6 +793,9 @@ switch (command) {
 		break;
 	case "build:mac:debug":
 		await buildMac("Debug");
+		break;
+	case "build-server":
+		syncBuildServer();
 		break;
 	default:
 		usage();
