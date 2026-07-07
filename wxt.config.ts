@@ -56,6 +56,7 @@ export default defineConfig({
 
 	autoIcons: {
 		baseIconPath: "assets/img/logo.svg",
+		sizes: [1024, 512, 256, 128, 64, 32, 16],
 		grayscaleOnDevelopment: false,
 		sizes: [16, 32, 64, 128, 256, 512, 1024],
 	},
@@ -69,8 +70,8 @@ export default defineConfig({
 
 	dev: {
 		server: {
-			host: useLocalDevHttps ? "0.0.0.0" : "192.168.233.245",
-			origin: useLocalDevHttps ? `https://${localDevDomain}` : "http://192.168.233.245",
+			host: useLocalDevHttps ? "0.0.0.0" : undefined,
+			origin: useLocalDevHttps ? `https://${localDevDomain}` : undefined,
 		},
 	},
 
