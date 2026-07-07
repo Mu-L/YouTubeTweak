@@ -1,41 +1,44 @@
 import { defineBackground } from "wxt/utils/define-background";
 import { syncVersionNoticeBadge } from "@/util/versionNotice";
 
-export default defineBackground(() => {
-	syncVersionNoticeBadge().catch(() => {});
+export default defineBackground({
+	persistent: false,
+	main() {
+		syncVersionNoticeBadge().catch(() => {});
 
-	browser.runtime.onInstalled.addListener((details) => {
-		switch (details.reason) {
-			case "install":
-				browser.tabs.create({ url: "popup.html?action=installed" }).catch(() => {});
-				break;
+		browser.runtime.onInstalled.addListener((details) => {
+			switch (details.reason) {
+				case "install":
+					browser.tabs.create({ url: "popup.html?action=installed" }).catch(() => {});
+					break;
 
-			case "update":
-				browser.storage.local.set({ waitUpdate: false }).catch(() => {});
-				syncVersionNoticeBadge().catch(() => {});
+				case "update":
+					browser.storage.local.set({ waitUpdate: false }).catch(() => {});
+					syncVersionNoticeBadge().catch(() => {});
 
-				browser.storage.local
-					.get("needReloadTabs")
-					.then((result) => {
-						if (!result.needReloadTabs) return;
+					browser.storage.local
+						.get("needReloadTabs")
+						.then((result) => {
+							if (!result.needReloadTabs) return;
 
-						browser.storage.local.set({ needReloadTabs: false }).catch(() => {});
-						browser.tabs.query({ url: "*://*.youtube.com/*", discarded: false }).then((cb) => {
-							cb.forEach((tab) => {
-								if (tab.id) browser.tabs.reload(tab.id).catch(() => {});
+							browser.storage.local.set({ needReloadTabs: false }).catch(() => {});
+							browser.tabs.query({ url: "*://*.youtube.com/*", discarded: false }).then((cb) => {
+								cb.forEach((tab) => {
+									if (tab.id) browser.tabs.reload(tab.id).catch(() => {});
+								});
 							});
+						})
+						.catch((e) => {
+							console.error("Error getting needReloadTabs:", e);
 						});
-					})
-					.catch((e) => {
-						console.error("Error getting needReloadTabs:", e);
-					});
-				break;
-		}
+					break;
+			}
 
-		console.log(details);
-	});
+			console.log(details);
+		});
 
-	browser.runtime.onUpdateAvailable.addListener((details) => {
-		browser.storage.local.set({ waitUpdate: details.version }).catch(() => {});
-	});
+		browser.runtime.onUpdateAvailable.addListener((details) => {
+			browser.storage.local.set({ waitUpdate: details.version }).catch(() => {});
+		});
+	},
 });
