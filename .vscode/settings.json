@@ -20,7 +20,9 @@
 	},
 	"files.exclude": {
 		"**/.DS_Store": true,
-
+		"apple-app/Build": true,
+		"apple-app/DerivedData": true,
+		"apple-app/DerivedData-iOS": true,
 		"apple-app/YouTubeTweakExtension/dist": true
 	},
 	"search.exclude": {
