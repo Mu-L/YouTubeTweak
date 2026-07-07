@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - YouTube Deneyiminizi Geliştirin",
 		"name_edge": "YouTubeTweak: YouTube Deneyiminizi Geliştirin",
-		"description": "İstediğiniz tüm özelliklerle dolu: kalite kilitleme, hız düğmeleri, yorum isimlerini göster ve çevir, dikkat dağıtıcıları gizle ve daha fazlası."
+		"description": "İstediğiniz tüm özelliklerle dolu: kalite kilitleme, hız düğmeleri, yorum isimlerini göster ve çevir, dikkat dağıtıcıları gizle ve daha fazlası.",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "YouTube’u kalite kilidi, hız düğmeleri, yorum araçları ve daha temiz sayfalarla geliştir."
 	},
 	"tabs": {
 		"player": {
@@ -342,7 +344,8 @@
 			"link": {
 				"github": "Github",
 				"issue": "Sorunlar",
-				"changelog": "Değişiklik günlüğü"
+				"changelog": "Değişiklik günlüğü",
+				"sponsor": "Sponsor ol"
 			}
 		},
 		"config": {
@@ -379,6 +382,16 @@
 			"tips": {
 				"title": "⚠ Uyarı",
 				"fetchHooker": "Bazı özellikler (çift dilli altyazı, video reklam engelleme vb.) HTTP isteklerini yeniden yazar ve sayfada sorunlara yol açabilir. Gezinirken sorun yaşarsan lütfen bu özelliği kapatmayı dene."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 Bu eklentiyi seviyorsan sponsor olmayı düşünebilirsin",
+				"description": "Her sponsorluk, bu eklentinin geliştirilmesini sürdürmek, sorunları düzeltmek, YouTube'un sık değişikliklerine uyum sağlamak ve küçük ayrıntıları sürekli iyileştirmek için önemli bir güçtür."
+			},
+			"buttons": {
+				"sponsor": "Şimdi sponsor ol",
+				"noThanks": "Hayır, teşekkürler"
 			}
 		}
 	},

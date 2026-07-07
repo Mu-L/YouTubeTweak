@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - YouTube增强插件,极致优化YouTube使用体验",
 		"name_edge": "YouTubeTweak: 极致优化YouTube使用体验",
-		"description": "几乎有你想要的所有增强 YouTube 功能：锁定画质、倍速按钮、显评论昵称、自动翻译评论、隐藏干扰元素等，提升整体使用体验。"
+		"description": "几乎有你想要的所有增强 YouTube 功能：锁定画质、倍速按钮、显评论昵称、自动翻译评论、隐藏干扰元素等，提升整体使用体验。",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "增强 YouTube：锁定画质、倍速按钮、评论工具、隐藏干扰元素。"
 	},
 	"tabs": {
 		"player": {
@@ -385,7 +387,7 @@
 		"sponsor": {
 			"tips": {
 				"title": "💖 喜欢这个插件的话，考虑赞助一下吧",
-				"description": "每一份赞助都会变成继续修 bug、适配 YouTube 抽风改版、把小功能打磨到顺手的动力。"
+				"description": "您的每一份赞助，都是此插件持续开发、修复问题、适配 YouTube 频繁改版，并不断打磨细节功能的重要动力。"
 			},
 			"buttons": {
 				"sponsor": "立即赞助",

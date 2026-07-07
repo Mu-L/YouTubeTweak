@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - Boost Your YouTube Experience",
 		"name_edge": "YouTubeTweak: Boost Your YouTube Experience",
-		"description": "Packed with all the features you want: lock quality, speed buttons, show comments name and translate, hide distractions, and more."
+		"description": "Packed with all the features you want: lock quality, speed buttons, show comments name and translate, hide distractions, and more.",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "Enhance YouTube with quality lock, speed buttons, comment tools, and cleaner pages."
 	},
 	"tabs": {
 		"player": {
@@ -384,8 +386,8 @@
 		},
 		"sponsor": {
 			"tips": {
-				"title": "💖 If YouTube Tweak makes your day easier, consider sponsoring it",
-				"description": "Every bit of support helps keep fixes, YouTube breakage follow-ups, and small comfort features moving."
+				"title": "💖 If you like this extension, consider sponsoring it",
+				"description": "Every sponsorship is vital support for keeping this extension in active development, fixing issues, adapting to YouTube's frequent changes, and continuously polishing the small details."
 			},
 			"buttons": {
 				"sponsor": "Sponsor now",

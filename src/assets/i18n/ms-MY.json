@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - Tingkatkan Pengalaman YouTube Anda",
 		"name_edge": "YouTubeTweak: Tingkatkan Pengalaman YouTube Anda",
-		"description": "Lengkap dengan semua ciri yang anda mahukan: kunci kualiti, butang kelajuan, tunjuk dan terjemah nama komen, sembunyikan gangguan, dan banyak lagi."
+		"description": "Lengkap dengan semua ciri yang anda mahukan: kunci kualiti, butang kelajuan, tunjuk dan terjemah nama komen, sembunyikan gangguan, dan banyak lagi.",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "Tingkatkan YouTube dengan kunci kualiti, butang kelajuan, alat komen dan halaman lebih bersih."
 	},
 	"tabs": {
 		"player": {
@@ -342,7 +344,8 @@
 			"link": {
 				"github": "Github",
 				"issue": "Isu",
-				"changelog": "Changelog"
+				"changelog": "Changelog",
+				"sponsor": "Taja"
 			}
 		},
 		"config": {
@@ -379,6 +382,16 @@
 			"tips": {
 				"title": "⚠ Amaran",
 				"fetchHooker": "Beberapa ciri (seperti sari kata dwibahasa, sekat iklan video) menggunakan penulisan semula permintaan HTTP dan boleh menyebabkan masalah pada halaman. Jika menghadapi masalah semasa melayar, cuba matikan ciri ini."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 Jika anda suka sambungan ini, pertimbangkan untuk menajanya",
+				"description": "Setiap tajaan anda ialah dorongan penting untuk meneruskan pembangunan sambungan ini, membaiki masalah, menyesuaikannya dengan perubahan YouTube yang kerap, dan terus memperhalus ciri-ciri kecil."
+			},
+			"buttons": {
+				"sponsor": "Taja sekarang",
+				"noThanks": "Tidak, terima kasih"
 			}
 		}
 	},

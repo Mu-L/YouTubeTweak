@@ -19,14 +19,22 @@ export default defineWxtModule({
 
 				const messagesJsonFile = `${dir}/messages.json`;
 				const extName =
-					wxt.config.browser === "edge" ? localeData.manifest.name_edge || localeData.manifest.name : localeData.manifest.name;
+					wxt.config.browser === "safari"
+						? localeData.manifest.name_apple || localeData.manifest.name
+						: wxt.config.browser === "edge"
+							? localeData.manifest.name_edge || localeData.manifest.name
+							: localeData.manifest.name;
+				const extDescription =
+					wxt.config.browser === "safari"
+						? localeData.manifest.description_apple || localeData.manifest.description
+						: localeData.manifest.description;
 				const messagesContent = JSON.stringify(
 					{
 						manifest_name: {
 							message: extName,
 						},
 						manifest_description: {
-							message: localeData.manifest.description,
+							message: extDescription,
 						},
 					},
 					null,

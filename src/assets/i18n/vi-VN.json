@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - Nâng cao trải nghiệm YouTube của bạn",
 		"name_edge": "YouTubeTweak: Nâng cao trải nghiệm YouTube của bạn",
-		"description": "Tích hợp đủ tính năng bạn cần: khóa chất lượng, nút tốc độ, hiển thị và dịch tên bình luận, ẩn yếu tố gây xao nhãng và nhiều hơn nữa."
+		"description": "Tích hợp đủ tính năng bạn cần: khóa chất lượng, nút tốc độ, hiển thị và dịch tên bình luận, ẩn yếu tố gây xao nhãng và nhiều hơn nữa.",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "Nâng cấp YouTube với khóa chất lượng, nút tốc độ, công cụ bình luận và trang gọn hơn."
 	},
 	"tabs": {
 		"player": {
@@ -342,7 +344,8 @@
 			"link": {
 				"github": "Github",
 				"issue": "Issues",
-				"changelog": "Changelog"
+				"changelog": "Changelog",
+				"sponsor": "Tài trợ"
 			}
 		},
 		"config": {
@@ -379,6 +382,16 @@
 			"tips": {
 				"title": "⚠ Cảnh báo",
 				"fetchHooker": "Một số tính năng (như phụ đề song ngữ, chặn quảng cáo video) dùng viết lại yêu cầu HTTP và có thể gây lỗi trang. Nếu gặp vấn đề khi duyệt, hãy thử tắt tính năng này."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 Nếu bạn thích tiện ích này, hãy cân nhắc tài trợ",
+				"description": "Mỗi khoản tài trợ của bạn đều là động lực quan trọng để tiện ích này tiếp tục được phát triển, sửa lỗi, thích ứng với những thay đổi thường xuyên của YouTube và không ngừng trau chuốt các chi tiết nhỏ."
+			},
+			"buttons": {
+				"sponsor": "Tài trợ ngay",
+				"noThanks": "Không, cảm ơn"
 			}
 		}
 	},

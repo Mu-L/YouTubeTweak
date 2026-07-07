@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - Mejora tu experiencia en YouTube",
 		"name_edge": "YouTubeTweak: Mejora tu experiencia en YouTube",
-		"description": "Incluye todas las funciones que quieres: fijar la calidad, botones de velocidad, mostrar el nombre del comentarista y traducir sus comentarios, ocultar distracciones y más."
+		"description": "Incluye todas las funciones que quieres: fijar la calidad, botones de velocidad, mostrar el nombre del comentarista y traducir sus comentarios, ocultar distracciones y más.",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "Mejora YouTube con bloqueo de calidad, botones de velocidad, comentarios y menos distracciones."
 	},
 	"tabs": {
 		"player": {
@@ -342,7 +344,8 @@
 			"link": {
 				"github": "GitHub",
 				"issue": "Incidencias",
-				"changelog": "Registro de cambios"
+				"changelog": "Registro de cambios",
+				"sponsor": "Patrocinar"
 			}
 		},
 		"config": {
@@ -379,6 +382,16 @@
 			"tips": {
 				"title": "⚠ Advertencia",
 				"fetchHooker": "Algunas funciones (como subtítulos bilingües o bloqueo de anuncios de vídeo) usan reescritura de solicitudes HTTP y pueden causar problemas en la página. Si tienes problemas al navegar, prueba a desactivar esta función."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 Si te gusta esta extensión, considera patrocinarla",
+				"description": "Cada patrocinio es un apoyo importante para que esta extensión siga desarrollándose, corrigiendo problemas, adaptándose a los cambios frecuentes de YouTube y puliendo continuamente sus pequeños detalles."
+			},
+			"buttons": {
+				"sponsor": "Patrocinar ahora",
+				"noThanks": "No, gracias"
 			}
 		}
 	},

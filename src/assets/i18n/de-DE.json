@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - Verbessere dein YouTube-Erlebnis",
 		"name_edge": "YouTubeTweak: Verbessere dein YouTube-Erlebnis",
-		"description": "Vollgepackt mit allen gewünschten Funktionen: Qualität sperren, Geschwindigkeits-Schaltflächen, Kommentarname und Übersetzung anzeigen, Ablenkungen ausblenden und mehr."
+		"description": "Vollgepackt mit allen gewünschten Funktionen: Qualität sperren, Geschwindigkeits-Schaltflächen, Kommentarname und Übersetzung anzeigen, Ablenkungen ausblenden und mehr.",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "YouTube verbessern: Qualität sperren, Tempo-Tasten, Kommentar-Tools und weniger Ablenkung."
 	},
 	"tabs": {
 		"player": {
@@ -342,7 +344,8 @@
 			"link": {
 				"github": "Github",
 				"issue": "Issues",
-				"changelog": "Changelog"
+				"changelog": "Changelog",
+				"sponsor": "Sponsern"
 			}
 		},
 		"config": {
@@ -379,6 +382,16 @@
 			"tips": {
 				"title": "⚠ Warnung",
 				"fetchHooker": "Einige Funktionen (z. B. zweisprachige Untertitel oder das Blockieren von Videoanzeigen) nutzen das Umschreiben von HTTP-Anfragen und können Seitenprobleme verursachen. Wenn beim Surfen Probleme auftreten, deaktiviere diese Funktion bitte."
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 Wenn dir diese Erweiterung gefällt, denke über eine Unterstützung nach",
+				"description": "Jede Unterstützung ist ein wichtiger Antrieb, um diese Erweiterung weiterzuentwickeln, Probleme zu beheben, sie an die häufigen Änderungen von YouTube anzupassen und kleine Detailfunktionen stetig zu verfeinern."
+			},
+			"buttons": {
+				"sponsor": "Jetzt sponsern",
+				"noThanks": "Nein, danke"
 			}
 		}
 	},

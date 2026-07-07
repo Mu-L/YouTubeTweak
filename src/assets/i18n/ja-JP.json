@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - YouTube強化拡張機能、快適な視聴体験を実現",
 		"name_edge": "YouTubeTweak: YouTube強化拡張機能",
-		"description": "画質ロック、再生速度ボタン、コメントのニックネーム表示、自動翻訳、不要な要素の非表示など、YouTubeの体験を徹底強化！"
+		"description": "画質ロック、再生速度ボタン、コメントのニックネーム表示、自動翻訳、不要な要素の非表示など、YouTubeの体験を徹底強化！",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "画質ロック、速度ボタン、コメント機能、不要な要素の非表示で YouTube を快適に。"
 	},
 	"tabs": {
 		"player": {
@@ -342,7 +344,8 @@
 			"link": {
 				"github": "ソースコード",
 				"issue": "不具合報告",
-				"changelog": "更新履歴"
+				"changelog": "更新履歴",
+				"sponsor": "スポンサー"
 			}
 		},
 		"config": {
@@ -379,6 +382,16 @@
 			"tips": {
 				"title": "⚠ 警告",
 				"fetchHooker": "一部の機能（バイリンガル字幕、動画広告のブロックなど）は HTTP リクエストの書き換えを使用するため、ページが不安定になる場合があります。閲覧中に問題が発生したら、この機能をオフにしてみてください。"
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 この拡張機能が気に入ったら、スポンサーを検討してください",
+				"description": "皆さまからのご支援は、この拡張機能の継続的な開発、問題修正、YouTube の頻繁な仕様変更への対応、そして細かな機能の磨き込みを続けるための大切な力になります。"
+			},
+			"buttons": {
+				"sponsor": "今すぐスポンサー",
+				"noThanks": "いいえ、結構です"
 			}
 		}
 	},

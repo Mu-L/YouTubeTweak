@@ -2,7 +2,9 @@
 	"manifest": {
 		"name": "YouTube Tweak - YouTube 增強插件，極致優化 YouTube 使用體驗",
 		"name_edge": "YouTubeTweak: 強化你的 YouTube 體驗",
-		"description": "幾乎包含你想要的所有 YouTube 增強功能：鎖定畫質、倍速按鈕、顯示留言暱稱、自動翻譯留言、隱藏干擾元素等，全面提升使用體驗。"
+		"description": "幾乎包含你想要的所有 YouTube 增強功能：鎖定畫質、倍速按鈕、顯示留言暱稱、自動翻譯留言、隱藏干擾元素等，全面提升使用體驗。",
+		"name_apple": "YouTube Tweak",
+		"description_apple": "增強 YouTube：鎖定畫質、倍速按鈕、留言工具、隱藏干擾元素。"
 	},
 	"tabs": {
 		"player": {
@@ -342,7 +344,8 @@
 			"link": {
 				"github": "源碼倉庫",
 				"issue": "問題反饋",
-				"changelog": "更新日誌"
+				"changelog": "更新日誌",
+				"sponsor": "贊助"
 			}
 		},
 		"config": {
@@ -379,6 +382,16 @@
 			"tips": {
 				"title": "⚠ 警告",
 				"fetchHooker": "部分功能（如雙語字幕、屏蔽影片廣告）使用了 HTTP 請求重寫功能，可能會造成頁面異常！如果瀏覽時遇到問題，請嘗試關閉此功能。"
+			}
+		},
+		"sponsor": {
+			"tips": {
+				"title": "💖 如果喜歡這個擴充功能，請考慮贊助一下吧",
+				"description": "您的每一份贊助，都是此擴充功能持續開發、修復問題、適配 YouTube 頻繁改版，並不斷打磨細節功能的重要動力。"
+			},
+			"buttons": {
+				"sponsor": "立即贊助",
+				"noThanks": "不用，謝謝"
 			}
 		}
 	},
