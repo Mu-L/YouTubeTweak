@@ -56,7 +56,6 @@ export default defineConfig({
 
 	autoIcons: {
 		baseIconPath: "assets/img/logo.svg",
-		sizes: [1024, 512, 256, 128, 64, 32, 16],
 		grayscaleOnDevelopment: false,
 		sizes: [16, 32, 64, 128, 256, 512, 1024],
 	},
