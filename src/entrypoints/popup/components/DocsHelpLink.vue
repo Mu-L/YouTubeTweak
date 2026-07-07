@@ -30,7 +30,7 @@ function openDocs() {
 		? "docs/zh-cn/FUNCTIONS.md"
 		: locale.startsWith("ja")
 			? "docs/ja/FUNCTIONS.md"
-			: "docs/en/FUNCTIONS.md";
+			: "FUNCTIONS.md";
 	const url = `https://github.com/xlch88/YouTubeTweak/blob/main/${docsPath}#${props.anchor}`;
 
 	browser.tabs.create({ url }).catch(() => {

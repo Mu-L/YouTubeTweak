@@ -6,7 +6,7 @@ const BADGE_TEXT = "new";
 const BADGE_BACKGROUND_COLOR = "#ff9800";
 const BADGE_TEXT_COLOR = "#ffffff";
 
-declare const __APP_INFO__: { version: string; build: string };
+declare const __APP_INFO__: { version: string; build: string; commit: { id: string; url: string } };
 
 function getActionApi() {
 	return browser.action || browser.browserAction;

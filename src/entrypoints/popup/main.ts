@@ -8,7 +8,7 @@ import { initI18n } from "./util/i18n";
 import { configPlugin } from "./util/config";
 
 declare global {
-	const __APP_INFO__: { version: string; build: string };
+	const __APP_INFO__: { version: string; build: string; commit: { id: string; url: string } };
 	interface Window {
 		__APP_INFO__: typeof __APP_INFO__;
 		browser: typeof browser;
