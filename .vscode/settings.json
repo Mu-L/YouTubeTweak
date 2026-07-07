@@ -6,6 +6,9 @@
 	"i18n-ally.displayLanguage": "zh-CN",
 	"i18n-ally.indent": 1,
 	"i18n-ally.tabStyle": "tab",
+	"swift.SDK": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+	"swift.swiftEnvironmentVariables": {},
+	"swift.sourcekit-lsp.serverArguments": ["-Xswiftc", "-parse-as-library"],
 	"files.eol": "\r\n",
 	"[json]": {
 		"editor.insertSpaces": false,
@@ -17,9 +20,7 @@
 	},
 	"files.exclude": {
 		"**/.DS_Store": true,
-		"apple-app/Build": true,
-		"apple-app/DerivedData": true,
-		"apple-app/DerivedData-iOS": true,
+
 		"apple-app/YouTubeTweakExtension/dist": true
 	},
 	"search.exclude": {

@@ -40,6 +40,10 @@ web-ext.config.ts
 *.sw?
 
 # Apple app / Xcode local build artifacts
+buildServer.json
+build/local-dev.yttweak.com.key
+build/local-dev.yttweak.com.pem
+apple-app/.ios-device-id
 apple-app/.vscode/
 apple-app/.DS_Store
 apple-app/**/.DS_Store

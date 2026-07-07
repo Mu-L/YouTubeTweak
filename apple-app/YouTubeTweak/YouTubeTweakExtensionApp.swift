@@ -9,8 +9,36 @@ import UIKit
 #endif
 
 private let safariExtensionIdentifier = "me.dark495.yttweak.Extension"
-private let appVersion = "1.1.9"
-private let buildNumber = "1109"
+private let appVersion = bundleBuildInfoValue("CFBundleShortVersionString", fallback: "unknown")
+private let buildNumber = bundleBuildInfoValue("CFBundleVersion", fallback: "unknown")
+private let githubRepositoryURL = URL(string: "https://github.com/xlch88/YouTubeTweak")!
+private let appBuildDate = bundleBuildInfoValue("YTTweakBuildDate", fallback: "unknown")
+private let appCommitID = bundleBuildInfoValue("YTTweakCommitID", fallback: "unknown")
+private let appCommitURL = URL(
+    string: bundleBuildInfoValue("YTTweakCommitURL", fallback: githubRepositoryURL.absoluteString)
+) ?? githubRepositoryURL
+
+private func bundleBuildInfoValue(_ key: String, fallback: String) -> String {
+    guard let value = Bundle.main.object(forInfoDictionaryKey: key) as? String else {
+        return fallback
+    }
+
+    let trimmedValue = value.trimmingCharacters(in: .whitespacesAndNewlines)
+    if trimmedValue.isEmpty || trimmedValue.contains("$(") {
+        return fallback
+    }
+
+    return trimmedValue
+}
+
+private enum AppDebugLog {
+    static func write(_ message: String) {
+        let line = "[YouTubeTweak] \(message)"
+        if let data = "\(line)\n".data(using: .utf8) {
+            FileHandle.standardError.write(data)
+        }
+    }
+}
 
 private enum L10n {
     private static let supportedLanguages = [
@@ -169,6 +197,11 @@ private struct YouTubeTweakHomeView: View {
 
     var body: some View {
         content
+            .onAppear {
+                #if os(iOS)
+                AppDebugLog.write("iOS home view appeared.")
+                #endif
+            }
             #if DEBUG
             .overlay(alignment: .topTrailing) {
                 DebugLanguagePicker(selectedLanguageCode: $selectedLanguageCode)
@@ -205,6 +238,11 @@ private struct YouTubeTweakHomeView: View {
     }
 
     private func openSafariExtensionSettings() {
+        if isOpeningSafari {
+            AppDebugLog.write("Ignored enable extension tap because a settings open request is already running.")
+            return
+        }
+
         isOpeningSafari = true
         statusText = nil
 
@@ -226,13 +264,51 @@ private struct YouTubeTweakHomeView: View {
             }
         }
         #else
-        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-            openURL(settingsURL)
+        AppDebugLog.write("iOS enable extension button tapped.")
+        let settingsURLs = [
+            "App-prefs:SAFARI&path=WEB_EXTENSIONS",
+            "prefs:root=SAFARI&path=WEB_EXTENSIONS",
+            UIApplication.openSettingsURLString,
+        ]
+        openFirstAvailableURL(settingsURLs, index: 0, label: "iOS Safari extension settings") { _ in
+            isOpeningSafari = false
+            statusText = L10n.t("status.openIOSSettings", language: activeLanguageCode)
         }
-        isOpeningSafari = false
-        statusText = L10n.t("status.openIOSSettings", language: activeLanguageCode)
         #endif
     }
+
+    #if os(iOS)
+    private func openFirstAvailableURL(
+        _ urlStrings: [String],
+        index: Int,
+        label: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard index < urlStrings.count else {
+            AppDebugLog.write("Opening \(label) failed for all candidate URLs.")
+            completion(false)
+            return
+        }
+
+        guard let url = URL(string: urlStrings[index]) else {
+            AppDebugLog.write("Skipping invalid \(label) URL: \(urlStrings[index])")
+            openFirstAvailableURL(urlStrings, index: index + 1, label: label, completion: completion)
+            return
+        }
+
+        AppDebugLog.write("Opening \(label) URL: \(url.absoluteString)")
+        UIApplication.shared.open(url, options: [:]) { success in
+            DispatchQueue.main.async {
+                AppDebugLog.write("Opening \(label) URL completed: \(success ? "success" : "failed")")
+                if success {
+                    completion(true)
+                } else {
+                    openFirstAvailableURL(urlStrings, index: index + 1, label: label, completion: completion)
+                }
+            }
+        }
+    }
+    #endif
 }
 
 #if DEBUG
@@ -307,9 +383,7 @@ private struct MacInstallView: View {
 
                 FooterLinksView(languageCode: languageCode)
 
-                Text("YouTubeTweak V\(appVersion)(\(buildNumber))")
-                    .font(.system(size: 14))
-                    .foregroundStyle(Color(red: 0.46, green: 0.46, blue: 0.46))
+                BuildInfoFooterView()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -330,58 +404,107 @@ private struct IOSInstallView: View {
     let openSafariExtensionSettings: () -> Void
 
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer(minLength: 180)
+        GeometryReader { geometry in
+            let availableWidth = geometry.size.width - geometry.safeAreaInsets.leading - geometry.safeAreaInsets.trailing
+            let availableHeight = geometry.size.height - geometry.safeAreaInsets.top - geometry.safeAreaInsets.bottom
+            let isWideLayout = availableWidth >= 680
+            let edgePadding = min(max(availableWidth * 0.045, 24), 52)
+            let verticalPadding = min(max(availableHeight * 0.06, 28), 56)
+            let iconSize = min(max(min(availableWidth, availableHeight) * 0.18, 128), 160)
+            let wideTextWidth = min(max(availableWidth * 0.25, 360), 430)
+            let wideColumnSpacing = min(max(availableWidth * 0.028, 28), 42)
 
-            ExtensionIconView(size: 128, cornerRadius: 22)
-                .padding(.bottom, 74)
+            ZStack {
+                Color.white
+                    .ignoresSafeArea()
+
+                if isWideLayout {
+                    HStack(alignment: .center, spacing: wideColumnSpacing) {
+                        ExtensionIconView(size: iconSize, cornerRadius: 24)
+
+                        installContent
+                            .frame(width: wideTextWidth, alignment: .leading)
+                    }
+                    .fixedSize(horizontal: true, vertical: true)
+                    .position(
+                        x: geometry.size.width / 2,
+                        y: geometry.size.height / 2
+                    )
+                } else {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        Group {
+                            VStack(alignment: .leading, spacing: 28) {
+                                ExtensionIconView(size: iconSize, cornerRadius: 24)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                installContent
+                            }
+                        }
+                        .padding(.horizontal, edgePadding)
+                        .padding(.vertical, verticalPadding)
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: availableHeight, alignment: .center)
+                    }
+                    .scrollBounceBehavior(.basedOnSize)
+                }
+            }
+        }
+    }
+
+    private var installContent: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            Text("YouTubeTweak")
+                .font(.system(size: 30, weight: .semibold))
+
+            VStack(alignment: .leading, spacing: 8) {
+                instructionText("ios.instruction.enable")
+                instructionText("ios.instruction.authorize")
+                instructionText("ios.instruction.help")
+            }
+            .font(.system(size: 15))
+            .foregroundStyle(Color(red: 0.42, green: 0.42, blue: 0.42))
+            .lineSpacing(4)
+            .multilineTextAlignment(.leading)
 
             Button(L10n.t("button.enableExtension", language: languageCode)) {
                 openSafariExtensionSettings()
             }
             .buttonStyle(InstallButtonStyle())
             .disabled(isOpeningSafari)
-            .padding(.horizontal, 34)
-            .padding(.bottom, 36)
-
-            VStack(spacing: 8) {
-                Text(L10n.t("ios.instruction.enable", language: languageCode))
-                Text(L10n.t("ios.instruction.authorize", language: languageCode))
-                Text(L10n.t("ios.instruction.help", language: languageCode))
-            }
-            .font(.system(size: 16, weight: .regular))
-            .foregroundStyle(Color(red: 0.46, green: 0.46, blue: 0.46))
-            .lineSpacing(4)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal, 34)
-            .padding(.bottom, 42)
+            .frame(maxWidth: .infinity)
+            .padding(.top, 4)
 
             UnderlinedTextButton(L10n.t("button.openExtensionSettings", language: languageCode)) {
                 openSafariExtensionSettings()
             }
             .disabled(isOpeningSafari)
 
-            if let statusText {
-                Text(statusText)
-                    .font(.system(size: 12))
-                    .foregroundStyle(.red)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 34)
-                    .padding(.top, 18)
-            }
-
-            Spacer(minLength: 0)
+            Text(statusText ?? L10n.t("status.openIOSSettings", language: languageCode))
+                .font(.system(size: 12))
+                .foregroundStyle(.red)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, minHeight: 34, alignment: .topLeading)
+                .opacity(statusText == nil ? 0 : 1)
+                .transaction { transaction in
+                    transaction.animation = nil
+                }
 
             FooterLinksView(languageCode: languageCode)
-                .padding(.bottom, 22)
+                .padding(.top, 16)
 
-            Text("YouTubeTweak V\(appVersion)(\(buildNumber))")
-                .font(.system(size: 16))
-                .foregroundStyle(Color(red: 0.46, green: 0.46, blue: 0.46))
-                .padding(.bottom, 70)
+            BuildInfoFooterView()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func instructionText(_ key: String) -> some View {
+        Text(L10n.t(key, language: languageCode))
+            .lineLimit(nil)
+            .fixedSize(horizontal: false, vertical: true)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 #endif
@@ -621,15 +744,64 @@ private struct FooterLinksView: View {
         HStack(spacing: 14) {
             FooterLink(L10n.t("footer.github", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak")
             FooterLink(L10n.t("footer.reportIssue", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak/issues")
-            FooterLink(L10n.t("footer.functions", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak/blob/main/FUNCTIONS.md")
-            FooterLink(L10n.t("footer.changelog", language: languageCode), url: "https://github.com/xlch88/YouTubeTweak/blob/main/CHANGELOG.md")
+            FooterLink(L10n.t("footer.functions", language: languageCode), url: localizedGitHubDocsURL(filename: "FUNCTIONS.md"))
+            FooterLink(L10n.t("footer.changelog", language: languageCode), url: localizedGitHubDocsURL(filename: "CHANGELOG.md"))
             FooterLink(L10n.t("footer.website", language: languageCode), url: "https://yttweak.com")
         }
+        .fixedSize(horizontal: false, vertical: true)
+    }
+
+    private func localizedGitHubDocsURL(filename: String) -> String {
+        let normalizedLanguageCode = languageCode ?? L10n.defaultLanguageCode
+        let docsPath: String
+
+        if normalizedLanguageCode.hasPrefix("zh") {
+            docsPath = "docs/zh-cn/\(filename)"
+        } else if normalizedLanguageCode.hasPrefix("ja") {
+            docsPath = "docs/ja/\(filename)"
+        } else {
+            docsPath = filename
+        }
+
+        return "https://github.com/xlch88/YouTubeTweak/blob/main/\(docsPath)"
+    }
+}
+
+private struct BuildInfoFooterView: View {
+    #if os(macOS)
+    @Environment(\.openURL) private var openURL
+    #endif
+
+    private var title: String {
+        "YouTubeTweak V\(appVersion) (\(buildNumber))\nBuild at \(appBuildDate) · \(appCommitID)"
+    }
+
+    var body: some View {
+        Button {
+            #if os(macOS)
+            openURL(appCommitURL)
+            #else
+            AppDebugLog.write("Build info link tapped: \(appCommitURL.absoluteString)")
+            UIApplication.shared.open(appCommitURL, options: [:]) { success in
+                AppDebugLog.write("Opening build info link completed: \(success ? "success" : "failed")")
+            }
+            #endif
+        } label: {
+            Text(title)
+                .font(.system(size: 14))
+                .foregroundStyle(Color(red: 0.46, green: 0.46, blue: 0.46))
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .buttonStyle(.plain)
     }
 }
 
 private struct FooterLink: View {
+    #if os(macOS)
     @Environment(\.openURL) private var openURL
+    #endif
     let title: String
     let url: String
 
@@ -641,7 +813,18 @@ private struct FooterLink: View {
     var body: some View {
         Button(title) {
             if let url = URL(string: url) {
+                #if os(macOS)
                 openURL(url)
+                #else
+                AppDebugLog.write("Footer link tapped: \(title) -> \(url.absoluteString)")
+                UIApplication.shared.open(url, options: [:]) { success in
+                    AppDebugLog.write("Opening footer link completed: \(success ? "success" : "failed")")
+                }
+                #endif
+            } else {
+                #if os(iOS)
+                AppDebugLog.write("Invalid footer link URL: \(url)")
+                #endif
             }
         }
         .buttonStyle(.plain)

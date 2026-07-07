@@ -12,6 +12,7 @@
 		BB0000000000000000000007 /* YouTubeTweakExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000024 /* YouTubeTweakExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EE0000000000000000000001 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = EE0000000000000000000010 /* assets */; };
 		FF0000000000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0000000000000000000010 /* Assets.xcassets */; };
+		FF0000000000000000000002 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0000000000000000000011 /* LaunchScreen.storyboard */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +49,10 @@
 		AA0000000000000000000025 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		CC0000000000000000000011 /* YouTubeTweak.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouTubeTweak.entitlements; sourceTree = "<group>"; };
 		CC0000000000000000000012 /* YouTubeTweakExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouTubeTweakExtension.entitlements; sourceTree = "<group>"; };
-		DD0000000000000000000011 /* .output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ../.output; sourceTree = SOURCE_ROOT; };
+		DD0000000000000000000011 /* ../.output */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ../.output; sourceTree = SOURCE_ROOT; };
 		EE0000000000000000000010 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		FF0000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF0000000000000000000011 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				AA0000000000000000000011 /* YouTubeTweakExtensionApp.swift */,
 				AA0000000000000000000012 /* Info.plist */,
+				FF0000000000000000000011 /* LaunchScreen.storyboard */,
 				FF0000000000000000000010 /* Assets.xcassets */,
 				EE0000000000000000000010 /* assets */,
 				CC0000000000000000000011 /* YouTubeTweak.entitlements */,
@@ -98,7 +101,7 @@
 			children = (
 				AA0000000000000000000020 /* Info.plist */,
 				CC0000000000000000000012 /* YouTubeTweakExtension.entitlements */,
-				DD0000000000000000000011 /* .output */,
+				DD0000000000000000000011 /* ../.output */,
 				AA0000000000000000000025 /* SafariWebExtensionHandler.swift */,
 			);
 			path = YouTubeTweakExtension;
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF0000000000000000000001 /* Assets.xcassets in Resources */,
+				FF0000000000000000000002 /* LaunchScreen.storyboard in Resources */,
 				EE0000000000000000000001 /* assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +233,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -euo pipefail\nOUTPUT_NAME=\"safari-mv2\"\nif [ \"${CONFIGURATION:-}\" = \"Debug\" ]; then\n    OUTPUT_NAME=\"safari-mv2-dev\"\nfi\nDIST_DIR=\"${SRCROOT}/../.output/${OUTPUT_NAME}\"\nRESOURCE_DIR=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nif [ ! -d \"$DIST_DIR\" ]; then\n    echo \"error: Missing Safari extension output: $DIST_DIR\"\n    echo \"Run npm run dev:safari for Debug, or npm run build:safari for Release.\"\n    exit 1\nfi\nmkdir -p \"$RESOURCE_DIR\"\nfor item in manifest.json popup.html background.js chunks content-scripts icons _locales assets; do\n    rm -rf \"$RESOURCE_DIR/$item\"\ndone\n/usr/bin/rsync -a --exclude='.DS_Store' \"$DIST_DIR/\" \"$RESOURCE_DIR/\"\n";
+			shellScript = "set -euo pipefail\nOUTPUT_NAME=\"safari-mv2\"\nif [ \"${CONFIGURATION:-}\" = \"Debug\" ] && { [ \"${PLATFORM_NAME:-}\" = \"macosx\" ] || [ \"${PLATFORM_NAME:-}\" = \"iphoneos\" ]; }; then\n    OUTPUT_NAME=\"safari-mv2-dev\"\nfi\nDIST_DIR=\"${SRCROOT}/../.output/${OUTPUT_NAME}\"\nRESOURCE_DIR=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nif [ ! -d \"$DIST_DIR\" ]; then\n    echo \"error: Missing Safari extension output: $DIST_DIR\"\n    echo \"Run npm run build:safari, or npm run dev:safari for Debug hot reload.\"\n    exit 1\nfi\nmkdir -p \"$RESOURCE_DIR\"\nfor item in manifest.json popup.html background.js chunks content-scripts icons _locales assets; do\n    rm -rf \"$RESOURCE_DIR/$item\"\ndone\n/usr/bin/rsync -a --exclude='.DS_Store' \"$DIST_DIR/\" \"$RESOURCE_DIR/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -264,14 +268,15 @@
 		AA0000000000000000000061 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = AppIconDebug;
-				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
+					CODE_SIGN_ENTITLEMENTS = "";
+					"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
+					CODE_SIGN_IDENTITY = "Apple Development";
+					"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+					CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1109;
-				DEVELOPMENT_TEAM = JTV6VBBZS9;
+				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweak/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = YouTubeTweak;
@@ -291,21 +296,22 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		AA0000000000000000000062 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1109;
-				DEVELOPMENT_TEAM = JTV6VBBZS9;
+				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweak/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = YouTubeTweak;
@@ -325,19 +331,20 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
 		AA0000000000000000000071 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JTV6VBBZS9;
+					CODE_SIGN_ENTITLEMENTS = "";
+					"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
+					CODE_SIGN_IDENTITY = "Apple Development";
+					"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+					CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1109;
+				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweakExtension/Info.plist;
@@ -348,7 +355,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dark495.yttweak.Extension;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,7 +364,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -367,9 +374,10 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JTV6VBBZS9;
+				CURRENT_PROJECT_VERSION = 1109;
+				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = YouTubeTweakExtension/Info.plist;
@@ -380,7 +388,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = me.dark495.yttweak.Extension;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -389,7 +397,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -399,13 +407,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUILD_DIR = "$(SRCROOT)/Build/Products";
 				BUILD_ROOT = "$(SRCROOT)/Build";
-				CLANG_MODULE_CACHE_PATH = "$(SRCROOT)/Build/ModuleCache.noindex";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_MODULE_CACHE_PATH = "$(SRCROOT)/Build/ModuleCache.noindex";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -432,6 +440,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DSTROOT = "$(SRCROOT)/Build/Install";
+				ENABLE_DEBUG_DYLIB = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -469,13 +478,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUILD_DIR = "$(SRCROOT)/Build/Products";
 				BUILD_ROOT = "$(SRCROOT)/Build";
-				CLANG_MODULE_CACHE_PATH = "$(SRCROOT)/Build/ModuleCache.noindex";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_MODULE_CACHE_PATH = "$(SRCROOT)/Build/ModuleCache.noindex";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
