@@ -8,7 +8,7 @@ import AppKit
 import UIKit
 #endif
 
-private let safariExtensionIdentifier = "me.dark495.yttweak.Extension"
+private let safariExtensionIdentifier = "com.yttweak.appleapp.Extension"
 private let appVersion = bundleBuildInfoValue("CFBundleShortVersionString", fallback: "unknown")
 private let buildNumber = bundleBuildInfoValue("CFBundleVersion", fallback: "unknown")
 private let githubRepositoryURL = URL(string: "https://github.com/xlch88/YouTubeTweak")!

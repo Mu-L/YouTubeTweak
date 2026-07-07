@@ -18,22 +18,22 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>App-prefs</string>
+		<string>prefs</string>
+	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>YTTweakBuildDate</key>
 	<string>$(YTTWEAK_BUILD_DATE)</string>
 	<key>YTTweakCommitID</key>
 	<string>$(YTTWEAK_COMMIT_ID)</string>
 	<key>YTTweakCommitURL</key>
 	<string>$(YTTWEAK_COMMIT_URL)</string>
-	<key>LSMinimumSystemVersion</key>
-	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>App-prefs</string>
-		<string>prefs</string>
-	</array>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 </dict>
 </plist>

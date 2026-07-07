@@ -109,8 +109,11 @@ export default defineConfig({
 			sourcemap: "inline",
 			minify: false,
 		},
-		server:
-			useLocalDevHttps && env.command === "serve"
+		server: {
+			cors: {
+				origin: [/^safari-web-extension:\/\//, /^chrome-extension:\/\//, /^moz-extension:\/\//],
+			},
+			...(useLocalDevHttps && env.command === "serve"
 				? {
 						https: {
 							cert: fs.readFileSync(localDevCertPath),
@@ -121,7 +124,8 @@ export default defineConfig({
 							host: localDevDomain,
 						},
 					}
-				: undefined,
+				: {}),
+		},
 		define: {
 			__APP_INFO__: JSON.stringify({
 				...getBuildInfo(),

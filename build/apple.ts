@@ -1,5 +1,5 @@
 import { execFileSync, spawn, spawnSync } from "node:child_process";
-import { chmodSync, existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -21,7 +21,7 @@ const iosDerivedDataPath = "apple-app/DerivedData-iOS";
 const macDerivedDataPath = "apple-app/DerivedData";
 const iosAppPath = "apple-app/Build/Products/Debug-iphoneos/YouTubeTweak.app";
 const macProductDir = "apple-app/Build/Products";
-const bundleId = "me.dark495.yttweak";
+const bundleId = "com.yttweak.appleapp";
 const deviceIdCachePath = "apple-app/.ios-device-id";
 const env = {
 	...process.env,
@@ -230,7 +230,8 @@ function syncBuildServer() {
 const canvasSize = 1024;
 const bodySize = 824;
 const bodyOffset = Math.round((canvasSize - bodySize) / 2);
-const logoSize = 620;
+const macLogoSize = 620;
+const iosLogoSize = Math.round((canvasSize * macLogoSize) / bodySize);
 const outputSizes = [16, 32, 64, 128, 256, 512, 1024];
 const macAppIconEntries = [
 	{ filename: "mac-16.png", idiom: "mac", size: "16x16", scale: "1x", pixels: 16 },
@@ -289,16 +290,16 @@ function iconBackgroundSvg() {
 </svg>`);
 }
 
-async function loadCenteredLogo(sourcePath: string) {
+async function loadCenteredLogo(sourcePath: string, size: number) {
 	const buffer = await sharp(sourcePath)
 		.ensureAlpha()
 		.trim({ background: { r: 0, g: 0, b: 0, alpha: 0 }, threshold: 8 })
-		.resize({ width: logoSize, height: logoSize, fit: "inside", withoutEnlargement: false })
+		.resize({ width: size, height: size, fit: "inside", withoutEnlargement: false })
 		.png()
 		.toBuffer();
 	const metadata = await sharp(buffer).metadata();
-	const width = metadata.width || logoSize;
-	const height = metadata.height || logoSize;
+	const width = metadata.width || size;
+	const height = metadata.height || size;
 	return {
 		buffer,
 		left: Math.round((canvasSize - width) / 2),
@@ -306,8 +307,8 @@ async function loadCenteredLogo(sourcePath: string) {
 	};
 }
 
-async function makeMasterIcon(sourcePath: string, background: sharp.Color, transparentBackground = false) {
-	const logo = await loadCenteredLogo(sourcePath);
+async function makeMasterIcon(sourcePath: string, background: sharp.Color, size: number, transparentBackground = false) {
+	const logo = await loadCenteredLogo(sourcePath, size);
 	return sharp({
 		create: {
 			width: canvasSize,
@@ -363,8 +364,8 @@ async function writeAppIconSet(variant: (typeof iconVariants)[number], macMaster
 async function writeIconVariant(variant: (typeof iconVariants)[number]) {
 	const sourcePath = abs(path.join(variant.sourceDir, "1024.png"));
 	const outputDir = abs(variant.outputDir);
-	const macMaster = await makeMasterIcon(sourcePath, { r: 0, g: 0, b: 0, alpha: 0 }, true);
-	const iosMaster = await makeMasterIcon(sourcePath, { r: 255, g: 255, b: 255, alpha: 1 });
+	const macMaster = await makeMasterIcon(sourcePath, { r: 0, g: 0, b: 0, alpha: 0 }, macLogoSize, true);
+	const iosMaster = await makeMasterIcon(sourcePath, { r: 255, g: 255, b: 255, alpha: 1 }, iosLogoSize);
 	await mkdir(outputDir, { recursive: true });
 	await Promise.all(
 		outputSizes.map((size) =>
@@ -376,7 +377,7 @@ async function writeIconVariant(variant: (typeof iconVariants)[number]) {
 	);
 	await writeAppIconSet(variant, macMaster, iosMaster);
 	console.log(
-		`generated ${variant.outputDir} from ${variant.sourceDir} (body ${bodySize}/${canvasSize}, logo ${logoSize}/${canvasSize})`,
+		`generated ${variant.outputDir} from ${variant.sourceDir} (body ${bodySize}/${canvasSize}, mac logo ${macLogoSize}/${canvasSize}, ios logo ${iosLogoSize}/${canvasSize})`,
 	);
 }
 
@@ -546,23 +547,8 @@ function macBuildArgs(configuration: Configuration) {
 	];
 }
 
-function macExecutablePaths(configuration: Configuration) {
-	const productDir = `${macProductDir}/${configuration}`;
-	return [
-		`${productDir}/YouTubeTweak.app/Contents/MacOS/YouTubeTweak`,
-		`${productDir}/YouTubeTweak.app/Contents/PlugIns/YouTubeTweakExtension.appex/Contents/MacOS/YouTubeTweakExtension`,
-		`${productDir}/YouTubeTweakExtension.appex/Contents/MacOS/YouTubeTweakExtension`,
-	];
-}
-
-function fixMacExecutableModes(configuration: Configuration) {
-	for (const executablePath of macExecutablePaths(configuration)) {
-		if (existsSync(executablePath)) chmodSync(executablePath, 0o770);
-	}
-}
-
 function stopMacAppIfRunning(configuration: Configuration) {
-	const relativeAppExecutablePath = macExecutablePaths(configuration)[0];
+	const relativeAppExecutablePath = `${macProductDir}/${configuration}/YouTubeTweak.app/Contents/MacOS/YouTubeTweak`;
 	const absoluteAppExecutablePath = abs(relativeAppExecutablePath);
 	const pgrepResult = spawnSync("pgrep", ["-x", "YouTubeTweak"], { env, encoding: "utf8" });
 	if (pgrepResult.status !== 0 || !pgrepResult.stdout) return;
@@ -595,7 +581,6 @@ async function buildMac(configuration: Configuration) {
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs(configuration), true);
-	fixMacExecutableModes(configuration);
 }
 
 async function devMac() {
@@ -603,7 +588,6 @@ async function devMac() {
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs("Debug"), true);
-	fixMacExecutableModes("Debug");
 	run("/usr/bin/pluginkit", ["-a", `${macProductDir}/Debug/YouTubeTweak.app/Contents/PlugIns/YouTubeTweakExtension.appex`]);
 	stopMacAppIfRunning("Debug");
 	run("/usr/bin/open", ["-n", "-W", `${macProductDir}/Debug/YouTubeTweak.app`], true);

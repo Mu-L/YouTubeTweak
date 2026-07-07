@@ -269,11 +269,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
-					CODE_SIGN_ENTITLEMENTS = "";
-					"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
-					CODE_SIGN_IDENTITY = "Apple Development";
-					"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-					CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1109;
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
@@ -290,7 +289,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.1.9;
 				OTHER_SWIFT_FLAGS = "$(inherited) -parse-as-library";
-				PRODUCT_BUNDLE_IDENTIFIER = me.dark495.yttweak;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yttweak.appleapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -308,7 +307,6 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweak/YouTubeTweak.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1109;
@@ -326,7 +324,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.1.9;
 				OTHER_SWIFT_FLAGS = "$(inherited) -parse-as-library";
-				PRODUCT_BUNDLE_IDENTIFIER = me.dark495.yttweak;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yttweak.appleapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -340,11 +338,10 @@
 		AA0000000000000000000071 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-					CODE_SIGN_ENTITLEMENTS = "";
-					"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
-					CODE_SIGN_IDENTITY = "Apple Development";
-					"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-					CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1109;
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -358,7 +355,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.1.9;
-				PRODUCT_BUNDLE_IDENTIFIER = me.dark495.yttweak.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yttweak.appleapp.Extension;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -376,7 +373,6 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = YouTubeTweakExtension/YouTubeTweakExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1109;
 				DEVELOPMENT_TEAM = 3XVDQP2MS6;
@@ -391,7 +387,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.1.9;
-				PRODUCT_BUNDLE_IDENTIFIER = me.dark495.yttweak.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yttweak.appleapp.Extension;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
