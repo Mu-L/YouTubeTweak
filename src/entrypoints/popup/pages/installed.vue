@@ -206,5 +206,12 @@ markChangelogVersionRead().catch(() => {});
 			right: 20px;
 		}
 	}
+
+	&.edge-user-agent {
+		#arrow {
+			left: auto;
+			right: 85px;
+		}
+	}
 }
 </style>
