@@ -607,9 +607,16 @@ async function devMac() {
 	await runIcons();
 	fixXcodeScriptModes();
 	run("xcodebuild", macBuildArgs("Debug"), true);
-	run("/usr/bin/pluginkit", ["-a", `${macProductDir}/Debug/YouTubeTweak.app/Contents/PlugIns/YouTubeTweakExtension.appex`]);
+	const macAppPath = `${macProductDir}/Debug/YouTubeTweak.app`;
+	run("/System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister", [
+		"-f",
+		"-R",
+		"-trusted",
+		macAppPath,
+	]);
+	run("/usr/bin/pluginkit", ["-a", `${macAppPath}/Contents/PlugIns/YouTubeTweakExtension.appex`]);
 	stopMacAppIfRunning("Debug");
-	run("/usr/bin/open", ["-n", "-W", `${macProductDir}/Debug/YouTubeTweak.app`], true);
+	run("/usr/bin/open", ["-n", "-W", macAppPath], true);
 }
 
 function watchPaths() {
