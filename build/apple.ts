@@ -5,6 +5,11 @@ import path from "node:path";
 import process from "node:process";
 import sharp from "sharp";
 
+if (process.platform !== "darwin") {
+	console.error(`build/apple.ts only supports macOS (darwin); current platform is ${process.platform}. Refusing to run.`);
+	process.exit(1);
+}
+
 type Configuration = "Debug" | "Release";
 type Device = {
 	name: string;
@@ -307,7 +312,12 @@ async function loadCenteredLogo(sourcePath: string, size: number) {
 	};
 }
 
-async function makeMasterIcon(sourcePath: string, background: sharp.Color, size: number, transparentBackground = false) {
+async function makeMasterIcon(
+	sourcePath: string,
+	background: { r: number; g: number; b: number; alpha: number },
+	size: number,
+	transparentBackground = false,
+) {
 	const logo = await loadCenteredLogo(sourcePath, size);
 	return sharp({
 		create: {
