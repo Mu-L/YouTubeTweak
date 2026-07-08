@@ -282,22 +282,24 @@ const speedSliderWheelStepSelectValue = computed({
 
 <style lang="scss" scoped>
 .enabled-speed-buttons {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
 	gap: 5px;
+	justify-content: flex-start;
 	margin-top: 5px;
+	width: 100%;
 
 	label {
 		display: flex;
 		align-items: center;
 		flex-wrap: nowrap;
 		position: relative;
-		width: 72px;
 		border: 1px dashed #00000040;
 		border-radius: 13px;
-		padding: 0px 22px 0px 7px;
-		gap: 3px;
+		padding: 0px 7px 0px 7px;
+		gap: 1px;
+		min-width: 0;
+		width: 100%;
 
 		span {
 			width: 100%;

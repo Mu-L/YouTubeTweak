@@ -65,8 +65,9 @@ main {
 	margin-top: 40px;
 	height: 100%;
 	width: 100%;
-	overflow-y: auto;
+	overflow-y: overlay;
 	overflow-x: hidden;
+	scrollbar-gutter: stable;
 
 	.slide-fade-enter-active,
 	.slide-fade-leave-active {

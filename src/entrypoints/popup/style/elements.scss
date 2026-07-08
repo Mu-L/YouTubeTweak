@@ -31,11 +31,19 @@
 .card {
 	background: #fff;
 	margin: 10px;
+	margin-right: 2px;
 	border-radius: 5px;
 	padding: 10px;
 	box-shadow:
-		0 7px 14px 0 rgba(65, 69, 88, 0.1),
-		0 3px 6px 0 rgba(0, 0, 0, 0.07);
+		0 2px 2px 0 rgba(65, 69, 88, 0.1),
+		0 3px 2px 0 rgba(0, 0, 0, 0.07);
+
+	// fuck ios safari
+	@supports (-webkit-touch-callout: none) {
+		@media (hover: none) and (pointer: coarse) and (max-width: 932px) {
+			margin-right: 10px;
+		}
+	}
 
 	.card-title {
 		display: flex;
