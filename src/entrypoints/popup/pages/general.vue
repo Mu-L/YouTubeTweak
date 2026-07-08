@@ -40,10 +40,12 @@
 			<div class="card-body about">
 				<img src="@/assets/img/logo.svg" alt="logo" />
 				<p class="title">YouTube Tweak</p>
-				<p class="version" :title="$t('general.update.tips.2')" @click="requestUpdateCheck()">
-					v{{ APP_INFO.version }}<br />
-					<span>Build at {{ APP_INFO.build }}</span
-					><br />
+				<p class="version">
+					<span :title="$t('general.update.tips.2')" @click="requestUpdateCheck()">
+						v{{ APP_INFO.version }}<br />
+						Build at {{ APP_INFO.build }}
+					</span>
+					<br />
 					<a class="commit-link" :href="APP_INFO.commit.url" target="_blank" rel="noopener noreferrer" @click.stop>
 						Commit {{ APP_INFO.commit.id }}
 					</a>
@@ -85,15 +87,19 @@
 			</div>
 		</div>
 
-		<div class="card">
+		<div class="card config-card">
 			<div class="card-title">
 				<span>{{ $t("general.config.title") }}</span>
 				<DocsHelpLink anchor="general-config" />
 			</div>
 			<div class="card-body config">
-				<button class="btn" @click="showConfigModal('export')">{{ $t("general.config.button.exportConfig") }} ⤴️</button>
-				<button class="btn" @click="showConfigModal('import')">{{ $t("general.config.button.importConfig") }} ⤵️</button>
-				<button class="btn" @click="resetConfig()">{{ $t("general.config.button.resetConfig") }} 🔄</button>
+				<button class="btn" @click="showConfigModal('export')">
+					<span>⤴️</span>{{ $t("general.config.button.exportConfig") }}
+				</button>
+				<button class="btn" @click="showConfigModal('import')">
+					<span>⤵️</span>{{ $t("general.config.button.importConfig") }}
+				</button>
+				<button class="btn" @click="resetConfig()"><span>🔄</span>{{ $t("general.config.button.resetConfig") }}</button>
 			</div>
 		</div>
 
@@ -724,16 +730,19 @@ if (pageParams.get("changelog") === "1") {
 		&.version {
 			font-size: 15px;
 			margin-bottom: 20px;
-			cursor: pointer;
 
 			span {
+				cursor: pointer;
 				color: rgba(#000, 0.5);
 			}
 
 			.commit-link {
-				color: rgba(#000, 0.62);
-				text-decoration: underline;
-				text-underline-offset: 2px;
+				color: rgba(#000, 0.3);
+				padding-top: 10px;
+				font-size: 12px;
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 	}
@@ -1100,5 +1109,22 @@ if (pageParams.get("changelog") === "1") {
 	line-height: 1.4;
 	text-align: center;
 	pointer-events: none;
+}
+
+.config-card {
+	.btn {
+		background: #ffffff;
+		color: #000;
+		border: 1px solid #e0e0e0;
+		transition: background 0.3s;
+		&:hover {
+			background: #f0f0f0;
+		}
+		span {
+			display: block;
+			font-size: 20px;
+			padding-bottom: 5px;
+		}
+	}
 }
 </style>
