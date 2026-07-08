@@ -18,6 +18,23 @@ private let appCommitURL = URL(
     string: bundleBuildInfoValue("YTTweakCommitURL", fallback: githubRepositoryURL.absoluteString)
 ) ?? githubRepositoryURL
 
+#if os(macOS)
+private func openInSafari(_ url: URL, label: String) {
+    AppDebugLog.write("Opening \(label) in Safari: \(url.absoluteString)")
+    NSWorkspace.shared.open(
+        [url],
+        withApplicationAt: URL(fileURLWithPath: "/Applications/Safari.app"),
+        configuration: NSWorkspace.OpenConfiguration()
+    ) { _, error in
+        if let error {
+            NSLog("Failed to open %@ in Safari: %@", label, error.localizedDescription)
+        } else {
+            AppDebugLog.write("Opening \(label) in Safari completed.")
+        }
+    }
+}
+#endif
+
 private func bundleBuildInfoValue(_ key: String, fallback: String) -> String {
     guard let value = Bundle.main.object(forInfoDictionaryKey: key) as? String else {
         return fallback
@@ -188,7 +205,6 @@ private final class AppDelegate: NSObject, NSApplicationDelegate {
 #endif
 
 private struct YouTubeTweakHomeView: View {
-    @Environment(\.openURL) private var openURL
     @State private var statusText: String?
     @State private var isOpeningSafari = false
     #if DEBUG
@@ -792,10 +808,6 @@ private struct FooterLinksView: View {
 }
 
 private struct BuildInfoFooterView: View {
-    #if os(macOS)
-    @Environment(\.openURL) private var openURL
-    #endif
-
     private var title: String {
         "YouTubeTweak V\(appVersion) (\(buildNumber))\nBuild at \(appBuildDate) · \(appCommitID)"
     }
@@ -803,7 +815,7 @@ private struct BuildInfoFooterView: View {
     var body: some View {
         Button {
             #if os(macOS)
-            openURL(appCommitURL)
+            openInSafari(appCommitURL, label: "build info link")
             #else
             AppDebugLog.write("Build info link tapped: \(appCommitURL.absoluteString)")
             UIApplication.shared.open(appCommitURL, options: [:]) { success in
@@ -823,9 +835,6 @@ private struct BuildInfoFooterView: View {
 }
 
 private struct FooterLink: View {
-    #if os(macOS)
-    @Environment(\.openURL) private var openURL
-    #endif
     let title: String
     let url: String
 
@@ -838,7 +847,7 @@ private struct FooterLink: View {
         Button {
             if let url = URL(string: url) {
                 #if os(macOS)
-                openURL(url)
+                openInSafari(url, label: "footer link \(title)")
                 #else
                 AppDebugLog.write("Footer link tapped: \(title) -> \(url.absoluteString)")
                 UIApplication.shared.open(url, options: [:]) { success in
