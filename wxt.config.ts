@@ -41,7 +41,16 @@ function getBuildInfo() {
 	const repositoryUrl = normalizeGitRemoteUrl(commandOutput("git", ["config", "--get", "remote.origin.url"])) || githubRepositoryUrl;
 
 	return {
-		build: new Date().toISOString(),
+		build: `${new Intl.DateTimeFormat("sv-SE", {
+			timeZone: "Asia/Shanghai",
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+			hour: "2-digit",
+			minute: "2-digit",
+			second: "2-digit",
+			hour12: false,
+		}).format(new Date())} +08:00`,
 		commit: {
 			id: commitId,
 			url: commitId === "unknown" ? repositoryUrl : `${repositoryUrl}/commit/${commitId}`,

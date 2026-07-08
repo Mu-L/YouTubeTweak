@@ -122,7 +122,16 @@ function xcodeBuildMetadataArgs() {
 	return [
 		`MARKETING_VERSION=${packageVersion}`,
 		`CURRENT_PROJECT_VERSION=${packageBuildNumber}`,
-		`YTTWEAK_BUILD_DATE=${new Date().toISOString()}`,
+		`YTTWEAK_BUILD_DATE=${new Intl.DateTimeFormat("sv-SE", {
+			timeZone: "Asia/Shanghai",
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+			hour: "2-digit",
+			minute: "2-digit",
+			second: "2-digit",
+			hour12: false,
+		}).format(new Date())} +08:00`,
 		`YTTWEAK_COMMIT_ID=${commitId}`,
 		`YTTWEAK_COMMIT_URL=${commitId === "unknown" ? repositoryUrl : `${repositoryUrl}/commit/${commitId}`}`,
 	];
