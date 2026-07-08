@@ -502,6 +502,7 @@ async function showChangelog(mode: ChangelogMode) {
 		const changelog = (await response.json()) as { releases?: ChangelogRelease[] };
 		if (requestId === changelogRequestId) {
 			changelogReleases.value = buildChangelogReleases(changelog.releases || [], changelogFromVersion.value);
+			markChangelogVersionRead().catch(() => {});
 		}
 	} catch (e) {
 		if (requestId === changelogRequestId) {
@@ -517,10 +518,12 @@ async function showChangelog(mode: ChangelogMode) {
 function closeChangelog() {
 	changelogRequestId++;
 	changelogModalVisible.value = false;
-	markChangelogVersionRead().catch(() => {});
 }
 
-if (new URLSearchParams(window.location.search).get("changelog") === "1") {
+const pageParams = new URLSearchParams(window.location.search);
+if (pageParams.get("changelog") === "1") {
+	pageParams.delete("changelog");
+	history.replaceState(null, "", `${window.location.pathname}?${pageParams.toString()}`);
 	showChangelog("unread");
 }
 </script>
