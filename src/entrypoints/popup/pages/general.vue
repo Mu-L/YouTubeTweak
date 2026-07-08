@@ -183,6 +183,22 @@
 			</div>
 		</transition>
 
+		<transition name="modal-fade">
+			<div class="reset-confirm-modal" v-if="resetConfirmVisible" @click.self="resetConfirmVisible = false">
+				<div class="reset-confirm-modal-body" role="dialog" aria-modal="true">
+					<p>{{ $t("general.config.alert.resetConfig") }}</p>
+					<div class="buttons">
+						<button type="button" class="btn btn-cancel" @click="resetConfirmVisible = false">
+							{{ $t("general.config.button.cancel") }}
+						</button>
+						<button type="button" class="btn btn-danger" @click="confirmResetConfig()">
+							{{ $t("general.config.button.resetConfig") }}
+						</button>
+					</div>
+				</div>
+			</div>
+		</transition>
+
 		<div class="page-toast" v-if="toastMessage">{{ toastMessage }}</div>
 	</section>
 </template>
@@ -212,6 +228,7 @@ const warningFetchHooker = computed(() => {
 });
 
 const toastMessage = ref("");
+const resetConfirmVisible = ref(false);
 let toastTimer: ReturnType<typeof setTimeout> | undefined;
 
 function showToast(message: string) {
@@ -224,8 +241,11 @@ function showToast(message: string) {
 }
 
 function resetConfig() {
-	if (!confirm(t("general.config.alert.resetConfig"))) return;
+	resetConfirmVisible.value = true;
+}
 
+function confirmResetConfig() {
+	resetConfirmVisible.value = false;
 	config.$reset();
 	setTab("player");
 }
@@ -867,7 +887,8 @@ if (pageParams.get("changelog") === "1") {
 	transition: opacity 0.16s ease;
 
 	.config-modal-body,
-	.changelog-modal-body {
+	.changelog-modal-body,
+	.reset-confirm-modal-body {
 		transition: transform 0.16s ease;
 	}
 }
@@ -877,7 +898,8 @@ if (pageParams.get("changelog") === "1") {
 	opacity: 0;
 
 	.config-modal-body,
-	.changelog-modal-body {
+	.changelog-modal-body,
+	.reset-confirm-modal-body {
 		transform: translateY(8px) scale(0.98);
 	}
 }
@@ -1088,6 +1110,71 @@ if (pageParams.get("changelog") === "1") {
 
 			button {
 				width: 100%;
+			}
+		}
+	}
+}
+
+.reset-confirm-modal {
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background: rgba(black, 0.7);
+
+	.reset-confirm-modal-body {
+		width: 100%;
+		max-width: 320px;
+		padding: 16px;
+		border-radius: 6px;
+		background: white;
+		box-shadow: 0 10px 28px rgba(black, 0.2);
+
+		p {
+			margin: 0;
+			color: #303133;
+			font-size: 14px;
+			line-height: 1.5;
+			text-align: center;
+		}
+
+		.buttons {
+			display: flex;
+			gap: 10px;
+			margin-top: 16px;
+
+			button {
+				flex: 1;
+			}
+
+			.btn-cancel {
+				background: #909399;
+
+				&:hover {
+					background: #a6a9ad;
+				}
+
+				&:active {
+					background: #82848a;
+				}
+			}
+
+			.btn-danger {
+				background: #f56c6c;
+
+				&:hover {
+					background: #f78989;
+				}
+
+				&:active {
+					background: #dd6161;
+				}
 			}
 		}
 	}
