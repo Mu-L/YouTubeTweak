@@ -16,6 +16,9 @@ body.yttweak-mini-player-mode .yttweak-mini-player-stack-root {
 	overflow: visible !important;
 	overflow-anchor: none !important;
 	z-index: 2147483646 !important;
+	#cinematics-container {
+		opacity: 0 !important;
+	}
 }
 
 body.yttweak-mini-player-mode .player-container-background,
@@ -97,7 +100,10 @@ body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-
 	mix-blend-mode: normal !important;
 }
 
-body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .ytp-caption-window-container > .caption-window {
+body.yttweak-mini-player-mode
+	#movie_player.yttweak-mini-player-active:not(.ytp-fullscreen)
+	.ytp-caption-window-container
+	> .caption-window {
 	left: var(--yttweak-mini-player-caption-window-left, 10%) !important;
 	width: var(--yttweak-mini-player-caption-window-width, 80%) !important;
 }
@@ -112,7 +118,9 @@ body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active:not(.ytp-
 	display: none !important;
 }
 
-body.yttweak-mini-player-mode.yttweak-player-progress-enable #movie_player.yttweak-mini-player-active:not(.ytp-fullscreen) .yttweak-player-progress {
+body.yttweak-mini-player-mode.yttweak-player-progress-enable
+	#movie_player.yttweak-mini-player-active:not(.ytp-fullscreen)
+	.yttweak-player-progress {
 	display: block !important;
 	opacity: 1 !important;
 	left: 0 !important;
@@ -148,7 +156,10 @@ body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttw
 	display: none !important;
 }
 
-body.yttweak-mini-player-mode #movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"] .ytp-left-controls .ytp-button:not(.ytp-play-button):not(.ytp-mute-button) {
+body.yttweak-mini-player-mode
+	#movie_player.yttweak-mini-player-active[data-yttweak-mini-player-density="compact"]
+	.ytp-left-controls
+	.ytp-button:not(.ytp-play-button):not(.ytp-mute-button) {
 	display: none !important;
 }
 
