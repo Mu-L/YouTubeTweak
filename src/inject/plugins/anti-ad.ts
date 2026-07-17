@@ -164,12 +164,28 @@ export default {
 		enable() {
 			localStorage.setItem("YTTweak-plugin-PremiumLogo", "1");
 
-			fetchHooker.addHook("antiAD-next", {
+			fetchHooker.addHook("antiAD-get_watch", {
 				match: "/youtubei/v1/get_watch",
 				mutator: true,
 				handler(data: any) {
 					if (data && typeof data === "object") {
 						const iconImage = data?.[1]?.watchNextResponse?.topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
+
+						if (iconImage) {
+							iconImage.iconType = "YOUTUBE_PREMIUM_LOGO";
+						}
+					}
+
+					return data;
+				},
+			});
+
+			fetchHooker.addHook("antiAD-next", {
+				match: "/youtubei/v1/next",
+				mutator: true,
+				handler(data: any) {
+					if (data && typeof data === "object") {
+						const iconImage = data?.topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
 
 						if (iconImage) {
 							iconImage.iconType = "YOUTUBE_PREMIUM_LOGO";
