@@ -12,7 +12,7 @@ type timedtextResponse = {
 	events?: Array<{
 		dDurationMs: number;
 		tStartMs: number;
-		segs: Array<{
+		segs?: Array<{
 			utf8: string;
 		}>;
 	}>;
@@ -129,22 +129,28 @@ export default {
 
 					for (const i in data.events) {
 						try {
+							const event = data.events[i];
+							if (!event.segs?.[0]) {
+								continue;
+							}
+
 							if (urlObj.searchParams.get("kind") === "asr") {
 								const translatedText = translatedTexts[i].replace(/<br\/>/g, "").replace("---", "");
-								data.events[i].segs[0].utf8 = isTranslationOnly
+								event.segs[0].utf8 = isTranslationOnly
 									? translatedText
-									: translatedText + "\n" + data.events[i].segs.map((v) => v.utf8).join("");
-								data.events[i].segs.length = 1;
+									: translatedText + "\n" + event.segs.map((v) => v.utf8).join("");
+								event.segs.length = 1;
 							} else {
 								const translatedText = translatedTexts[i].replace(/<br\/>/g, "");
-								data.events[i].segs[0].utf8 = isTranslationOnly
+								event.segs[0].utf8 = isTranslationOnly
 									? translatedText.replace("---", "")
-									: translatedText + "\n" + data.events[i].segs[0].utf8;
+									: translatedText + "\n" + event.segs[0].utf8;
 								if (isTranslationOnly) {
-									data.events[i].segs.length = 1;
+									event.segs.length = 1;
 								}
 							}
-						} catch {
+						} catch (e) {
+							logger.error("Error while processing timedtext event:", e, data.events[i], translatedTexts[i]);
 							debugger;
 						}
 					}
