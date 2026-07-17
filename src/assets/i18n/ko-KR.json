@@ -225,6 +225,12 @@
 				"playerUI": "이전 플레이어 레이아웃 복원"
 			}
 		},
+		"appearance": {
+			"title": "모양",
+			"checkbox": {
+				"premiumLogo": "Premium 로고로 위장"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

@@ -225,6 +225,12 @@
 				"playerUI": "Відновити старий макет програвача"
 			}
 		},
+		"appearance": {
+			"title": "Вигляд",
+			"checkbox": {
+				"premiumLogo": "Імітувати логотип Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

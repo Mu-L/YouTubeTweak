@@ -532,7 +532,7 @@ Notes:
 
 # Other
 
-These features are used to adjust YouTube page layout, comment display, ad distractions, Shorts, old layouts, and custom styles.
+These features are used to adjust YouTube page layout, comment display, ad distractions, Shorts, branding, old layouts, and custom styles.
 
 <a name="other-home"></a>
 
@@ -719,6 +719,27 @@ Notes:
 
 - This feature mainly affects the two-column layout of desktop video watch pages.
 - It is a visual rollback adjustment for the page. Its effect may change after YouTube redesigns the page.
+
+<a name="other-appearance"></a>
+
+## Appearance
+
+<a name="other-appearance-premium-logo"></a>
+
+### Disguise Premium Logo
+
+After enabling this, the regular YouTube logo in the upper-left corner is displayed as the YouTube Premium logo.
+
+Suitable use cases:
+
+- You prefer the YouTube Premium logo style.
+- You want the page header to look like a Premium account.
+
+Notes:
+
+- This only changes the logo appearance. It does not activate YouTube Premium, change your account membership, or unlock any Premium benefits.
+- Enabling or disabling this feature reloads the current YouTube page.
+- If YouTube changes its page data structure, the logo may temporarily remain unchanged.
 
 <a name="other-custom-css"></a>
 

@@ -225,6 +225,12 @@
 				"playerUI": "Restore old player layout"
 			}
 		},
+		"appearance": {
+			"title": "Appearance",
+			"checkbox": {
+				"premiumLogo": "Disguise as the Premium logo"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

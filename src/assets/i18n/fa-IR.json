@@ -225,6 +225,12 @@
 				"playerUI": "بازیابی چیدمان قدیمی پخش‌کننده"
 			}
 		},
+		"appearance": {
+			"title": "ظاهر",
+			"checkbox": {
+				"premiumLogo": "نمایش لوگو به‌شکل Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

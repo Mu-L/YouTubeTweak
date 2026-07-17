@@ -532,7 +532,7 @@ YouTube Tweak 是一个用于增强 YouTube 网页版体验的浏览器扩展。
 
 # 其他
 
-这一类功能用于调整 YouTube 页面布局、评论显示、广告干扰、Shorts、旧版布局和自定义样式。
+这一类功能用于调整 YouTube 页面布局、评论显示、广告干扰、Shorts、品牌外观、旧版布局和自定义样式。
 
 <a name="other-home"></a>
 
@@ -719,6 +719,27 @@ YouTube Tweak 是一个用于增强 YouTube 网页版体验的浏览器扩展。
 
 - 该功能主要影响桌面版视频播放页的双栏布局。
 - 它是对页面外观的回退调整，YouTube 页面改版后效果可能变化。
+
+<a name="other-appearance"></a>
+
+## 外观
+
+<a name="other-appearance-premium-logo"></a>
+
+### 伪装 Premium Logo
+
+开启后，左上角的普通 YouTube Logo 会显示为 YouTube Premium Logo。
+
+适合的使用场景：
+
+- 更喜欢 YouTube Premium Logo 的样式。
+- 希望页面顶栏看起来像 Premium 账号。
+
+注意事项：
+
+- 该功能只改变 Logo 外观，不会开通 YouTube Premium、改变账号会员状态或解锁任何 Premium 权益。
+- 开启或关闭该功能时，当前 YouTube 页面会自动刷新。
+- YouTube 调整页面数据结构后，Logo 可能暂时无法替换。
 
 <a name="other-custom-css"></a>
 

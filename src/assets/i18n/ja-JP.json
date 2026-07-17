@@ -225,6 +225,12 @@
 				"playerUI": "旧プレーヤーレイアウトに戻す"
 			}
 		},
+		"appearance": {
+			"title": "外観",
+			"checkbox": {
+				"premiumLogo": "Premium ロゴに偽装"
+			}
+		},
 		"customCss": {
 			"title": "カスタム CSS",
 			"checkbox": {

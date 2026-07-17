@@ -225,6 +225,12 @@
 				"playerUI": "Restaurar diseño antiguo del reproductor"
 			}
 		},
+		"appearance": {
+			"title": "Apariencia",
+			"checkbox": {
+				"premiumLogo": "Simular el logo de Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

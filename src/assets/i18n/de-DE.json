@@ -225,6 +225,12 @@
 				"playerUI": "Altes Player-Layout wiederherstellen"
 			}
 		},
+		"appearance": {
+			"title": "Erscheinungsbild",
+			"checkbox": {
+				"premiumLogo": "Premium-Logo vortäuschen"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

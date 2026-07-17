@@ -225,6 +225,12 @@
 				"playerUI": "পুরোনো প্লেয়ার লেআউট ফিরিয়ে আনুন"
 			}
 		},
+		"appearance": {
+			"title": "চেহারা",
+			"checkbox": {
+				"premiumLogo": "Premium লোগো হিসেবে দেখান"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

@@ -225,6 +225,12 @@
 				"playerUI": "Eski oynatıcı düzenini geri yükle"
 			}
 		},
+		"appearance": {
+			"title": "Görünüm",
+			"checkbox": {
+				"premiumLogo": "Premium logosunu taklit et"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

@@ -225,6 +225,12 @@
 				"playerUI": "पुराने प्लेयर लेआउट को पुनर्स्थापित करें"
 			}
 		},
+		"appearance": {
+			"title": "दिखावट",
+			"checkbox": {
+				"premiumLogo": "Premium लोगो के रूप में दिखाएँ"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

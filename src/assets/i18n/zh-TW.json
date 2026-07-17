@@ -225,6 +225,12 @@
 				"playerUI": "還原舊版播放器版面配置"
 			}
 		},
+		"appearance": {
+			"title": "外觀",
+			"checkbox": {
+				"premiumLogo": "偽裝 Premium logo"
+			}
+		},
 		"customCss": {
 			"title": "自訂 CSS",
 			"checkbox": {

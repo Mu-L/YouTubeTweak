@@ -225,6 +225,12 @@
 				"playerUI": "Khôi phục bố cục trình phát cũ"
 			}
 		},
+		"appearance": {
+			"title": "Giao diện",
+			"checkbox": {
+				"premiumLogo": "Ngụy trang thành logo Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

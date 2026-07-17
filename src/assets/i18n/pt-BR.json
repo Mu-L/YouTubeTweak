@@ -225,6 +225,12 @@
 				"playerUI": "Restaurar layout antigo do player"
 			}
 		},
+		"appearance": {
+			"title": "Aparência",
+			"checkbox": {
+				"premiumLogo": "Simular o logo Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

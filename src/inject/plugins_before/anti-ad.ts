@@ -68,6 +68,14 @@ export default () => {
 		configurable: true,
 		enumerable: true,
 		set(v) {
+			const iconImage = v?.topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
+
+			const enablePremiumLogo = localStorage.getItem("YTTweak-plugin-PremiumLogo");
+			if (enablePremiumLogo && iconImage) {
+				logger.debug(enablePremiumLogo ? "PremiumLogo plugin enabled" : "PremiumLogo plugin disabled");
+				iconImage.iconType = "YOUTUBE_PREMIUM_LOGO";
+			}
+
 			this._ytInitialData = v;
 
 			if (v?.currentVideoEndpoint?.watchEndpoint?.videoId) {

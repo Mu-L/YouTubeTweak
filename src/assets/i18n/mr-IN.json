@@ -225,6 +225,12 @@
 				"playerUI": "जुना प्लेयर लेआउट पुनर्संचयित करा"
 			}
 		},
+		"appearance": {
+			"title": "स्वरूप",
+			"checkbox": {
+				"premiumLogo": "Premium लोगो म्हणून दाखवा"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

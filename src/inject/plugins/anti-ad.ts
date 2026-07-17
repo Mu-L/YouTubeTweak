@@ -146,4 +146,42 @@ export default {
 		},
 	},
 	"other.antiAD.enableMerch": bodyClass("yttweak-anti-ad-merch"),
+	"other.premiumLogo.enable": {
+		options: {
+			reloadOnToggle: true,
+		},
+		setup() {
+			if (
+				(!config.get("other.premiumLogo.enable") && localStorage.getItem("YTTweak-plugin-PremiumLogo")) ||
+				(config.get("other.premiumLogo.enable") && !localStorage.getItem("YTTweak-plugin-PremiumLogo"))
+			) {
+				config.get("other.premiumLogo.enable")
+					? localStorage.setItem("YTTweak-plugin-PremiumLogo", "1")
+					: localStorage.removeItem("YTTweak-plugin-PremiumLogo");
+				location.reload();
+			}
+		},
+		enable() {
+			localStorage.setItem("YTTweak-plugin-PremiumLogo", "1");
+
+			fetchHooker.addHook("antiAD-next", {
+				match: "/youtubei/v1/get_watch",
+				mutator: true,
+				handler(data: any) {
+					if (data && typeof data === "object") {
+						const iconImage = data?.[1]?.watchNextResponse?.topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
+
+						if (iconImage) {
+							iconImage.iconType = "YOUTUBE_PREMIUM_LOGO";
+						}
+					}
+
+					return data;
+				},
+			});
+		},
+		disable() {
+			localStorage.removeItem("YTTweak-plugin-PremiumLogo");
+		},
+	},
 } as Record<string, Plugin>;

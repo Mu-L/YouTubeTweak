@@ -106,6 +106,20 @@
 
 		<div class="card">
 			<div class="card-title">
+				<span>{{ $t("other.appearance.title") }}</span>
+				<DocsHelpLink anchor="other-appearance" />
+			</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['other.premiumLogo.enable']" />
+					<span>{{ $t("other.appearance.checkbox.premiumLogo") }}</span>
+					<DocsHelpLink anchor="other-appearance-premium-logo" />
+				</label>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-title">
 				<span>{{ $t("other.customCss.title") }}</span>
 				<DocsHelpLink anchor="other-custom-css" />
 			</div>

@@ -225,6 +225,12 @@
 				"playerUI": "Pulihkan tata letak pemutar lama"
 			}
 		},
+		"appearance": {
+			"title": "Tampilan",
+			"checkbox": {
+				"premiumLogo": "Samarkan sebagai logo Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

@@ -225,6 +225,12 @@
 				"playerUI": "استعادة تخطيط المشغل القديم"
 			}
 		},
+		"appearance": {
+			"title": "المظهر",
+			"checkbox": {
+				"premiumLogo": "محاكاة شعار Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

@@ -225,6 +225,12 @@
 				"playerUI": "پرانا پلیئر لے آؤٹ بحال کرو"
 			}
 		},
+		"appearance": {
+			"title": "دِکھ",
+			"checkbox": {
+				"premiumLogo": "Premium لوگو دے روپ وچ دکھاؤ"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

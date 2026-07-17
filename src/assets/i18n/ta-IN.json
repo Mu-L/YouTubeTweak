@@ -225,6 +225,12 @@
 				"playerUI": "பழைய பிளேயர் அமைப்பை மீட்டமை"
 			}
 		},
+		"appearance": {
+			"title": "தோற்றம்",
+			"checkbox": {
+				"premiumLogo": "Premium லோகோவாகக் காட்டவும்"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

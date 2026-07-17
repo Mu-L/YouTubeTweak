@@ -225,6 +225,12 @@
 				"playerUI": "Восстановить старую раскладку плеера"
 			}
 		},
+		"appearance": {
+			"title": "Внешний вид",
+			"checkbox": {
+				"premiumLogo": "Имитировать логотип Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

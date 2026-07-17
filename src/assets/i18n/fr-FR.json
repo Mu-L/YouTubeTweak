@@ -225,6 +225,12 @@
 				"playerUI": "Restaurer l’ancienne mise en page du lecteur"
 			}
 		},
+		"appearance": {
+			"title": "Apparence",
+			"checkbox": {
+				"premiumLogo": "Simuler le logo Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {

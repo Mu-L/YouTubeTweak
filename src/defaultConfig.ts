@@ -68,6 +68,7 @@ export type Config = {
 
 	"index.videoPerRow.enable": boolean;
 	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+	"other.premiumLogo.enable": boolean;
 	"other.antiAD.enable": boolean;
 	"other.antiAD.enableMerch": boolean;
 	"other.antiAD.enableVideo": boolean;
@@ -135,6 +136,7 @@ const config: Config = {
 
 	"index.videoPerRow.enable": false,
 	"index.videoPerRow.count": 4,
+	"other.premiumLogo.enable": false,
 	"other.antiAD.enable": false,
 	"other.antiAD.enableMerch": false,
 	"other.antiAD.enableVideo": false,

@@ -225,6 +225,12 @@
 				"playerUI": "คืนค่าเลย์เอาต์ตัวเล่นแบบเก่า"
 			}
 		},
+		"appearance": {
+			"title": "รูปลักษณ์",
+			"checkbox": {
+				"premiumLogo": "ปลอมเป็นโลโก้ Premium"
+			}
+		},
 		"customCss": {
 			"title": "Custom CSS",
 			"checkbox": {
