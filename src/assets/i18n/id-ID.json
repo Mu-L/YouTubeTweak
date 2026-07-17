@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Peringatan",
-				"fetchHooker": "Beberapa fitur (mis. subtitle dwibahasa, blokir iklan video) memakai penulisan ulang permintaan HTTP dan bisa menyebabkan masalah pada halaman. Jika mengalami masalah saat menjelajah, coba nonaktifkan fitur ini."
+				"fetchHooker": "Beberapa fitur (seperti subtitle dwibahasa, pemblokiran iklan video, dan penyamaran logo Premium) menggunakan penulisan ulang permintaan HTTP dan dapat menyebabkan masalah pada halaman. Hal ini terutama dapat memengaruhi fitur terkait pembayaran (seperti membeli Premium, bergabung sebagai anggota channel, atau memberi donasi saat live streaming). Jika mengalami masalah saat membuka halaman tersebut, coba nonaktifkan fitur ini."
 			}
 		},
 		"sponsor": {

@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Amaran",
-				"fetchHooker": "Beberapa ciri (seperti sari kata dwibahasa, sekat iklan video) menggunakan penulisan semula permintaan HTTP dan boleh menyebabkan masalah pada halaman. Jika menghadapi masalah semasa melayar, cuba matikan ciri ini."
+				"fetchHooker": "Sesetengah ciri (seperti sari kata dwibahasa, menyekat iklan video dan menyamarkan logo Premium) menggunakan penulisan semula permintaan HTTP dan mungkin menyebabkan masalah pada halaman. Ini terutamanya boleh menjejaskan ciri berkaitan pembayaran (seperti membeli Premium, menyertai keahlian saluran atau membuat sumbangan semasa siaran langsung). Jika anda menghadapi masalah semasa melayari halaman tersebut, cuba matikan ciri ini."
 			}
 		},
 		"sponsor": {

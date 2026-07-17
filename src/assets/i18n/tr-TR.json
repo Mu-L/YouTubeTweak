@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Uyarı",
-				"fetchHooker": "Bazı özellikler (çift dilli altyazı, video reklam engelleme vb.) HTTP isteklerini yeniden yazar ve sayfada sorunlara yol açabilir. Gezinirken sorun yaşarsan lütfen bu özelliği kapatmayı dene."
+				"fetchHooker": "Bazı özellikler (çift dilli altyazılar, video reklamlarını engelleme ve Premium logosunu taklit etme gibi) HTTP isteklerini yeniden yazar ve sayfada sorunlara yol açabilir. Bu durum özellikle ödemeyle ilgili özellikleri (Premium satın alma, kanal üyeliğine katılma veya canlı yayın bağışı yapma gibi) etkileyebilir. Bu sayfalara göz atarken sorun yaşarsanız bu özelliği kapatmayı deneyin."
 			}
 		},
 		"sponsor": {

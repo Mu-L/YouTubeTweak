@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Cảnh báo",
-				"fetchHooker": "Một số tính năng (như phụ đề song ngữ, chặn quảng cáo video) dùng viết lại yêu cầu HTTP và có thể gây lỗi trang. Nếu gặp vấn đề khi duyệt, hãy thử tắt tính năng này."
+				"fetchHooker": "Một số tính năng (như phụ đề song ngữ, chặn quảng cáo video và giả mạo logo Premium) sử dụng tính năng ghi đè yêu cầu HTTP nên có thể khiến trang hoạt động bất thường. Điều này đặc biệt có thể ảnh hưởng đến các tính năng liên quan đến thanh toán (như mua Premium, tham gia hội viên kênh hoặc ủng hộ trong buổi phát trực tiếp). Nếu gặp sự cố khi duyệt các trang này, hãy thử tắt tính năng này."
 			}
 		},
 		"sponsor": {

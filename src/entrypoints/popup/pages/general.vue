@@ -224,7 +224,7 @@ const sponsorCard = ref<HTMLElement>();
 const sponsorCardVisible = ref(false);
 
 const warningFetchHooker = computed(() => {
-	return config["other.antiAD.enableVideo"] || config["translate.enable.timedtext"];
+	return config["other.antiAD.enableVideo"] || config["translate.enable.timedtext"] || config["other.premiumLogo.enable"];
 });
 
 const toastMessage = ref("");

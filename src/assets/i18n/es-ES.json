@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Advertencia",
-				"fetchHooker": "Algunas funciones (como subtítulos bilingües o bloqueo de anuncios de vídeo) usan reescritura de solicitudes HTTP y pueden causar problemas en la página. Si tienes problemas al navegar, prueba a desactivar esta función."
+				"fetchHooker": "Algunas funciones (como los subtítulos bilingües, el bloqueo de anuncios de vídeo y la simulación del logotipo de Premium) usan la reescritura de solicitudes HTTP y pueden causar problemas en la página. Esto afecta especialmente a las funciones relacionadas con pagos (como comprar Premium, unirse como miembro de un canal o hacer donaciones en directo). Si tienes problemas al navegar por estas páginas, prueba a desactivar esta función."
 			}
 		},
 		"sponsor": {

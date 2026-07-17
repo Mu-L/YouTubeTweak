@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Aviso",
-				"fetchHooker": "Alguns recursos (como legendas bilíngues e bloqueio de anúncios em vídeo) usam reescrita de requisições HTTP e podem causar problemas na página. Se tiver problemas durante a navegação, tente desativar esse recurso."
+				"fetchHooker": "Alguns recursos (como legendas bilíngues, bloqueio de anúncios em vídeo e simulação do logotipo Premium) usam a reescrita de requisições HTTP e podem causar problemas na página. Isso pode afetar especialmente recursos relacionados a pagamentos (como comprar o Premium, tornar-se membro de um canal ou fazer doações em transmissões ao vivo). Se tiver problemas ao navegar por essas páginas, tente desativar esse recurso."
 			}
 		},
 		"sponsor": {

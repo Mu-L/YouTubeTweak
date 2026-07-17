@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Avviso",
-				"fetchHooker": "Alcune funzioni (sottotitoli bilingue, blocco degli annunci video, ecc.) usano la riscrittura delle richieste HTTP e possono causare problemi alla pagina. Se riscontri problemi durante la navigazione, prova a disattivare questa funzione."
+				"fetchHooker": "Alcune funzioni (come i sottotitoli bilingue, il blocco degli annunci video e la simulazione del logo Premium) usano la riscrittura delle richieste HTTP e potrebbero causare problemi alla pagina. Questo vale soprattutto per le funzioni relative ai pagamenti (come l’acquisto di Premium, l’adesione a un canale come membro o le donazioni durante le dirette). Se riscontri problemi durante la navigazione in queste pagine, prova a disattivare questa funzione."
 			}
 		},
 		"sponsor": {

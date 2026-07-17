@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Warnung",
-				"fetchHooker": "Einige Funktionen (z. B. zweisprachige Untertitel oder das Blockieren von Videoanzeigen) nutzen das Umschreiben von HTTP-Anfragen und können Seitenprobleme verursachen. Wenn beim Surfen Probleme auftreten, deaktiviere diese Funktion bitte."
+				"fetchHooker": "Einige Funktionen (z. B. zweisprachige Untertitel, das Blockieren von Videoanzeigen und das Vortäuschen des Premium-Logos) schreiben HTTP-Anfragen um und können dadurch Seitenfehler verursachen. Dies gilt besonders für zahlungsbezogene Funktionen (z. B. den Kauf von Premium, den Beitritt zu einer Kanalmitgliedschaft oder Spenden in Livestreams). Wenn beim Aufrufen solcher Seiten Probleme auftreten, deaktiviere diese Funktion."
 			}
 		},
 		"sponsor": {

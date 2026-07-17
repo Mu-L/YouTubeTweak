@@ -387,7 +387,7 @@
 		"warning": {
 			"tips": {
 				"title": "⚠ Warning",
-				"fetchHooker": "Some features (such as bilingual subtitles and blocking video ads) use HTTP request rewriting and may cause page issues. If you run into problems while browsing, try turning off this feature."
+				"fetchHooker": "Some features (such as bilingual subtitles, blocking video ads, and spoofing the Premium logo) use HTTP request rewriting and may cause page issues. This is especially relevant to payment-related features (such as purchasing Premium, joining a channel membership, or making live-stream donations). If you encounter problems while browsing these pages, try disabling this feature."
 			}
 		},
 		"sponsor": {
