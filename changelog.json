@@ -7,6 +7,120 @@
 	},
 	"releases": [
 		{
+			"version": "1.2.0",
+			"date": "2026-07-18",
+			"changes": {
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "安装引导",
+							"text": "根据 Chrome、Edge 和 Firefox 显示对应的扩展图标提示，优化安装后的操作指引。"
+						},
+						{
+							"scope": "设置界面",
+							"text": "优化卡片、滚动条、倍速按钮和配置管理布局，并将重置配置改为扩展内确认窗口。"
+						}
+					],
+					"added": [
+						{
+							"scope": "外观",
+							"text": "新增“伪装 Premium Logo”选项，可将 YouTube 顶栏标志显示为 Premium 样式。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "更新日志",
+							"text": "修复加载失败时仍被标记为已读，以及页面切换后可能重复自动打开的问题。"
+						},
+						{
+							"scope": "功能说明",
+							"text": "修复英文界面的功能说明入口无法打开的问题。"
+						},
+						{
+							"scope": "滚动迷你播放器",
+							"text": "修复 YouTube 环境光效果导致播放器画面变暗的问题。"
+						},
+						{
+							"scope": "字幕翻译",
+							"text": "修复部分字幕事件缺少文本片段时可能触发异常的问题。"
+						}
+					]
+				},
+				"en": {
+					"updated": [
+						{
+							"scope": "Installation guide",
+							"text": "Improved post-installation instructions by displaying the corresponding extension icon hint for Chrome, Edge, and Firefox."
+						},
+						{
+							"scope": "Settings UI",
+							"text": "Improved the layout of cards, scrollbars, playback speed buttons, and configuration management, and changed configuration reset to use an in-extension confirmation dialog."
+						}
+					],
+					"added": [
+						{
+							"scope": "Appearance",
+							"text": "Added the \"Disguise Premium Logo\" option, allowing the YouTube header logo to be displayed in the Premium style."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "Changelog",
+							"text": "Fixed failed loads being marked as read and the changelog potentially opening automatically again after switching pages."
+						},
+						{
+							"scope": "Feature documentation",
+							"text": "Fixed the feature documentation entry point failing to open in the English interface."
+						},
+						{
+							"scope": "Scroll mini-player",
+							"text": "Fixed YouTube's ambient mode causing the video image to darken."
+						},
+						{
+							"scope": "Subtitle translation",
+							"text": "Fixed an error that could occur when certain subtitle events lacked text fragments."
+						}
+					]
+				},
+				"ja": {
+					"updated": [
+						{
+							"scope": "インストールガイド",
+							"text": "Chrome、Edge、Firefox に応じた拡張機能アイコンの案内を表示し、インストール後の操作ガイドを改善しました。"
+						},
+						{
+							"scope": "設定画面",
+							"text": "カード、スクロールバー、倍速ボタン、設定管理のレイアウトを改善し、設定のリセットを拡張機能内の確認ダイアログに変更しました。"
+						}
+					],
+					"added": [
+						{
+							"scope": "外観",
+							"text": "「Premium ロゴに偽装」オプションを追加し、YouTube の上部バーのロゴを Premium スタイルで表示できるようにしました。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "更新履歴",
+							"text": "読み込みに失敗した場合でも既読として扱われる問題と、ページ切り替え後に再度自動で開く場合がある問題を修正しました。"
+						},
+						{
+							"scope": "機能説明",
+							"text": "英語表示で機能説明への入口を開けない問題を修正しました。"
+						},
+						{
+							"scope": "スクロールミニプレーヤー",
+							"text": "YouTube のアンビエントモードによってプレーヤー画面が暗くなる問題を修正しました。"
+						},
+						{
+							"scope": "字幕翻訳",
+							"text": "一部の字幕イベントにテキスト断片が含まれていない場合にエラーが発生する可能性がある問題を修正しました。"
+						}
+					]
+				}
+			}
+		},
+		{
 			"version": "1.1.9",
 			"date": "2026-07-03",
 			"changes": {

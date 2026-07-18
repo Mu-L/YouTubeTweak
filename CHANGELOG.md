@@ -6,6 +6,24 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.2.0] - 2026-07-18
+
+### Updated
+
+- **Installation guide:** Improved post-installation instructions by displaying the corresponding extension icon hint for Chrome, Edge, and Firefox.
+- **Settings UI:** Improved the layout of cards, scrollbars, playback speed buttons, and configuration management, and changed configuration reset to use an in-extension confirmation dialog.
+
+### Added
+
+- **Appearance:** Added the "Disguise Premium Logo" option, allowing the YouTube header logo to be displayed in the Premium style.
+
+### Fixed
+
+- **Changelog:** Fixed failed loads being marked as read and the changelog potentially opening automatically again after switching pages.
+- **Feature documentation:** Fixed the feature documentation entry point failing to open in the English interface.
+- **Scroll mini-player:** Fixed YouTube's ambient mode causing the video image to darken.
+- **Subtitle translation:** Fixed an error that could occur when certain subtitle events lacked text fragments.
+
 ## [1.1.9] - 2026-07-03
 
 ### Added
