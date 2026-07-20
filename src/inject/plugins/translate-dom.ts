@@ -16,6 +16,13 @@ import {
 const NON_TRANSLATABLE_SELECTOR = "a, img, picture, svg, yt-icon, button, input, textarea, select, video, audio, canvas, iframe";
 const descriptionTranslations = new Map<"snippet" | "expanded", { key: string; translation?: HTMLElement }>();
 
+async function translatePlainText(source: string, targetLanguage: string) {
+	const [translations, detectedLanguages] = await googleTranslate(source, "auto", targetLanguage);
+	const translation = decodeHtmlEntities(translations[0] ?? "").trim();
+	if (!translation || translation === source || isTargetLanguage(detectedLanguages[0], targetLanguage)) return;
+	return translation;
+}
+
 async function translateVideoTitle(metadata: HTMLElement) {
 	const title = metadata.querySelector<HTMLElement>("#title h1 yt-formatted-string");
 	const source = title?.innerText.trim();
@@ -31,17 +38,8 @@ async function translateVideoTitle(metadata: HTMLElement) {
 	h1?.classList.remove("yttweak-video-title-translated");
 
 	try {
-		const [translations, detectedLanguages] = await googleTranslate(source, "auto", targetLanguage);
-		const translatedText = decodeHtmlEntities(translations[0] ?? "").trim();
-		if (
-			title.dataset.yttweakTranslation !== key ||
-			title.innerText.trim() !== source ||
-			!translatedText ||
-			translatedText === source ||
-			isTargetLanguage(detectedLanguages[0], targetLanguage)
-		) {
-			return;
-		}
+		const translatedText = await translatePlainText(source, targetLanguage);
+		if (title.dataset.yttweakTranslation !== key || title.innerText.trim() !== source || !translatedText) return;
 
 		const translation = document.createElement("span");
 		translation.className = "yttweak-video-title-translate";
@@ -50,6 +48,59 @@ async function translateVideoTitle(metadata: HTMLElement) {
 		h1?.classList.add("yttweak-video-title-translated");
 	} catch {
 		if (title.dataset.yttweakTranslation === key) delete title.dataset.yttweakTranslation;
+	}
+}
+
+async function translateVideoSummary(metadata: HTMLElement) {
+	const summary = metadata.querySelector<HTMLElement>("#video-summary");
+	const content = summary?.querySelector<HTMLElement>("#content");
+	const collapsedTitle = summary?.querySelector<HTMLElement>("#collapsed-title");
+	const source = content?.querySelector<HTMLElement>(".videoSummaryContentViewModelParagraphContainer");
+	const sourceText = source?.innerText.trim();
+	if (!summary || !content || !collapsedTitle || !source || !sourceText) return;
+
+	if (!content.dataset.yttweakTranslationHooked) {
+		content.dataset.yttweakTranslationHooked = "true";
+		new MutationObserver(() => {
+			const translation = summary.querySelector<HTMLElement>(".yttweak-video-summary-translate-collapsed");
+			if (translation) translation.hidden = !content.hidden;
+		}).observe(content, {
+			attributes: true,
+			attributeFilter: ["hidden"],
+		});
+	}
+
+	const targetLanguage = getTargetLanguage();
+	const key = `${targetLanguage}\n${sourceText}`;
+	const currentExpandedTranslation = summary.querySelector(".yttweak-video-summary-translate-expanded");
+	const currentCollapsedTranslation = summary.querySelector<HTMLElement>(".yttweak-video-summary-translate-collapsed");
+	if (source.dataset.yttweakTranslation === key) {
+		if (currentCollapsedTranslation) currentCollapsedTranslation.hidden = !content.hidden;
+		return;
+	}
+
+	source.dataset.yttweakTranslation = key;
+	currentExpandedTranslation?.remove();
+	currentCollapsedTranslation?.remove();
+
+	try {
+		const translatedText = await translatePlainText(sourceText, targetLanguage);
+		if (source.dataset.yttweakTranslation !== key || source.innerText.trim() !== sourceText || !source.isConnected || !translatedText) {
+			return;
+		}
+
+		const expandedTranslation = document.createElement("span");
+		expandedTranslation.className = "yttweak-video-description-translate yttweak-video-summary-translate-expanded";
+		expandedTranslation.textContent = translatedText;
+		source.after(expandedTranslation);
+
+		const collapsedTranslation = document.createElement("span");
+		collapsedTranslation.className = "yttweak-video-summary-translate-collapsed";
+		collapsedTranslation.textContent = translatedText;
+		collapsedTranslation.hidden = !content.hidden;
+		collapsedTitle.after(collapsedTranslation);
+	} catch {
+		if (source.dataset.yttweakTranslation === key) delete source.dataset.yttweakTranslation;
 	}
 }
 
@@ -162,6 +213,7 @@ async function translateDescriptionSource(expander: HTMLElement, selector: strin
 
 function translateWatchMetadata(metadata: HTMLElement) {
 	if (config.get("translate.enable.videoTitle")) void translateVideoTitle(metadata);
+	if (config.get("translate.enable.videoSummary")) void translateVideoSummary(metadata);
 	if (!config.get("translate.enable.videoDescription")) return;
 
 	const expander = metadata.querySelector<HTMLElement>("#description #description-inline-expander");
@@ -187,6 +239,12 @@ export default {
 		},
 	},
 	"translate.enable.videoDescription": {
+		options: {
+			reloadOnToggle: true,
+		},
+		enable() {},
+	},
+	"translate.enable.videoSummary": {
 		options: {
 			reloadOnToggle: true,
 		},

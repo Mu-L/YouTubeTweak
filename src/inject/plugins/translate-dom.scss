@@ -23,10 +23,27 @@
 
 .yttweak-video-description-translate {
 	display: block;
-	border: 2px dashed rgb(3, 169, 244);
+	border-radius: 10px;
+	border: 2px dashed #c4c4c4;
 	width: calc(100% - 14px);
 	margin-top: 5px;
 	padding: 5px;
+}
+
+#video-summary {
+	#left-section:has(> .yttweak-video-summary-translate-collapsed:not([hidden])) {
+		display: block;
+	}
+
+	.yttweak-video-summary-translate-collapsed {
+		display: block;
+		margin-left: 8px;
+		margin-bottom: 5px;
+		border-bottom: 1px dashed #c4c4c4;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
 
 #description-inline-expander {

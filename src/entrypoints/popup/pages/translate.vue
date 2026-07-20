@@ -37,6 +37,10 @@
 					<input type="checkbox" v-model="config['translate.enable.videoDescription']" />
 					<span>{{ $t("translate.enable.checkbox.videoDescription") }}</span>
 				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['translate.enable.videoSummary']" />
+					<span>{{ $t("translate.enable.checkbox.videoSummary") }}</span>
+				</label>
 			</div>
 		</div>
 		<div class="card">

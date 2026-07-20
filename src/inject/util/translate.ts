@@ -90,8 +90,8 @@ export async function googleTranslate(text: string | string[], srcLang: string, 
 		method: "POST",
 	});
 	const data = await response.json();
-	if (typeof data[0] === "number") throw new Error(`Translation API error (${data[0]}): ${data[1]}`);
-	if (!Array.isArray(data?.[0]) || !Array.isArray(data?.[1])) throw new Error("Invalid translation response");
+	if (typeof data?.[0] === "number") throw new Error(`Translation API error (${data[0]}): ${data[1]}`);
+	if (!Array.isArray(data?.[0])) throw new Error("Invalid translation response");
 
-	return data;
+	return [data[0], Array.isArray(data[1]) ? data[1] : []];
 }

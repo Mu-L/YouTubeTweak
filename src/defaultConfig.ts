@@ -65,6 +65,7 @@ export type Config = {
 
 	"translate.enable.videoTitle": boolean;
 	"translate.enable.videoDescription": boolean;
+	"translate.enable.videoSummary": boolean;
 	"translate.enable.timedtext": boolean;
 	"translate.timedtext.mode": "bilingual" | "translationOnly";
 
@@ -137,6 +138,7 @@ const config: Config = {
 
 	"translate.enable.videoTitle": false,
 	"translate.enable.videoDescription": false,
+	"translate.enable.videoSummary": false,
 	"translate.enable.timedtext": true,
 	"translate.timedtext.mode": "bilingual",
 

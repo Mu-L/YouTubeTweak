@@ -313,6 +313,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Updates",
+			"checkbox": {
+				"disableNotice": "Disable update notifications"
+			},
 			"tips": [
 				"A new version {version} is available",
 				"The extension will automatically update after you close all YouTube tabs.",
@@ -430,7 +434,8 @@
 			"checkbox": {
 				"timedtext": "Enable subtitle translation",
 				"videoTitle": "Translate video title",
-				"videoDescription": "Translate video description"
+				"videoDescription": "Translate video description",
+				"videoSummary": "Translate video summary"
 			}
 		},
 		"watch": {
