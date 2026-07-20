@@ -290,3 +290,11 @@ ID 命名规则：
 ```
 
 最终文档中的每一个标题前面，都必须有一行对应的 `<a name="..."></a>`。
+
+# 链接的补全
+
+在进行完上述所有步骤后，需要对 `src\entrypoints\popup\pages` 进行 `<DocsHelpLink anchor="xxx" />` 补全
+
+- 只对本次新增的特性进行补全，不要对已经存在、或旧 `FUNCTIONS.md` 已经存在的功能进行补全。
+- 对应的 anchor 需要和 `FUNCTIONS.md` 中的标题 ID 一致。
+- 不要对已经存在的 `<DocsHelpLink anchor="xxx" />` 进行修改、删除、更新。
