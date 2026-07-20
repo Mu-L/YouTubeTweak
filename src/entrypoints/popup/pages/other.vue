@@ -117,6 +117,7 @@
 				</label>
 				<label class="form-item form-item-select">
 					<span>{{ $t("other.appearance.logoCountryCode") }}</span>
+					<DocsHelpLink anchor="other-appearance-logo-country-code" />
 					<input v-model.lazy="config['other.logoCountryCode']" type="text" placeholder="Pirates" />
 				</label>
 			</div>

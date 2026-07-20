@@ -741,6 +741,28 @@ Notes:
 - Enabling or disabling this feature reloads the current YouTube page.
 - If YouTube changes its page data structure, the logo may temporarily remain unchanged.
 
+<a name="other-appearance-logo-country-code"></a>
+
+### Modify Logo Country/Region Label
+
+After you enter text, the label next to the YouTube logo that originally displays the country or region is replaced with your text. Clearing the field restores YouTube's default display.
+
+Suitable use cases:
+
+- You want to customize the brand label in the upper-left corner of the page.
+- You want to replace the default country or region abbreviation with personalized text.
+
+Configurable options:
+
+- Country/region label: enter custom text, such as `Pirates`; leave it blank to make no changes.
+
+Notes:
+
+- This feature only changes the text displayed next to the logo. It does not change your account region, content region, language, currency, recommendations, or actual location.
+- After modifying or clearing the text, opened YouTube pages reload automatically.
+- This option can be used independently and does not depend on "Disguise Premium Logo"; both can also take effect at the same time.
+- If YouTube changes its page layout, this label may temporarily be unavailable.
+
 <a name="other-custom-css"></a>
 
 ## Custom CSS
@@ -904,16 +926,16 @@ Notes:
 
 ### Compatibility Warning
 
-When subtitle translation or video ad blocking is enabled, the General page displays a warning prompt.
+When subtitle translation, video ad blocking, or Disguise Premium Logo is enabled, the General page displays a warning prompt.
 
 Reason:
 
-- These two types of features adjust content while YouTube loads subtitles or ad-related content.
+- These features directly adjust subtitle, advertising, or branding information that YouTube loads into the page.
 - This adjustment may cause page abnormalities because of YouTube redesigns, network issues, or browser restrictions.
 
 Recommendation:
 
-- If you encounter problems such as videos failing to play, abnormal subtitles, or abnormal page loading, first disable subtitle translation and video ad blocking for troubleshooting.
+- If you encounter problems such as videos failing to play, abnormal subtitles, abnormal page loading, or payment-related pages for purchasing Premium, joining channel memberships, or sending live-stream donations not working correctly, first disable subtitle translation, video ad blocking, and Disguise Premium Logo for troubleshooting.
 
 <a name="general-installed"></a>
 
