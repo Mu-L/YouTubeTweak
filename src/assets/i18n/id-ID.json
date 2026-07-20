@@ -229,7 +229,8 @@
 			"title": "Tampilan",
 			"checkbox": {
 				"premiumLogo": "Samarkan sebagai logo Premium"
-			}
+			},
+			"logoCountryCode": "Ubah kode negara logo"
 		},
 		"customCss": {
 			"title": "Custom CSS",

@@ -229,7 +229,8 @@
 			"title": "المظهر",
 			"checkbox": {
 				"premiumLogo": "محاكاة شعار Premium"
-			}
+			},
+			"logoCountryCode": "تعديل رمز بلد الشعار"
 		},
 		"customCss": {
 			"title": "Custom CSS",

@@ -229,7 +229,8 @@
 			"title": "Apparence",
 			"checkbox": {
 				"premiumLogo": "Simuler le logo Premium"
-			}
+			},
+			"logoCountryCode": "Modifier le code pays du logo"
 		},
 		"customCss": {
 			"title": "Custom CSS",

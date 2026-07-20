@@ -229,7 +229,8 @@
 			"title": "రూపం",
 			"checkbox": {
 				"premiumLogo": "Premium లోగోగా చూపించు"
-			}
+			},
+			"logoCountryCode": "లోగో దేశ కోడ్‌ను మార్చండి"
 		},
 		"customCss": {
 			"title": "Custom CSS",

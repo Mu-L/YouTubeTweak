@@ -229,7 +229,8 @@
 			"title": "Penampilan",
 			"checkbox": {
 				"premiumLogo": "Samarkan sebagai logo Premium"
-			}
+			},
+			"logoCountryCode": "Ubah kod negara logo"
 		},
 		"customCss": {
 			"title": "Custom CSS",

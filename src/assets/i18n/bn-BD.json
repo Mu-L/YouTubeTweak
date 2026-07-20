@@ -229,7 +229,8 @@
 			"title": "চেহারা",
 			"checkbox": {
 				"premiumLogo": "Premium লোগো হিসেবে দেখান"
-			}
+			},
+			"logoCountryCode": "লোগোর দেশের কোড পরিবর্তন করুন"
 		},
 		"customCss": {
 			"title": "Custom CSS",

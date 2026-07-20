@@ -229,7 +229,8 @@
 			"title": "स्वरूप",
 			"checkbox": {
 				"premiumLogo": "Premium लोगो म्हणून दाखवा"
-			}
+			},
+			"logoCountryCode": "लोगोचा देश कोड बदला"
 		},
 		"customCss": {
 			"title": "Custom CSS",

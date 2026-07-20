@@ -229,7 +229,8 @@
 			"title": "ظاهر",
 			"checkbox": {
 				"premiumLogo": "نمایش لوگو به‌شکل Premium"
-			}
+			},
+			"logoCountryCode": "تغییر کد کشور لوگو"
 		},
 		"customCss": {
 			"title": "Custom CSS",

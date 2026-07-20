@@ -229,7 +229,8 @@
 			"title": "Giao diện",
 			"checkbox": {
 				"premiumLogo": "Ngụy trang thành logo Premium"
-			}
+			},
+			"logoCountryCode": "Thay đổi mã quốc gia của logo"
 		},
 		"customCss": {
 			"title": "Custom CSS",

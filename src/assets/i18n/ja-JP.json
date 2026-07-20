@@ -229,7 +229,8 @@
 			"title": "外観",
 			"checkbox": {
 				"premiumLogo": "Premium ロゴに偽装"
-			}
+			},
+			"logoCountryCode": "ロゴの国コードを変更"
 		},
 		"customCss": {
 			"title": "カスタム CSS",

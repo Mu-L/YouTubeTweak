@@ -229,7 +229,8 @@
 			"title": "모양",
 			"checkbox": {
 				"premiumLogo": "Premium 로고로 위장"
-			}
+			},
+			"logoCountryCode": "로고 국가 코드 변경"
 		},
 		"customCss": {
 			"title": "Custom CSS",

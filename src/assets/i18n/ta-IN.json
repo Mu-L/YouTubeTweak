@@ -229,7 +229,8 @@
 			"title": "தோற்றம்",
 			"checkbox": {
 				"premiumLogo": "Premium லோகோவாகக் காட்டவும்"
-			}
+			},
+			"logoCountryCode": "லோகோ நாட்டுக் குறியீட்டை மாற்றவும்"
 		},
 		"customCss": {
 			"title": "Custom CSS",

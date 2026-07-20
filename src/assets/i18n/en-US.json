@@ -229,7 +229,8 @@
 			"title": "Appearance",
 			"checkbox": {
 				"premiumLogo": "Disguise as the Premium logo"
-			}
+			},
+			"logoCountryCode": "Modify logo country code"
 		},
 		"customCss": {
 			"title": "Custom CSS",

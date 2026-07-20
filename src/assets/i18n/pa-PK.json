@@ -229,7 +229,8 @@
 			"title": "دِکھ",
 			"checkbox": {
 				"premiumLogo": "Premium لوگو دے روپ وچ دکھاؤ"
-			}
+			},
+			"logoCountryCode": "لوگو دا ملک کوڈ بدلو"
 		},
 		"customCss": {
 			"title": "Custom CSS",

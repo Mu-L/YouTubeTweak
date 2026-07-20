@@ -229,7 +229,8 @@
 			"title": "รูปลักษณ์",
 			"checkbox": {
 				"premiumLogo": "ปลอมเป็นโลโก้ Premium"
-			}
+			},
+			"logoCountryCode": "เปลี่ยนรหัสประเทศของโลโก้"
 		},
 		"customCss": {
 			"title": "Custom CSS",

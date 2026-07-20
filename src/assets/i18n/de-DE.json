@@ -229,7 +229,8 @@
 			"title": "Erscheinungsbild",
 			"checkbox": {
 				"premiumLogo": "Premium-Logo vortäuschen"
-			}
+			},
+			"logoCountryCode": "Ländercode des Logos ändern"
 		},
 		"customCss": {
 			"title": "Custom CSS",

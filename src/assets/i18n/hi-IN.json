@@ -229,7 +229,8 @@
 			"title": "दिखावट",
 			"checkbox": {
 				"premiumLogo": "Premium लोगो के रूप में दिखाएँ"
-			}
+			},
+			"logoCountryCode": "लोगो का देश कोड बदलें"
 		},
 		"customCss": {
 			"title": "Custom CSS",

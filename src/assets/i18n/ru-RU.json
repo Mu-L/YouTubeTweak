@@ -229,7 +229,8 @@
 			"title": "Внешний вид",
 			"checkbox": {
 				"premiumLogo": "Имитировать логотип Premium"
-			}
+			},
+			"logoCountryCode": "Изменить код страны логотипа"
 		},
 		"customCss": {
 			"title": "Custom CSS",

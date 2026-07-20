@@ -229,7 +229,8 @@
 			"title": "Görünüm",
 			"checkbox": {
 				"premiumLogo": "Premium logosunu taklit et"
-			}
+			},
+			"logoCountryCode": "Logo ülke kodunu değiştir"
 		},
 		"customCss": {
 			"title": "Custom CSS",
