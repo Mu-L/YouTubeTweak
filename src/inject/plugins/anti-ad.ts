@@ -73,13 +73,15 @@ export default {
 					(adBlockBlocker = document.querySelector("ytd-enforcement-message-view-model")) &&
 					adBlockBlocker?.parentElement?.style?.display !== "none"
 				) {
-					let closeButton = adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next");
-					if (closeButton) {
+					let closeButton: HTMLElement | null;
+					if ((closeButton = adBlockBlocker?.querySelector<HTMLElement>("#dismiss-button .yt-spec-button-shape-next"))) {
 						logger.info("click adBlockBlocker close.");
 						//(adBlockBlocker?.querySelector("#dismiss-button .yt-spec-button-shape-next") as HTMLElement | null)?.click?.();
 						if (videoPlayer.player?.playVideo) {
 							videoPlayer.player.playVideo();
 						}
+					} else if ((closeButton = adBlockBlocker?.querySelector<HTMLElement>(`[icon="COUNTDOWN_TO_CLOSE"] button`))) {
+						closeButton.click();
 					}
 				}
 			}, 1000);
