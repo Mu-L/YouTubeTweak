@@ -1,14 +1,14 @@
 import { createLogger } from "@/logger";
 import type { Plugin } from "../types";
 import xmlHttpRequestHooker from "../xmlHttpRequestHooker";
-import { decodeHtmlEntities, googleTranslate } from "../util/helper";
+import { escapeTextForTranslate, getTargetLanguage, googleTranslate, isTargetLanguage, translatedHtmlToText } from "../util/translate";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 const logger = createLogger("Translate-timedtext");
 const TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH = 30000;
 const textEncoder = new TextEncoder();
 
-type timedtextResponse = {
+type TimedtextResponse = {
 	events?: Array<{
 		dDurationMs: number;
 		tStartMs: number;
@@ -18,7 +18,7 @@ type timedtextResponse = {
 	}>;
 };
 
-async function translateTimedtextItems(texts: string[], srcLang: string, toLang: string) {
+async function translateTimedtextItems(texts: string[], srcLang: string, targetLanguage: string) {
 	if (texts.length === 0) return [];
 
 	const batches: string[][] = [];
@@ -47,12 +47,19 @@ async function translateTimedtextItems(texts: string[], srcLang: string, toLang:
 
 	const batchResults = await Promise.all(
 		batches.map(async (batch) => {
-			const result = await googleTranslate(batch, srcLang, toLang);
+			const result = await googleTranslate(batch, srcLang, targetLanguage);
 			return batch.map((source, index) => (typeof result[0][index] === "string" ? result[0][index] : source));
 		}),
 	);
 
 	return batchResults.flat();
+}
+
+function refreshSubtitles() {
+	if (!videoPlayer.player?.isSubtitlesOn()) return;
+
+	videoPlayer.player.toggleSubtitles();
+	setTimeout(() => videoPlayer.player?.toggleSubtitlesOn(), 100);
 }
 
 export default {
@@ -61,87 +68,67 @@ export default {
 			reloadOnToggle: true,
 		},
 		enable() {
-			logger.log("Enabling translate timedtext plugin...");
 			xmlHttpRequestHooker.addHook("translateTimedtext", {
 				match: "/api/timedtext",
 				mutator: true,
-				async handler(data: timedtextResponse, url, responseClone) {
-					logger.debug("Intercepted timedtext request:", url);
+				async handler(data: TimedtextResponse, url) {
 					if (!data || typeof data !== "object") {
 						return data;
 					}
 
 					const urlObj = new URL(url);
-					let srcLang = urlObj.searchParams.get("lang") || "auto";
-					let toLang =
-						config.get("comment.targetLanguage") === "auto"
-							? window.yt?.config_?.HL || "zh_TW"
-							: config.get("comment.targetLanguage");
+					const srcLang = urlObj.searchParams.get("lang") || "auto";
+					const targetLanguage = getTargetLanguage();
 
-					if (srcLang.slice(0, 2) === toLang.slice(0, 2)) {
+					if (isTargetLanguage(srcLang, targetLanguage)) {
 						return data;
 					}
 
-					if (!data.events || !Array.isArray(data.events) || data.events.length === 0) {
+					if (!Array.isArray(data.events) || data.events.length === 0) {
 						return data;
 					}
 
-					const needTranslateList: Record<string, string> = {};
-					for (const i in data.events) {
-						const evt = data.events[i];
-						// evt.segs[0].utf8 = "????";
-						if (evt.segs && Array.isArray(evt.segs)) {
-							needTranslateList[i] = evt.segs
-								.map((seg) => seg.utf8)
-								.join("")
-								.replace(/\n/g, "<br/>");
-
-							if (needTranslateList[i].trim() === "") {
-								needTranslateList[i] = "---";
-							}
-						} else {
-							needTranslateList[i] = "---";
-						}
-					}
-
-					if (Object.keys(needTranslateList).length === 0) {
-						return data;
-					}
+					const needTranslateList = data.events.map((event) => {
+						const text = Array.isArray(event.segs)
+							? escapeTextForTranslate(event.segs.map((segment) => segment.utf8).join(""))
+							: "";
+						return text.trim() ? text : "---";
+					});
 
 					if (srcLang === "ja") {
-						for (const [i, v] of Object.entries(needTranslateList)) {
-							const vSplit = v.split("<br/>");
-							if (vSplit.length >= 2 && /[a-zA-Z ]/g.test(vSplit.slice(-1)[0])) {
-								needTranslateList[i] = vSplit.slice(0, -1).join("<br/>");
+						needTranslateList.forEach((text, index) => {
+							const lines = text.split("<br/>");
+							if (lines.length >= 2 && /[a-z ]/i.test(lines[lines.length - 1])) {
+								needTranslateList[index] = lines.slice(0, -1).join("<br/>");
 							}
-						}
+						});
 					}
 
 					let translatedTexts: string[];
 					try {
-						translatedTexts = await translateTimedtextItems(Object.values(needTranslateList), srcLang, toLang);
+						translatedTexts = await translateTimedtextItems(needTranslateList, srcLang, targetLanguage);
 					} catch (e) {
 						logger.warn("Timedtext translation failed:", e);
 						return data;
 					}
 
 					const isTranslationOnly = config.get("translate.timedtext.mode", "bilingual") === "translationOnly";
+					const isAsr = urlObj.searchParams.get("kind") === "asr";
 
-					for (const i in data.events) {
+					for (const [index, event] of data.events.entries()) {
 						try {
-							const event = data.events[i];
 							if (!event.segs?.[0]) {
 								continue;
 							}
 
-							if (urlObj.searchParams.get("kind") === "asr") {
-								const translatedText = decodeHtmlEntities(translatedTexts[i].replace(/<br\/>/g, "").replace("---", ""));
+							if (isAsr) {
+								const translatedText = translatedHtmlToText(translatedTexts[index], "").replace("---", "");
 								event.segs[0].utf8 = isTranslationOnly
 									? translatedText
 									: translatedText + "\n" + event.segs.map((v) => v.utf8).join("");
 								event.segs.length = 1;
 							} else {
-								const translatedText = decodeHtmlEntities(translatedTexts[i].replace(/<br\/>/g, ""));
+								const translatedText = translatedHtmlToText(translatedTexts[index], "");
 								event.segs[0].utf8 = isTranslationOnly
 									? translatedText.replace("---", "")
 									: translatedText + "\n" + event.segs[0].utf8;
@@ -150,35 +137,18 @@ export default {
 								}
 							}
 						} catch (e) {
-							logger.error("Error while processing timedtext event:", e, data.events[i], translatedTexts[i]);
-							debugger;
+							logger.error("Error while processing timedtext event:", e, event, translatedTexts[index]);
 						}
 					}
-					logger.debug("Timedtext translation result:", data, needTranslateList, translatedTexts);
 					return data;
 				},
 			});
 
-			if (videoPlayer.player) {
-				if (videoPlayer.player.isSubtitlesOn()) {
-					videoPlayer.player.toggleSubtitles();
-					setTimeout(() => {
-						videoPlayer.player?.toggleSubtitlesOn();
-					}, 100);
-				}
-			}
+			refreshSubtitles();
 		},
 		disable() {
 			delete xmlHttpRequestHooker.hooks["translateTimedtext"];
-
-			if (videoPlayer.player) {
-				if (videoPlayer.player.isSubtitlesOn()) {
-					videoPlayer.player.toggleSubtitles();
-					setTimeout(() => {
-						videoPlayer.player?.toggleSubtitlesOn();
-					}, 100);
-				}
-			}
+			refreshSubtitles();
 		},
 	},
 } as Record<string, Plugin>;

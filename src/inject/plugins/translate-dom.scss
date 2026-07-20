@@ -1,0 +1,71 @@
+.yttweak-video-title-translated {
+	max-height: calc(5.6rem * 2 + 2px) !important;
+	-webkit-line-clamp: 4 !important;
+
+	> yt-formatted-string,
+	> .yttweak-video-title-translate {
+		display: -webkit-box;
+		max-height: 5.6rem;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+
+	> .yttweak-video-title-translate {
+		width: fit-content;
+		margin-top: 0;
+		line-height: 1em;
+		background: linear-gradient(to right, #03a9f4 0%, #03a9f4 50%, transparent 50%, transparent 100%) repeat-x left bottom;
+		background-size: 8px 2px;
+		padding-bottom: 1px;
+	}
+}
+
+.yttweak-video-description-translate {
+	display: block;
+	border: 2px dashed rgb(3, 169, 244);
+	width: calc(100% - 14px);
+	margin-top: 5px;
+	padding: 5px;
+}
+
+#description-inline-expander {
+	&:not([is-expanded]) {
+		> #expanded > .yttweak-video-description-translate-expanded {
+			display: none;
+		}
+
+		> #snippet.yttweak-video-description-snippet-translated {
+			max-height: calc(6rem * 2 + 21px) !important;
+			overflow: hidden !important;
+			mask-image: none !important;
+
+			> #snippet-text {
+				display: block;
+
+				> #attributed-snippet-text {
+					display: block;
+					height: 6rem;
+					overflow: hidden;
+				}
+
+				> .yttweak-video-description-translate-snippet {
+					max-height: 6rem;
+					overflow: hidden;
+				}
+			}
+
+			~ #expand {
+				bottom: calc(6rem + 21px) !important;
+				left: var(--yttweak-video-description-expand-left) !important;
+				z-index: 1;
+			}
+		}
+	}
+
+	&[is-expanded] {
+		> #snippet > #snippet-text > .yttweak-video-description-translate-snippet {
+			display: none;
+		}
+	}
+}

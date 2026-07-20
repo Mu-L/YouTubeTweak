@@ -5,6 +5,7 @@ export type Plugin = {
 
 	initPlayer?: Function;
 	initComments?: (el: HTMLDivElement, setUpdateListener: (callback: (mutations: MutationRecord[]) => void) => void) => void;
+	initWatchMetadata?: (el: HTMLElement, setUpdateListener: (callback: (mutations: MutationRecord[]) => void) => void) => void;
 	configUpdate?: (oldConfig: any, newConfig: any) => boolean;
 	videoSrcChange?: (oldValue: string | null, newValue: string | null) => void;
 

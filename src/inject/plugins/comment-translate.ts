@@ -3,6 +3,17 @@ import { createLogger } from "../../logger";
 import { videoPlayer } from "../mainWorld";
 
 import type { Plugin } from "../types";
+import {
+	createTextSegment,
+	decodeHtmlEntities,
+	escapeTextForTranslate,
+	getImageSrc,
+	getImageSrcset,
+	getTargetLanguage,
+	googleTranslate,
+	isTargetLanguage,
+	type TextSegment,
+} from "../util/translate";
 
 const logger = createLogger("comment-translate");
 
@@ -10,8 +21,19 @@ const DOUBLE_BREAK_RE = /<br\s*\/?>\s*<br\s*\/?>/i;
 const RESULT_HTML_TOKEN_RE = /<br\s*\/?>|<[^>]+>/gi;
 const SOURCE_LINE_BREAK_RE = /\r\n|\r|\n/;
 const TRANSLATABLE_FORMAT_TAGS = new Set(["SPAN", "B", "STRONG", "I", "EM", "U", "S", "DEL", "INS", "MARK", "SMALL", "SUB", "SUP"]);
-const NON_TEXT_SELECTOR = "a,img,picture,svg,yt-icon,button,input,textarea,select,video,audio,canvas,iframe";
-const IMAGE_MIRROR_ATTRIBUTES = ["alt", "class", "data-src", "data-srcset", "data-thumb", "height", "sizes", "src", "srcset", "style", "width"];
+const IMAGE_MIRROR_ATTRIBUTES = [
+	"alt",
+	"class",
+	"data-src",
+	"data-srcset",
+	"data-thumb",
+	"height",
+	"sizes",
+	"src",
+	"srcset",
+	"style",
+	"width",
+];
 
 type DomNodeEntry = {
 	node: Node;
@@ -34,12 +56,6 @@ type ImageSnapshot = {
 type ImageMirror = {
 	cleanup: () => void;
 	isConnected: () => boolean;
-};
-
-type TextSegment = {
-	leading: string;
-	source: string;
-	trailing: string;
 };
 
 type TranslatePart =
@@ -316,21 +332,8 @@ function appendNodeToTranslationContent(
 
 function shouldTranslateElementChildren(element: HTMLElement): boolean {
 	if (!TRANSLATABLE_FORMAT_TAGS.has(element.tagName)) return false;
-	if (element.matches(NON_TEXT_SELECTOR)) return false;
 
 	return element.childNodes.length > 0;
-}
-
-function createTextSegment(text: string): TextSegment {
-	if (text.trim() === "") {
-		return { leading: text, source: "", trailing: "" };
-	}
-
-	const leading = text.match(/^\s*/)?.[0] ?? "";
-	const trailing = text.match(/\s*$/)?.[0] ?? "";
-	const source = text.slice(leading.length, text.length - trailing.length);
-
-	return { leading, source, trailing };
 }
 
 function createTranslationFragment(task: TranslateTask, translatedSegments: string[]) {
@@ -632,14 +635,6 @@ function getImages(node: Node | Element) {
 	return images;
 }
 
-function getImageSrc(img: HTMLImageElement | undefined) {
-	return img?.currentSrc || img?.src || img?.getAttribute("src") || img?.getAttribute("data-src") || img?.getAttribute("data-thumb") || "";
-}
-
-function getImageSrcset(img: HTMLImageElement | undefined) {
-	return img?.srcset || img?.getAttribute("srcset") || img?.getAttribute("data-srcset") || "";
-}
-
 function bindTimestampLinks(element: HTMLElement) {
 	const anchors =
 		element.tagName === "A" ? [element as HTMLAnchorElement] : Array.from(element.querySelectorAll<HTMLAnchorElement>("a[href]"));
@@ -757,48 +752,6 @@ function isMiniPlayerOpen() {
 	);
 }
 
-function escapeTextForTranslate(text: string) {
-	return escapeHtml(text).replace(/\r\n|\r|\n/g, "<br/>");
-}
-
-function escapeHtml(text: string) {
-	return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function decodeHtmlEntities(text: string) {
-	const namedEntities: Record<string, string> = {
-		"&amp;": "&",
-		"&lt;": "<",
-		"&gt;": ">",
-		"&quot;": '"',
-		"&apos;": "'",
-		"&#39;": "'",
-		"&nbsp;": "\u00A0",
-	};
-
-	return text
-		.replace(/&(?:amp|lt|gt|quot|apos|nbsp);|&#39;/g, (entity) => namedEntities[entity] ?? entity)
-		.replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
-		.replace(/&#x([\da-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)));
-}
-
-function normalizeLang(lang: string) {
-	return (lang || "").toLowerCase().replace("_", "-");
-}
-
-function isSameLanguage(a: string, b: string) {
-	const na = normalizeLang(a);
-	const nb = normalizeLang(b);
-	if (!na || !nb) return false;
-
-	if (na === nb) return true;
-	return na.split("-")[0] === nb.split("-")[0];
-}
-
-function isBlockedLanguage(lang: string, blocked: string[]) {
-	return blocked.some((item) => isSameLanguage(item, lang));
-}
-
 function createTranslateJobs(task: TranslateTask, translatedSegments: string[]): TranslateJob[] {
 	const splitByLine = shouldAppendLineByLineTranslation(task);
 
@@ -856,8 +809,6 @@ function handleTranslate(v: HTMLElement) {
 
 		const commentContent = createTranslationContent(commentContentDom);
 
-		const toLang =
-			config.get("comment.targetLanguage") === "auto" ? window.yt?.config_?.HL || "zh_TW" : config.get("comment.targetLanguage");
 		const task: TranslateTask = {
 			commentEl: v,
 			contentDom: commentContentDom,
@@ -866,7 +817,7 @@ function handleTranslate(v: HTMLElement) {
 			textSegments: commentContent.textSegments,
 			domNodes: commentContent.domNodes,
 			shellNodes: commentContent.shellNodes,
-			targetLang: toLang,
+			targetLang: getTargetLanguage(),
 			mode: "auto",
 		};
 
@@ -876,10 +827,6 @@ function handleTranslate(v: HTMLElement) {
 		}
 
 		translateQueue.push(task);
-
-		// const t = document.createElement("span");
-		// t.classList.add("yttweak-comment-translate-tag");
-		// commentContentDom.parentElement?.appendChild(t);
 	}, 100);
 }
 setInterval(() => {
@@ -911,23 +858,12 @@ setInterval(() => {
 			return;
 		}
 
-		fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
-			headers: {
-				"content-type": "application/json+protobuf",
-				"x-goog-api-key": "AIzaSyATBXajvzQLTDHEQbcpq0Ihe0vWDHmO520",
-			},
-			body: JSON.stringify([
-				[segmentJobs.map((job) => escapeTextForTranslate(job.source)), "auto", doing[0].targetLang],
-				"te_lib",
-			]),
-			method: "POST",
-		})
-			.then((res) => {
-				return res.json();
-			})
-			.then((data) => {
-				const translations: string[] = Array.isArray(data?.[0]) ? data[0] : [];
-				const detectedLanguages: string[] = Array.isArray(data?.[1]) ? data[1] : [];
+		googleTranslate(
+			segmentJobs.map((job) => escapeTextForTranslate(job.source)),
+			"auto",
+			doing[0].targetLang,
+		)
+			.then(([translations, detectedLanguages]) => {
 				const neverTranslateLanguages = config.get("comment.neverTranslateLanguages", []);
 				const detectedLanguageByTask = new Map<TranslateTask, string>();
 
@@ -952,7 +888,8 @@ setInterval(() => {
 
 					const shouldSkipAuto =
 						task.mode === "auto" &&
-						(isSameLanguage(detectedLang, task.targetLang) || isBlockedLanguage(detectedLang, neverTranslateLanguages));
+						(isTargetLanguage(detectedLang, task.targetLang) ||
+							neverTranslateLanguages.some((language) => isTargetLanguage(detectedLang, language)));
 
 					if (shouldSkipAuto) {
 						appendTranslateButton(task, result);

@@ -428,8 +428,13 @@
 		"enable": {
 			"title": "translation switch",
 			"checkbox": {
-				"timedtext": "Enable subtitle translation"
+				"timedtext": "Enable subtitle translation",
+				"videoTitle": "Translate video title",
+				"videoDescription": "Translate video description"
 			}
+		},
+		"watch": {
+			"title": "Watch page translation"
 		}
 	}
 }

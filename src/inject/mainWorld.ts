@@ -248,6 +248,31 @@ const YouTubeTweakApp = {
 					});
 				}
 			}
+
+			// catch watch metadata
+			const watchMetadata = document.querySelector<HTMLElement>('ytd-watch-metadata:not([yttweak="hooked"])');
+			if (watchMetadata) {
+				watchMetadata.setAttribute("yttweak", "hooked");
+
+				const watchMetadataUpdateListeners: Record<string, (mutations: MutationRecord[]) => void> = {};
+				new MutationObserver((mutations) => {
+					Object.values(watchMetadataUpdateListeners).forEach((listener) => listener(mutations));
+				}).observe(watchMetadata, {
+					subtree: true,
+					childList: true,
+					characterData: true,
+				});
+
+				Object.entries(plugins).forEach(([pluginName, plugin]) => {
+					try {
+						plugin.initWatchMetadata?.(watchMetadata, (listener) => {
+							watchMetadataUpdateListeners[pluginName] = listener;
+						});
+					} catch (e) {
+						logger.error("plugin error:", e);
+					}
+				});
+			}
 		}, 300);
 	},
 };
