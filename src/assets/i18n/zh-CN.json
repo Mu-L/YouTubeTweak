@@ -229,7 +229,8 @@
 			"title": "外观",
 			"checkbox": {
 				"premiumLogo": "伪装 Premium logo"
-			}
+			},
+			"logoCountryCode": "修改 Logo 国家代码"
 		},
 		"customCss": {
 			"title": "自定义 CSS",

@@ -151,29 +151,43 @@ export default {
 			reloadOnToggle: true,
 		},
 		setup() {
+			const premiumLogoEnabled = config.get("other.premiumLogo.enable");
+			const logoCountryCode = config.get("other.logoCountryCode");
+			let needsReload = false;
+
 			if (
-				(!config.get("other.premiumLogo.enable") && localStorage.getItem("YTTweak-plugin-PremiumLogo")) ||
-				(config.get("other.premiumLogo.enable") && !localStorage.getItem("YTTweak-plugin-PremiumLogo"))
+				(!premiumLogoEnabled && localStorage.getItem("YTTweak-plugin-PremiumLogo")) ||
+				(premiumLogoEnabled && !localStorage.getItem("YTTweak-plugin-PremiumLogo"))
 			) {
-				config.get("other.premiumLogo.enable")
+				premiumLogoEnabled
 					? localStorage.setItem("YTTweak-plugin-PremiumLogo", "1")
 					: localStorage.removeItem("YTTweak-plugin-PremiumLogo");
-				location.reload();
+				needsReload = true;
 			}
-		},
-		enable() {
-			localStorage.setItem("YTTweak-plugin-PremiumLogo", "1");
+			if ((localStorage.getItem("YTTweak-plugin-LogoCountryCode") ?? "") !== logoCountryCode) {
+				logoCountryCode
+					? localStorage.setItem("YTTweak-plugin-LogoCountryCode", logoCountryCode)
+					: localStorage.removeItem("YTTweak-plugin-LogoCountryCode");
+				needsReload = true;
+			}
+			if (needsReload) location.reload();
+
+			if (!premiumLogoEnabled && !logoCountryCode) return;
 
 			fetchHooker.addHook("antiAD-get_watch", {
 				match: "/youtubei/v1/get_watch",
 				mutator: true,
 				handler(data: any) {
-					if (data && typeof data === "object") {
-						const iconImage = data?.[1]?.watchNextResponse?.topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
+					const topbar = data?.[1]?.watchNextResponse?.topbar;
 
+					if (premiumLogoEnabled) {
+						const iconImage = topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
 						if (iconImage) {
 							iconImage.iconType = "YOUTUBE_PREMIUM_LOGO";
 						}
+					}
+					if (logoCountryCode && topbar?.desktopTopbarRenderer) {
+						topbar.desktopTopbarRenderer.countryCode = logoCountryCode;
 					}
 
 					return data;
@@ -184,20 +198,60 @@ export default {
 				match: "/youtubei/v1/next",
 				mutator: true,
 				handler(data: any) {
-					if (data && typeof data === "object") {
-						const iconImage = data?.topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
+					const topbar = data?.topbar;
 
+					if (premiumLogoEnabled) {
+						const iconImage = topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
 						if (iconImage) {
 							iconImage.iconType = "YOUTUBE_PREMIUM_LOGO";
 						}
+					}
+					if (logoCountryCode && topbar?.desktopTopbarRenderer) {
+						topbar.desktopTopbarRenderer.countryCode = logoCountryCode;
 					}
 
 					return data;
 				},
 			});
+
+			fetchHooker.addHook("antiAD-browse", {
+				match: "/youtubei/v1/browse",
+				mutator: true,
+				handler(data: any) {
+					const topbar = data?.topbar;
+
+					if (premiumLogoEnabled) {
+						const iconImage = topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage;
+						if (iconImage) {
+							iconImage.iconType = "YOUTUBE_PREMIUM_LOGO";
+						}
+					}
+					if (logoCountryCode && topbar?.desktopTopbarRenderer) {
+						topbar.desktopTopbarRenderer.countryCode = logoCountryCode;
+					}
+
+					debugger;
+
+					return data;
+				},
+			});
+		},
+		enable() {
+			localStorage.setItem("YTTweak-plugin-PremiumLogo", "1");
 		},
 		disable() {
 			localStorage.removeItem("YTTweak-plugin-PremiumLogo");
+		},
+	},
+	"other.logoCountryCode": {
+		options: {
+			reloadOnToggle: true,
+		},
+		enable() {
+			localStorage.setItem("YTTweak-plugin-LogoCountryCode", config.get("other.logoCountryCode"));
+		},
+		disable() {
+			localStorage.removeItem("YTTweak-plugin-LogoCountryCode");
 		},
 	},
 } as Record<string, Plugin>;

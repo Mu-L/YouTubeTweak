@@ -115,6 +115,10 @@
 					<span>{{ $t("other.appearance.checkbox.premiumLogo") }}</span>
 					<DocsHelpLink anchor="other-appearance-premium-logo" />
 				</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("other.appearance.logoCountryCode") }}</span>
+					<input v-model.lazy="config['other.logoCountryCode']" type="text" placeholder="Pirates" />
+				</label>
 			</div>
 		</div>
 

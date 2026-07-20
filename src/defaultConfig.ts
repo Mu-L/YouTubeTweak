@@ -69,6 +69,7 @@ export type Config = {
 	"index.videoPerRow.enable": boolean;
 	"index.videoPerRow.count": 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
 	"other.premiumLogo.enable": boolean;
+	"other.logoCountryCode": string;
 	"other.antiAD.enable": boolean;
 	"other.antiAD.enableMerch": boolean;
 	"other.antiAD.enableVideo": boolean;
@@ -137,6 +138,7 @@ const config: Config = {
 	"index.videoPerRow.enable": false,
 	"index.videoPerRow.count": 4,
 	"other.premiumLogo.enable": false,
+	"other.logoCountryCode": "",
 	"other.antiAD.enable": false,
 	"other.antiAD.enableMerch": false,
 	"other.antiAD.enableVideo": false,
@@ -170,6 +172,9 @@ export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unkn
 	}
 	if (typeof normalizedConfig["other.customCss.value"] !== "string") {
 		normalizedConfig["other.customCss.value"] = "";
+	}
+	if (typeof normalizedConfig["other.logoCountryCode"] !== "string") {
+		normalizedConfig["other.logoCountryCode"] = "";
 	}
 	return normalizedConfig as Partial<Config>;
 }
