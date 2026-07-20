@@ -1,7 +1,7 @@
 import { createLogger } from "@/logger";
 import type { Plugin } from "../types";
 import xmlHttpRequestHooker from "../xmlHttpRequestHooker";
-import { googleTranslate } from "../util/helper";
+import { decodeHtmlEntities, googleTranslate } from "../util/helper";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 const logger = createLogger("Translate-timedtext");
@@ -135,13 +135,13 @@ export default {
 							}
 
 							if (urlObj.searchParams.get("kind") === "asr") {
-								const translatedText = translatedTexts[i].replace(/<br\/>/g, "").replace("---", "");
+								const translatedText = decodeHtmlEntities(translatedTexts[i].replace(/<br\/>/g, "").replace("---", ""));
 								event.segs[0].utf8 = isTranslationOnly
 									? translatedText
 									: translatedText + "\n" + event.segs.map((v) => v.utf8).join("");
 								event.segs.length = 1;
 							} else {
-								const translatedText = translatedTexts[i].replace(/<br\/>/g, "");
+								const translatedText = decodeHtmlEntities(translatedTexts[i].replace(/<br\/>/g, ""));
 								event.segs[0].utf8 = isTranslationOnly
 									? translatedText.replace("---", "")
 									: translatedText + "\n" + event.segs[0].utf8;

@@ -36,6 +36,30 @@ export function secToMMDD(time: number, forceShowHours = false): string {
 	return hours !== "00" || forceShowHours ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
 }
 
+export function decodeHtmlEntities(text: string) {
+	return text.replace(/&(amp|lt|gt|quot|apos|#(\d+)|#x([\da-f]+));/gi, (entity, name, decimal, hexadecimal) => {
+		if (decimal || hexadecimal) {
+			const codePoint = Number.parseInt(decimal || hexadecimal, decimal ? 10 : 16);
+			return codePoint <= 0x10ffff && (codePoint < 0xd800 || codePoint > 0xdfff) ? String.fromCodePoint(codePoint) : entity;
+		}
+
+		switch (name.toLowerCase()) {
+			case "amp":
+				return "&";
+			case "lt":
+				return "<";
+			case "gt":
+				return ">";
+			case "quot":
+				return '"';
+			case "apos":
+				return "'";
+			default:
+				return entity;
+		}
+	});
+}
+
 export function googleTranslate(text: string | string[], srcLang: string = "auto", targetLang: string): Promise<[string[], string[]]> {
 	return new Promise((resolve, reject) => {
 		fetch("https://translate-pa.googleapis.com/v1/translateHtml", {
