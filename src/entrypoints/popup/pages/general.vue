@@ -87,6 +87,18 @@
 			</div>
 		</div>
 
+		<div class="card">
+			<div class="card-title">
+				<span>{{ $t("general.update.title") }}</span>
+			</div>
+			<div class="card-body">
+				<label class="form-item">
+					<input type="checkbox" v-model="config['yttweak.disableUpdateNotice']" />
+					<span>{{ $t("general.update.checkbox.disableNotice") }}</span>
+				</label>
+			</div>
+		</div>
+
 		<div class="card config-card">
 			<div class="card-title">
 				<span>{{ $t("general.config.title") }}</span>

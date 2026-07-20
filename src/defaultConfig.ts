@@ -81,6 +81,7 @@ export type Config = {
 	"other.customCss.value": string;
 
 	"yttweak.enableChromeApiStatusChecker": boolean;
+	"yttweak.disableUpdateNotice": boolean;
 };
 
 const config: Config = {
@@ -150,6 +151,7 @@ const config: Config = {
 	"other.customCss.value": "",
 
 	"yttweak.enableChromeApiStatusChecker": true,
+	"yttweak.disableUpdateNotice": false,
 };
 
 export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unknown>) {

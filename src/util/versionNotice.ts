@@ -1,3 +1,5 @@
+import type { Config } from "@/defaultConfig";
+
 export const READ_CHANGELOG_VERSION_STORAGE_KEY = "readChangelogVersion";
 export const CHANGELOG_URL = "https://raw.githubusercontent.com/xlch88/YouTubeTweak/refs/heads/main/changelog.json";
 
@@ -26,8 +28,13 @@ export function compareVersions(left: string, right: string) {
 
 export async function syncVersionNoticeBadge() {
 	const actionApi = getActionApi();
-	const data = await browser.storage.local.get(READ_CHANGELOG_VERSION_STORAGE_KEY);
-	const hasUnreadChangelog = data[READ_CHANGELOG_VERSION_STORAGE_KEY] !== __APP_INFO__.version;
+	const [changelogData, settingsData] = await Promise.all([
+		browser.storage.local.get(READ_CHANGELOG_VERSION_STORAGE_KEY),
+		browser.storage.sync.get("settings"),
+	]);
+	const hasUnreadChangelog =
+		(settingsData.settings as Partial<Config> | undefined)?.["yttweak.disableUpdateNotice"] !== true &&
+		changelogData[READ_CHANGELOG_VERSION_STORAGE_KEY] !== __APP_INFO__.version;
 
 	await actionApi.setBadgeText({ text: hasUnreadChangelog ? BADGE_TEXT : "" }).catch(() => {});
 	await actionApi

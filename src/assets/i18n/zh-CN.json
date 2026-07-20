@@ -313,6 +313,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "更新",
+			"checkbox": {
+				"disableNotice": "禁用更新提示"
+			},
 			"tips": [
 				"已有新版本 {version} 可用",
 				"关闭所有YouTube标签后将自动进行更新。",
