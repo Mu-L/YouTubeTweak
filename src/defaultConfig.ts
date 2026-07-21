@@ -136,10 +136,10 @@ const config: Config = {
 	"comment.targetLanguage": "auto",
 	"comment.neverTranslateLanguages": [],
 
-	"translate.enable.videoListTitle": false,
-	"translate.enable.videoTitle": false,
-	"translate.enable.videoDescription": false,
-	"translate.enable.videoSummary": false,
+	"translate.enable.videoListTitle": true,
+	"translate.enable.videoTitle": true,
+	"translate.enable.videoDescription": true,
+	"translate.enable.videoSummary": true,
 	"translate.enable.timedtext": true,
 	"translate.timedtext.mode": "bilingual",
 
