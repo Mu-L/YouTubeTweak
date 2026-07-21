@@ -75,7 +75,6 @@ export type Config = {
 	"other.logoCountryCode": string;
 	"other.antiAD.enable": boolean;
 	"other.antiAD.enableMerch": boolean;
-	"other.antiAD.enableVideo": boolean;
 	"shorts-blocker.enable.index": boolean;
 	"shorts-blocker.enable.watch": boolean;
 	"shorts-blocker.enable.menu": boolean;
@@ -148,7 +147,6 @@ const config: Config = {
 	"other.logoCountryCode": "",
 	"other.antiAD.enable": false,
 	"other.antiAD.enableMerch": false,
-	"other.antiAD.enableVideo": false,
 	"shorts-blocker.enable.index": false,
 	"shorts-blocker.enable.watch": false,
 	"shorts-blocker.enable.menu": false,
@@ -183,6 +181,10 @@ export function normalizeConfig(rawConfig: Partial<Config> | Record<string, unkn
 	}
 	if (typeof normalizedConfig["other.logoCountryCode"] !== "string") {
 		normalizedConfig["other.logoCountryCode"] = "";
+	}
+
+	if (typeof normalizedConfig["other.antiAD.enableVideo"] !== undefined) {
+		delete normalizedConfig["other.antiAD.enableVideo"];
 	}
 	return normalizedConfig as Partial<Config>;
 }

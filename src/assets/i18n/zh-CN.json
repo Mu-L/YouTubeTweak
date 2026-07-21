@@ -202,7 +202,10 @@
 				"enableMerch": "屏蔽频道主商品推荐"
 			},
 			"tips": {
-				"enable": "实验功能(不稳定)，部分情况下仍需在播放器点击“跳过”，并且可能会被YouTube检测。"
+				"enable": "实验功能(不稳定)，部分情况下仍需在播放器点击“跳过”，并且可能会被YouTube检测。",
+				"videoDeprecated": "视频广告屏蔽功能已作废，推荐使用以下扩展：",
+				"uBlockOrigin": "通用广告屏蔽扩展，包含视频广告",
+				"sponsorBlock": "屏蔽视频植入式营销内容"
 			}
 		},
 		"shorts": {

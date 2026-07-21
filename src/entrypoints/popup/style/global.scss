@@ -225,6 +225,11 @@ input[type="checkbox"] {
 		}
 	}
 
+	&:disabled {
+		background-color: #cacaca !important;
+		border-color: #a5a5a5 !important;
+	}
+
 	&.checkbox-size-mini {
 		width: 15px;
 		height: 15px;

@@ -53,8 +53,8 @@
 					<span> {{ $t("other.antiAD.checkbox.enable") }} </span>
 					<DocsHelpLink anchor="other-anti-ad-image" />
 				</label>
-				<label class="form-item">
-					<input type="checkbox" v-model="config['other.antiAD.enableVideo']" />
+				<label class="form-item form-item-deleted">
+					<input type="checkbox" disabled />
 					<span> {{ $t("other.antiAD.checkbox.enableVideo") }} </span>
 					<DocsHelpLink anchor="other-anti-ad-video" />
 				</label>
@@ -63,6 +63,13 @@
 					<span> {{ $t("other.antiAD.checkbox.enableMerch") }} </span>
 					<DocsHelpLink anchor="other-anti-ad-merch" />
 				</label>
+				<p>
+					{{ $t("other.antiAD.tips.videoDeprecated") }}<br />
+					- <a href="https://ublockorigin.com/" target="_black">uBlock Origin</a>: {{ $t("other.antiAD.tips.uBlockOrigin")
+					}}<br />
+					- <a href="https://sponsor.ajay.app/" target="_black">SponsorBlock</a>:
+					{{ $t("other.antiAD.tips.sponsorBlock") }}
+				</p>
 			</div>
 		</div>
 
@@ -307,6 +314,18 @@ function saveCustomCss() {
 
 	& :deep(.token.punctuation) {
 		color: #24292f;
+	}
+}
+
+.form-item-deleted {
+	position: relative;
+	span {
+		text-decoration-line: line-through;
+		text-decoration-thickness: 1px;
+		text-decoration-color: black;
+	}
+	button {
+		pointer-events: none;
 	}
 }
 </style>
