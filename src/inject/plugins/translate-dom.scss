@@ -1,6 +1,7 @@
 .yttweak-video-title-translated {
 	max-height: calc(5.6rem * 2 + 2px) !important;
 	-webkit-line-clamp: 4 !important;
+	display: initial !important;
 
 	> yt-formatted-string,
 	> .yttweak-video-title-translate {
