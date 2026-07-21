@@ -202,7 +202,10 @@
 				"enableMerch": "Block channel merchandise"
 			},
 			"tips": {
-				"enable": "Experimental feature (unstable). In some cases, you still need to click \"Skip\" additionally in the player, and it may be detected by YouTube."
+				"enable": "Experimental feature (unstable). In some cases, you still need to click \"Skip\" additionally in the player, and it may be detected by YouTube.",
+				"videoDeprecated": "The video ad blocking feature is no longer available. We recommend the following extensions:",
+				"uBlockOrigin": "General-purpose ad blocker that also blocks video ads",
+				"sponsorBlock": "Blocks sponsored segments embedded in videos"
 			}
 		},
 		"shorts": {
@@ -433,13 +436,17 @@
 			"title": "translation switch",
 			"checkbox": {
 				"timedtext": "Enable subtitle translation",
-				"videoTitle": "Translate video title",
+				"videoTitle": "Translate watch page video title",
+				"videoListTitle": "Translate video list titles",
 				"videoDescription": "Translate video description",
 				"videoSummary": "Translate video summary"
 			}
 		},
 		"watch": {
 			"title": "Watch page translation"
+		},
+		"global": {
+			"title": "Global"
 		}
 	}
 }

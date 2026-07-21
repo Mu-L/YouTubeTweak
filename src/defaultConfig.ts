@@ -63,6 +63,7 @@ export type Config = {
 	"comment.targetLanguage": string;
 	"comment.neverTranslateLanguages": string[];
 
+	"translate.enable.videoListTitle": boolean;
 	"translate.enable.videoTitle": boolean;
 	"translate.enable.videoDescription": boolean;
 	"translate.enable.videoSummary": boolean;
@@ -135,6 +136,7 @@ const config: Config = {
 	"comment.targetLanguage": "auto",
 	"comment.neverTranslateLanguages": [],
 
+	"translate.enable.videoListTitle": false,
 	"translate.enable.videoTitle": false,
 	"translate.enable.videoDescription": false,
 	"translate.enable.videoSummary": false,

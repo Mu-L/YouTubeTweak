@@ -149,9 +149,7 @@ const YouTubeTweakApp = {
 		setInterval(() => {
 			// catch video player
 			let player: typeof videoPlayer.player, controls: typeof videoPlayer.controls, videoStream: typeof videoPlayer.videoStream;
-			if ((player = document.querySelector("ytd-player #movie_player"))) {
-				if (player.getAttribute("yttweak") === "hooked") return;
-
+			if ((player = document.querySelector("ytd-player #movie_player")) && player.getAttribute("yttweak") !== "hooked") {
 				if ((controls = player.querySelector(".ytp-left-controls"))) {
 					controls = controls.parentElement as HTMLDivElement;
 

@@ -15,9 +15,41 @@
 		width: fit-content;
 		margin-top: 0;
 		line-height: 1em;
-		background: linear-gradient(to right, #03a9f4 0%, #03a9f4 50%, transparent 50%, transparent 100%) repeat-x left bottom;
-		background-size: 8px 2px;
 		padding-bottom: 1px;
+		text-decoration-line: underline;
+		text-decoration-style: dashed;
+		text-decoration-color: #c4c4c4;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+		padding-bottom: 1px;
+	}
+}
+
+.yttweak-video-list-title-translated {
+	max-height: none !important;
+
+	> .ytAttributedStringWhiteSpacePreWrap,
+	> yt-formatted-string,
+	> .yttweak-video-list-title-translate {
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+
+	> .yttweak-video-list-title-translate {
+		width: fit-content;
+		max-width: 100%;
+		text-decoration-line: underline;
+		text-decoration-style: dashed;
+		text-decoration-color: #c4c4c4;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+
+		.ytp-modern-videowall-still-info-bg & {
+			text-decoration-color: #ffffff5c !important;
+			text-underline-offset: 2px;
+		}
 	}
 }
 
@@ -47,41 +79,40 @@
 }
 
 #description-inline-expander {
-	&:not([is-expanded]) {
-		> #expanded > .yttweak-video-description-translate-expanded {
-			display: none;
+	body.yttweak-translate-video-description & {
+		> #expand {
+			bottom: 7px !important;
+			left: initial !important;
+			right: 7px !important;
 		}
 
-		> #snippet.yttweak-video-description-snippet-translated {
-			max-height: calc(6rem * 2 + 21px) !important;
-			overflow: hidden !important;
+		#snippet {
 			mask-image: none !important;
+		}
 
-			> #snippet-text {
-				display: block;
-
-				> #attributed-snippet-text {
-					display: block;
-					height: 6rem;
-					overflow: hidden;
-				}
-
-				> .yttweak-video-description-translate-snippet {
-					max-height: 6rem;
-					overflow: hidden;
+		&:not([is-expanded]) {
+			> #snippet {
+				> :not(#snippet-text) {
+					position: absolute !important;
+					visibility: hidden !important;
 				}
 			}
 
-			~ #expand {
-				bottom: calc(6rem + 21px) !important;
-				left: var(--yttweak-video-description-expand-left) !important;
-				z-index: 1;
+			> .yttweak-video-description-translate-snippet {
+				box-sizing: content-box;
+				overflow: hidden;
 			}
 		}
 	}
 
+	&:not([is-expanded]) {
+		> #expanded > .yttweak-video-description-translate-expanded {
+			display: none;
+		}
+	}
+
 	&[is-expanded] {
-		> #snippet > #snippet-text > .yttweak-video-description-translate-snippet {
+		.yttweak-video-description-translate-snippet {
 			display: none;
 		}
 	}
