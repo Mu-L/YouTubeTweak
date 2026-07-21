@@ -7,6 +7,108 @@
 	},
 	"releases": [
 		{
+			"version": "1.2.1",
+			"date": "2026-07-21",
+			"changes": {
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "广告屏蔽",
+							"text": "移除了视频广告屏蔽功能，建议使用其他插件进行替代。"
+						},
+						{
+							"scope": "评论翻译",
+							"text": "将评论译文标记调整为灰色虚线下划线。"
+						}
+					],
+					"added": [
+						{
+							"scope": "页面翻译",
+							"text": "新增视频列表标题、播放页标题和视频描述翻译，并支持翻译 YouTube 已提供的视频摘要。"
+						},
+						{
+							"scope": "外观",
+							"text": "新增 Logo 国家/地区标识自定义功能，可将 YouTube Logo 旁的标识替换为指定文字。"
+						},
+						{
+							"scope": "更新提示",
+							"text": "新增禁用更新提示选项，可关闭扩展图标上的 `new` 标记和未读更新日志自动打开。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "字幕翻译",
+							"text": "修复字幕译文中 `&amp;` 等字符实体原样显示的问题。"
+						}
+					]
+				},
+				"en": {
+					"updated": [
+						{
+							"scope": "Ad blocking",
+							"text": "Removed the video ad blocking feature; using another extension instead is recommended."
+						},
+						{
+							"scope": "Comment translation",
+							"text": "Changed the comment translation marker to a gray dashed underline."
+						}
+					],
+					"added": [
+						{
+							"scope": "Page translation",
+							"text": "Added translation for video list titles, watch page titles, and video descriptions, with support for translating video summaries provided by YouTube."
+						},
+						{
+							"scope": "Appearance",
+							"text": "Added customization for the logo country/region label, allowing the label next to the YouTube logo to be replaced with specified text."
+						},
+						{
+							"scope": "Update notifications",
+							"text": "Added an option to disable update notifications, which can hide the `new` badge on the extension icon and stop the unread changelog from opening automatically."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "Subtitle translation",
+							"text": "Fixed character entities such as `&amp;` being displayed verbatim in subtitle translations."
+						}
+					]
+				},
+				"ja": {
+					"updated": [
+						{
+							"scope": "広告ブロック",
+							"text": "動画広告ブロック機能を削除し、代わりに他の拡張機能を使用することを推奨します。"
+						},
+						{
+							"scope": "コメント翻訳",
+							"text": "コメントの翻訳文を示す表示をグレーの点線下線に変更しました。"
+						}
+					],
+					"added": [
+						{
+							"scope": "ページ翻訳",
+							"text": "動画一覧タイトル、再生ページタイトル、動画説明の翻訳を追加し、YouTube が提供する動画概要の翻訳にも対応しました。"
+						},
+						{
+							"scope": "外観",
+							"text": "ロゴの国/地域表記をカスタマイズする機能を追加し、YouTube ロゴの横にある表記を指定したテキストに置き換えられるようにしました。"
+						},
+						{
+							"scope": "更新通知",
+							"text": "更新通知を無効にするオプションを追加し、拡張機能アイコン上の `new` マークと未読更新履歴の自動表示を無効にできるようにしました。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "字幕翻訳",
+							"text": "字幕翻訳で `&amp;` などの文字実体参照がそのまま表示される問題を修正しました。"
+						}
+					]
+				}
+			}
+		},
+		{
 			"version": "1.2.0",
 			"date": "2026-07-18",
 			"changes": {

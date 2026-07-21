@@ -6,6 +6,23 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [1.2.1] - 2026-07-21
+
+### Updated
+
+- **Ad blocking:** Removed the video ad blocking feature; using another extension instead is recommended.
+- **Comment translation:** Changed the comment translation marker to a gray dashed underline.
+
+### Added
+
+- **Page translation:** Added translation for video list titles, watch page titles, and video descriptions, with support for translating video summaries provided by YouTube.
+- **Appearance:** Added customization for the logo country/region label, allowing the label next to the YouTube logo to be replaced with specified text.
+- **Update notifications:** Added an option to disable update notifications, which can hide the `new` badge on the extension icon and stop the unread changelog from opening automatically.
+
+### Fixed
+
+- **Subtitle translation:** Fixed character entities such as `&amp;` being displayed verbatim in subtitle translations.
+
 ## [1.2.0] - 2026-07-18
 
 ### Updated
