@@ -413,7 +413,7 @@ Notes:
 
 # Translation
 
-These features are used for subtitle and comment translation. Subtitle translation and comment translation use online translation services, so network access is required.
+These features are used to translate video list titles, watch page text, subtitles, and comments. All translation features use online translation services, so network access is required.
 
 <a name="translate-settings"></a>
 
@@ -423,7 +423,7 @@ These features are used for subtitle and comment translation. Subtitle translati
 
 ### Translation Target Language
 
-This setting determines which language subtitle translation and comment translation should translate into.
+This setting determines which language video lists, watch pages, subtitles, and comments are translated into.
 
 Configurable options:
 
@@ -450,6 +450,96 @@ Notes:
 
 - This setting mainly affects automatic comment translation.
 - When a comment is identified as a language that does not need translation, the extension keeps a manual translation button, and the user can still click it to view a translation.
+
+<a name="translate-global"></a>
+
+## Global Translation
+
+<a name="translate-global-video-list-title"></a>
+
+### Translate Video List Titles
+
+After enabling this, the extension displays translations below the original titles in video lists, allowing you to understand video content directly while browsing without first opening the watch page.
+
+Suitable use cases:
+
+- You browse foreign-language home pages, search results, or recommendation lists.
+- You view Shorts titles and player end-screen recommendations and want to see translations at the same time.
+- You want to keep the original titles so you can compare them with the translations.
+
+Scope:
+
+- The YouTube home page, search results, watch-page recommendation lists, and other areas that use video cards.
+- Shorts video cards.
+- Recommended videos displayed at the end of the player.
+
+Notes:
+
+- This option is disabled by default and does not depend on the subtitle translation or comment translation options.
+- Translations use the "Translation Target Language" setting. When "Follow YouTube language" is selected, the current YouTube page language is used.
+- Original titles are retained, while translations appear below them with a dashed underline to distinguish them.
+- If a title is already in the target language, the translation is identical to the original, or translation fails, the extension does not display a duplicate translation.
+- Enabling or disabling this feature automatically refreshes the current YouTube page.
+
+<a name="translate-watch"></a>
+
+## Watch Page Translation
+
+<a name="translate-watch-video-title"></a>
+
+### Translate Watch Page Video Title
+
+After enabling this, regular video watch pages display a title translation below the original title while retaining the original title.
+
+Suitable use cases:
+
+- You want to quickly understand the title when watching a foreign-language video.
+- You need to compare the original title with the translation to avoid losing the original context by viewing only the translation.
+
+Notes:
+
+- This option is disabled by default and only applies to regular video watch pages.
+- Translations use the "Translation Target Language" setting and do not depend on the description, summary, subtitle, or comment translation options.
+- If the title is already in the target language, the translation is identical to the original, or translation fails, the page retains the original title.
+- Enabling or disabling this feature automatically refreshes the current YouTube page.
+
+<a name="translate-watch-video-description"></a>
+
+### Translate Video Description
+
+After enabling this, regular video watch pages display a translated description near the original description. The corresponding translation remains visible whether the description is collapsed or expanded.
+
+Suitable use cases:
+
+- You read content descriptions, chapter information, or supplementary material for foreign-language videos.
+- You want to retain the links, images, and formatting in the original description while reading the translation.
+
+Notes:
+
+- This option is disabled by default and only applies to regular video watch pages.
+- Translations use the "Translation Target Language" setting and do not depend on the title, summary, subtitle, or comment translation options.
+- The original description is retained, while the translation appears in an area with a dashed border. Links, images, and other content that cannot be translated directly remain unchanged.
+- If the description contains no translatable text or translation fails, the page retains the original description.
+- Enabling or disabling this feature automatically refreshes the current YouTube page.
+
+<a name="translate-watch-video-summary"></a>
+
+### Translate Video Summary
+
+After enabling this, if YouTube provides a video summary on a regular video watch page, the extension displays a translated summary near the original summary. The appropriate translation is shown whether the summary is collapsed or expanded.
+
+Suitable use cases:
+
+- You want to understand the general content of a foreign-language video through its summary first.
+- YouTube displays a summary, but the summary language is difficult for you to read.
+
+Notes:
+
+- This option is disabled by default and only applies to regular video watch pages where YouTube provides a summary.
+- The extension only translates existing summaries and does not automatically generate summaries for videos without one.
+- Translations use the "Translation Target Language" setting and do not depend on the title, description, subtitle, or comment translation options.
+- If the summary is already in the target language, the translation is identical to the original, or translation fails, the page retains the original summary.
+- Enabling or disabling this feature automatically refreshes the current YouTube page.
 
 <a name="translate-subtitle"></a>
 
@@ -620,21 +710,19 @@ Notes:
 
 <a name="other-anti-ad-video"></a>
 
-### Block Video Ads
+### Video Ad Blocking (Discontinued)
 
-After enabling this, the extension tries to reduce video ads in the player and skip ad videos as quickly as possible when detected.
+The current version has discontinued the extension's built-in video ad blocking feature. Its entry in the settings panel appears as an unavailable option with a strikethrough and can no longer be enabled.
 
-Suitable use cases:
+Alternatives:
 
-- You want to reduce video ads inserted before, after, or during videos.
-- You want video playback to be more continuous.
+- uBlock Origin: blocks common webpage ads, including video ads.
+- SponsorBlock: skips sponsor or promotional segments added to videos by their creators.
 
 Notes:
 
-- Enabling or disabling this feature may refresh the current YouTube page.
-- This is an experimental feature and may cause page abnormalities or be detected by YouTube.
-- In some cases, you may still need to manually click YouTube's "Skip" button.
-- If YouTube playback behaves abnormally, you can first disable this feature for troubleshooting.
+- The alternatives above are independent browser extensions and are not part of YouTube Tweak. Their availability depends on the browser and the corresponding extension's support.
+- "Block Image and Text Ads" and "Block Creator Product Recommendations" remain features that can be used independently.
 
 <a name="other-anti-ad-merch"></a>
 
@@ -843,6 +931,75 @@ Notes:
 - Language switching immediately affects the extension panel.
 - The page provides an entry for translation contributors, making it convenient to view or participate in translation.
 
+<a name="general-update-notice"></a>
+
+## Updates
+
+<a name="general-update-notice-disable"></a>
+
+### Disable Update Notifications
+
+After enabling this, the extension no longer uses the `new` badge on the extension icon to remind you to read new version notes, and clicking the extension icon no longer automatically opens the changelog because of unread notes.
+
+Suitable use cases:
+
+- You do not want the extension icon to display a marker for new version notes.
+- You want each click on the extension icon to open the settings page you normally use.
+
+Notes:
+
+- This option is disabled by default, which means unread new version notes are shown by default.
+- This option only disables new version note notifications. It does not prevent the browser from checking for, downloading, or installing extension updates.
+- After disabling notifications, you can still manually view the changelog under "About" or click the version number to manually check for updates.
+
+<a name="general-update-notice-version"></a>
+
+### Available Update Prompt
+
+When the browser detects an installable new version of the extension, the General page displays an update prompt.
+
+Available actions:
+
+- View changelog.
+- Update now.
+
+Notes:
+
+- Normally, after all YouTube tabs are closed, the browser automatically completes the extension update.
+- Clicking "Update now" reloads the extension and refreshes opened YouTube tabs after the update completes.
+- "Disable Update Notifications" only disables unread new version note notifications. It does not disable the prompt shown when the browser has detected an available update.
+
+<a name="general-update-notice-reload-page"></a>
+
+### YouTube Page Reload Required Prompt
+
+After the extension updates, already opened YouTube pages may still be using the old state. At this point, a prompt may appear on the page asking you to reload it.
+
+Suitable use cases:
+
+- The extension has just updated, but features on the YouTube page look abnormal.
+- The page says the extension has been updated and needs to be reloaded.
+
+Notes:
+
+- Click the reload button in the prompt to refresh the current page.
+- After reloading, the page uses the new extension state.
+
+<a name="general-update-notice-compatibility"></a>
+
+### Compatibility Warning
+
+When subtitle translation or Disguise Premium Logo is enabled, the General page displays a warning prompt.
+
+Reason:
+
+- These features directly adjust subtitle or branding information that YouTube loads into the page.
+- This adjustment may cause page abnormalities because of YouTube redesigns, network issues, or browser restrictions.
+
+Recommendation:
+
+- If you encounter problems such as videos failing to play, abnormal subtitles, abnormal page loading, or payment-related pages for purchasing Premium, joining channel memberships, or sending live-stream donations not working correctly, first disable subtitle translation and Disguise Premium Logo for troubleshooting.
+
 <a name="general-config"></a>
 
 ## Extension Settings
@@ -885,57 +1042,6 @@ Notes:
 - A confirmation prompt appears before reset.
 - After reset, the panel returns to the "Player" page.
 - Resetting normal settings does not specifically clear per-channel memory. If you need to migrate or overwrite memory, use the memory options in import/export.
-
-<a name="general-update-notice"></a>
-
-## Updates and Page Prompts
-
-<a name="general-update-notice-version"></a>
-
-### New Version Prompt
-
-When the browser detects that the extension has a new version, the General page displays a new version prompt.
-
-Available actions:
-
-- View changelog.
-- Update now.
-
-Notes:
-
-- Normally, after all YouTube tabs are closed, the browser automatically completes the extension update.
-- Clicking "Update now" reloads the extension and refreshes opened YouTube tabs after the update completes.
-
-<a name="general-update-notice-reload-page"></a>
-
-### YouTube Page Reload Required Prompt
-
-After the extension updates, already opened YouTube pages may still be using the old state. At this point, a prompt may appear on the page asking you to reload it.
-
-Suitable use cases:
-
-- The extension has just updated, but features on the YouTube page look abnormal.
-- The page says the extension has been updated and needs to be reloaded.
-
-Notes:
-
-- Click the reload button in the prompt to refresh the current page.
-- After reloading, the page uses the new extension state.
-
-<a name="general-update-notice-compatibility"></a>
-
-### Compatibility Warning
-
-When subtitle translation, video ad blocking, or Disguise Premium Logo is enabled, the General page displays a warning prompt.
-
-Reason:
-
-- These features directly adjust subtitle, advertising, or branding information that YouTube loads into the page.
-- This adjustment may cause page abnormalities because of YouTube redesigns, network issues, or browser restrictions.
-
-Recommendation:
-
-- If you encounter problems such as videos failing to play, abnormal subtitles, abnormal page loading, or payment-related pages for purchasing Premium, joining channel memberships, or sending live-stream donations not working correctly, first disable subtitle translation, video ad blocking, and Disguise Premium Logo for troubleshooting.
 
 <a name="general-installed"></a>
 

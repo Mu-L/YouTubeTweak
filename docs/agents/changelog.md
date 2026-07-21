@@ -15,7 +15,7 @@
 - 上一个 release 版本的 commit ID：`<PREVIOUS_RELEASE_COMMIT_ID>`
 - 当前版本号：`<VERSION>`，例如 `1.1.7` 或 `v1.1.7`
 
-如果用户没有提供 commit ID，不要猜测，不要自行选择 tag，必须要求用户补充。
+如果用户没有提供 commit ID，需要执行 `git tag --sort=-creatordate | head -n 1` 以获取上一个版本号，执行 `git rev-parse $TAG_ID^{}` 以获取上一个提交ID。
 
 如果用户没有提供版本号，则按以下顺序尝试获取：
 
