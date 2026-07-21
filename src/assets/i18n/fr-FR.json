@@ -202,7 +202,10 @@
 				"enableMerch": "Bloquer les prospections des auteurs du canal"
 			},
 			"tips": {
-				"enable": "Fonctionnalités expérimentales (instable). Dans certains cas, vous avez besoin de cliquer le bouton \"Skip\" en plus dans le player, et cette action pourra être détectée par YouTube."
+				"enable": "Fonctionnalités expérimentales (instable). Dans certains cas, vous avez besoin de cliquer le bouton \"Skip\" en plus dans le player, et cette action pourra être détectée par YouTube.",
+				"videoDeprecated": "La fonctionnalité de blocage des publicités vidéo n’est plus disponible. Nous recommandons les extensions suivantes :",
+				"uBlockOrigin": "Extension généraliste de blocage des publicités, y compris les publicités vidéo",
+				"sponsorBlock": "Bloque les contenus promotionnels intégrés aux vidéos"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Mises à jour",
+			"checkbox": {
+				"disableNotice": "Désactiver les notifications de mise à jour"
+			},
 			"tips": [
 				"Une nouvelle version {version} est disponible",
 				"Une mise à jour automatique sera effectuée quand vous fermez tous les onglets de YouTube",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Traduction des sous-titres",
+			"checkbox": {
+				"timedtext": "Activer la traduction des sous-titres"
+			},
 			"select": {
 				"mode": "Mode de traduction",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "Traduction des commentaires"
 		},
-		"enable": {
-			"title": "Interrupteur de traduction",
+		"global": {
+			"title": "Global",
 			"checkbox": {
-				"timedtext": "Activer la traduction des sous-titres"
+				"videoListTitle": "Traduire les titres des listes de vidéos"
+			}
+		},
+		"watch": {
+			"title": "Page de lecture vidéo",
+			"checkbox": {
+				"videoTitle": "Traduire le titre de la vidéo",
+				"videoDescription": "Traduire la description de la vidéo",
+				"videoSummary": "Traduire le résumé de la vidéo"
 			}
 		}
 	}

@@ -202,7 +202,10 @@
 				"enableMerch": "Kanal ürünlerini engelle"
 			},
 			"tips": {
-				"enable": "Deneysel özellik (kararsız). Bazı durumlarda oynatıcıda yine de \"Atla\"ya tıklamanız gerekebilir ve YouTube tarafından tespit edilebilir."
+				"enable": "Deneysel özellik (kararsız). Bazı durumlarda oynatıcıda yine de \"Atla\"ya tıklamanız gerekebilir ve YouTube tarafından tespit edilebilir.",
+				"videoDeprecated": "Video reklamlarını engelleme özelliği artık kullanılamıyor. Aşağıdaki uzantıları kullanmanızı öneririz:",
+				"uBlockOrigin": "Video reklamları da dahil olmak üzere genel amaçlı reklam engelleme uzantısı",
+				"sponsorBlock": "Videolara yerleştirilen sponsorlu pazarlama içeriklerini engeller"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Güncellemeler",
+			"checkbox": {
+				"disableNotice": "Güncelleme bildirimlerini devre dışı bırak"
+			},
 			"tips": [
 				"Yeni sürüm {version} mevcut",
 				"Tüm YouTube sekmelerini kapattıktan sonra uzantı otomatik olarak güncellenecek.",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Altyazı çevirisi",
+			"checkbox": {
+				"timedtext": "Altyazı çevirisini aç"
+			},
 			"select": {
 				"mode": "Çeviri yöntemi",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "Yorum çevirisi"
 		},
-		"enable": {
-			"title": "Çeviri düğmesi",
+		"global": {
+			"title": "Genel",
 			"checkbox": {
-				"timedtext": "Altyazı çevirisini aç"
+				"videoListTitle": "Video listelerindeki başlıkları çevir"
+			}
+		},
+		"watch": {
+			"title": "Video izleme sayfası",
+			"checkbox": {
+				"videoTitle": "Video başlığını çevir",
+				"videoDescription": "Video açıklamasını çevir",
+				"videoSummary": "Video özetini çevir"
 			}
 		}
 	}

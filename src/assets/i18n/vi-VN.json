@@ -202,7 +202,10 @@
 				"enableMerch": "Chặn hàng hóa kênh"
 			},
 			"tips": {
-				"enable": "Tính năng thử nghiệm (không ổn định). Trong một số trường hợp bạn vẫn cần bấm \"Bỏ qua\" trong trình phát và có thể bị YouTube phát hiện."
+				"enable": "Tính năng thử nghiệm (không ổn định). Trong một số trường hợp bạn vẫn cần bấm \"Bỏ qua\" trong trình phát và có thể bị YouTube phát hiện.",
+				"videoDeprecated": "Tính năng chặn quảng cáo video không còn khả dụng. Bạn nên sử dụng các tiện ích sau:",
+				"uBlockOrigin": "Tiện ích chặn quảng cáo đa dụng, bao gồm cả quảng cáo video",
+				"sponsorBlock": "Chặn nội dung tiếp thị tài trợ được chèn trong video"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Cập nhật",
+			"checkbox": {
+				"disableNotice": "Tắt thông báo cập nhật"
+			},
 			"tips": [
 				"Có phiên bản mới {version}",
 				"Tiện ích sẽ tự động cập nhật sau khi bạn đóng tất cả tab YouTube.",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Dịch phụ đề",
+			"checkbox": {
+				"timedtext": "Bật dịch phụ đề"
+			},
 			"select": {
 				"mode": "Cách dịch",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "Dịch bình luận"
 		},
-		"enable": {
-			"title": "Công tắc dịch",
+		"global": {
+			"title": "Toàn cục",
 			"checkbox": {
-				"timedtext": "Bật dịch phụ đề"
+				"videoListTitle": "Dịch tiêu đề trong danh sách video"
+			}
+		},
+		"watch": {
+			"title": "Trang xem video",
+			"checkbox": {
+				"videoTitle": "Dịch tiêu đề video",
+				"videoDescription": "Dịch mô tả video",
+				"videoSummary": "Dịch phần tóm tắt video"
 			}
 		}
 	}

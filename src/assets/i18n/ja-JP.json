@@ -202,7 +202,10 @@
 				"enableMerch": "チャンネル主のおすすめ商品をブロックする"
 			},
 			"tips": {
-				"enable": "ラボ機能(不安定)。一部の状況ではまだ「スキップ」をクリックする必要があり、YouTubeに検出される可能性もある。"
+				"enable": "ラボ機能(不安定)。一部の状況ではまだ「スキップ」をクリックする必要があり、YouTubeに検出される可能性もある。",
+				"videoDeprecated": "動画広告ブロック機能は廃止されました。以下の拡張機能の使用をおすすめします：",
+				"uBlockOrigin": "動画広告を含む一般的な広告ブロック拡張機能",
+				"sponsorBlock": "動画内のスポンサーによる宣伝コンテンツをブロック"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "アップデート",
+			"checkbox": {
+				"disableNotice": "アップデート通知を無効にする"
+			},
 			"tips": [
 				"新しいバージョン {version} が利用可能です",
 				"全てのYouTubeタブを閉じると自動的にアップデートされます",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "字幕翻訳",
+			"checkbox": {
+				"timedtext": "字幕翻訳を有効にする"
+			},
 			"select": {
 				"mode": "翻訳方式",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "コメント翻訳"
 		},
-		"enable": {
-			"title": "翻訳スイッチ",
+		"global": {
+			"title": "全体",
 			"checkbox": {
-				"timedtext": "字幕翻訳を有効にする"
+				"videoListTitle": "動画一覧の動画タイトルを翻訳する"
+			}
+		},
+		"watch": {
+			"title": "動画再生ページ",
+			"checkbox": {
+				"videoTitle": "動画タイトルを翻訳する",
+				"videoDescription": "動画の説明を翻訳する",
+				"videoSummary": "動画の概要を翻訳する"
 			}
 		}
 	}

@@ -202,7 +202,10 @@
 				"enableMerch": "刪除頻道商品推薦"
 			},
 			"tips": {
-				"enable": "實驗功能 (不穩定)，部分情況下仍需點擊播放器中的“跳過”，並有可能遭到YouTube檢測。"
+				"enable": "實驗功能 (不穩定)，部分情況下仍需點擊播放器中的“跳過”，並有可能遭到YouTube檢測。",
+				"videoDeprecated": "影片廣告封鎖功能已停用，建議使用以下擴充功能：",
+				"uBlockOrigin": "通用廣告封鎖擴充功能，包含影片廣告",
+				"sponsorBlock": "封鎖影片業配"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "更新",
+			"checkbox": {
+				"disableNotice": "停用更新通知"
+			},
 			"tips": [
 				"已經有新版本 {version} 可以用囉！",
 				"關閉所有 YouTube 頁面後將會自動更新！",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "字幕翻譯",
+			"checkbox": {
+				"timedtext": "開啟字幕翻譯"
+			},
 			"select": {
 				"mode": "翻譯方式",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "評論翻譯"
 		},
-		"enable": {
-			"title": "翻譯開關",
+		"global": {
+			"title": "全域",
 			"checkbox": {
-				"timedtext": "開啟字幕翻譯"
+				"videoListTitle": "翻譯影片清單中的標題"
+			}
+		},
+		"watch": {
+			"title": "影片播放頁面",
+			"checkbox": {
+				"videoTitle": "翻譯影片標題",
+				"videoDescription": "翻譯影片說明",
+				"videoSummary": "翻譯影片摘要"
 			}
 		}
 	}

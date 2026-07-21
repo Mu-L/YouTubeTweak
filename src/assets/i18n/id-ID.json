@@ -202,7 +202,10 @@
 				"enableMerch": "Blokir merchandise kanal"
 			},
 			"tips": {
-				"enable": "Fitur eksperimental (tidak stabil). Dalam beberapa kasus, Anda tetap perlu klik \"Lewati\" di pemutar, dan mungkin terdeteksi oleh YouTube."
+				"enable": "Fitur eksperimental (tidak stabil). Dalam beberapa kasus, Anda tetap perlu klik \"Lewati\" di pemutar, dan mungkin terdeteksi oleh YouTube.",
+				"videoDeprecated": "Fitur pemblokiran iklan video tidak lagi tersedia. Sebaiknya gunakan ekstensi berikut:",
+				"uBlockOrigin": "Ekstensi pemblokir iklan umum, termasuk iklan video",
+				"sponsorBlock": "Memblokir konten pemasaran bersponsor yang disisipkan dalam video"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Pembaruan",
+			"checkbox": {
+				"disableNotice": "Nonaktifkan notifikasi pembaruan"
+			},
 			"tips": [
 				"Versi baru {version} tersedia",
 				"Ekstensi akan otomatis memperbarui setelah Anda menutup semua tab YouTube.",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Terjemahan subtitle",
+			"checkbox": {
+				"timedtext": "Aktifkan terjemahan subtitle"
+			},
 			"select": {
 				"mode": "Mode terjemahan",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "Terjemahan komentar"
 		},
-		"enable": {
-			"title": "Sakelar terjemahan",
+		"global": {
+			"title": "Global",
 			"checkbox": {
-				"timedtext": "Aktifkan terjemahan subtitle"
+				"videoListTitle": "Terjemahkan judul dalam daftar video"
+			}
+		},
+		"watch": {
+			"title": "Halaman pemutaran video",
+			"checkbox": {
+				"videoTitle": "Terjemahkan judul video",
+				"videoDescription": "Terjemahkan deskripsi video",
+				"videoSummary": "Terjemahkan ringkasan video"
 			}
 		}
 	}

@@ -421,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Subtitle translation",
+			"checkbox": {
+				"timedtext": "Enable subtitle translation"
+			},
 			"select": {
 				"mode": "Translation mode",
 				"option": {
@@ -432,21 +435,19 @@
 		"comment": {
 			"title": "Comment translation"
 		},
-		"enable": {
-			"title": "translation switch",
+		"global": {
+			"title": "Global",
 			"checkbox": {
-				"timedtext": "Enable subtitle translation",
-				"videoTitle": "Translate watch page video title",
-				"videoListTitle": "Translate video list titles",
-				"videoDescription": "Translate video description",
-				"videoSummary": "Translate video summary"
+				"videoListTitle": "Translate video list titles"
 			}
 		},
 		"watch": {
-			"title": "Watch page translation"
-		},
-		"global": {
-			"title": "Global"
+			"title": "Watch page translation",
+			"checkbox": {
+				"videoTitle": "Translate watch page video title",
+				"videoDescription": "Translate video description",
+				"videoSummary": "Translate video summary"
+			}
 		}
 	}
 }

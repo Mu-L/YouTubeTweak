@@ -202,7 +202,10 @@
 				"enableMerch": "Blocca merchandising del canale"
 			},
 			"tips": {
-				"enable": "Funzione sperimentale (instabile). In alcuni casi devi comunque cliccare \"Salta\" nel player, e potrebbe essere rilevata da YouTube."
+				"enable": "Funzione sperimentale (instabile). In alcuni casi devi comunque cliccare \"Salta\" nel player, e potrebbe essere rilevata da YouTube.",
+				"videoDeprecated": "La funzione di blocco degli annunci video non è più disponibile. Consigliamo le seguenti estensioni:",
+				"uBlockOrigin": "Estensione generica per il blocco degli annunci, inclusi quelli video",
+				"sponsorBlock": "Blocca i contenuti promozionali inseriti nei video"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Aggiornamenti",
+			"checkbox": {
+				"disableNotice": "Disattiva le notifiche di aggiornamento"
+			},
 			"tips": [
 				"È disponibile una nuova versione {version}",
 				"L'estensione si aggiornerà automaticamente dopo che avrai chiuso tutte le schede di YouTube.",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Traduzione sottotitoli",
+			"checkbox": {
+				"timedtext": "Attiva traduzione sottotitoli"
+			},
 			"select": {
 				"mode": "Modalità di traduzione",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "Traduzione commenti"
 		},
-		"enable": {
-			"title": "Interruttore traduzione",
+		"global": {
+			"title": "Globale",
 			"checkbox": {
-				"timedtext": "Attiva traduzione sottotitoli"
+				"videoListTitle": "Traduci i titoli negli elenchi di video"
+			}
+		},
+		"watch": {
+			"title": "Pagina di riproduzione video",
+			"checkbox": {
+				"videoTitle": "Traduci il titolo del video",
+				"videoDescription": "Traduci la descrizione del video",
+				"videoSummary": "Traduci il riepilogo del video"
 			}
 		}
 	}

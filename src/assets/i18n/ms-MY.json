@@ -202,7 +202,10 @@
 				"enableMerch": "Blok barangan saluran"
 			},
 			"tips": {
-				"enable": "Ciri eksperimen (tidak stabil). Dalam beberapa kes anda masih perlu klik \"Skip\" pada pemain, dan mungkin dikesan oleh YouTube."
+				"enable": "Ciri eksperimen (tidak stabil). Dalam beberapa kes anda masih perlu klik \"Skip\" pada pemain, dan mungkin dikesan oleh YouTube.",
+				"videoDeprecated": "Ciri sekatan iklan video tidak lagi tersedia. Kami mengesyorkan sambungan berikut:",
+				"uBlockOrigin": "Sambungan sekatan iklan umum yang turut menyekat iklan video",
+				"sponsorBlock": "Menyekat kandungan pemasaran tajaan yang disisipkan dalam video"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Kemas kini",
+			"checkbox": {
+				"disableNotice": "Matikan pemberitahuan kemas kini"
+			},
 			"tips": [
 				"Versi baharu {version} tersedia",
 				"Sambungan akan dikemas kini secara automatik selepas anda menutup semua tab YouTube.",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Terjemahan sari kata",
+			"checkbox": {
+				"timedtext": "Hidupkan terjemahan sari kata"
+			},
 			"select": {
 				"mode": "Kaedah terjemahan",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "Terjemahan komen"
 		},
-		"enable": {
-			"title": "Suis terjemahan",
+		"global": {
+			"title": "Global",
 			"checkbox": {
-				"timedtext": "Hidupkan terjemahan sari kata"
+				"videoListTitle": "Terjemahkan tajuk dalam senarai video"
+			}
+		},
+		"watch": {
+			"title": "Halaman tontonan video",
+			"checkbox": {
+				"videoTitle": "Terjemahkan tajuk video",
+				"videoDescription": "Terjemahkan perihalan video",
+				"videoSummary": "Terjemahkan ringkasan video"
 			}
 		}
 	}

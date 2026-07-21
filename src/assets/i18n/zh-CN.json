@@ -421,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "字幕翻译",
+			"checkbox": {
+				"timedtext": "开启字幕翻译"
+			},
 			"select": {
 				"mode": "翻译方式",
 				"option": {
@@ -432,10 +435,18 @@
 		"comment": {
 			"title": "评论翻译"
 		},
-		"enable": {
-			"title": "翻译开关",
+		"global": {
+			"title": "全局",
 			"checkbox": {
-				"timedtext": "开启字幕翻译"
+				"videoListTitle": "翻译视频列表的标题"
+			}
+		},
+		"watch": {
+			"title": "视频播放页面",
+			"checkbox": {
+				"videoTitle": "翻译视频标题",
+				"videoDescription": "翻译视频描述",
+				"videoSummary": "翻译视频摘要"
 			}
 		}
 	}

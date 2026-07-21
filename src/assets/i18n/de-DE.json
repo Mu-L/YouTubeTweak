@@ -202,7 +202,10 @@
 				"enableMerch": "Kanal-Merchandising blockieren"
 			},
 			"tips": {
-				"enable": "Experimentelle Funktion (instabil). In einigen Fällen musst du im Player trotzdem auf \"Überspringen\" klicken, und sie könnte von YouTube erkannt werden."
+				"enable": "Experimentelle Funktion (instabil). In einigen Fällen musst du im Player trotzdem auf \"Überspringen\" klicken, und sie könnte von YouTube erkannt werden.",
+				"videoDeprecated": "Die Funktion zum Blockieren von Videoanzeigen ist nicht mehr verfügbar. Wir empfehlen folgende Erweiterungen:",
+				"uBlockOrigin": "Allgemeiner Werbeblocker, der auch Videoanzeigen blockiert",
+				"sponsorBlock": "Blockiert in Videos integrierte Werbung und Sponsoring-Inhalte"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "Updates",
+			"checkbox": {
+				"disableNotice": "Update-Benachrichtigungen deaktivieren"
+			},
 			"tips": [
 				"Eine neue Version {version} ist verfügbar",
 				"Die Erweiterung wird automatisch aktualisiert, nachdem du alle YouTube-Tabs geschlossen hast.",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "Untertitelübersetzung",
+			"checkbox": {
+				"timedtext": "Untertitelübersetzung aktivieren"
+			},
 			"select": {
 				"mode": "Übersetzungsmodus",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "Kommentarübersetzung"
 		},
-		"enable": {
-			"title": "Übersetzungsschalter",
+		"global": {
+			"title": "Global",
 			"checkbox": {
-				"timedtext": "Untertitelübersetzung aktivieren"
+				"videoListTitle": "Titel in Videolisten übersetzen"
+			}
+		},
+		"watch": {
+			"title": "Videowiedergabeseite",
+			"checkbox": {
+				"videoTitle": "Videotitel übersetzen",
+				"videoDescription": "Videobeschreibung übersetzen",
+				"videoSummary": "Videozusammenfassung übersetzen"
 			}
 		}
 	}

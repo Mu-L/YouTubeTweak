@@ -202,7 +202,10 @@
 				"enableMerch": "채널 상점 노출 차단"
 			},
 			"tips": {
-				"enable": "실험적 기능(불안정). 일부 상황에서는 플레이어에서 \"건너뛰기\"를 눌러야 할 수 있으며 YouTube에서 감지될 수도 있습니다."
+				"enable": "실험적 기능(불안정). 일부 상황에서는 플레이어에서 \"건너뛰기\"를 눌러야 할 수 있으며 YouTube에서 감지될 수도 있습니다.",
+				"videoDeprecated": "동영상 광고 차단 기능은 더 이상 제공되지 않습니다. 다음 확장 프로그램 사용을 권장합니다:",
+				"uBlockOrigin": "동영상 광고를 포함한 범용 광고 차단 확장 프로그램",
+				"sponsorBlock": "동영상에 삽입된 스폰서 광고 콘텐츠 차단"
 			}
 		},
 		"shorts": {
@@ -313,6 +316,10 @@
 	},
 	"general": {
 		"update": {
+			"title": "업데이트",
+			"checkbox": {
+				"disableNotice": "업데이트 알림 끄기"
+			},
 			"tips": [
 				"새 버전 {version}을(를) 사용할 수 있습니다",
 				"모든 YouTube 탭을 닫으면 확장 프로그램이 자동으로 업데이트됩니다.",
@@ -414,6 +421,9 @@
 		},
 		"subtitle": {
 			"title": "자막 번역",
+			"checkbox": {
+				"timedtext": "자막 번역 켜기"
+			},
 			"select": {
 				"mode": "번역 방식",
 				"option": {
@@ -425,10 +435,18 @@
 		"comment": {
 			"title": "댓글 번역"
 		},
-		"enable": {
-			"title": "번역 스위치",
+		"global": {
+			"title": "전체",
 			"checkbox": {
-				"timedtext": "자막 번역 켜기"
+				"videoListTitle": "동영상 목록의 제목 번역"
+			}
+		},
+		"watch": {
+			"title": "동영상 재생 페이지",
+			"checkbox": {
+				"videoTitle": "동영상 제목 번역",
+				"videoDescription": "동영상 설명 번역",
+				"videoSummary": "동영상 요약 번역"
 			}
 		}
 	}
