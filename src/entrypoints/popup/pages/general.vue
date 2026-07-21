@@ -95,6 +95,7 @@
 				<label class="form-item">
 					<input type="checkbox" v-model="config['yttweak.disableUpdateNotice']" />
 					<span>{{ $t("general.update.checkbox.disableNotice") }}</span>
+					<DocsHelpLink anchor="general-update-notice-disable" />
 				</label>
 			</div>
 		</div>

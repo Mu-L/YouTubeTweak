@@ -27,30 +27,36 @@
 		<div class="card">
 			<div class="card-title">
 				<span>{{ $t("translate.global.title") }}</span>
+				<DocsHelpLink anchor="translate-global" />
 			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.videoListTitle']" />
 					<span>{{ $t("translate.global.checkbox.videoListTitle") }}</span>
+					<DocsHelpLink anchor="translate-global-video-list-title" />
 				</label>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-title">
 				<span>{{ $t("translate.watch.title") }}</span>
+				<DocsHelpLink anchor="translate-watch" />
 			</div>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.videoTitle']" />
 					<span>{{ $t("translate.watch.checkbox.videoTitle") }}</span>
+					<DocsHelpLink anchor="translate-watch-video-title" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.videoDescription']" />
 					<span>{{ $t("translate.watch.checkbox.videoDescription") }}</span>
+					<DocsHelpLink anchor="translate-watch-video-description" />
 				</label>
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.videoSummary']" />
 					<span>{{ $t("translate.watch.checkbox.videoSummary") }}</span>
+					<DocsHelpLink anchor="translate-watch-video-summary" />
 				</label>
 			</div>
 		</div>
