@@ -15,6 +15,15 @@ export function isTargetLanguage(language: string | undefined, targetLanguage: s
 	return language?.split(/[-_*]/)[0].toLowerCase() === targetLanguage.split(/[-_*]/)[0].toLowerCase();
 }
 
+export function shouldSkipAutoTranslation(language: string | undefined, targetLanguage: string) {
+	return (
+		isTargetLanguage(language, targetLanguage) ||
+		config.get("comment.neverTranslateLanguages", []).some((neverTranslateLanguage) =>
+			isTargetLanguage(language, neverTranslateLanguage),
+		)
+	);
+}
+
 export function escapeTextForTranslate(text: string) {
 	return text
 		.replace(/&/g, "&amp;")

@@ -8,7 +8,7 @@ import {
 	getImageSrcset,
 	getTargetLanguage,
 	googleTranslate,
-	isTargetLanguage,
+	shouldSkipAutoTranslation,
 	translatedHtmlToText,
 	type TextSegment,
 } from "../util/translate";
@@ -28,7 +28,7 @@ let descriptionNavigating = false;
 async function translatePlainText(source: string, targetLanguage: string) {
 	const [translations, detectedLanguages] = await googleTranslate(source, "auto", targetLanguage);
 	const translation = decodeHtmlEntities(translations[0] ?? "").trim();
-	if (!translation || translation === source || isTargetLanguage(detectedLanguages[0], targetLanguage)) return;
+	if (!translation || translation === source || shouldSkipAutoTranslation(detectedLanguages[0], targetLanguage)) return;
 	return translation;
 }
 
@@ -164,7 +164,7 @@ async function createRichTextTranslation(source: HTMLElement, targetLanguage: st
 	let changed = false;
 	segments.forEach(([node, segment], index) => {
 		const translatedText = translatedHtmlToText(translations[index] ?? "").trim();
-		if (!translatedText || translatedText === segment.source || isTargetLanguage(detectedLanguages[index], targetLanguage)) return;
+		if (!translatedText || translatedText === segment.source || shouldSkipAutoTranslation(detectedLanguages[index], targetLanguage)) return;
 
 		node.data = segment.leading + translatedText + segment.trailing;
 		changed = true;

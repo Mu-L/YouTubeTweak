@@ -1,7 +1,7 @@
 import { createLogger } from "@/logger";
 import type { Plugin } from "../types";
 import xmlHttpRequestHooker from "../xmlHttpRequestHooker";
-import { escapeTextForTranslate, getTargetLanguage, googleTranslate, isTargetLanguage, translatedHtmlToText } from "../util/translate";
+import { escapeTextForTranslate, getTargetLanguage, googleTranslate, shouldSkipAutoTranslation, translatedHtmlToText } from "../util/translate";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 const logger = createLogger("Translate-timedtext");
@@ -80,7 +80,7 @@ export default {
 					const srcLang = urlObj.searchParams.get("lang") || "auto";
 					const targetLanguage = getTargetLanguage();
 
-					if (isTargetLanguage(srcLang, targetLanguage)) {
+					if (shouldSkipAutoTranslation(srcLang, targetLanguage)) {
 						return data;
 					}
 

@@ -11,7 +11,7 @@ import {
 	getImageSrcset,
 	getTargetLanguage,
 	googleTranslate,
-	isTargetLanguage,
+	shouldSkipAutoTranslation,
 	type TextSegment,
 } from "../util/translate";
 
@@ -864,7 +864,6 @@ setInterval(() => {
 			doing[0].targetLang,
 		)
 			.then(([translations, detectedLanguages]) => {
-				const neverTranslateLanguages = config.get("comment.neverTranslateLanguages", []);
 				const detectedLanguageByTask = new Map<TranslateTask, string>();
 
 				segmentJobs.forEach((job, i) => {
@@ -886,10 +885,7 @@ setInterval(() => {
 					}
 					const detectedLang = detectedLanguageByTask.get(task) || "auto";
 
-					const shouldSkipAuto =
-						task.mode === "auto" &&
-						(isTargetLanguage(detectedLang, task.targetLang) ||
-							neverTranslateLanguages.some((language) => isTargetLanguage(detectedLang, language)));
+					const shouldSkipAuto = task.mode === "auto" && shouldSkipAutoTranslation(detectedLang, task.targetLang);
 
 					if (shouldSkipAuto) {
 						appendTranslateButton(task, result);
