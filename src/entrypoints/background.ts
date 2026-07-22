@@ -1,5 +1,5 @@
 import { defineBackground } from "wxt/utils/define-background";
-import { syncVersionNoticeBadge } from "@/util/versionNotice";
+import { READ_CHANGELOG_VERSION_STORAGE_KEY, syncVersionNoticeBadge } from "@/util/versionNotice";
 
 export default defineBackground({
 	persistent: false,
@@ -14,7 +14,14 @@ export default defineBackground({
 
 				case "update":
 					browser.storage.local.set({ waitUpdate: false }).catch(() => {});
-					syncVersionNoticeBadge().catch(() => {});
+					browser.storage.local
+						.get(READ_CHANGELOG_VERSION_STORAGE_KEY)
+						.then((result) => {
+							if (typeof result[READ_CHANGELOG_VERSION_STORAGE_KEY] === "string" || !details.previousVersion) return;
+							return browser.storage.local.set({ [READ_CHANGELOG_VERSION_STORAGE_KEY]: details.previousVersion });
+						})
+						.then(() => syncVersionNoticeBadge())
+						.catch(() => {});
 
 					browser.storage.local
 						.get("needReloadTabs")

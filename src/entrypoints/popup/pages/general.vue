@@ -217,7 +217,12 @@
 </template>
 
 <script setup lang="ts">
-import { CHANGELOG_URL, READ_CHANGELOG_VERSION_STORAGE_KEY, compareVersions, markChangelogVersionRead } from "@/util/versionNotice";
+import {
+	CHANGELOG_URL,
+	READ_CHANGELOG_VERSION_STORAGE_KEY,
+	compareVersions,
+	markChangelogVersionRead,
+} from "@/util/versionNotice";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
@@ -526,9 +531,12 @@ function buildChangelogReleases(releases: ChangelogRelease[], fromVersion: strin
 async function showChangelog(mode: ChangelogMode) {
 	const requestId = ++changelogRequestId;
 	const data = await browser.storage.local.get(READ_CHANGELOG_VERSION_STORAGE_KEY);
+	const fromVersion =
+		mode === "unread" && typeof data[READ_CHANGELOG_VERSION_STORAGE_KEY] === "string"
+			? data[READ_CHANGELOG_VERSION_STORAGE_KEY]
+			: "";
 	changelogMode.value = mode;
-	changelogFromVersion.value =
-		mode === "unread" && typeof data[READ_CHANGELOG_VERSION_STORAGE_KEY] === "string" ? data[READ_CHANGELOG_VERSION_STORAGE_KEY] : "";
+	changelogFromVersion.value = fromVersion;
 	changelogModalVisible.value = true;
 	changelogLoading.value = true;
 	changelogError.value = "";
@@ -540,7 +548,16 @@ async function showChangelog(mode: ChangelogMode) {
 
 		const changelog = (await response.json()) as { releases?: ChangelogRelease[] };
 		if (requestId === changelogRequestId) {
-			changelogReleases.value = buildChangelogReleases(changelog.releases || [], changelogFromVersion.value);
+			const releases = changelog.releases || [];
+			const matchedReleases = buildChangelogReleases(releases, fromVersion);
+			const hasCurrentVersionChangelog = releases.some((release) => compareVersions(release.version, APP_INFO.version) === 0);
+			if (mode === "unread" && fromVersion && !hasCurrentVersionChangelog) {
+				changelogMode.value = "manual";
+				changelogFromVersion.value = "";
+				changelogReleases.value = buildChangelogReleases(releases, "");
+			} else {
+				changelogReleases.value = matchedReleases;
+			}
 			markChangelogVersionRead().catch(() => {});
 		}
 	} catch (e) {

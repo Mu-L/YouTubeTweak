@@ -15,7 +15,10 @@ declare global {
 	}
 }
 
-window.__APP_INFO__ = __APP_INFO__;
+window.__APP_INFO__ = {
+	...__APP_INFO__,
+	version: browser.runtime.getManifest().version,
+};
 
 const app = createApp(App);
 const pinia = createPinia();

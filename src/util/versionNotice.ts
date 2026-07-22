@@ -8,10 +8,12 @@ const BADGE_TEXT = "new";
 const BADGE_BACKGROUND_COLOR = "#ff9800";
 const BADGE_TEXT_COLOR = "#ffffff";
 
-declare const __APP_INFO__: { version: string; build: string; commit: { id: string; url: string } };
-
 function getActionApi() {
 	return browser.action || browser.browserAction;
+}
+
+function getFeatureVersion(version: string) {
+	return version.split(/[.-]/).slice(0, 3).join(".");
 }
 
 export function compareVersions(left: string, right: string) {
@@ -32,9 +34,11 @@ export async function syncVersionNoticeBadge() {
 		browser.storage.local.get(READ_CHANGELOG_VERSION_STORAGE_KEY),
 		browser.storage.sync.get("settings"),
 	]);
+	const appVersion = browser.runtime.getManifest().version;
+	const readChangelogVersion = changelogData[READ_CHANGELOG_VERSION_STORAGE_KEY];
 	const hasUnreadChangelog =
 		(settingsData.settings as Partial<Config> | undefined)?.["yttweak.disableUpdateNotice"] !== true &&
-		changelogData[READ_CHANGELOG_VERSION_STORAGE_KEY] !== __APP_INFO__.version;
+		(typeof readChangelogVersion !== "string" || getFeatureVersion(readChangelogVersion) !== getFeatureVersion(appVersion));
 
 	await actionApi.setBadgeText({ text: hasUnreadChangelog ? BADGE_TEXT : "" }).catch(() => {});
 	await actionApi
@@ -52,6 +56,6 @@ export async function syncVersionNoticeBadge() {
 }
 
 export async function markChangelogVersionRead() {
-	await browser.storage.local.set({ [READ_CHANGELOG_VERSION_STORAGE_KEY]: __APP_INFO__.version });
+	await browser.storage.local.set({ [READ_CHANGELOG_VERSION_STORAGE_KEY]: browser.runtime.getManifest().version });
 	await syncVersionNoticeBadge();
 }
