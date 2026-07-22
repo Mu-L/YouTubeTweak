@@ -118,3 +118,14 @@
 		}
 	}
 }
+
+ytd-playlist-panel-video-renderer #meta {
+	span#video-title[data-yttweak-translation-hooked] {
+		margin-bottom: 0;
+	}
+	.yttweak-video-list-title-translate {
+		margin-top: -2px;
+		margin-bottom: 4px;
+		font-weight: normal;
+	}
+}

@@ -19,6 +19,7 @@ const VIDEO_LIST_TITLE_SELECTOR = [
 	"ytd-video-renderer .text-wrapper #title-wrapper a#video-title yt-formatted-string",
 	"ytm-shorts-lockup-view-model .shortsLockupViewModelHostOutsideMetadata h3.shortsLockupViewModelHostMetadataTitle a span.ytAttributedStringWhiteSpacePreWrap",
 	".ytp-modern-videowall-still .ytp-modern-videowall-still-info .ytp-modern-videowall-still-info-title",
+	"ytd-playlist-panel-video-renderer #meta span#video-title",
 ]
 	.map((selector) => `${selector}:not([data-yttweak-translation-hooked])`)
 	.join(",");
