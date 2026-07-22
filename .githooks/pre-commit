@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+import { execFileSync } from "node:child_process";
+
+try {
+	const packageJson = JSON.parse(
+		execFileSync("git", ["show", ":package.json"], {
+			encoding: "utf8",
+			stdio: ["ignore", "pipe", "pipe"],
+		}),
+	);
+	const packageLockJson = JSON.parse(
+		execFileSync("git", ["show", ":package-lock.json"], {
+			encoding: "utf8",
+			stdio: ["ignore", "pipe", "pipe"],
+		}),
+	);
+	const packageVersion = packageJson.version;
+	const packageLockVersion = packageLockJson.version;
+	const packageLockRootVersion = packageLockJson.packages?.[""]?.version;
+
+	if (
+		typeof packageVersion !== "string" ||
+		typeof packageLockVersion !== "string" ||
+		typeof packageLockRootVersion !== "string"
+	) {
+		console.error(
+			'[pre-commit] 无法读取 package.json 或 package-lock.json 中的根包版本号。',
+		);
+		process.exit(1);
+	}
+
+	if (
+		packageVersion !== packageLockVersion ||
+		packageVersion !== packageLockRootVersion
+	) {
+		console.error("[pre-commit] package 版本号不一致，已阻止提交：");
+		console.error(`  package.json:                    ${packageVersion}`);
+		console.error(`  package-lock.json:               ${packageLockVersion}`);
+		console.error(
+			`  package-lock.json packages[\"\"]: ${packageLockRootVersion}`,
+		);
+		console.error(
+			"请更新 package-lock.json，并将 package.json 和 package-lock.json 一起暂存后再提交。",
+		);
+		process.exit(1);
+	}
+} catch (error) {
+	console.error("[pre-commit] package 版本校验失败，已阻止提交。");
+	console.error(error instanceof Error ? error.message : String(error));
+	process.exit(1);
+}
