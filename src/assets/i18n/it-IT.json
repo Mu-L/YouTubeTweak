@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "Espandi automaticamente i commenti lunghi",
 				"autoTranslate": "Traduci automaticamente",
+				"showManualTranslateButtonForSkippedLanguages": "Mostra un pulsante di traduzione manuale per i commenti che non richiedono la traduzione automatica",
 				"lineByLineTranslate": "Mostra le traduzioni sotto ogni riga originale"
 			},
 			"select": {

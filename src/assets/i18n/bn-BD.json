@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "দীর্ঘ মন্তব্য স্বয়ংক্রিয়ভাবে প্রসারিত করুন",
 				"autoTranslate": "স্বয়ংক্রিয় অনুবাদ",
+				"showManualTranslateButtonForSkippedLanguages": "যেসব মন্তব্যের স্বয়ংক্রিয় অনুবাদ প্রয়োজন নেই সেগুলোর জন্য ম্যানুয়াল অনুবাদ বোতাম দেখান",
 				"lineByLineTranslate": "প্রতিটি মূল লাইনের নিচে অনুবাদ দেখান"
 			},
 			"select": {

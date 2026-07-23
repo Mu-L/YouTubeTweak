@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "長いコメントを自動展開する",
 				"autoTranslate": "コメントを自動翻訳する",
+				"showManualTranslateButtonForSkippedLanguages": "自動翻訳が不要なコメントに手動翻訳ボタンを表示する",
 				"lineByLineTranslate": "各原文行の下に翻訳を配置"
 			},
 			"select": {

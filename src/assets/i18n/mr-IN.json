@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "लांब टिप्पण्या आपोआप विस्तृत करा",
 				"autoTranslate": "स्वयंचलित भाषांतर",
+				"showManualTranslateButtonForSkippedLanguages": "स्वयंचलित भाषांतराची गरज नसलेल्या टिप्पण्यांसाठी मॅन्युअल भाषांतर बटण दाखवा",
 				"lineByLineTranslate": "प्रत्येक मूळ ओळीखाली अनुवाद ठेवा"
 			},
 			"select": {

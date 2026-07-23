@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "పొడవైన కామెంట్లను ఆటో విస్తరించు",
 				"autoTranslate": "ఆటో అనువాదం",
+				"showManualTranslateButtonForSkippedLanguages": "ఆటోమేటిక్ అనువాదం అవసరం లేని వ్యాఖ్యలకు మాన్యువల్ అనువాద బటన్‌ను చూపు",
 				"lineByLineTranslate": "ప్రతి అసలు పంక్తి కింద అనువాదాలను ఉంచు"
 			},
 			"select": {

@@ -92,6 +92,11 @@
 					<DocsHelpLink anchor="translate-comment-content" />
 				</label>
 				<label class="form-item">
+					<input type="checkbox" v-model="config['comment.showManualTranslateButtonForSkippedLanguages']" />
+					<span>{{ $t("comment.context.checkbox.showManualTranslateButtonForSkippedLanguages") }}</span>
+					<DocsHelpLink anchor="translate-comment-manual-button" />
+				</label>
+				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.lineByLineTranslate']" />
 					<span>{{ $t("comment.context.checkbox.lineByLineTranslate") }}</span>
 					<DocsHelpLink anchor="translate-comment-line-by-line" />

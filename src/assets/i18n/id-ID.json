@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "Perluas otomatis komentar panjang",
 				"autoTranslate": "Terjemahkan otomatis",
+				"showManualTranslateButtonForSkippedLanguages": "Tampilkan tombol terjemahan manual untuk komentar yang tidak memerlukan terjemahan otomatis",
 				"lineByLineTranslate": "Letakkan terjemahan di bawah setiap baris asli"
 			},
 			"select": {

@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "自動展開長留言",
 				"autoTranslate": "自動翻譯留言",
+				"showManualTranslateButtonForSkippedLanguages": "為無需自動翻譯的留言顯示手動翻譯按鈕",
 				"lineByLineTranslate": "譯文逐行顯示在原文下方"
 			},
 			"select": {

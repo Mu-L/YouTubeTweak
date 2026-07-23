@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "நீளமான கருத்துகளை தானாக விரிவாக்கு",
 				"autoTranslate": "தானியங்கி மொழிபெயர்ப்பு",
+				"showManualTranslateButtonForSkippedLanguages": "தானியங்கி மொழிபெயர்ப்பு தேவையில்லாத கருத்துகளுக்கு கைமுறை மொழிபெயர்ப்பு பொத்தானைக் காட்டு",
 				"lineByLineTranslate": "ஒவ்வொரு மூல வரியின் கீழும் மொழிபெயர்ப்பை வை"
 			},
 			"select": {

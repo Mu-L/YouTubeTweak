@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "لمّے تبصرے آپے کھولو",
 				"autoTranslate": "آپے ترجمہ کرو",
+				"showManualTranslateButtonForSkippedLanguages": "جناں تبصریاں نوں خودکار ترجمے دی لوڑ نئیں، اوہناں لئی دستی ترجمے دا بٹن وکھاؤ",
 				"lineByLineTranslate": "ہر اصل لائن دے تھلے ترجمے رکھو"
 			},
 			"select": {

@@ -59,6 +59,7 @@ export type Config = {
 	"comment.nickname": boolean;
 	"comment.autoShowMore": boolean;
 	"comment.autoTranslate": boolean;
+	"comment.showManualTranslateButtonForSkippedLanguages": boolean;
 	"comment.lineByLineTranslate": boolean;
 	"comment.targetLanguage": string;
 	"comment.neverTranslateLanguages": string[];
@@ -132,6 +133,7 @@ const config: Config = {
 	"comment.nickname": true,
 	"comment.autoShowMore": true,
 	"comment.autoTranslate": true,
+	"comment.showManualTranslateButtonForSkippedLanguages": true,
 	"comment.lineByLineTranslate": true,
 	"comment.targetLanguage": "auto",
 	"comment.neverTranslateLanguages": [],

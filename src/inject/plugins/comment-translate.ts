@@ -888,7 +888,9 @@ setInterval(() => {
 					const shouldSkipAuto = task.mode === "auto" && shouldSkipAutoTranslation(detectedLang, task.targetLang);
 
 					if (shouldSkipAuto) {
-						appendTranslateButton(task, result);
+						if (config.get("comment.showManualTranslateButtonForSkippedLanguages", true)) {
+							appendTranslateButton(task, result);
+						}
 						return;
 					}
 
@@ -954,6 +956,13 @@ export default {
 		},
 	},
 	"comment.lineByLineTranslate": {
+		options: {
+			reloadOnToggle: true,
+		},
+		enable() {},
+		disable() {},
+	},
+	"comment.showManualTranslateButtonForSkippedLanguages": {
 		options: {
 			reloadOnToggle: true,
 		},

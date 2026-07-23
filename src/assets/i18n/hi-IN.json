@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "लंबी टिप्पणियाँ अपने आप विस्तार करें",
 				"autoTranslate": "स्वतः अनुवाद करें",
+				"showManualTranslateButtonForSkippedLanguages": "जिन टिप्पणियों को स्वचालित अनुवाद की आवश्यकता नहीं है, उनके लिए मैन्युअल अनुवाद बटन दिखाएं",
 				"lineByLineTranslate": "हर मूल पंक्ति के नीचे अनुवाद रखें"
 			},
 			"select": {

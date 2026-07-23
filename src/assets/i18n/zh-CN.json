@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "自动展开长评论",
 				"autoTranslate": "翻译评论内容",
+				"showManualTranslateButtonForSkippedLanguages": "为无需自动翻译的评论显示手动翻译按钮",
 				"lineByLineTranslate": "译文逐行显示在原文下方"
 			},
 			"select": {

@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "Tự động mở rộng bình luận dài",
 				"autoTranslate": "Tự động dịch",
+				"showManualTranslateButtonForSkippedLanguages": "Hiển thị nút dịch thủ công cho các bình luận không cần dịch tự động",
 				"lineByLineTranslate": "Đặt bản dịch dưới mỗi dòng gốc"
 			},
 			"select": {

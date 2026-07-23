@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "توسيع التعليقات الطويلة تلقائياً",
 				"autoTranslate": "ترجمة تلقائية",
+				"showManualTranslateButtonForSkippedLanguages": "إظهار زر ترجمة يدوية للتعليقات التي لا تحتاج إلى ترجمة تلقائية",
 				"lineByLineTranslate": "وضع الترجمات تحت كل سطر أصلي"
 			},
 			"select": {

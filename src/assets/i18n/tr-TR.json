@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "Uzun yorumları otomatik genişlet",
 				"autoTranslate": "Otomatik çevir",
+				"showManualTranslateButtonForSkippedLanguages": "Otomatik çeviri gerektirmeyen yorumlar için manuel çeviri düğmesini göster",
 				"lineByLineTranslate": "Çevirileri her özgün satırın altına yerleştir"
 			},
 			"select": {

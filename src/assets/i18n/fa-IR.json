@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "گسترش خودکار نظرات بلند",
 				"autoTranslate": "ترجمه خودکار",
+				"showManualTranslateButtonForSkippedLanguages": "نمایش دکمه ترجمه دستی برای نظرهایی که نیازی به ترجمه خودکار ندارند",
 				"lineByLineTranslate": "ترجمه‌ها را زیر هر خط اصلی قرار بده"
 			},
 			"select": {

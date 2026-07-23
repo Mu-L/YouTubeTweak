@@ -449,7 +449,7 @@ Suitable use cases:
 Notes:
 
 - This setting mainly affects automatic comment translation.
-- When a comment is identified as a language that does not need translation, the extension keeps a manual translation button, and the user can still click it to view a translation.
+- When a comment is identified as a language that does not need translation, the extension keeps a manual translation button only when "Show a manual translation button for comments that do not need automatic translation" is enabled.
 
 <a name="translate-global"></a>
 
@@ -593,14 +593,25 @@ Suitable use cases:
 Configurable options:
 
 - Translate comment content: controls whether comments are translated automatically.
+- Show a manual translation button for comments that do not need automatic translation: keeps an optional translation action for comments whose language matches the target language or the "Always never translate languages" setting.
 - Translation target language: determines which language comments are translated into.
 - Always never translate languages: avoids automatically showing translations for familiar languages.
 
 Notes:
 
-- If a comment is empty, contains only symbols, or is identified as not needing translation, the extension shows a manual translation button.
+- If a comment is empty or contains only symbols, the extension shows a manual translation button. Comments identified as not needing translation only show it when "Show a manual translation button for comments that do not need automatic translation" is enabled.
 - After comment sorting, loading more comments, or YouTube dynamically refreshing the comment area, the extension continues processing newly appearing comments.
 - If the translation service is unavailable, comments remain unchanged.
+
+<a name="translate-comment-manual-button"></a>
+
+### Show a Manual Translation Button for Comments That Do Not Need Automatic Translation
+
+When enabled, comments whose detected language matches the translation target language or the "Always never translate languages" setting keep a manual translation button.
+
+When disabled, those comments show neither an automatic translation nor the manual translation button. Comments that need translation continue to be translated automatically.
+
+This option is enabled by default to preserve the existing behavior.
 
 <a name="translate-comment-line-by-line"></a>
 

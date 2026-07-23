@@ -176,6 +176,7 @@
 			"checkbox": {
 				"autoShowMore": "긴 댓글 자동으로 펼치기",
 				"autoTranslate": "댓글 자동 번역",
+				"showManualTranslateButtonForSkippedLanguages": "자동 번역이 필요하지 않은 댓글에 수동 번역 버튼 표시",
 				"lineByLineTranslate": "각 원문 줄 아래에 번역 배치"
 			},
 			"select": {
