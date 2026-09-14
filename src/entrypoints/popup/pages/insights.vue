@@ -60,29 +60,17 @@
 					</div>
 				</div>
 
-				<div v-if="video" class="media-lists">
+				<div class="media-lists">
 					<details
 						v-for="section in mediaSections"
 						:key="section.key"
 						class="media-panel"
-						:class="[
-							`media-panel-${section.key}`,
-							{
-								'media-panel-regions': section.layout === 'regions',
-								'media-panel-success': section.icon === 'region-allowed',
-								'media-panel-danger': section.icon === 'region-blocked',
-							},
-						]"
+						:class="`media-panel-${section.key}`"
+						:open="section.key === 'restrictions' ? restrictionsExpanded : undefined"
 						@toggle="onMediaPanelToggle(section.key, $event)"
 					>
 						<summary>
-							<span
-								class="section-icon"
-								:class="{
-									'section-icon-success': section.icon === 'region-allowed',
-									'section-icon-danger': section.icon === 'region-blocked',
-								}"
-							>
+							<span class="section-icon">
 								<svg
 									v-if="section.key === 'videoFormats'"
 									viewBox="0 0 16 16"
@@ -136,31 +124,7 @@
 									<path d="M10 6.2a2.6 2.6 0 0 1 0 3.6m1.8-5.4a5 5 0 0 1 0 7.2" />
 								</svg>
 								<svg
-									v-else-if="section.icon === 'region-allowed'"
-									viewBox="0 0 16 16"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									aria-hidden="true"
-								>
-									<path d="M3 8.5 6.2 11.5 13 4.5" />
-								</svg>
-								<svg
-									v-else-if="section.icon === 'region-blocked'"
-									viewBox="0 0 16 16"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.8"
-									stroke-linecap="round"
-									aria-hidden="true"
-								>
-									<circle cx="8" cy="8" r="5.5" />
-									<path d="m5.5 5.5 5 5m0-5-5 5" />
-								</svg>
-								<svg
-									v-else-if="section.icon === 'region-all'"
+									v-else-if="section.key === 'regions'"
 									viewBox="0 0 16 16"
 									fill="none"
 									stroke="currentColor"
@@ -172,7 +136,19 @@
 									<circle cx="8" cy="8" r="5.7" />
 									<path d="M2.5 8h11M8 2.3c1.7 1.7 2.4 3.6 2.4 5.7S9.7 12 8 13.7C6.3 12 5.6 10.1 5.6 8S6.3 4 8 2.3Z" />
 								</svg>
-								<template v-else>{{ section.icon }}</template>
+								<svg
+									v-else-if="section.key === 'restrictions'"
+									viewBox="0 0 16 16"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.6"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M8 1.8 13.2 3.8v3.8c0 3-2 5-5.2 6.6C4.8 12.6 2.8 10.6 2.8 7.6V3.8Z" />
+									<path d="M8 5.1v3.2m0 2.3v.1" />
+								</svg>
 							</span>
 							<span class="section-title">{{ $t(`insights.label.lists.${section.key}`) }}</span>
 							<small class="section-count">
@@ -220,68 +196,108 @@
 								{{ $t(formatsLoading ? "insights.label.lists.loadingFormats" : "insights.label.lists.loadFormatsFailed") }}
 							</span>
 						</div>
-						<div v-if="section.items.length" class="media-items" :class="{ 'region-items': section.layout === 'regions' }">
+						<div v-if="section.key === 'restrictions'" class="flags">
 							<div
-								v-for="item in section.items"
-								:key="item.key"
-								class="media-item"
-								:class="{ 'media-item-danger': item.danger }"
+								v-for="flag in flags"
+								:key="flag.key"
+								class="flag"
+								:class="{
+									'flag-success': !flag.loading && flag.active !== null && (flag.danger ? !flag.active : flag.active),
+									'flag-error': !flag.loading && flag.active !== null && (flag.danger ? flag.active : !flag.active),
+									'flag-loading': flag.loading,
+									'flag-unknown': !flag.loading && flag.active === null,
+								}"
+								:title="$t(`insights.label.flags.${flag.key}.description`)"
 							>
-								<span v-if="section.layout === 'regions'" class="region-code">{{ item.meta[0] }}</span>
-								<div class="media-copy">
-									<strong>{{ item.title }}</strong>
-									<div
-										v-if="section.layout !== 'regions' && item.meta.length"
-										class="media-meta"
-										:title="item.meta.join(' · ')"
+								<span class="icon">{{ flag.icon }}</span>
+								<span class="name">
+									<span>{{ $t(`insights.label.flags.${flag.key}.name`) }}</span>
+									<small v-if="flag.value">{{ flag.value }}</small>
+								</span>
+								<span class="status">
+									<span v-if="flag.loading" class="status-loading" aria-hidden="true"></span>
+									<span v-else-if="flag.active === null">?</span>
+									<svg
+										v-else
+										viewBox="0 0 16 16"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										aria-hidden="true"
 									>
-										<span v-for="part in item.meta" :key="part">{{ part }}</span>
-									</div>
-								</div>
+										<path v-if="flag.active" d="M3 8.5 6.2 11.5 13 4.5" />
+										<path v-else d="m4 4 8 8m0-8-8 8" />
+									</svg>
+								</span>
 							</div>
 						</div>
+						<div v-else-if="section.columns" class="region-columns">
+							<details
+								v-for="column in section.columns"
+								:key="column.key"
+								class="region-column"
+								:class="{ 'region-column-danger': column.key === 'unavailableRegions' }"
+							>
+								<summary>
+									<strong>{{ $t(`insights.label.lists.${column.key}`) }}</strong>
+									<small>{{ column.items.length }}</small>
+								</summary>
+								<div
+									v-if="column.items.length"
+									class="region-items"
+									tabindex="0"
+									role="region"
+									:aria-label="$t(`insights.label.lists.${column.key}`)"
+								>
+									<div
+										v-for="item in column.items"
+										:key="item.key"
+										class="media-item"
+										:class="{ 'media-item-danger': item.danger }"
+									>
+										<span class="region-code">{{ item.meta[0] }}</span>
+										<div class="media-copy">
+											<strong :title="item.title">{{ item.title }}</strong>
+										</div>
+									</div>
+								</div>
+								<div v-else class="media-empty">—</div>
+							</details>
+						</div>
+						<template v-else-if="section.items.length">
+							<component
+								:is="section.groups && group.items.length > 1 ? 'details' : 'div'"
+								v-for="group in section.groups || [{ key: section.key, title: '', items: section.items }]"
+								:key="group.key"
+								:class="{ 'format-group': section.groups && group.items.length > 1 }"
+							>
+								<summary v-if="section.groups && group.items.length > 1">
+									<strong>{{ group.title }}</strong>
+									<small>{{ group.items.length }}</small>
+								</summary>
+								<div class="media-items">
+									<div
+										v-for="item in group.items"
+										:key="item.key"
+										class="media-item"
+										:class="{ 'media-item-danger': item.danger }"
+									>
+										<div class="media-copy">
+											<strong :title="item.title">{{ item.title }}</strong>
+											<div v-if="item.meta.length" class="media-meta" :title="item.meta.join(' · ')">
+												<span v-for="part in item.meta" :key="part">{{ part }}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</component>
+						</template>
 						<div v-else class="media-empty" :class="{ 'media-empty-success': section.message }">
 							{{ section.message || "—" }}
 						</div>
 					</details>
-				</div>
-
-				<div class="flags">
-					<div
-						v-for="flag in flags"
-						:key="flag.key"
-						class="flag"
-						:class="{
-							'flag-success': !flag.loading && flag.active !== null && (flag.danger ? !flag.active : flag.active),
-							'flag-error': !flag.loading && flag.active !== null && (flag.danger ? flag.active : !flag.active),
-							'flag-loading': flag.loading,
-							'flag-unknown': !flag.loading && flag.active === null,
-						}"
-						:title="$t(`insights.label.flags.${flag.key}.description`)"
-					>
-						<span class="icon">{{ flag.icon }}</span>
-						<span class="name">
-							<span>{{ $t(`insights.label.flags.${flag.key}.name`) }}</span>
-							<small v-if="flag.value">{{ flag.value }}</small>
-						</span>
-						<span class="status">
-							<span v-if="flag.loading" class="status-loading" aria-hidden="true"></span>
-							<span v-else-if="flag.active === null">?</span>
-							<svg
-								v-else
-								viewBox="0 0 16 16"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								aria-hidden="true"
-							>
-								<path v-if="flag.active" d="M3 8.5 6.2 11.5 13 4.5" />
-								<path v-else d="m4 4 8 8m0-8-8 8" />
-							</svg>
-						</span>
-					</div>
 				</div>
 			</div>
 		</article>
@@ -310,13 +326,21 @@ type MediaListItem = {
 	key: string;
 	title: string;
 	meta: string[];
+	group?: string;
 	danger?: boolean;
+};
+
+type MediaFormatGroup = {
+	key: string;
+	title: string;
+	items: MediaListItem[];
 };
 
 type MediaSection = {
 	key: string;
-	icon?: string;
 	items: MediaListItem[];
+	groups?: MediaFormatGroup[];
+	columns?: { key: string; items: MediaListItem[] }[];
 	layout?: "rows" | "regions";
 	message?: string;
 	count?: number;
@@ -495,6 +519,13 @@ const formatsRequested = ref(false);
 const formatsLoading = ref(false);
 const formatsError = ref<string | null>(null);
 const extraFormats = ref<Record<string, any>[]>([]);
+const restrictionsExpanded = ref(false);
+
+try {
+	restrictionsExpanded.value = localStorage.getItem("settings-card:insights-flags") === "open";
+} catch (error) {
+	console.warn("Unable to restore restrictions panel state:", error);
+}
 
 onMounted(async () => {
 	try {
@@ -560,6 +591,17 @@ function codecName(mimeType = "") {
 	if (codec.startsWith("mp4a")) return "AAC";
 	if (codec.startsWith("opus")) return "Opus";
 	return codec || "—";
+}
+
+function groupMediaFormats(items: MediaListItem[]) {
+	const groups = new Map<string, MediaFormatGroup>();
+	for (const item of items) {
+		const key = item.group || item.key;
+		const group = groups.get(key) || { key, title: item.group || item.title, items: [] };
+		group.items.push(item);
+		groups.set(key, group);
+	}
+	return [...groups.values()];
 }
 
 function isHdrFormat(format: Record<string, any>) {
@@ -723,6 +765,7 @@ const videoFormatItems = computed<MediaListItem[]>(() => {
 
 		return {
 			key: `video-${format.itag || index}-${index}`,
+			group: format.qualityLabel?.match(/^\d+p/i)?.[0]?.toLowerCase() || (format.height ? `${format.height}p` : format.quality),
 			title: `${format.qualityLabel || format.quality || "—"}${premiumItags.has(format.itag) ? ` · ${t("insights.label.lists.premium")}` : ""}`,
 			meta,
 		};
@@ -734,6 +777,7 @@ const audioFormatItems = computed<MediaListItem[]>(() =>
 		.sort((a, b) => (b.averageBitrate || b.bitrate || 0) - (a.averageBitrate || a.bitrate || 0))
 		.map((format, index) => ({
 			key: `audio-${format.itag || index}-${index}`,
+			group: codecName(format.mimeType) === "—" ? format.mimeType?.split(";")[0] : codecName(format.mimeType),
 			title: `${codecName(format.mimeType)} · ${Math.round((format.averageBitrate || format.bitrate || 0) / 1000)} kbps`,
 			meta: [
 				format.audioSampleRate ? `${Math.round(Number(format.audioSampleRate) / 1000)} kHz` : "",
@@ -808,52 +852,42 @@ const audioTrackItems = computed<MediaListItem[]>(() => {
 	});
 });
 const allRegionCodes = computed(() => [...new Set([...YOUTUBE_REGION_CODES, ...(availableCountryCodes.value || [])])]);
-const regionDisplay = computed(() => {
-	if (!availableCountryCodes.value) return { mode: "unknown" as const, codes: [] as string[] };
+const regionSection = computed<MediaSection>(() => {
+	const section: MediaSection = { key: "regions", items: [], layout: "regions" };
+	if (!availableCountryCodes.value) return section;
 	const availableCountries = new Set(availableCountryCodes.value);
 	const unavailableCountries = allRegionCodes.value.filter((code) => !availableCountries.has(code));
+	section.count = allRegionCodes.value.length;
 
-	if (!unavailableCountries.length) return { mode: "unrestricted" as const, codes: [] as string[] };
-	if (unavailableCountries.length < availableCountries.size) {
-		return { mode: "blocked" as const, codes: unavailableCountries };
+	if (!unavailableCountries.length) {
+		section.message = t("insights.label.lists.noRestrictions");
+		return section;
 	}
-
-	return {
-		mode: "allowed" as const,
-		codes: allRegionCodes.value.filter((code) => availableCountries.has(code)),
-	};
-});
-const regionItems = computed<MediaListItem[]>(() => {
 	const regionNames = new Map(youtubeRegions.value.map(({ code, name }) => [code, name]));
-
-	return regionDisplay.value.codes.map((code) => ({
-		key: `region-${code}`,
-		title: regionNames.get(code) || FALLBACK_REGION_NAMES[code] || code,
-		meta: [code],
-		danger: regionDisplay.value.mode === "blocked",
+	section.columns = [
+		{ key: "availableRegions", codes: allRegionCodes.value.filter((code) => availableCountries.has(code)) },
+		{ key: "unavailableRegions", codes: unavailableCountries },
+	].map(({ key, codes }) => ({
+		key,
+		items: codes.map((code) => ({
+			key: `region-${code}`,
+			title: regionNames.get(code) || FALLBACK_REGION_NAMES[code] || code,
+			meta: [code],
+			danger: key === "unavailableRegions",
+		})),
 	}));
+	return section;
 });
 const supportedRegionCount = computed(() => new Set(availableCountryCodes.value || []).size);
 const mediaSections = computed<MediaSection[]>(() =>
 	[
-		{ key: "videoFormats", items: videoFormatItems.value },
-		{ key: "audioFormats", items: audioFormatItems.value },
+		{ key: "videoFormats", items: videoFormatItems.value, groups: groupMediaFormats(videoFormatItems.value) },
+		{ key: "audioFormats", items: audioFormatItems.value, groups: groupMediaFormats(audioFormatItems.value) },
 		{ key: "subtitles", items: captionItems.value },
 		{ key: "audioTracks", items: audioTrackItems.value },
-		{
-			key: "regions",
-			icon:
-				regionDisplay.value.mode === "blocked"
-					? "region-blocked"
-					: regionDisplay.value.mode === "allowed"
-						? "region-allowed"
-						: "region-all",
-			items: regionItems.value,
-			layout: "regions" as const,
-			message: regionDisplay.value.mode === "unrestricted" ? t("insights.label.lists.noRestrictions") : undefined,
-			count: regionDisplay.value.mode === "unrestricted" ? allRegionCodes.value.length : undefined,
-		},
-	].filter((section) => section.layout === "regions" || section.items.length),
+		regionSection.value,
+		{ key: "restrictions", items: [], count: flags.value.length },
+	].filter((section) => section.key === "restrictions" || (video.value && (section.layout === "regions" || section.items.length))),
 );
 const metadata = computed(() => {
 	const publishDate = microformat.value.publishDate;
@@ -898,6 +932,18 @@ const details = computed(() =>
 );
 
 function onMediaPanelToggle(sectionKey: string, event: Event) {
+	if (event.target !== event.currentTarget) return;
+	if (sectionKey === "restrictions") {
+		const open = (event.currentTarget as HTMLDetailsElement).open;
+		if (open === restrictionsExpanded.value) return;
+		restrictionsExpanded.value = open;
+		try {
+			localStorage.setItem("settings-card:insights-flags", open ? "open" : "closed");
+		} catch (error) {
+			console.warn("Unable to save restrictions panel state:", error);
+		}
+		return;
+	}
 	if (
 		!(event.currentTarget as HTMLDetailsElement).open ||
 		(sectionKey !== "videoFormats" && sectionKey !== "audioFormats") ||
@@ -954,7 +1000,7 @@ const flags = computed<InsightFlag[]>(() => {
 					playabilityText,
 				)
 			: null;
-	const regionRestricted = availableCountries === null ? null : regionDisplay.value.mode !== "unrestricted";
+	const regionRestricted = availableCountries === null ? null : supportedRegionCount.value < allRegionCodes.value.length;
 	const blocked =
 		video.value && anonymousVideo.value && verificationAvailable.value && regionRestricted !== null
 			? (playabilityStatus.value.status !== "OK" || anonymousPlayabilityStatus.value?.status !== "OK") &&
@@ -970,7 +1016,7 @@ const flags = computed<InsightFlag[]>(() => {
 		{
 			key: "global",
 			icon: "🌍",
-			active: availableCountries === null ? null : regionDisplay.value.mode === "unrestricted",
+			active: regionRestricted === null ? null : !regionRestricted,
 			danger: false,
 			value: availableCountries === null ? undefined : `${supportedRegionCount.value}/${allRegionCodes.value.length}`,
 			loading: availableCountries === null && verificationPending.value,
@@ -1286,8 +1332,7 @@ const flags = computed<InsightFlag[]>(() => {
 			.insight-tip,
 			.stat,
 			.details,
-			.media-panel,
-			.flags {
+			.media-panel {
 				box-shadow:
 					0 1px 2px rgba(37, 39, 51, 0.04),
 					0 5px 16px rgba(37, 39, 51, 0.06);
@@ -1420,8 +1465,8 @@ const flags = computed<InsightFlag[]>(() => {
 
 			.media-lists {
 				margin-top: 10px;
-				display: flex;
-				flex-direction: column;
+				display: grid;
+				grid-template-columns: minmax(0, 1fr);
 				gap: 8px;
 
 				.media-panel {
@@ -1430,6 +1475,7 @@ const flags = computed<InsightFlag[]>(() => {
 					--media-soft: rgba(215, 57, 227, 0.07);
 					--media-surface: #fcf8fd;
 
+					min-width: 0;
 					overflow: hidden;
 					border: 1px solid #ecebf0;
 					border-radius: 10px;
@@ -1450,6 +1496,7 @@ const flags = computed<InsightFlag[]>(() => {
 						--media-border: rgba(36, 138, 123, 0.22);
 						--media-soft: rgba(36, 138, 123, 0.075);
 						--media-surface: #f6fbfa;
+						--media-columns: repeat(auto-fill, minmax(min(100%, 145px), 1fr));
 					}
 
 					&.media-panel-audioTracks {
@@ -1459,21 +1506,14 @@ const flags = computed<InsightFlag[]>(() => {
 						--media-surface: #fdf9f5;
 					}
 
-					&.media-panel-success {
-						--media-accent: #318657;
-						--media-border: rgba(49, 134, 87, 0.22);
-						--media-soft: rgba(49, 134, 87, 0.075);
-						--media-surface: #f7fbf8;
-					}
-
-					&.media-panel-danger {
+					&.media-panel-restrictions {
 						--media-accent: #d3473e;
 						--media-border: rgba(211, 71, 62, 0.22);
 						--media-soft: rgba(211, 71, 62, 0.075);
 						--media-surface: #fdf8f7;
 					}
 
-					summary {
+					> summary {
 						min-height: 46px;
 						padding: 7px 9px;
 						display: grid;
@@ -1493,6 +1533,11 @@ const flags = computed<InsightFlag[]>(() => {
 							background: var(--media-surface);
 						}
 
+						&:focus-visible {
+							outline: 2px solid var(--media-accent);
+							outline-offset: -3px;
+						}
+
 						.section-icon {
 							width: 30px;
 							height: 30px;
@@ -1509,18 +1554,6 @@ const flags = computed<InsightFlag[]>(() => {
 							svg {
 								width: 15px;
 								height: 15px;
-							}
-
-							&.section-icon-success {
-								border-color: rgba(#3b9d65, 0.18);
-								background: rgba(#3b9d65, 0.08);
-								color: #318657;
-							}
-
-							&.section-icon-danger {
-								border-color: rgba(#e25349, 0.18);
-								background: rgba(#e25349, 0.08);
-								color: #d3473e;
 							}
 						}
 
@@ -1564,7 +1597,7 @@ const flags = computed<InsightFlag[]>(() => {
 							0 2px 4px rgba(37, 39, 51, 0.04),
 							0 8px 20px rgba(37, 39, 51, 0.075);
 
-						summary {
+						> summary {
 							background: var(--media-surface);
 							border-bottom: 1px solid #f0eff2;
 
@@ -1575,6 +1608,119 @@ const flags = computed<InsightFlag[]>(() => {
 
 							.section-chevron {
 								transform: rotate(180deg);
+							}
+						}
+					}
+
+					.flags {
+						padding: 8px;
+						display: grid;
+						grid-template-columns: repeat(2, minmax(0, 1fr));
+						gap: 6px;
+
+						.flag {
+							min-width: 0;
+							min-height: 34px;
+							padding: 5px 7px;
+							display: grid;
+							grid-template-columns: 20px minmax(0, 1fr) 14px;
+							align-items: center;
+							gap: 5px;
+							border: 1px solid;
+							border-radius: 7px;
+							cursor: help;
+							font-size: 11px;
+
+							.icon {
+								font-size: 13px;
+								text-align: center;
+							}
+
+							.name {
+								min-width: 0;
+								display: flex;
+								align-items: center;
+								gap: 4px;
+								overflow: hidden;
+								color: #47434a;
+								font-weight: 600;
+
+								> span {
+									min-width: 0;
+									overflow: hidden;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+								}
+
+								small {
+									flex: 0 0 auto;
+									color: #85818a;
+									font-size: 9px;
+								}
+							}
+
+							.status {
+								width: 16px;
+								height: 16px;
+								display: grid;
+								place-items: center;
+								font-weight: 800;
+								text-align: center;
+
+								svg {
+									width: 14px;
+									height: 14px;
+								}
+							}
+
+							&.flag-success {
+								border-color: rgba(#3b9d65, 0.18);
+								background: rgba(#3b9d65, 0.055);
+
+								.status {
+									color: #318657;
+								}
+							}
+
+							&.flag-error {
+								border-color: rgba(#e25349, 0.2);
+								background: rgba(#e25349, 0.06);
+
+								.name {
+									color: #5c3937;
+								}
+
+								.status {
+									color: #d94a40;
+								}
+							}
+
+							&.flag-loading {
+								border-color: #ecebf0;
+								background: #fafafd;
+
+								.name {
+									color: #76727c;
+								}
+
+								.status-loading {
+									width: 13px;
+									height: 6px;
+									display: block;
+									border-radius: 4px;
+									background: linear-gradient(100deg, #dedde4 28%, #f2f1f5 42%, #dedde4 58%);
+									background-size: 220% 100%;
+									animation: insights-shimmer 1.15s ease-in-out infinite;
+								}
+							}
+
+							&.flag-unknown {
+								border-color: #ecebf0;
+								background: #fff;
+
+								.status {
+									color: #94919a;
+								}
 							}
 						}
 					}
@@ -1614,10 +1760,81 @@ const flags = computed<InsightFlag[]>(() => {
 						}
 					}
 
+					.format-group,
+					.region-column {
+						min-width: 0;
+
+						&.format-group {
+							margin: 6px;
+							overflow: hidden;
+							border: 1px solid var(--media-border);
+							border-radius: 8px;
+						}
+
+						> summary {
+							padding: 7px 9px;
+							min-height: 32px;
+							display: flex;
+							align-items: center;
+							gap: 8px;
+							background: var(--media-surface);
+							color: var(--media-accent);
+							cursor: pointer;
+							list-style: none;
+
+							&::-webkit-details-marker {
+								display: none;
+							}
+
+							&:hover {
+								background: var(--media-soft);
+							}
+
+							&:focus-visible {
+								outline: 2px solid var(--media-accent);
+								outline-offset: -3px;
+							}
+
+							strong {
+								flex: 1;
+								min-width: 0;
+								font-size: 11px;
+								font-weight: 700;
+							}
+
+							small {
+								padding: 2px 6px;
+								border-radius: 99px;
+								background: var(--media-soft);
+								font-size: 9px;
+								font-weight: 700;
+							}
+
+							&::after {
+								content: "";
+								width: 5px;
+								height: 5px;
+								margin: -3px 2px 0;
+								border-right: 1.5px solid currentColor;
+								border-bottom: 1.5px solid currentColor;
+								transform: rotate(45deg);
+							}
+						}
+
+						&[open] > summary {
+							border-bottom: 1px solid var(--media-border);
+
+							&::after {
+								transform: rotate(225deg);
+							}
+						}
+					}
+
 					&:not(.media-panel-regions) {
 						.media-items {
 							padding: 6px;
 							display: grid;
+							grid-template-columns: var(--media-columns, minmax(0, 1fr));
 							gap: 5px;
 							background: linear-gradient(180deg, var(--media-surface) 0, #fff 96px);
 
@@ -1700,26 +1917,57 @@ const flags = computed<InsightFlag[]>(() => {
 										}
 									}
 								}
-
 							}
 						}
 					}
 
 					&.media-panel-regions {
-						.region-items {
-							padding: 8px;
+						.region-columns {
 							display: grid;
 							grid-template-columns: repeat(2, minmax(0, 1fr));
-							gap: 6px;
+
+							.region-column {
+								--media-accent: #318657;
+								--media-border: rgba(49, 134, 87, 0.22);
+								--media-soft: rgba(49, 134, 87, 0.075);
+								--media-surface: #f7fbf8;
+
+								& + .region-column {
+									border-inline-start: 1px solid #e4e1e8;
+								}
+
+								&.region-column-danger {
+									--media-accent: #d3473e;
+									--media-border: rgba(211, 71, 62, 0.22);
+									--media-soft: rgba(211, 71, 62, 0.075);
+									--media-surface: #fdf8f7;
+								}
+							}
+						}
+
+						.region-items {
+							padding: 5px;
+							max-height: min(260px, 45vh);
+							overflow-y: auto;
+							overscroll-behavior-y: contain;
+							scrollbar-gutter: stable;
+							display: grid;
+							grid-template-columns: minmax(0, 1fr);
+							gap: 4px;
+
+							&:focus-visible {
+								outline: 2px solid var(--media-accent);
+								outline-offset: -2px;
+							}
 
 							.media-item {
-								min-height: 42px;
+								min-height: 32px;
 								margin: 0;
-								padding: 6px;
+								padding: 4px;
 								display: grid;
-								grid-template-columns: 30px minmax(0, 1fr);
+								grid-template-columns: 26px minmax(0, 1fr);
 								align-items: center;
-								gap: 7px;
+								gap: 5px;
 								border: 1px solid rgba(#3b9d65, 0.18);
 								border-radius: 7px;
 								background: rgba(#3b9d65, 0.045);
@@ -1735,8 +1983,8 @@ const flags = computed<InsightFlag[]>(() => {
 								}
 
 								.region-code {
-									width: 30px;
-									height: 25px;
+									width: 26px;
+									height: 22px;
 									display: grid;
 									place-items: center;
 									border-radius: 5px;
@@ -1801,121 +2049,30 @@ const flags = computed<InsightFlag[]>(() => {
 							font-weight: 700;
 						}
 					}
-				}
-			}
 
-			.flags {
-				margin-top: 10px;
-				padding: 8px;
-				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 6px;
-				border: 1px solid #ecebf0;
-				border-radius: 8px;
-				background: #fff;
+					&,
+					.format-group,
+					.region-column {
+						@media (prefers-reduced-motion: no-preference) {
+							@supports (interpolate-size: allow-keywords) and (transition-behavior: allow-discrete) and
+								selector(::details-content) {
+								interpolate-size: allow-keywords;
 
-				.flag {
-					min-width: 0;
-					min-height: 34px;
-					padding: 5px 7px;
-					display: grid;
-					grid-template-columns: 20px minmax(0, 1fr) 14px;
-					align-items: center;
-					gap: 5px;
-					border: 1px solid;
-					border-radius: 7px;
-					cursor: help;
-					font-size: 11px;
+								&::details-content {
+									height: 0;
+									opacity: 0;
+									overflow: clip;
+									transition:
+										height 0.22s ease,
+										opacity 0.22s ease,
+										content-visibility 0.22s allow-discrete;
+								}
 
-					.icon {
-						font-size: 13px;
-						text-align: center;
-					}
-
-					.name {
-						min-width: 0;
-						display: flex;
-						align-items: center;
-						gap: 4px;
-						overflow: hidden;
-						color: #47434a;
-						font-weight: 600;
-
-						> span {
-							min-width: 0;
-							overflow: hidden;
-							text-overflow: ellipsis;
-							white-space: nowrap;
-						}
-
-						small {
-							flex: 0 0 auto;
-							color: #85818a;
-							font-size: 9px;
-						}
-					}
-
-					.status {
-						width: 16px;
-						height: 16px;
-						display: grid;
-						place-items: center;
-						font-weight: 800;
-						text-align: center;
-
-						svg {
-							width: 14px;
-							height: 14px;
-						}
-					}
-
-					&.flag-success {
-						border-color: rgba(#3b9d65, 0.18);
-						background: rgba(#3b9d65, 0.055);
-
-						.status {
-							color: #318657;
-						}
-					}
-
-					&.flag-error {
-						border-color: rgba(#e25349, 0.2);
-						background: rgba(#e25349, 0.06);
-
-						.name {
-							color: #5c3937;
-						}
-
-						.status {
-							color: #d94a40;
-						}
-					}
-
-					&.flag-loading {
-						border-color: #ecebf0;
-						background: #fafafd;
-
-						.name {
-							color: #76727c;
-						}
-
-						.status-loading {
-							width: 13px;
-							height: 6px;
-							display: block;
-							border-radius: 4px;
-							background: linear-gradient(100deg, #dedde4 28%, #f2f1f5 42%, #dedde4 58%);
-							background-size: 220% 100%;
-							animation: insights-shimmer 1.15s ease-in-out infinite;
-						}
-					}
-
-					&.flag-unknown {
-						border-color: #ecebf0;
-						background: #fff;
-
-						.status {
-							color: #94919a;
+								&[open]::details-content {
+									height: auto;
+									opacity: 1;
+								}
+							}
 						}
 					}
 				}

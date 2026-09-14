@@ -12,6 +12,8 @@ Hover over a setting or card title to reveal its question mark button, which ope
 
 Click any card title to expand or collapse its settings, or focus the title and press Enter or Space. Each card remembers its own state when you reopen the popup or switch categories or languages. These states are saved only in the current browser. Collapsing a card only hides its settings; it does not turn off features or clear their saved values.
 
+The Insights page groups multiple video formats with the same resolution and multiple audio formats with the same codec into collapsible lists; groups with only one item remain directly visible. Subtitles use a compact multi-column layout. When regional restrictions apply, one region card shows available and unavailable regions in two columns separated by a vertical divider. Each column can be expanded or collapsed independently, has a limited height, and uses its own vertical scrollbar. Videos without regional restrictions show "No restrictions"; missing region information is not treated as worldwide availability. The "Restrictions" group can also be collapsed and remembers its expanded or collapsed state.
+
 <a name="player"></a>
 
 # Player
