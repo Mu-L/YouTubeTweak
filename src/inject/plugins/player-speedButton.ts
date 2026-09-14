@@ -320,6 +320,9 @@ function handleDocumentPointerUp(e: PointerEvent) {
 }
 
 async function setMemorySpeed() {
+	const videoId = new URL(location.href).searchParams.get("v");
+	if (!videoId) return;
+
 	let speed;
 	const channelId = getChannelId();
 
@@ -345,6 +348,7 @@ async function setMemorySpeed() {
 		}
 	}
 	if (!speed) return;
+	if (new URL(location.href).searchParams.get("v") !== videoId) return;
 	speed = Number(speed);
 
 	if (config.get("player.settings.saveSpeedByChannel")) {
