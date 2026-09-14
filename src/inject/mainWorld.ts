@@ -86,27 +86,6 @@ function parseYouTubeRegions(data: Record<string, any>) {
 	return [...regions].map(([code, name]) => ({ code, name }));
 }
 
-function buildTimedtextUrl(track: Record<string, any>, targetLanguage?: string) {
-	const url = new URL(track.baseUrl);
-
-	url.searchParams.set("fmt", "vtt");
-	if (track.kind) url.searchParams.set("kind", track.kind);
-	if (track.languageCode) url.searchParams.set("lang", track.languageCode);
-	if (targetLanguage) url.searchParams.set("tlang", targetLanguage);
-	else url.searchParams.delete("tlang");
-
-	return url;
-}
-
-async function hasTimedtextContent(url: URL) {
-	try {
-		const response = await fetch(url.href, { credentials: "include" });
-		return response.ok && Boolean((await response.text()).trim());
-	} catch {
-		return false;
-	}
-}
-
 const YouTubeTweakApp = {
 	async init() {
 		await this.waitBody();
@@ -383,9 +362,7 @@ export default async function mainWorld() {
 					"US",
 					false,
 				);
-				metadata.anonymousVideo = Array.isArray(data)
-					? data.find((item) => item?.playerResponse)?.playerResponse || null
-					: null;
+				metadata.anonymousVideo = Array.isArray(data) ? data.find((item) => item?.playerResponse)?.playerResponse || null : null;
 				reply({
 					anonymousVideo: metadata.anonymousVideo,
 					anonymousVideoNext: Array.isArray(data)
@@ -417,55 +394,6 @@ export default async function mainWorld() {
 				logger.error("Failed to get YouTube regions:", e);
 				reply({ regions: [], error: e instanceof Error ? e.message : String(e) });
 			}
-		};
-		wirelessRedstone.handlers.getInsightsSubtitleUrl = async (track, reply) => {
-			if (!track?.baseUrl || !track.languageCode) {
-				reply({ url: null, error: "invalid-caption-track" });
-				return;
-			}
-
-			const response = metadata.anonymousVideo || videoPlayer.player?.getPlayerResponse?.() || metadata.video;
-			const renderer = response?.captions?.playerCaptionsTracklistRenderer;
-			const resolvedTrack =
-				renderer?.captionTracks?.find(
-					(candidate: Record<string, any>) =>
-						candidate.baseUrl &&
-						((track.vssId && candidate.vssId === track.vssId) ||
-							(candidate.languageCode === track.languageCode &&
-								(candidate.kind || "") === (track.kind || ""))),
-				) || track;
-			const directUrl = buildTimedtextUrl(resolvedTrack);
-			if (await hasTimedtextContent(directUrl)) {
-				reply({ url: directUrl.href, error: null });
-				return;
-			}
-
-			const canTranslate = renderer?.translationLanguages?.some(
-				(language: Record<string, any>) => language.languageCode === track.languageCode,
-			);
-			const sourceTrack = canTranslate
-				? renderer?.captionTracks?.find(
-						(candidate: Record<string, any>) =>
-							candidate.baseUrl &&
-							candidate.isTranslatable &&
-							candidate.languageCode !== track.languageCode &&
-							candidate.kind === "asr",
-					) ||
-					renderer?.captionTracks?.find(
-						(candidate: Record<string, any>) =>
-							candidate.baseUrl && candidate.isTranslatable && candidate.languageCode !== track.languageCode,
-					)
-				: null;
-
-			if (sourceTrack) {
-				const translatedUrl = buildTimedtextUrl(sourceTrack, track.languageCode);
-				if (await hasTimedtextContent(translatedUrl)) {
-					reply({ url: translatedUrl.href, error: null });
-					return;
-				}
-			}
-
-			reply({ url: null, error: "empty-subtitle" });
 		};
 		wirelessRedstone.handlers.getInsightsFormats = async (_data, reply) => {
 			const videoId = new URL(location.href).searchParams.get("v");

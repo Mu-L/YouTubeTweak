@@ -56,17 +56,13 @@ export default function isolatedWorld() {
 					"getInsightsVerificationData",
 					"getInsightsRegionsData",
 					"getInsightsFormats",
-					"getInsightsSubtitleUrl",
 				].includes(message?.action)
 			)
 				return;
 
 			return new Promise((resolve) => {
-				const timeout = window.setTimeout(
-					() => resolve({ error: "main-world-timeout" }),
-					message.action === "getInsightsSubtitleUrl" ? 30000 : 15000,
-				);
-				wirelessRedstone.send(message.action, message.captionTrack || null, (data) => {
+				const timeout = window.setTimeout(() => resolve({ error: "main-world-timeout" }), 15000);
+				wirelessRedstone.send(message.action, null, (data) => {
 					window.clearTimeout(timeout);
 					resolve(data);
 				});
