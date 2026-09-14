@@ -51,6 +51,7 @@
 				"enable": "Hiển thị nút/thanh trượt tốc độ",
 				"save": "Ghi nhớ tốc độ phát",
 				"saveByChannel": "Ghi nhớ tốc độ phát theo kênh",
+				"keepMusicVideosAtNormalSpeed": "Luôn phát video âm nhạc ở tốc độ 1×",
 				"enableSlider": "Bật thanh trượt tốc độ",
 				"collapse": "Thu gọn các nút tốc độ"
 			},

@@ -51,6 +51,7 @@
 				"enable": "Hız düğmelerini/kaydırıcısını göster",
 				"save": "Oynatma hızını hatırla",
 				"saveByChannel": "Kanal başına oynatma hızını hatırla",
+				"keepMusicVideosAtNormalSpeed": "Müzik videolarını her zaman 1× hızında oynat",
 				"enableSlider": "Hız kaydırıcısını etkinleştir",
 				"collapse": "Hız düğmelerini daralt"
 			},

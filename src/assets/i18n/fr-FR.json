@@ -51,6 +51,7 @@
 				"enable": "Afficher les boutons/le curseur de vitesse",
 				"save": "Sauvegarder la vitesse du player",
 				"saveByChannel": "Sauvegarder les vitesses pour chaque chaîne",
+				"keepMusicVideosAtNormalSpeed": "Toujours lire les clips musicaux à la vitesse 1×",
 				"enableSlider": "Activer le curseur de vitesse",
 				"collapse": "Replier les boutons de vitesse"
 			},

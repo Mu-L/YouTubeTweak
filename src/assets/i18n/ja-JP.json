@@ -51,6 +51,7 @@
 				"enable": "再生速度ボタン/スライダーを表示する",
 				"save": "再生速度を記憶する",
 				"saveByChannel": "チャンネルごとに再生速度を記憶する",
+				"keepMusicVideosAtNormalSpeed": "ミュージックビデオを常に1倍速で再生する",
 				"enableSlider": "再生速度スライダーを有効にする",
 				"collapse": "再生速度ボタンを折りたたむ"
 			},

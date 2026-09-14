@@ -34,6 +34,41 @@ function nearlyEqual(a: number, b: number) {
 	return Math.abs(a - b) < 0.001;
 }
 
+function isMusicVideo() {
+	const videoId = new URL(location.href).searchParams.get("v");
+	const response = [videoPlayer.player?.getPlayerResponse?.(), metadata.video].find(
+		(response) => response?.videoDetails?.videoId === videoId,
+	);
+	if (!response) return false;
+
+	const category = String(response?.microformat?.playerMicroformatRenderer?.category ?? "")
+		.trim()
+		.toLowerCase();
+	return [
+		"music",
+		"música",
+		"musica",
+		"musique",
+		"musik",
+		"müzik",
+		"muzik",
+		"музыка",
+		"музика",
+		"موسيقى",
+		"موسیقی",
+		"संगीत",
+		"সঙ্গীত",
+		"இசை",
+		"సంగీతం",
+		"เพลง",
+		"âm nhạc",
+		"音楽",
+		"음악",
+		"音乐",
+		"音樂",
+	].includes(category);
+}
+
 function getEnabledSpeeds() {
 	return [...config.get("player.ui.speedButtons")].sort((a, b) => a - b);
 }
@@ -320,6 +355,11 @@ function handleDocumentPointerUp(e: PointerEvent) {
 }
 
 async function setMemorySpeed() {
+	if (config.get("player.settings.keepMusicVideosAtNormalSpeed") && isMusicVideo()) {
+		await setPlaybackSpeed(1);
+		return;
+	}
+
 	const videoId = new URL(location.href).searchParams.get("v");
 	if (!videoId) return;
 

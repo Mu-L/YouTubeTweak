@@ -51,6 +51,7 @@
 				"enable": "속도 버튼/속도 슬라이더 표시",
 				"save": "재생 속도 기억",
 				"saveByChannel": "채널별 재생 속도 기억",
+				"keepMusicVideosAtNormalSpeed": "뮤직비디오는 항상 1배속으로 재생",
 				"enableSlider": "속도 슬라이더 사용",
 				"collapse": "재생 속도 버튼 접기"
 			},

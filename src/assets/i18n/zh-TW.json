@@ -51,6 +51,7 @@
 				"enable": "顯示倍速按鈕/倍速滑桿",
 				"save": "記住播放速度",
 				"saveByChannel": "為每個頻道分別記住播放速度",
+				"keepMusicVideosAtNormalSpeed": "音樂影片始終保持 1 倍速",
 				"enableSlider": "啟用倍速滑桿",
 				"collapse": "摺疊倍速按鈕"
 			},

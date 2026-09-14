@@ -98,6 +98,10 @@
 					<input type="checkbox" v-model="config['player.settings.saveSpeedByChannel']" />
 					<span>{{ $t("player.speedButtons.checkbox.saveByChannel") }}</span>
 				</label>
+				<label class="form-item">
+					<input type="checkbox" v-model="config['player.settings.keepMusicVideosAtNormalSpeed']" />
+					<span>{{ $t("player.speedButtons.checkbox.keepMusicVideosAtNormalSpeed") }}</span>
+				</label>
 			</div>
 		</div>
 		<div class="card">

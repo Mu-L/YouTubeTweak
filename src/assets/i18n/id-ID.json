@@ -51,6 +51,7 @@
 				"enable": "Tampilkan tombol/slider kecepatan",
 				"save": "Ingat kecepatan pemutaran",
 				"saveByChannel": "Ingat kecepatan pemutaran per kanal",
+				"keepMusicVideosAtNormalSpeed": "Selalu putar video musik pada kecepatan 1×",
 				"enableSlider": "Aktifkan slider kecepatan",
 				"collapse": "Ciutkan tombol kecepatan"
 			},

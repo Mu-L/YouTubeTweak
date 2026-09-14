@@ -51,6 +51,7 @@
 				"enable": "Show speed buttons/speed slider",
 				"save": "Remember playback speed",
 				"saveByChannel": "Remember playback speed per channel",
+				"keepMusicVideosAtNormalSpeed": "Always play music videos at 1× speed",
 				"enableSlider": "Enable speed slider",
 				"collapse": "Collapse speed buttons"
 			},

@@ -51,6 +51,7 @@
 				"enable": "Mostrar botones/deslizador de velocidad",
 				"save": "Recordar velocidad de reproducción",
 				"saveByChannel": "Recordar la velocidad por canal",
+				"keepMusicVideosAtNormalSpeed": "Reproducir siempre los vídeos musicales a velocidad 1×",
 				"enableSlider": "Activar deslizador de velocidad",
 				"collapse": "Contraer botones de velocidad"
 			},

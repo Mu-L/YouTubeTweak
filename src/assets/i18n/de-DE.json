@@ -51,6 +51,7 @@
 				"enable": "Geschwindigkeitsschaltflächen/Regler anzeigen",
 				"save": "Wiedergabegeschwindigkeit merken",
 				"saveByChannel": "Wiedergabegeschwindigkeit pro Kanal merken",
+				"keepMusicVideosAtNormalSpeed": "Musikvideos immer mit 1×-Geschwindigkeit abspielen",
 				"enableSlider": "Geschwindigkeitsregler aktivieren",
 				"collapse": "Geschwindigkeits-Schaltflächen einklappen"
 			},

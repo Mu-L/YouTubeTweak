@@ -51,6 +51,7 @@ export type Config = {
 	"player.settings.lockQuality.value": keyof typeof VideoQuality;
 	"player.settings.saveSpeed": boolean;
 	"player.settings.saveSpeedByChannel": boolean;
+	"player.settings.keepMusicVideosAtNormalSpeed": boolean;
 	"player.settings.saveSubtitleStatus": boolean;
 	"player.settings.saveSubtitleStatusByChannel": boolean;
 	"player.settings.nonStop": boolean;
@@ -131,6 +132,7 @@ const config: Config = {
 	"player.settings.lockQuality.value": "hd1080",
 	"player.settings.saveSpeed": true,
 	"player.settings.saveSpeedByChannel": true,
+	"player.settings.keepMusicVideosAtNormalSpeed": false,
 	"player.settings.saveSubtitleStatus": true,
 	"player.settings.saveSubtitleStatusByChannel": true,
 	"player.settings.nonStop": true,
