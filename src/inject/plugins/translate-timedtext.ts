@@ -1,7 +1,13 @@
 import { createLogger } from "@/logger";
 import type { Plugin } from "../types";
 import xmlHttpRequestHooker from "../xmlHttpRequestHooker";
-import { escapeTextForTranslate, getTargetLanguage, googleTranslate, shouldSkipAutoTranslation, translatedHtmlToText } from "../util/translate";
+import {
+	escapeTextForTranslate,
+	getTargetLanguage,
+	googleTranslate,
+	shouldSkipAutoTranslation,
+	translatedHtmlToText,
+} from "../util/translate";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
 const logger = createLogger("Translate-timedtext");
@@ -9,6 +15,9 @@ const TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH = 30000;
 const textEncoder = new TextEncoder();
 
 type TimedtextResponse = {
+	wpWinPositions: Array<{
+		rcRows: number;
+	}>;
 	events?: Array<{
 		dDurationMs: number;
 		tStartMs: number;
@@ -140,6 +149,13 @@ export default {
 							logger.error("Error while processing timedtext event:", e, event, translatedTexts[index]);
 						}
 					}
+
+					if ((urlObj.searchParams.get("xoaf") || "5") === "7") {
+						if (data?.wpWinPositions?.[1]?.rcRows === 2) {
+							data.wpWinPositions[1].rcRows = 3;
+						}
+					}
+
 					return data;
 				},
 			});
