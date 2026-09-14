@@ -124,6 +124,18 @@
 									<path d="M10 6.2a2.6 2.6 0 0 1 0 3.6m1.8-5.4a5 5 0 0 1 0 7.2" />
 								</svg>
 								<svg
+									v-else-if="section.key === 'languageVersions'"
+									viewBox="0 0 16 16"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.4"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M1.5 3.5h7M5 2v1.5m2 0C6.5 7 4.5 9 2 10m1-5c.7 2 2.2 3.5 4.5 4.5M8.5 13l3-7 3 7m-4.8-2h3.6" />
+								</svg>
+								<svg
 									v-else-if="section.key === 'regions'"
 									viewBox="0 0 16 16"
 									fill="none"
@@ -196,7 +208,13 @@
 								{{ $t(formatsLoading ? "insights.label.lists.loadingFormats" : "insights.label.lists.loadFormatsFailed") }}
 							</span>
 						</div>
-						<div v-if="section.key === 'restrictions'" class="flags">
+						<LanguageVersions
+							v-if="section.key === 'languageVersions'"
+							:video-id="activeVideoId"
+							:tab-id="activeTabId"
+							@update:count="languageVersionCount = $event"
+						/>
+						<div v-else-if="section.key === 'restrictions'" class="flags">
 							<div
 								v-for="flag in flags"
 								:key="flag.key"
@@ -307,6 +325,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { useI18n } from "vue-i18n";
+import LanguageVersions from "../components/insights/LanguageVersions.vue";
 
 type InsightsData = {
 	video: Record<string, any> | null;
@@ -515,6 +534,8 @@ const tabResolved = ref(false);
 const isWatchPage = ref(false);
 const verificationState = ref<"idle" | "loading" | "loaded" | "error">("idle");
 const activeTabId = ref<number | null>(null);
+const activeVideoId = ref("");
+const languageVersionCount = ref(0);
 const formatsRequested = ref(false);
 const formatsLoading = ref(false);
 const formatsError = ref<string | null>(null);
@@ -536,6 +557,7 @@ onMounted(async () => {
 		activeTabId.value = tab.id;
 		const videoId = new URL(tab.url!).searchParams.get("v");
 		if (videoId) {
+			activeVideoId.value = videoId;
 			videoPreview.value = {
 				title: tab.title?.replace(/\s*-\s*YouTube$/i, "") || videoId,
 				thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
@@ -887,7 +909,14 @@ const mediaSections = computed<MediaSection[]>(() =>
 		{ key: "audioTracks", items: audioTrackItems.value },
 		regionSection.value,
 		{ key: "restrictions", items: [], count: flags.value.length },
-	].filter((section) => section.key === "restrictions" || (video.value && (section.layout === "regions" || section.items.length))),
+		{ key: "languageVersions", items: [], count: languageVersionCount.value },
+	].filter(
+		(section) =>
+			section.key === "restrictions" ||
+			(section.key === "languageVersions"
+				? Boolean(activeVideoId.value)
+				: video.value && (section.layout === "regions" || section.items.length)),
+	),
 );
 const metadata = computed(() => {
 	const publishDate = microformat.value.publishDate;
@@ -1511,6 +1540,13 @@ const flags = computed<InsightFlag[]>(() => {
 						--media-border: rgba(211, 71, 62, 0.22);
 						--media-soft: rgba(211, 71, 62, 0.075);
 						--media-surface: #fdf8f7;
+					}
+
+					&.media-panel-languageVersions {
+						--media-accent: #5966b4;
+						--media-border: rgba(89, 102, 180, 0.22);
+						--media-soft: rgba(89, 102, 180, 0.075);
+						--media-surface: #f8f9ff;
 					}
 
 					> summary {

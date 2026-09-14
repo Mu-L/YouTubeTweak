@@ -401,7 +401,32 @@
 				"translatable": "Traducible",
 				"default": "Predeterminado",
 				"loadingFormats": "Cargando más formatos multimedia...",
-				"loadFormatsFailed": "Error de carga. Contrae y vuelve a abrir para reintentar."
+				"loadFormatsFailed": "Error de carga. Contrae y vuelve a abrir para reintentar.",
+				"languageVersions": "Versiones por idioma"
+			},
+			"languageVersions": {
+				"warning": "Evita usar esta función demasiado rápido o con demasiada frecuencia, ya que YouTube podría bloquear las solicitudes.",
+				"orderHint": "Ordenado por el número estimado de usuarios de Internet de cada idioma, con las variantes regionales al final; si no hay contenido localizado, puede devolverse la versión original.",
+				"selectLanguages": "Idiomas que consultar",
+				"selectionHint": "Haz clic para desplegar y seleccionar varios idiomas. Los 10 más usados están seleccionados por defecto; los ya cargados dejan de aparecer. Mantén Ctrl/⌘ para seleccionar varios o Mayús para un intervalo.",
+				"selectAll": "Seleccionar todo",
+				"clearSelection": "Borrar selección",
+				"start": "Cargar los primeros {count} idiomas",
+				"next": "Cargar {count} más",
+				"batchSize": "Siguiente lote",
+				"stop": "Detener",
+				"stopping": "Deteniendo…",
+				"progress": "{loaded}/{total} idiomas consultados, agrupados en {versions} versiones",
+				"loading": "Consultando {language}…",
+				"complete": "Todos los idiomas se han cargado",
+				"thumbnails": "Miniaturas",
+				"textVersions": "Títulos y descripciones",
+				"languages": "Idiomas incluidos",
+				"noDescription": "Sin descripción",
+				"cooldown": "Espera {seconds} segundos antes de continuar",
+				"failed": "No se pudo consultar {language}. Este lote se ha detenido; puedes volver a intentarlo más tarde.",
+				"blocked": "YouTube ha limitado temporalmente las solicitudes. Inténtalo de nuevo más tarde.",
+				"videoChanged": "El vídeo ha cambiado. Vuelve a abrir Análisis antes de continuar."
 			}
 		}
 	},

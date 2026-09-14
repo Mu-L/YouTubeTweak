@@ -401,7 +401,32 @@
 				"translatable": "Traduisible",
 				"default": "Par défaut",
 				"loadingFormats": "Chargement de formats multimédias supplémentaires...",
-				"loadFormatsFailed": "Échec du chargement. Repliez et rouvrez pour réessayer."
+				"loadFormatsFailed": "Échec du chargement. Repliez et rouvrez pour réessayer.",
+				"languageVersions": "Versions linguistiques"
+			},
+			"languageVersions": {
+				"warning": "Évitez d’utiliser cette fonction trop rapidement ou trop souvent, car YouTube pourrait bloquer les requêtes.",
+				"orderHint": "Tri par nombre estimé d’internautes pour chaque langue, avec les variantes régionales à la fin ; la version originale peut être renvoyée en l’absence de contenu localisé.",
+				"selectLanguages": "Langues à consulter",
+				"selectionHint": "Cliquez pour déplier et sélectionner plusieurs langues. Les 10 premières sont sélectionnées par défaut ; les langues chargées ne sont plus affichées. Maintenez Ctrl/⌘ pour une sélection multiple ou Maj pour une plage.",
+				"selectAll": "Tout sélectionner",
+				"clearSelection": "Effacer la sélection",
+				"start": "Charger les {count} premières langues",
+				"next": "En charger {count} de plus",
+				"batchSize": "Lot suivant",
+				"stop": "Arrêter",
+				"stopping": "Arrêt en cours…",
+				"progress": "{loaded}/{total} langues consultées, regroupées en {versions} versions",
+				"loading": "Consultation de {language}…",
+				"complete": "Toutes les langues sont chargées",
+				"thumbnails": "Miniatures",
+				"textVersions": "Titres et descriptions",
+				"languages": "Langues incluses",
+				"noDescription": "Aucune description",
+				"cooldown": "Attendez {seconds} secondes avant de continuer",
+				"failed": "Impossible de consulter {language}. Ce lot a été arrêté ; vous pourrez réessayer plus tard.",
+				"blocked": "YouTube a temporairement limité les requêtes. Réessayez plus tard.",
+				"videoChanged": "La vidéo a changé. Rouvrez l’onglet Aperçu avant de continuer."
 			}
 		}
 	},

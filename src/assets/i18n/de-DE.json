@@ -401,7 +401,32 @@
 				"translatable": "Übersetzbar",
 				"default": "Standard",
 				"loadingFormats": "Weitere Medienformate werden geladen...",
-				"loadFormatsFailed": "Laden fehlgeschlagen. Zum Wiederholen einklappen und erneut öffnen."
+				"loadFormatsFailed": "Laden fehlgeschlagen. Zum Wiederholen einklappen und erneut öffnen.",
+				"languageVersions": "Sprachversionen"
+			},
+			"languageVersions": {
+				"warning": "Verwende diese Funktion nicht zu schnell oder zu häufig, da YouTube Anfragen blockieren kann.",
+				"orderHint": "Nach der geschätzten Anzahl der Internetnutzer je Sprache sortiert, regionale Varianten zuletzt; ohne lokalisierte Inhalte kann die Originalversion zurückgegeben werden.",
+				"selectLanguages": "Zu prüfende Sprachen",
+				"selectionHint": "Klicke zum Aufklappen und Auswählen mehrerer Sprachen. Standardmäßig sind die 10 meistgenutzten ausgewählt; geladene Sprachen werden nicht mehr aufgeführt. Halte Strg/⌘ für eine Mehrfachauswahl oder Umschalt für einen Bereich gedrückt.",
+				"selectAll": "Alle auswählen",
+				"clearSelection": "Auswahl aufheben",
+				"start": "Die ersten {count} Sprachen laden",
+				"next": "{count} weitere laden",
+				"batchSize": "Nächste Gruppe",
+				"stop": "Stoppen",
+				"stopping": "Wird gestoppt…",
+				"progress": "{loaded}/{total} Sprachen geprüft, zu {versions} Versionen zusammengefasst",
+				"loading": "{language} wird geprüft…",
+				"complete": "Alle Sprachen geladen",
+				"thumbnails": "Vorschaubilder",
+				"textVersions": "Titel und Beschreibungen",
+				"languages": "Enthaltene Sprachen",
+				"noDescription": "Keine Beschreibung",
+				"cooldown": "Vor dem Fortfahren {seconds} Sekunden warten",
+				"failed": "{language} konnte nicht geprüft werden. Diese Gruppe wurde gestoppt; versuche es später erneut.",
+				"blocked": "YouTube hat Anfragen vorübergehend eingeschränkt. Versuche es später erneut.",
+				"videoChanged": "Das Video hat sich geändert. Öffne die Registerkarte „Analyse“ erneut, bevor du fortfährst."
 			}
 		}
 	},

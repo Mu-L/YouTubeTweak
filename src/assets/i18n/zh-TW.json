@@ -401,7 +401,32 @@
 				"translatable": "可翻譯",
 				"default": "預設",
 				"loadingFormats": "正在取得更多媒體格式...",
-				"loadFormatsFailed": "載入失敗，收合後重新展開即可重試。"
+				"loadFormatsFailed": "載入失敗，收合後重新展開即可重試。",
+				"languageVersions": "語言版本"
+			},
+			"languageVersions": {
+				"warning": "請勿過快或頻繁使用此功能，以免遭 YouTube 封鎖。",
+				"orderHint": "依估算網際網路使用人數排序，地區變體最後；未提供本地化內容時可能傳回原始版本。",
+				"selectLanguages": "要查詢的語言",
+				"selectionHint": "點擊展開後多選；預設選取熱門前 10 種，已載入語言不再列出。按住 Ctrl/⌘ 多選，Shift 連選。",
+				"selectAll": "全選",
+				"clearSelection": "清空選擇",
+				"start": "載入前 {count} 種語言",
+				"next": "繼續載入 {count} 種",
+				"batchSize": "後續每批",
+				"stop": "停止",
+				"stopping": "正在停止…",
+				"progress": "已查詢 {loaded}/{total} 種語言，合併為 {versions} 個版本",
+				"loading": "正在查詢 {language}…",
+				"complete": "所有語言已載入完成",
+				"thumbnails": "封面",
+				"textVersions": "標題與描述",
+				"languages": "包含語言",
+				"noDescription": "沒有描述",
+				"cooldown": "請等待 {seconds} 秒後再繼續",
+				"failed": "查詢 {language} 失敗，已停止本批；稍後可繼續重試。",
+				"blocked": "YouTube 暫時限制了請求，請稍後再試。",
+				"videoChanged": "影片已變更，請重新開啟洞察後再查詢。"
 			}
 		}
 	},

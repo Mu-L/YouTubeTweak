@@ -46,6 +46,26 @@ import logo from "@/assets/img/logo.svg";
 import { ref, provide, defineAsyncComponent, watch } from "vue";
 import Installed from "./pages/installed.vue";
 import type { Component } from "vue";
+import { cleanupLanguageVersionsCache, renewLanguageVersionsCache } from "./util/insightsLanguageCache";
+
+const popupOpenedAt = Date.now();
+cleanupLanguageVersionsCache();
+void browser.tabs
+	.query({ active: true, currentWindow: true })
+	.then(([tab]) => {
+		if (!tab?.url) return;
+		const url = new URL(tab.url);
+		const videoId = url.searchParams.get("v") || "";
+		if (
+			url.protocol === "https:" &&
+			["www.youtube.com", "m.youtube.com"].includes(url.hostname) &&
+			url.pathname === "/watch" &&
+			/^[a-zA-Z0-9_-]{11}$/.test(videoId)
+		) {
+			renewLanguageVersionsCache(videoId, popupOpenedAt);
+		}
+	})
+	.catch((error) => console.warn("Unable to renew language versions cache for the active tab:", error));
 
 const APP_BRANDING = __APP_BRANDING__;
 const APP_LOGO = APP_BRANDING.isSafari ? appleLogo : logo;

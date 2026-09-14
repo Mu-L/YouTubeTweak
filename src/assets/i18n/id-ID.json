@@ -401,7 +401,32 @@
 				"translatable": "Dapat diterjemahkan",
 				"default": "Default",
 				"loadingFormats": "Memuat lebih banyak format media...",
-				"loadFormatsFailed": "Pemuatan gagal. Tutup lalu buka kembali untuk mencoba lagi."
+				"loadFormatsFailed": "Pemuatan gagal. Tutup lalu buka kembali untuk mencoba lagi.",
+				"languageVersions": "Versi bahasa"
+			},
+			"languageVersions": {
+				"warning": "Hindari menggunakan fitur ini terlalu cepat atau terlalu sering karena YouTube dapat memblokir permintaan.",
+				"orderHint": "Diurutkan berdasarkan perkiraan jumlah pengguna internet per bahasa, dengan varian regional di akhir; versi asli dapat dikembalikan jika konten yang dilokalkan tidak tersedia.",
+				"selectLanguages": "Bahasa yang akan diperiksa",
+				"selectionHint": "Klik untuk membuka dan memilih beberapa bahasa. 10 bahasa teratas dipilih secara default; bahasa yang sudah dimuat tidak lagi ditampilkan. Tahan Ctrl/⌘ untuk beberapa pilihan atau Shift untuk rentang.",
+				"selectAll": "Pilih semua",
+				"clearSelection": "Hapus pilihan",
+				"start": "Muat {count} bahasa pertama",
+				"next": "Muat {count} lagi",
+				"batchSize": "Kelompok berikutnya",
+				"stop": "Hentikan",
+				"stopping": "Menghentikan…",
+				"progress": "{loaded}/{total} bahasa diperiksa, dikelompokkan menjadi {versions} versi",
+				"loading": "Memeriksa {language}…",
+				"complete": "Semua bahasa telah dimuat",
+				"thumbnails": "Thumbnail",
+				"textVersions": "Judul dan deskripsi",
+				"languages": "Bahasa yang disertakan",
+				"noDescription": "Tidak ada deskripsi",
+				"cooldown": "Tunggu {seconds} detik sebelum melanjutkan",
+				"failed": "Tidak dapat memeriksa {language}. Kelompok ini dihentikan; Anda dapat mencoba lagi nanti.",
+				"blocked": "YouTube membatasi permintaan untuk sementara. Coba lagi nanti.",
+				"videoChanged": "Video telah berubah. Buka kembali Wawasan sebelum melanjutkan."
 			}
 		}
 	},

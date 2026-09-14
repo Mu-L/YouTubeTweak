@@ -401,7 +401,32 @@
 				"translatable": "Translatable",
 				"default": "Default",
 				"loadingFormats": "Loading more media formats...",
-				"loadFormatsFailed": "Loading failed. Collapse and reopen to retry."
+				"loadFormatsFailed": "Loading failed. Collapse and reopen to retry.",
+				"languageVersions": "Language versions"
+			},
+			"languageVersions": {
+				"warning": "Avoid using this feature too quickly or frequently, as YouTube may block requests.",
+				"orderHint": "Ordered by the estimated number of internet users per language, with regional variants last; the original version may be returned when localized content is unavailable.",
+				"selectLanguages": "Languages to check",
+				"selectionHint": "Click to expand and select multiple languages. The top 10 are selected by default; loaded languages are no longer listed. Hold Ctrl/⌘ for multiple selections or Shift for a range.",
+				"selectAll": "Select all",
+				"clearSelection": "Clear selection",
+				"start": "Load the first {count} languages",
+				"next": "Load {count} more",
+				"batchSize": "Next batch",
+				"stop": "Stop",
+				"stopping": "Stopping…",
+				"progress": "Checked {loaded}/{total} languages, grouped into {versions} versions",
+				"loading": "Checking {language}…",
+				"complete": "All languages loaded",
+				"thumbnails": "Thumbnails",
+				"textVersions": "Titles and descriptions",
+				"languages": "Languages included",
+				"noDescription": "No description",
+				"cooldown": "Wait {seconds} seconds before continuing",
+				"failed": "Could not check {language}. This batch has stopped; you can retry later.",
+				"blocked": "YouTube has temporarily limited requests. Try again later.",
+				"videoChanged": "The video has changed. Reopen Insights before continuing."
 			}
 		}
 	},

@@ -401,7 +401,32 @@
 				"translatable": "Çevrilebilir",
 				"default": "Varsayılan",
 				"loadingFormats": "Daha fazla medya biçimi yükleniyor...",
-				"loadFormatsFailed": "Yükleme başarısız. Yeniden denemek için daraltıp tekrar açın."
+				"loadFormatsFailed": "Yükleme başarısız. Yeniden denemek için daraltıp tekrar açın.",
+				"languageVersions": "Dil sürümleri"
+			},
+			"languageVersions": {
+				"warning": "YouTube istekleri engelleyebileceğinden bu özelliği çok hızlı veya çok sık kullanmayın.",
+				"orderHint": "Her dilin tahmini internet kullanıcısı sayısına göre sıralanır; bölgesel varyantlar en sondadır. Yerelleştirilmiş içerik yoksa özgün sürüm döndürülebilir.",
+				"selectLanguages": "Kontrol edilecek diller",
+				"selectionHint": "Listeyi açıp birden fazla dil seçmek için tıklayın. Varsayılan olarak en çok kullanılan ilk 10 dil seçilir; yüklenen diller artık listelenmez. Birden fazla seçim için Ctrl/⌘, bir aralık için Shift tuşunu basılı tutun.",
+				"selectAll": "Tümünü seç",
+				"clearSelection": "Seçimi temizle",
+				"start": "İlk {count} dili yükle",
+				"next": "{count} dil daha yükle",
+				"batchSize": "Sonraki grup",
+				"stop": "Durdur",
+				"stopping": "Durduruluyor…",
+				"progress": "{loaded}/{total} dil kontrol edildi, {versions} sürümde gruplandı",
+				"loading": "{language} kontrol ediliyor…",
+				"complete": "Tüm diller yüklendi",
+				"thumbnails": "Küçük resimler",
+				"textVersions": "Başlıklar ve açıklamalar",
+				"languages": "Dahil edilen diller",
+				"noDescription": "Açıklama yok",
+				"cooldown": "Devam etmeden önce {seconds} saniye bekleyin",
+				"failed": "{language} kontrol edilemedi. Bu grup durduruldu; daha sonra yeniden deneyebilirsiniz.",
+				"blocked": "YouTube istekleri geçici olarak sınırladı. Daha sonra yeniden deneyin.",
+				"videoChanged": "Video değişti. Devam etmeden önce Analiz sekmesini yeniden açın."
 			}
 		}
 	},

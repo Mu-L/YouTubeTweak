@@ -401,7 +401,32 @@
 				"translatable": "Có thể dịch",
 				"default": "Mặc định",
 				"loadingFormats": "Đang tải thêm định dạng phương tiện...",
-				"loadFormatsFailed": "Tải không thành công. Thu gọn rồi mở lại để thử lại."
+				"loadFormatsFailed": "Tải không thành công. Thu gọn rồi mở lại để thử lại.",
+				"languageVersions": "Phiên bản ngôn ngữ"
+			},
+			"languageVersions": {
+				"warning": "Không sử dụng tính năng này quá nhanh hoặc quá thường xuyên vì YouTube có thể chặn các yêu cầu.",
+				"orderHint": "Sắp xếp theo số người dùng Internet ước tính của từng ngôn ngữ, các biến thể theo vùng ở cuối; có thể trả về phiên bản gốc nếu không có nội dung bản địa hóa.",
+				"selectLanguages": "Ngôn ngữ cần kiểm tra",
+				"selectionHint": "Nhấp để mở rộng và chọn nhiều ngôn ngữ. Mặc định chọn 10 ngôn ngữ được dùng nhiều nhất; ngôn ngữ đã tải không còn xuất hiện trong danh sách. Giữ Ctrl/⌘ để chọn nhiều mục hoặc Shift để chọn một dải liên tiếp.",
+				"selectAll": "Chọn tất cả",
+				"clearSelection": "Bỏ chọn tất cả",
+				"start": "Tải {count} ngôn ngữ đầu tiên",
+				"next": "Tải thêm {count} ngôn ngữ",
+				"batchSize": "Số lượng đợt tiếp theo",
+				"stop": "Dừng",
+				"stopping": "Đang dừng…",
+				"progress": "Đã kiểm tra {loaded}/{total} ngôn ngữ, gộp thành {versions} phiên bản",
+				"loading": "Đang kiểm tra {language}…",
+				"complete": "Đã tải tất cả ngôn ngữ",
+				"thumbnails": "Ảnh thu nhỏ",
+				"textVersions": "Tiêu đề và mô tả",
+				"languages": "Các ngôn ngữ có trong phiên bản",
+				"noDescription": "Không có mô tả",
+				"cooldown": "Chờ {seconds} giây trước khi tiếp tục",
+				"failed": "Không thể kiểm tra {language}. Đã dừng đợt này; bạn có thể thử lại sau.",
+				"blocked": "YouTube đã tạm thời giới hạn các yêu cầu. Vui lòng thử lại sau.",
+				"videoChanged": "Video đã thay đổi. Hãy mở lại Thống kê trước khi tiếp tục."
 			}
 		}
 	},

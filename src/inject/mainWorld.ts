@@ -8,6 +8,7 @@ import type { Plugin } from "./types";
 import memory, { createDebouncedMemoryStorage } from "@/memory";
 import xmlHttpRequestHooker from "./xmlHttpRequestHooker";
 import { showReloadNotice } from "./util/reloadNotice";
+import { getInsightsLanguageVersion } from "./util/insightsLanguageVersions";
 
 declare global {
 	interface Window {
@@ -394,6 +395,9 @@ export default async function mainWorld() {
 				logger.error("Failed to get YouTube regions:", e);
 				reply({ regions: [], error: e instanceof Error ? e.message : String(e) });
 			}
+		};
+		wirelessRedstone.handlers.getInsightsLanguageVersion = async (data, reply) => {
+			reply(await getInsightsLanguageVersion(data));
 		};
 		wirelessRedstone.handlers.getInsightsFormats = async (_data, reply) => {
 			const videoId = new URL(location.href).searchParams.get("v");

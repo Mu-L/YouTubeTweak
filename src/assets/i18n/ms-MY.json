@@ -401,7 +401,32 @@
 				"translatable": "Boleh diterjemah",
 				"default": "Lalai",
 				"loadingFormats": "Memuatkan lebih banyak format media...",
-				"loadFormatsFailed": "Pemuatan gagal. Tutup dan buka semula untuk mencuba lagi."
+				"loadFormatsFailed": "Pemuatan gagal. Tutup dan buka semula untuk mencuba lagi.",
+				"languageVersions": "Versi bahasa"
+			},
+			"languageVersions": {
+				"warning": "Elakkan menggunakan ciri ini terlalu cepat atau terlalu kerap kerana YouTube mungkin menyekat permintaan.",
+				"orderHint": "Disusun mengikut anggaran bilangan pengguna internet bagi setiap bahasa, dengan varian serantau di akhir; versi asal mungkin dikembalikan jika kandungan setempat tidak tersedia.",
+				"selectLanguages": "Bahasa untuk disemak",
+				"selectionHint": "Klik untuk mengembangkan dan memilih berbilang bahasa. 10 bahasa teratas dipilih secara lalai; bahasa yang telah dimuatkan tidak lagi disenaraikan. Tahan Ctrl/⌘ untuk berbilang pilihan atau Shift untuk julat.",
+				"selectAll": "Pilih semua",
+				"clearSelection": "Kosongkan pilihan",
+				"start": "Muatkan {count} bahasa pertama",
+				"next": "Muatkan {count} lagi",
+				"batchSize": "Kumpulan seterusnya",
+				"stop": "Hentikan",
+				"stopping": "Sedang menghentikan…",
+				"progress": "{loaded}/{total} bahasa disemak, dikumpulkan kepada {versions} versi",
+				"loading": "Menyemak {language}…",
+				"complete": "Semua bahasa telah dimuatkan",
+				"thumbnails": "Lakaran kecil",
+				"textVersions": "Tajuk dan penerangan",
+				"languages": "Bahasa yang disertakan",
+				"noDescription": "Tiada penerangan",
+				"cooldown": "Tunggu {seconds} saat sebelum meneruskan",
+				"failed": "Tidak dapat menyemak {language}. Kumpulan ini dihentikan; anda boleh mencuba lagi kemudian.",
+				"blocked": "YouTube mengehadkan permintaan buat sementara waktu. Cuba lagi kemudian.",
+				"videoChanged": "Video telah berubah. Buka semula Wawasan sebelum meneruskan."
 			}
 		}
 	},

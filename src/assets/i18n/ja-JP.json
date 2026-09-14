@@ -401,7 +401,32 @@
 				"translatable": "翻訳可能",
 				"default": "デフォルト",
 				"loadingFormats": "追加のメディア形式を取得中...",
-				"loadFormatsFailed": "読み込みに失敗しました。折りたたんで再度開くと再試行できます。"
+				"loadFormatsFailed": "読み込みに失敗しました。折りたたんで再度開くと再試行できます。",
+				"languageVersions": "言語別バージョン"
+			},
+			"languageVersions": {
+				"warning": "YouTube にリクエストをブロックされるおそれがあるため、この機能を短時間に何度も使用しないでください。",
+				"orderHint": "言語ごとの推定インターネット利用者数順で、地域別の言語は最後に配置します。翻訳されたコンテンツがない場合は元のバージョンが返されることがあります。",
+				"selectLanguages": "確認する言語",
+				"selectionHint": "クリックして展開すると複数選択できます。デフォルトは上位 10 言語で、読み込み済みの言語は一覧から除かれます。Ctrl/⌘ で複数選択、Shift で範囲選択できます。",
+				"selectAll": "すべて選択",
+				"clearSelection": "選択を解除",
+				"start": "最初の {count} 言語を読み込む",
+				"next": "さらに {count} 言語を読み込む",
+				"batchSize": "次回の件数",
+				"stop": "停止",
+				"stopping": "停止中…",
+				"progress": "{loaded}/{total} 言語を確認済み、{versions} バージョンに集約",
+				"loading": "{language} を確認中…",
+				"complete": "すべての言語を読み込みました",
+				"thumbnails": "サムネイル",
+				"textVersions": "タイトルと説明",
+				"languages": "含まれる言語",
+				"noDescription": "説明なし",
+				"cooldown": "{seconds} 秒待ってから続行してください",
+				"failed": "{language} を確認できなかったため、今回の処理を停止しました。時間をおいて再試行できます。",
+				"blocked": "YouTube がリクエストを一時的に制限しています。時間をおいて再試行してください。",
+				"videoChanged": "動画が変わりました。インサイトを開き直してから続行してください。"
 			}
 		}
 	},

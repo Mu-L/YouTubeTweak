@@ -401,7 +401,32 @@
 				"translatable": "Traduzível",
 				"default": "Padrão",
 				"loadingFormats": "Carregando mais formatos de mídia...",
-				"loadFormatsFailed": "Falha ao carregar. Recolha e reabra para tentar novamente."
+				"loadFormatsFailed": "Falha ao carregar. Recolha e reabra para tentar novamente.",
+				"languageVersions": "Versões por idioma"
+			},
+			"languageVersions": {
+				"warning": "Evite usar este recurso muito rápido ou com muita frequência, pois o YouTube pode bloquear as solicitações.",
+				"orderHint": "Ordenado pelo número estimado de usuários de internet de cada idioma, com variantes regionais por último; a versão original pode ser retornada quando não houver conteúdo localizado.",
+				"selectLanguages": "Idiomas a consultar",
+				"selectionHint": "Clique para expandir e selecionar vários idiomas. Os 10 mais usados são selecionados por padrão; os já carregados deixam de aparecer. Segure Ctrl/⌘ para selecionar vários ou Shift para um intervalo.",
+				"selectAll": "Selecionar todos",
+				"clearSelection": "Limpar seleção",
+				"start": "Carregar os primeiros {count} idiomas",
+				"next": "Carregar mais {count}",
+				"batchSize": "Próximo lote",
+				"stop": "Parar",
+				"stopping": "Parando…",
+				"progress": "{loaded}/{total} idiomas consultados, agrupados em {versions} versões",
+				"loading": "Consultando {language}…",
+				"complete": "Todos os idiomas foram carregados",
+				"thumbnails": "Miniaturas",
+				"textVersions": "Títulos e descrições",
+				"languages": "Idiomas incluídos",
+				"noDescription": "Sem descrição",
+				"cooldown": "Aguarde {seconds} segundos antes de continuar",
+				"failed": "Não foi possível consultar {language}. Este lote foi interrompido; você pode tentar novamente mais tarde.",
+				"blocked": "O YouTube limitou temporariamente as solicitações. Tente novamente mais tarde.",
+				"videoChanged": "O vídeo mudou. Reabra Insights antes de continuar."
 			}
 		}
 	},

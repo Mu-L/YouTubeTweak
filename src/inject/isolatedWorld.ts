@@ -56,16 +56,23 @@ export default function isolatedWorld() {
 					"getInsightsVerificationData",
 					"getInsightsRegionsData",
 					"getInsightsFormats",
+					"getInsightsLanguageVersion",
 				].includes(message?.action)
 			)
 				return;
 
 			return new Promise((resolve) => {
 				const timeout = window.setTimeout(() => resolve({ error: "main-world-timeout" }), 15000);
-				wirelessRedstone.send(message.action, null, (data) => {
-					window.clearTimeout(timeout);
-					resolve(data);
-				});
+				wirelessRedstone.send(
+					message.action,
+					message.action === "getInsightsLanguageVersion"
+						? { videoId: message.payload?.videoId, language: message.payload?.language }
+						: null,
+					(data) => {
+						window.clearTimeout(timeout);
+						resolve(data);
+					},
+				);
 			});
 		});
 	}
