@@ -12,16 +12,6 @@ Hover over a setting or card title to reveal its question mark button, which ope
 
 Click any card title to expand or collapse its settings, or focus the title and press Enter or Space. Each card remembers its own state when you reopen the popup or switch categories or languages. These states are saved only in the current browser. Collapsing a card only hides its settings; it does not turn off features or clear their saved values.
 
-The Insights page groups multiple video formats with the same resolution and multiple audio formats with the same codec into collapsible lists; groups with only one item remain directly visible. Subtitles use a compact multi-column layout. When regional restrictions apply, one region card shows available and unavailable regions in two columns separated by a vertical divider. Each column can be expanded or collapsed independently, has a limited height, and uses its own vertical scrollbar. Videos without regional restrictions show "No restrictions"; missing region information is not treated as worldwide availability. The "Restrictions" group can also be collapsed and remembers its expanded or collapsed state.
-
-The "Language versions" panel is last on the Insights page, with its loading controls below the results. Results have separate thumbnail and title/description sections. Identical thumbnail content is grouped independently, with each distinct thumbnail shown at full width on its own row. Matching title-and-description pairs are grouped separately; click a title to expand or collapse its description. Both sections list the languages corresponding to each group. Results and expanded descriptions grow with their content and use the popup’s main scrolling area rather than separate inner scrollbars. The language selector is collapsed to one compact line by default, showing "Languages to check" and the selected count. Click it to reveal the native multi-select list and the Select all and Clear selection controls. Languages stay in order of estimated internet users, with regional variants last; loaded or cached languages are removed from the available options. By default, the first 10 remaining languages are selected. Hold Ctrl/⌘ to select multiple languages or Shift to select a range; Select all and Clear selection are also available. The language selection is disabled while a batch is running.
-
-Queries start only when you click the loading button and cover only selected, unloaded languages in that order. The first click loads up to 10; later batches load up to the selected batch size of 5, 10, 20, or 50, with 10 as the default. Once all currently selected languages have loaded, the next batch of unloaded languages is selected automatically, but requires another click to start. Changing the batch size also selects that many next unloaded languages without sending requests. Existing results remain visible and loaded languages are not requested again. The completion message appears only after all languages have loaded. Requests run one at a time, continuing immediately after each request completes, and you can stop the current batch. If localized content is unavailable, YouTube may return the original version, so these results do not confirm which translations the creator supplied. Avoid using this feature too quickly or frequently, as YouTube may block requests.
-
-Results are cached per video in localStorage for 60 minutes and reused when you reopen the popup. Each time the popup opens and finds valid cache entries for the current video, all of that video’s valid language entries are renewed for another 60 minutes. Entries for other videos are not renewed, and expired entries are removed rather than revived. This check and cleanup happen only when the popup opens, without a timer. After cached results are restored, their languages are removed from the available options and the first 10 remaining languages are selected in popularity order, or none if all languages are already cached.
-
-Ordering data is adapted from [OBDILCI V6 (July 2025)](https://www.obdilci.org/projects/main/), using the [original spreadsheet’s INTERNAUTES L1+L2 column](https://www.obdilci.org/wp-content/uploads/2025/07/ResultsV6.xlsx): estimated connected first- and second-language speakers, not a globally deduplicated headcount. For a few aggregated or missing languages, [CLDR 48 language populations](https://raw.githubusercontent.com/unicode-org/cldr/release-48/common/supplemental/supplementalData.xml) multiplied by [World Bank internet-use rates (IT.NET.USER.ZS)](https://data.worldbank.org/indicator/IT.NET.USER.ZS) are used to split totals proportionally or fill gaps. The adapted ordering data retains the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/).
-
 <a name="player"></a>
 
 # Player
@@ -71,7 +61,7 @@ Playback rules appear first. Expand "Speed controls" to adjust the buttons, slid
 
 Default: `On; remember by channel on` | Version: `v1.0.1 (2025-06-09)`
 
-After enabling this, the extension will remember the playback speed you used and automatically restore it in later videos.
+After enabling this, the extension will remember the playback speed you set with its speed buttons, slider, or mouse wheel and automatically restore it in later videos.
 
 Suitable use cases:
 
@@ -87,14 +77,15 @@ Configurable options:
 Notes:
 
 - When both global memory and per-channel memory are enabled, per-channel memory has priority.
-- Per-channel memory requires the extension to identify the channel that owns the current video.
+- Speeds set through YouTube's own menu or keyboard shortcuts are not saved in this memory.
+- Restoring either global or per-channel speed memory requires the extension to identify the channel that owns the current video.
 - Memory data can be exported together with settings from the general settings.
 
 <a name="player-speed-button-music"></a>
 
 ### Start Music Videos at 1×
 
-Default: `Off` | Version: `Unreleased`
+Default: `Off` | Version: v2.0.0 (2026-09-14)
 
 When a video loads and YouTube identifies its category as music, this option starts playback at 1× instead of restoring a saved global or channel speed. It also works when speed memory is turned off.
 
@@ -130,8 +121,9 @@ Configurable options:
 
 Notes:
 
-- The speed slider depends on "Show speed buttons/speed slider" being enabled and requires at least two speed buttons to be enabled.
-- When the mouse is over the speed area and you scroll the wheel, playback speed will be adjusted directly.
+- Both dragging and mouse wheel adjustment require "Show speed buttons/speed slider" and "Enable speed slider" to be enabled, with at least two speed buttons enabled.
+- Once these conditions are met, place the mouse over the speed area and scroll the wheel to adjust playback speed.
+- Dragging and mouse wheel adjustment are limited to the lowest and highest enabled button speeds. Custom mouse wheel steps cannot exceed this range either. For example, with only 1x, 1.5x, and 2x enabled, adjustment is limited to 1x through 2x.
 - Custom wheel steps support very fine values, but values that are too small make adjustment slower, while values that are too large cause obvious speed jumps.
 
 <a name="player-volume-booster"></a>
@@ -150,7 +142,7 @@ Suitable use cases:
 
 - The video's own audio is too quiet.
 - System volume is already high, but YouTube is still not loud enough.
-- You want to temporarily boost the volume of one video instead of adjusting the whole system.
+- You want to adjust volume gain quickly in the player.
 
 Configurable options:
 
@@ -162,12 +154,14 @@ Usage:
 
 - Click the volume booster button inside the player to toggle boosting immediately.
 - Place the mouse over the button and scroll the wheel to increase or decrease the boost level.
+- When boosting is off, scrolling up enables it at 1.25x; scrolling down again at 1.25x turns boosting off.
+- The enabled state and boost level adjusted in the player are saved automatically and used for later videos. If you only want to boost the current video, turn it off manually afterward.
 
 Notes:
 
 - Excessive sound boost may cause clipping, noise, or worse audio quality.
 - Some browsers may require the user to interact with the page before volume boosting can actually start working.
-- If the in-player button is hidden, the default enabled state can still take effect, but you cannot temporarily toggle it in the player.
+- If the in-player button is hidden, the default enabled state can still take effect, but you need to return to the extension settings to adjust the switch and boost level.
 
 <a name="player-other-max-volume"></a>
 
@@ -287,11 +281,13 @@ Notes:
 
 ### In-Page Fullscreen Button
 
-Default: `Off` | Version: `Unreleased`
+Default: `Off` | Version: v2.0.0 (2026-09-14)
 
 Shows an additional button beside YouTube's fullscreen button on normal video watch pages. Click it to fill the browser page with the video while keeping the browser tabs and toolbar available; click it again to leave this view.
 
 This is useful when you want a larger video without entering system fullscreen. Changing pages or turning off this setting exits in-page fullscreen.
+
+Entering in-page fullscreen also switches to theater mode. Clicking the button again or turning off the setting returns to the normal layout, even if theater mode was already active before entering; the previous theater mode is not retained.
 
 <a name="player-button-display"></a>
 
@@ -387,7 +383,7 @@ Suitable use cases:
 Configurable options:
 
 - Size: you can select 360×203, 420×236, 480×270, 560×315, 640×360, or 720×405.
-- Position: you can select top-left, top-center, top-right, bottom-left, bottom-center, or bottom-right.
+- Position: you can select bottom-right, bottom-center, bottom-left, top-right, top-center, or top-left.
 - Screen margin: sets the distance between the mini player and the screen edge.
 - Activate after scrolling past the player: sets how many pixels away from the original player before entering mini player mode.
 
@@ -397,7 +393,8 @@ Notes:
 - It will not enter mini player mode during full-screen playback or picture-in-picture playback.
 - The mini player has a close button. After clicking it, floating will be disabled for the current scroll; when you scroll back near the player or switch videos, triggering will be allowed again.
 - When the screen is too small, the actual display size is automatically reduced to avoid exceeding the screen.
-- Small mini player sizes hide some control buttons that are not suitable for display.
+- While floating, the extension's speed buttons, function button group, and corner video time are hidden.
+- When the actual display width is below 520 pixels, subtitles and some native control buttons are also hidden; this includes the 480×270 and smaller presets. To view subtitles during floating playback, choose a larger size and ensure the screen can accommodate sufficient display width.
 
 <a name="player-ui"></a>
 
@@ -473,7 +470,7 @@ Notes:
 
 ### Real-Time Network Speed
 
-Default: `Bottom-right of the video and control bar; fixed MB/s; page traffic total off` | Version: `Unreleased`
+Default: `Bottom-right of the video and control bar; fixed MB/s; page traffic total off` | Version: v2.0.0 (2026-09-14)
 
 Shows the current player transfer speed so you can tell when the video is loading data. These settings are under Player → UI.
 
@@ -554,7 +551,7 @@ Suitable use cases:
 Notes:
 
 - Language detection ignores regional differences within the same language. For example, after selecting English, content in other regional varieties of English is also skipped.
-- When a comment is identified as a language that does not need translation, the extension keeps a manual translation button only when "Show a manual translation button for comments that do not need automatic translation" is enabled.
+- For comments in an excluded language that differs from the target language, a manual translation action is retained only when both "Translate comment content" and "Show a manual translation button for comments that do not need automatic translation" are enabled and a translation different from the original is available.
 - Video lists, watch page text, and subtitles do not provide a manual translation action; matching excluded languages retain the original text directly.
 
 <a name="translate-global"></a>
@@ -578,6 +575,7 @@ Suitable use cases:
 Scope:
 
 - The YouTube home page, search results, watch-page recommendation lists, and other areas that use video cards.
+- The playlist sidebar on watch pages.
 - Shorts video cards.
 - Recommended videos displayed at the end of the player.
 
@@ -587,7 +585,7 @@ Notes:
 - Translations use the "Translation Target Language" setting. When "Follow YouTube language" is selected, the current YouTube page language is used.
 - Original titles are retained, while translations appear below them with a dashed underline to distinguish them.
 - If a title is already in the target language, the translation is identical to the original, or translation fails, the extension does not display a duplicate translation.
-- Enabling or disabling this feature automatically refreshes the current YouTube page.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 
 <a name="translate-watch"></a>
 
@@ -611,7 +609,7 @@ Notes:
 - This feature only applies to regular video watch pages.
 - Translations use the "Translation Target Language" setting and do not depend on the description, summary, subtitle, or comment translation options.
 - If the title is already in the target language, the translation is identical to the original, or translation fails, the page retains the original title.
-- Enabling or disabling this feature automatically refreshes the current YouTube page.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 
 <a name="translate-watch-video-description"></a>
 
@@ -632,7 +630,7 @@ Notes:
 - Translations use the "Translation Target Language" setting and do not depend on the title, summary, subtitle, or comment translation options.
 - The original description is retained, while the translation appears in an area with a dashed border. Links, images, and other content that cannot be translated directly remain unchanged.
 - If the description contains no translatable text or translation fails, the page retains the original description.
-- Enabling or disabling this feature automatically refreshes the current YouTube page.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 
 <a name="translate-watch-video-summary"></a>
 
@@ -653,7 +651,7 @@ Notes:
 - The extension only translates existing summaries and does not automatically generate summaries for videos without one.
 - Translations use the "Translation Target Language" setting and do not depend on the title, description, subtitle, or comment translation options.
 - If the summary is already in the target language, the translation is identical to the original, or translation fails, the page retains the original summary.
-- Enabling or disabling this feature automatically refreshes the current YouTube page.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 
 <a name="translate-subtitle"></a>
 
@@ -686,7 +684,7 @@ Translation mode descriptions:
 Notes:
 
 - This feature requires the video itself to have available subtitles.
-- Enabling or disabling subtitle translation may refresh the current YouTube page.
+- After enabling or disabling subtitle translation, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 - If subtitle content is too long or the translation service fails, the extension keeps the original subtitles.
 - Subtitle translation is a feature that adjusts page loading content. If the page behaves abnormally, you can first disable this feature for troubleshooting.
 
@@ -711,16 +709,17 @@ Suitable use cases:
 Configurable options:
 
 - Translate comment content: controls whether comments are translated automatically.
-- Show a manual translation button for comments that do not need automatic translation: keeps an optional translation action for comments whose language matches the target language or the "Always never translate languages" setting.
+- Show a manual translation button for comments that do not need automatic translation: keeps a manual translation action for comments excluded from automatic translation, subject to the conditions described below.
 - Translation target language: determines which language comments are translated into.
 - Always never translate languages: avoids automatically showing translations for familiar languages.
 
 Notes:
 
-- If a comment is empty or contains only symbols, the extension shows a manual translation button. Comments identified as not needing translation only show it when "Show a manual translation button for comments that do not need automatic translation" is enabled.
+- Blank comments and comments containing only numbers or punctuation are skipped. Comments in the target language do not show the extension's manual translation button either.
 - Translations preserve emoji, images, links, and text styling from the original comment wherever possible; video timestamp links in the translation remain clickable and jump to the corresponding time.
 - After comment sorting, loading more comments, or YouTube dynamically refreshing the comment area, the extension continues processing newly appearing comments.
 - If the translation service is unavailable, comments remain unchanged.
+- After enabling or disabling comment translation, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 
 <a name="translate-comment-manual-button"></a>
 
@@ -728,9 +727,15 @@ Notes:
 
 Default: `On` | Version: `v1.2.1 (2026-07-21)`
 
-When enabled, comments whose detected language matches the translation target language or the "Always never translate languages" setting keep a manual translation button.
+When enabled, a manual translation button appears beside a comment if its language is in "Always never translate languages", differs from the translation target language, and the translation service returns a translation different from the original. The translation appears only after you click the button.
 
-When disabled, those comments show neither an automatic translation nor the manual translation button. Comments that need translation continue to be translated automatically.
+This is useful when you can usually read a language directly but occasionally need to view a translation of an individual comment.
+
+Notes:
+
+- This feature depends on "Translate comment content" being enabled.
+- Comments in the target language do not show this button. Blank comments and comments containing only numbers or punctuation are skipped, and the button is also absent when the translation is identical to the original.
+- When disabled, excluded comments show neither an automatic translation nor the manual translation button; comments that need normal translation continue to be translated automatically.
 
 <a name="translate-comment-line-by-line"></a>
 
@@ -982,7 +987,7 @@ Suitable use cases:
 Notes:
 
 - This only changes the logo appearance. It does not activate YouTube Premium, change your account membership, or unlock any Premium benefits.
-- Enabling or disabling this feature reloads the current YouTube page.
+- After enabling or disabling this feature, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 - If YouTube changes its page data structure, the logo may temporarily remain unchanged.
 
 <a name="other-appearance-logo-country-code"></a>
@@ -1005,7 +1010,7 @@ Configurable options:
 Notes:
 
 - This feature only changes the text displayed next to the logo. It does not change your account region, content region, language, currency, recommendations, or actual location.
-- After modifying or clearing the text, opened YouTube pages reload automatically.
+- After modifying or clearing the text, the page prompts you to reload; you can choose to refresh the current page or all YouTube pages.
 - This option can be used independently and does not depend on "Disguise Premium Logo"; both can also take effect at the same time.
 - If YouTube changes its page layout, this label may temporarily be unavailable.
 
@@ -1038,6 +1043,203 @@ Notes:
 - Incorrect CSS may cause abnormal YouTube page display.
 - After turning off the switch, custom styles are removed from the page.
 
+<a name="insights"></a>
+
+# Insights
+
+These features show the current video's information, media formats, viewing restrictions, and the thumbnails, titles, and descriptions displayed in different languages. Open a YouTube video watch page before opening the extension's Insights page; on other pages, you will be prompted to open a video watch page first.
+
+<a name="insights-info"></a>
+
+## Basic Information
+
+<a name="insights-info-view"></a>
+
+### View Video Information
+
+Default: `Read current video information when Insights opens` | Version: v2.0.0 (2026-09-14)
+
+The top of the page shows the video thumbnail, title, channel, and subscriber count. Below it are the view count, like count, video length in seconds, subscriber count, and detailed information, allowing you to quickly check the current video's basic information.
+
+- Date: shows the publication date; if the publication and upload dates differ, the upload date is also shown in parentheses.
+- Category, username, and channel ID: help identify the video's category and publishing channel.
+- Available regions: shows the number of available regions and the total number of regions covered.
+- Subtitles / translation: shows the number of subtitle tracks and the number of target languages available for automatic translation, respectively.
+- Video codecs: lists the codec names used by the retrieved video formats.
+- Playback specifications: shows the highest frame rate among the retrieved formats and whether HDR formats are included; this does not indicate which specifications the player is currently using.
+- Tags: shows the number of video tags.
+
+A loading state is shown while information is being read. Information that could not be retrieved appears as "—" or unknown; it should not be interpreted as zero or as confirmation that there are no restrictions.
+
+If a prompt requires confirmation on the page, return to YouTube and click "I understand and wish to proceed", then reopen Insights. Some information is only available after completing the confirmation on the page.
+
+<a name="insights-video-formats"></a>
+
+## Video Quality
+
+<a name="insights-video-formats-view"></a>
+
+### View Video Formats and Playback Specifications
+
+Default: `Group collapsed; fetch additional media formats when expanded` | Version: v2.0.0 (2026-09-14)
+
+Lists the retrieved video resolutions and their formats, ordered from highest to lowest resolution. Multiple formats at the same resolution are combined into an expandable group, while a single format is shown directly, making it easier to compare codecs, frame rates, and bitrates at the same quality.
+
+Each format displays the following labels according to the information available:
+
+| Label | Meaning |
+| --- | --- |
+| Codec name | The video compression format, such as H.264, VP9, or AV1. |
+| FPS | The number of frames per second, also called the frame rate. |
+| HDR / SDR | High dynamic range or standard dynamic range video, respectively. |
+| kbps | The bitrate, or amount of data transferred per second; this value alone cannot determine image quality across different codecs. |
+| KB / MB | The known media size, which may not include separately listed audio. |
+| itag | The number YouTube uses to distinguish media formats. |
+| A/V | This format contains both video and audio. |
+| Premium | Premium enhanced-bitrate quality listed by YouTube. |
+
+The first time you expand Video Quality or Audio Formats, additional formats are retrieved for both types of media. A prompt appears during loading; if loading fails, collapse the panel and expand it again to retry. This list is for viewing information; a listed Premium quality does not mean the current account is entitled to use it.
+
+<a name="insights-audio-formats"></a>
+
+## Audio Formats
+
+<a name="insights-audio-formats-view"></a>
+
+### View Audio Specifications
+
+Default: `Group collapsed; fetch additional media formats when expanded` | Version: v2.0.0 (2026-09-14)
+
+Lists the retrieved audio formats, ordered from highest to lowest bitrate. Multiple formats using the same codec are combined into an expandable group, while a single format is shown directly, making it easier to compare audio codecs and sound specifications.
+
+In addition to the codec, bitrate, media size, and format number, entries may show the sample rate, channel count, quality level, and DRC label. kHz indicates the sample rate, and ch indicates the channel count; DRC means the audio has dynamic range compression, which reduces the volume difference between quiet and loud sounds. These details appear only when YouTube provides the relevant information.
+
+<a name="insights-subtitles"></a>
+
+## Subtitles
+
+<a name="insights-subtitles-view"></a>
+
+### View Subtitle Languages and Types
+
+Default: `Shown when subtitle information is available; group collapsed` | Version: v2.0.0 (2026-09-14)
+
+Lists subtitle languages in a compact multi-column layout, with the language code, whether the subtitles are automatically generated from speech, and whether they support YouTube automatic translation, making it easier to check which subtitles the video provides.
+
+"Translatable" means the subtitles can be translated into other languages; it does not mean the video already provides separate subtitles for every target language. This section shows subtitle information; enabling subtitles and selecting their language are still done in the player.
+
+<a name="insights-audio-tracks"></a>
+
+## Audio Tracks
+
+<a name="insights-audio-tracks-view"></a>
+
+### View Audio Tracks and the Default Audio Version
+
+Default: `Shown when audio track information is available; group collapsed` | Version: v2.0.0 (2026-09-14)
+
+Lists the retrieved audio track names, default track marker, and the codecs and number of formats for each track, making it easier to check whether a video provides different languages or audio versions.
+
+If complete track names cannot be retrieved, only a number, the default track, and related subtitle languages may be shown. This section displays the audio track information available; it does not switch the player's audio version.
+
+<a name="insights-regions"></a>
+
+## Region Availability
+
+<a name="insights-regions-view"></a>
+
+### View Available and Unavailable Regions
+
+Default: `Group and region lists collapsed` | Version: v2.0.0 (2026-09-14)
+
+Use this section to check the video's availability in different countries or regions. When regional restrictions apply, "Available regions" and "Unavailable regions" appear side by side within the same panel, separated by a vertical divider, with their respective counts. The two columns can be expanded or collapsed independently; each has a limited height when expanded and uses a vertical scrollbar if there are many entries.
+
+The lists show region names and codes. "No restrictions" appears when the video is available in every region covered; "—" appears when region information could not be retrieved, which is not treated as worldwide availability. This section displays region information and does not change YouTube's viewing restrictions.
+
+<a name="insights-restrictions"></a>
+
+## Restrictions
+
+<a name="insights-restrictions-view"></a>
+
+### View Playback Restrictions and Available Capabilities
+
+Default: `Collapsed; expanded or collapsed state remembered` | Version: v2.0.0 (2026-09-14)
+
+The "Restrictions" panel has a red icon and groups the video's viewing restrictions and available capabilities. A check mark means the item is true, a cross means it is false, and "?" means it has not been confirmed; a loading state appears while information is being read. Colors also distinguish favorable states from restrictions, so a check mark does not necessarily mean there are no restrictions: for example, a check mark for "Age restriction" means an age restriction exists.
+
+Hover over an item to see a short explanation. The meanings of the items are as follows:
+
+| Item | Meaning |
+| --- | --- |
+| No regional restrictions | Whether the video can be watched in every country and region covered. |
+| Family friendly | Whether YouTube marks the video as suitable for family viewing. |
+| Comments | Whether an available comments entry or comment information was retrieved; the comment count may also appear. |
+| Premium quality | Whether Premium enhanced-bitrate quality is listed. |
+| Transcript | Whether a transcript entry is available. |
+| Clips allowed | Whether an entry for creating clips from the video is available. |
+| Storyboard | Whether the progress bar provides preview thumbnails. |
+| Sign-in restriction | Whether watching requires signing in independently of age verification. |
+| Suicide warning | Whether reminders or support information related to self-harm, suicide, or other crisis content appear. |
+| Copyright block | Whether playback is reported as unavailable for copyright reasons. |
+| Community Guidelines block | Whether playback is reported as unavailable for violating the Community Guidelines. |
+| Other playback restrictions | Whether playback restrictions exist that do not fall into the other recognized categories. |
+| Age restriction | Whether viewers must meet the required age or complete age confirmation. |
+| Unlisted video | Whether the video is marked as unlisted and usually requires a link to access. |
+| Private video | Whether the video is marked as private and can only be accessed by its publisher and authorized viewers. |
+| Members only | Whether paid channel membership is required. |
+| Made for kids | Whether the video is identified as content for children; YouTube may limit related interactions and playback capabilities. |
+| Embedding allowed | Whether playback can be embedded on other websites. |
+| Ad serving | Whether the information currently retrieved includes ad-serving data; missing data does not confirm that the video cannot earn revenue. |
+| Shorts allowed | Whether YouTube marks the video as usable for Shorts. |
+
+These markers help explain the information currently available; they do not bypass sign-in, age, membership, regional, or other viewing restrictions. An unknown state also cannot establish whether a restriction exists or not.
+
+<a name="insights-language-versions"></a>
+
+## Language Versions
+
+<a name="insights-language-versions-query"></a>
+
+### Select Languages and Query in Batches
+
+Default: `Manual start; language selector collapsed; first 10 remaining languages selected by popularity; up to 10 languages initially; 10 per subsequent batch` | Version: v2.0.0 (2026-09-14)
+
+This panel is last on the Insights page and lets you compare the thumbnails, titles, and descriptions YouTube displays in different languages. The selection and loading controls are below the results; queries start only when you click the loading button.
+
+- Languages to check: the single-line entry shows the selected count. Click it to expand the multi-select list. Hold Ctrl/⌘ to select multiple languages or Shift to select a range; Select all and Clear selection are also available. Languages that have been loaded or restored from the cache are removed from the available options.
+- Subsequent batches: choose up to 5, 10, 20, or 50 languages per batch. Changing this number selects that many remaining popular languages again without starting a query automatically.
+- Loading button: processes selected, unloaded languages in list order. The initial loading limit applies when no results have been loaded; after restoring the cache, the "Continue loading" batch size is used. Once every currently selected language loads successfully, the next batch of remaining languages is selected, but requires another click to continue; completing only the current selection does not show "All languages have been loaded".
+- Stop: stops subsequent queries in the current batch; a request already sent finishes first, so "Stopping" may appear briefly after clicking. Retrieved results are retained.
+
+Queries run one at a time, with each language starting immediately after the previous one completes, without an additional pause. Language selection and batch size cannot be changed during a query. Closing the popup also stops subsequent queries, although a request already sent may still finish. If a language query fails, the current batch stops and can be retried later; if YouTube limits requests, a prompt appears and queries pause for 60 seconds. If the video changes or you leave the watch page, reopen Insights before querying again.
+
+Avoid using this feature too quickly or frequently, as YouTube may block requests. If localized content is unavailable, YouTube may return the original version, so these results do not confirm which translations the creator supplied.
+
+Languages are ordered by estimated internet users, with regional variants last. Ordering data is adapted from [OBDILCI V6 (July 2025)](https://www.obdilci.org/projects/main/), using the [original spreadsheet’s INTERNAUTES L1+L2 column](https://www.obdilci.org/wp-content/uploads/2025/07/ResultsV6.xlsx): estimated connected first- and second-language speakers, not a globally deduplicated headcount. For a few aggregated or missing languages, [CLDR 48 language populations](https://raw.githubusercontent.com/unicode-org/cldr/release-48/common/supplemental/supplementalData.xml) multiplied by [World Bank internet-use rates (IT.NET.USER.ZS)](https://data.worldbank.org/indicator/IT.NET.USER.ZS) are used to split totals proportionally or fill gaps. The adapted ordering data retains the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/).
+
+<a name="insights-language-versions-view"></a>
+
+### View Thumbnails, Titles, and Descriptions
+
+Default: `Shown after results are available; descriptions collapsed` | Version: v2.0.0 (2026-09-14)
+
+Results have separate "Thumbnails" and "Titles and descriptions" sections. Each groups identical content and lists the languages it includes, making it easier to find content differences between languages.
+
+Each distinct thumbnail is shown at full width on its own row, and identical thumbnails are grouped together; click a thumbnail to open the image in a new tab. Matching title-and-description pairs are grouped separately; click a title to expand or collapse its description. Only one description can be expanded at a time, and expanding another automatically collapses the previous one. "No description" appears when no description is available.
+
+Query progress shows the number of languages checked and the number of grouped versions. Versions are counted by the complete thumbnail, title, and description combination, so this may differ from the number of thumbnails or text combinations alone. Results and expanded descriptions grow with their content and use the popup's main scrolling area, without separate inner scrollbars.
+
+<a name="insights-language-versions-cache"></a>
+
+### Reuse Local Query Results
+
+Default: `Stored locally in this browser per video; valid for 60 minutes; checked and cleaned when the popup opens` | Version: v2.0.0 (2026-09-14)
+
+Successful query results are cached automatically and can be restored directly when the popup reopens, reducing repeated queries. If the current video has valid cached results when the popup opens, all of its still-valid language results are renewed for the validity period stated above; entries for other videos are not renewed, and expired results are not restored to a valid state.
+
+There is no timed cache cleanup while the popup stays open. After results are restored, their languages are removed from the available options, and the remaining popular languages are selected according to the query feature's preselection rules; if all languages already have valid cached results, no languages are preselected.
+
 <a name="general"></a>
 
 # General
@@ -1054,9 +1256,7 @@ These features are used for the extension's own language, settings, updates, abo
 
 Default: `Always shown` | Version: `v1.0.0 (2025-05-19)`
 
-The General page shows the extension name, version number, build time, and the commit corresponding to the current version. It also provides entries for the project home page, changelog, issue feedback, and sponsorship. The Safari version uses the YouTweak name and corresponding icon, while other versions display YouTube Tweak.
-
-Clicking the sponsorship entry displays a sponsorship prompt card, which can also be closed directly.
+The General page shows the extension name, version number, build time, and the commit corresponding to the current version. It also provides entries for the project home page, changelog, and issue feedback. The Safari version uses the YouTweak name and corresponding icon, while other versions display YouTube Tweak.
 
 Suitable use cases:
 
@@ -1148,17 +1348,24 @@ Notes:
 
 Default: `Detected and shown automatically` | Version: `v1.0.1 (2025-06-09)`
 
-After the extension updates, already opened YouTube pages may still be using the old state. At this point, a prompt may appear on the page asking you to reload it.
+After the extension updates, already opened YouTube pages may still be using the old state. A reload prompt also appears after changing settings that require reloading to take full effect. When the prompt appears, you can decide when to refresh.
 
 Suitable use cases:
 
 - The extension has just updated, but features on the YouTube page look abnormal.
 - The page says the extension has been updated and needs to be reloaded.
+- You want already opened pages to use new settings after changing translation, logo, or similar options.
+
+Available actions:
+
+- Refresh current page: reloads only the YouTube page showing the prompt.
+- Refresh all YouTube pages: appears in prompts caused by settings changes and reloads all open YouTube tabs in the browser at once.
 
 Notes:
 
 - There is no separate option in the settings panel.
-- Click the reload button in the prompt to refresh the current page.
+- When an extension update invalidates the connection, the prompt only provides a button to refresh the current page.
+- Refreshing reloads the page content, so you can wait until you have finished your current browsing activity before clicking.
 - After reloading, the page uses the new extension state.
 
 <a name="general-update-notice-compatibility"></a>
@@ -1243,3 +1450,11 @@ Suitable use cases:
 
 - You have just installed the extension and need to know where to open the settings panel.
 - You want to confirm that the extension has been installed successfully.
+
+Enabling the Safari version and accessing its settings:
+
+- After installing YouTweak, open the companion app to view the setup instructions; installing the app alone does not mean the Safari extension is enabled.
+- On macOS, clicking "Enable YouTweak Extension" or "Open YouTweak Extension Settings" opens Safari's extension settings, where you can enable and manage the extension.
+- On iPhone or iPad, these two buttons open the [setup instructions](/docs/en/help/ios.md#safari-enable) and [settings access instructions](/docs/en/help/ios.md#safari-setting), respectively. Follow the instructions to complete the process.
+- Then open YouTube in Safari, follow Safari's prompt to allow the extension access to the website, and open YouTweak settings through the browser's extension entry.
+- The companion app also provides entries for the project home page, issue feedback, feature guide, changelog, and website to help you find assistance.
