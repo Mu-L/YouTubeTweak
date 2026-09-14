@@ -775,6 +775,7 @@ const videoFormatItems = computed<MediaListItem[]>(() => {
 	const premiumItags = new Set(premiumFormats.value.map((format) => format.itag));
 
 	return videoFormats.value.map((format, index) => {
+		const qualityLabel = typeof format.qualityLabel === "string" ? format.qualityLabel : "";
 		const meta = [
 			codecName(format.mimeType),
 			format.fps ? `${format.fps} FPS` : "",
@@ -787,8 +788,8 @@ const videoFormatItems = computed<MediaListItem[]>(() => {
 
 		return {
 			key: `video-${format.itag || index}-${index}`,
-			group: format.qualityLabel?.match(/^\d+p/i)?.[0]?.toLowerCase() || (format.height ? `${format.height}p` : format.quality),
-			title: `${format.qualityLabel || format.quality || "—"}${premiumItags.has(format.itag) ? ` · ${t("insights.label.lists.premium")}` : ""}`,
+			group: qualityLabel.match(/^\d+p/i)?.[0]?.toLowerCase() || (format.height ? `${format.height}p` : format.quality),
+			title: `${qualityLabel || format.quality || "—"}${premiumItags.has(format.itag) ? ` · ${t("insights.label.lists.premium")}` : ""}`,
 			meta,
 		};
 	});

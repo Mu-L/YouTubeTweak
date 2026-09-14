@@ -190,19 +190,34 @@ const YouTubeTweakApp = {
 						videoPlayer.videoStream = videoStream;
 
 						function onVideoSrcChange(oldValue: string | null, newValue: string) {
-							if (new URL(window.location.href).pathname !== "/watch") {
-								metadata.video = null;
-								metadata.videoNext = null;
-							} else {
-								metadata.video = videoPlayer.player?.getPlayerResponse() || null;
-								metadata.videoNext = videoPlayer.player?.getWatchNextResponse() || null;
+							metadata.video = null;
+							metadata.videoNext = null;
+							if (new URL(window.location.href).pathname === "/watch") {
+								try {
+									metadata.video = videoPlayer.player?.getPlayerResponse?.() || null;
+								} catch (error) {
+									logger.warn("Unable to read player response:", error);
+								}
+								try {
+									metadata.videoNext = videoPlayer.player?.getWatchNextResponse?.() || null;
+								} catch (error) {
+									logger.warn("Unable to read watch next response:", error);
+								}
 							}
 
 							logger.debug("video src changed", {
 								oldValue,
 								newValue,
 							});
-							Object.entries(plugins).forEach((p) => p[1].videoSrcChange?.(oldValue, newValue));
+							for (const [name, plugin] of Object.entries(plugins)) {
+								try {
+									Promise.resolve(plugin.videoSrcChange?.(oldValue, newValue)).catch((error) =>
+										logger.error("Plugin video source change failed:", name, error),
+									);
+								} catch (error) {
+									logger.error("Plugin video source change failed:", name, error);
+								}
+							}
 						}
 
 						let observer = new MutationObserver((mutationList) => {
@@ -221,13 +236,13 @@ const YouTubeTweakApp = {
 						});
 						observer.observe(videoPlayer.videoStream, { attributes: true, attributeOldValue: true, attributeFilter: ["src"] });
 
-						Object.values(plugins).map((p) => {
+						for (const [name, plugin] of Object.entries(plugins)) {
 							try {
-								p.initPlayer?.();
-							} catch (e) {
-								logger.error("plugin error:", e);
+								Promise.resolve(plugin.initPlayer?.()).catch((error) => logger.error("Plugin player init failed:", name, error));
+							} catch (error) {
+								logger.error("Plugin player init failed:", name, error);
 							}
-						});
+						}
 						onVideoSrcChange(null, videoStream.src);
 					}
 				}

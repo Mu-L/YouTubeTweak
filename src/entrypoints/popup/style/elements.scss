@@ -379,6 +379,8 @@
 	}
 
 	&:focus-visible {
+		opacity: 1;
+		pointer-events: auto;
 		outline: 2px solid var(--settings-accent);
 		outline-offset: 2px;
 	}

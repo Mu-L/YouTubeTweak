@@ -395,6 +395,7 @@ async function setMemorySpeed() {
 		await memory.set(channelId, "s", speed);
 	}
 
+	if (new URL(location.href).searchParams.get("v") !== videoId) return;
 	await setPlaybackSpeed(speed);
 }
 
@@ -474,11 +475,11 @@ export default {
 				speedButtonResizeObserver.observe(videoPlayer.controls);
 			}
 			applySpeedButtonConfigState();
-			setMemorySpeed();
+			return setMemorySpeed();
 		},
 		videoSrcChange(oldValue, newValue) {
 			applySpeedButtonConfigState();
-			setMemorySpeed();
+			return setMemorySpeed();
 		},
 		configUpdate(oldConfig, newConfig) {
 			const oldSpeedButtons = oldConfig["player.ui.speedButtons"] ?? config.get("player.ui.speedButtons");
