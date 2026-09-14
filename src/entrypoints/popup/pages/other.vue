@@ -1,10 +1,10 @@
 <template>
 	<section id="other">
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="other-home">
+			<template #title>
 				<span>{{ $t("other.index.title") }}</span>
 				<DocsHelpLink anchor="other-home" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['index.videoPerRow.enable']" />
@@ -20,13 +20,13 @@
 					/>
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="other-comment">
+			<template #title>
 				<span>{{ $t("other.comment.title") }}</span>
 				<DocsHelpLink anchor="other-comment" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.nickname']" />
@@ -39,13 +39,13 @@
 					<DocsHelpLink anchor="other-comment-auto-more" />
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="other-anti-ad">
+			<template #title>
 				<span>{{ $t("other.antiAD.title") }}</span>
 				<DocsHelpLink anchor="other-anti-ad" />
-			</div>
+			</template>
 			<div class="card-body">
 				<p>{{ $t("other.antiAD.tips.enable") }}</p>
 				<label class="form-item">
@@ -71,13 +71,13 @@
 					{{ $t("other.antiAD.tips.sponsorBlock") }}
 				</p>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="other-shorts">
+			<template #title>
 				<span>{{ $t("other.shorts.title") }}</span>
 				<DocsHelpLink anchor="other-shorts" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['shorts-blocker.enable.index']" />
@@ -95,13 +95,13 @@
 					<DocsHelpLink anchor="other-shorts-menu" />
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="other-rollback">
+			<template #title>
 				<span>{{ $t("other.rollback.title") }}</span>
 				<DocsHelpLink anchor="other-rollback" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['rollback.playerUI']" />
@@ -109,13 +109,13 @@
 					<DocsHelpLink anchor="other-rollback-player-layout" />
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="other-appearance">
+			<template #title>
 				<span>{{ $t("other.appearance.title") }}</span>
 				<DocsHelpLink anchor="other-appearance" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['other.premiumLogo.enable']" />
@@ -128,13 +128,13 @@
 					<input v-model.lazy="config['other.logoCountryCode']" type="text" placeholder="Pirates" />
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="other-custom-css">
+			<template #title>
 				<span>{{ $t("other.customCss.title") }}</span>
 				<DocsHelpLink anchor="other-custom-css" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['other.customCss.enable']" />
@@ -153,7 +153,7 @@
 				></pre>
 				<p>{{ $t("other.customCss.tips.inject") }}</p>
 			</div>
-		</div>
+		</SettingsCard>
 	</section>
 </template>
 
@@ -164,6 +164,7 @@ import { CodeJar } from "codejar";
 import Prism from "prismjs/components/prism-core";
 import "prismjs/components/prism-css";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
+import SettingsCard from "../components/SettingsCard.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
 const { tm } = useI18n();

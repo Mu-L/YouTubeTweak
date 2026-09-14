@@ -1,10 +1,10 @@
 <template>
 	<section id="page-player">
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="player-quality">
+			<template #title>
 				<span>{{ $t("player.lockQuality.title") }}</span>
 				<DocsHelpLink anchor="player-quality" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.settings.lockQuality']" />
@@ -38,12 +38,12 @@
 					<p>{{ $t("player.lockQuality.tips.quality") }}</p>
 				</fieldset>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="player-speed-button">
+			<template #title>
 				<span>{{ $t("player.playbackSpeed.title") }}</span>
 				<DocsHelpLink anchor="player-speed-button" />
-			</div>
+			</template>
 			<div class="card-body">
 				<p class="settings-label">{{ $t("player.playbackSpeed.tips.save") }}</p>
 				<label class="form-item">
@@ -60,8 +60,8 @@
 					<span>{{ $t("player.playbackSpeed.checkbox.keepMusicVideosAtNormalSpeed") }}</span>
 					<DocsHelpLink anchor="player-speed-button-music" />
 				</label>
-				<div class="settings-group">
-					<p class="settings-label">{{ $t("player.playbackSpeed.tips.controls") }}</p>
+				<SettingsCard card-id="player-speed-controls" embedded :default-open="false">
+					<template #title>{{ $t("player.playbackSpeed.tips.controls") }}</template>
 					<label class="form-item">
 						<input type="checkbox" v-model="config['player.ui.enableSpeedButtons']" />
 						<span>{{ $t("player.playbackSpeed.checkbox.enable") }}</span>
@@ -125,14 +125,14 @@
 							</span>
 						</label>
 					</fieldset>
-				</div>
+				</SettingsCard>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="player-volume-booster">
+			<template #title>
 				<span>{{ $t("player.volumeBooster.title") }}</span>
 				<DocsHelpLink anchor="player-volume-booster" />
-			</div>
+			</template>
 			<div class="card-body">
 				<VolumeBoosterSettings />
 				<hr />
@@ -142,12 +142,12 @@
 					<DocsHelpLink anchor="player-other-max-volume" />
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="player-subtitle">
+			<template #title>
 				<span>{{ $t("player.subtitles.title") }}</span>
 				<DocsHelpLink anchor="player-subtitle" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.settings.saveSubtitleStatus']" />
@@ -159,12 +159,12 @@
 					<span>{{ $t("player.subtitles.checkbox.saveByChannel") }}</span>
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="player-function-buttons">
+			<template #title>
 				<span>{{ $t("player.functionButtons.title") }}</span>
 				<DocsHelpLink anchor="player-function-buttons" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item form-item-select">
 					<span>{{ $t("player.functionButtons.checkbox.collapse") }}</span>
@@ -195,12 +195,12 @@
 					<DocsHelpLink anchor="player-function-buttons-in-page-fullscreen" />
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="player-button-display" :default-open="false">
+			<template #title>
 				<span>{{ $t("player.hidePlayerButtons.title") }}</span>
 				<DocsHelpLink anchor="player-button-display" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label
 					class="form-item form-item-select"
@@ -216,12 +216,12 @@
 					</select>
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="player-video-zoom">
+			<template #title>
 				<span>{{ $t("player.videoZoom.title") }}</span>
 				<DocsHelpLink anchor="player-video-zoom" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.enableVideoZoom']" />
@@ -230,13 +230,13 @@
 				</label>
 				<p>{{ $t("player.videoZoom.tips.enable") }}</p>
 			</div>
-		</div>
+		</SettingsCard>
 		<MiniPlayerSettingsCard />
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="player-ui">
+			<template #title>
 				<span>{{ $t("player.ui.title") }}</span>
 				<DocsHelpLink anchor="player-ui" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.ui.hideCeElement']" />
@@ -321,12 +321,12 @@
 					</fieldset>
 				</div>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="player-other">
+			<template #title>
 				<span>{{ $t("player.other.title") }}</span>
 				<DocsHelpLink anchor="player-other" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['player.settings.nonStop']" />
@@ -334,13 +334,14 @@
 					<DocsHelpLink anchor="player-other-nonstop" />
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 	</section>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
+import SettingsCard from "../components/SettingsCard.vue";
 import MiniPlayerSettingsCard from "../components/player/MiniPlayerSettingsCard.vue";
 import VolumeBoosterSettings from "../components/player/VolumeBoosterSettings.vue";
 import useConfigStore from "../util/config";

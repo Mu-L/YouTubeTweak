@@ -10,6 +10,8 @@ This extension mainly takes effect on the desktop YouTube website. Some features
 
 Hover over a setting or card title to reveal its question mark button, which opens the corresponding section of this document directly. The default states mentioned in this document are the preset values used after resetting settings; existing settings do not change automatically after an upgrade.
 
+Click any card title to expand or collapse its settings, or focus the title and press Enter or Space. Each card remembers its own state when you reopen the popup or switch categories or languages. These states are saved only in the current browser. Collapsing a card only hides its settings; it does not turn off features or clear their saved values.
+
 <a name="player"></a>
 
 # Player
@@ -51,7 +53,7 @@ Notes:
 
 ## Playback Speed
 
-Playback rules appear first, followed by "Speed controls" for the buttons, slider, and mouse wheel.
+Playback rules appear first. Expand "Speed controls" to adjust the buttons, slider, and mouse wheel; collapsing this section only hides its settings and does not turn the controls off.
 
 <a name="player-speed-button-save"></a>
 
@@ -284,6 +286,8 @@ This is useful when you want a larger video without entering system fullscreen. 
 <a name="player-button-display"></a>
 
 ## Button Display Mode
+
+Click the card title to expand the native button settings. Closing the card does not change the selected display modes.
 
 <a name="player-button-display-native"></a>
 

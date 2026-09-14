@@ -1,10 +1,10 @@
 <template>
 	<section id="page-translate">
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="translate-settings">
+			<template #title>
 				<span>{{ $t("translate.common.title") }}</span>
 				<DocsHelpLink anchor="translate-settings" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item form-item-select">
 					<span>{{ $t("comment.context.select.targetLanguage") }}: </span>
@@ -23,12 +23,12 @@
 					</select>
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="translate-global">
+			<template #title>
 				<span>{{ $t("translate.global.title") }}</span>
 				<DocsHelpLink anchor="translate-global" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.videoListTitle']" />
@@ -36,12 +36,12 @@
 					<DocsHelpLink anchor="translate-global-video-list-title" />
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="translate-watch">
+			<template #title>
 				<span>{{ $t("translate.watch.title") }}</span>
 				<DocsHelpLink anchor="translate-watch" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.videoTitle']" />
@@ -59,12 +59,12 @@
 					<DocsHelpLink anchor="translate-watch-video-summary" />
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="translate-subtitle">
+			<template #title>
 				<span>{{ $t("translate.subtitle.title") }}</span>
 				<DocsHelpLink anchor="translate-subtitle" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['translate.enable.timedtext']" />
@@ -79,12 +79,12 @@
 					</select>
 				</label>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-title">
+		</SettingsCard>
+		<SettingsCard card-id="translate-comment">
+			<template #title>
 				<span>{{ $t("translate.comment.title") }}</span>
 				<DocsHelpLink anchor="translate-comment" />
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['comment.autoTranslate']" />
@@ -102,12 +102,13 @@
 					<DocsHelpLink anchor="translate-comment-line-by-line" />
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 	</section>
 </template>
 
 <script setup lang="ts">
 import DocsHelpLink from "../components/DocsHelpLink.vue";
+import SettingsCard from "../components/SettingsCard.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
 const locales: Record<string, string> = {

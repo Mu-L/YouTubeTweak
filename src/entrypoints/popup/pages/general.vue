@@ -32,11 +32,11 @@
 			</div>
 		</div>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="general-about">
+			<template #title>
 				<span>{{ $t("general.about.title") }}</span>
 				<DocsHelpLink anchor="general-about" />
-			</div>
+			</template>
 			<div class="card-body about">
 				<img :src="APP_LOGO" alt="logo" />
 				<p class="title">{{ APP_BRANDING.displayName }}</p>
@@ -70,13 +70,13 @@
 					</button>
 				</div>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="general-language">
+			<template #title>
 				<span>{{ $t("general.language.title") }} (Language)</span>
 				<DocsHelpLink anchor="general-language" />
-			</div>
+			</template>
 			<div class="card-body">
 				<select class="w-100" @change="setLocale" v-model="locale">
 					<option v-for="(name, key) of locales" :key="key" :value="key">{{ name }}</option>
@@ -85,12 +85,12 @@
 					$t("general.language.link.translator")
 				}}</a>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card">
-			<div class="card-title">
+		<SettingsCard card-id="general-update">
+			<template #title>
 				<span>{{ $t("general.update.title") }}</span>
-			</div>
+			</template>
 			<div class="card-body">
 				<label class="form-item">
 					<input type="checkbox" v-model="config['yttweak.disableUpdateNotice']" />
@@ -98,13 +98,13 @@
 					<DocsHelpLink anchor="general-update-notice-disable" />
 				</label>
 			</div>
-		</div>
+		</SettingsCard>
 
-		<div class="card config-card">
-			<div class="card-title">
+		<SettingsCard card-id="general-config" class="config-card">
+			<template #title>
 				<span>{{ $t("general.config.title") }}</span>
 				<DocsHelpLink anchor="general-config" />
-			</div>
+			</template>
 			<div class="card-body config">
 				<button class="btn" @click="showConfigModal('export')">
 					<span>⤴️</span>{{ $t("general.config.button.exportConfig") }}
@@ -114,7 +114,7 @@
 				</button>
 				<button class="btn" @click="resetConfig()"><span>🔄</span>{{ $t("general.config.button.resetConfig") }}</button>
 			</div>
-		</div>
+		</SettingsCard>
 
 		<transition name="modal-fade">
 			<div class="config-modal" v-if="configModalType">
@@ -226,6 +226,7 @@ import {
 import appleLogo from "@/assets/img/logo_apple.svg";
 import logo from "@/assets/img/logo.svg";
 import DocsHelpLink from "../components/DocsHelpLink.vue";
+import SettingsCard from "../components/SettingsCard.vue";
 import useConfigStore from "../util/config";
 const config = useConfigStore();
 

@@ -1,9 +1,9 @@
 <template>
-	<div class="card">
-		<div class="card-title">
+	<SettingsCard card-id="player-mini-player">
+		<template #title>
 			<span>{{ $t("player.miniPlayer.title") }}</span>
 			<DocsHelpLink anchor="player-mini-player" />
-		</div>
+		</template>
 		<div class="card-body">
 			<label class="form-item">
 				<input type="checkbox" v-model="config['player.miniPlayer.enable']" />
@@ -47,11 +47,12 @@
 				</label>
 			</fieldset>
 		</div>
-	</div>
+	</SettingsCard>
 </template>
 
 <script setup lang="ts">
 import DocsHelpLink from "../DocsHelpLink.vue";
+import SettingsCard from "../SettingsCard.vue";
 import useConfigStore from "../../util/config";
 
 const config = useConfigStore();
