@@ -45,19 +45,20 @@
 				"quality": "إذا لم تتوفر الجودة المحددة، سيتم استخدام أعلى جودة أدنى منها."
 			}
 		},
-		"speedButtons": {
-			"title": "أزرار السرعة",
+		"playbackSpeed": {
+			"title": "سرعة التشغيل",
 			"checkbox": {
-				"enable": "إظهار أزرار السرعة/شريط تمرير السرعة",
 				"save": "تذكر سرعة التشغيل",
 				"saveByChannel": "تذكر سرعة التشغيل لكل قناة على حدة",
-				"keepMusicVideosAtNormalSpeed": "تشغيل فيديوهات الموسيقى دائمًا بسرعة 1×",
-				"enableSlider": "تفعيل شريط تمرير السرعة",
-				"collapse": "طي أزرار السرعة"
+				"keepMusicVideosAtNormalSpeed": "بدء تشغيل فيديوهات الموسيقى بسرعة 1×",
+				"enable": "إظهار أزرار السرعة/شريط تمرير السرعة",
+				"collapse": "طي أزرار السرعة",
+				"enableSlider": "تفعيل شريط تمرير السرعة"
 			},
 			"tips": {
+				"save": "سلوك التشغيل",
+				"controls": "عناصر التحكم في السرعة",
 				"enabledButtons": "الأزرار المفعلة:",
-				"save": "تذكر السرعة",
 				"slider": "بعد التفعيل يمكنك السحب يمينًا ويسارًا لضبط السرعة بشكل مستمر؛ وتستخدم عجلة الفأرة خطوة العجلة المحددة."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "القيم المسبقة"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "عدم الطي مطلقًا",
-				"always": "الطي دائمًا",
-				"auto": "طي تلقائي"
+		"volumeBooster": {
+			"title": "معزز الصوت",
+			"checkbox": {
+				"showControl": "إظهار التحكم بالمعزز بجانب شريط السرعة",
+				"enableByDefault": "تفعيل المعزز افتراضيًا",
+				"maxVolume": "تعطيل معادل الصوت عند الحد الأقصى (100% حقيقي)"
+			},
+			"select": {
+				"multiplier": "مستوى التعزيز"
+			},
+			"tips": {
+				"control": "يضيف مرحلة كسب حقيقية فوق مستوى الصوت 100% المدمج في YouTube. استخدم زر المشغل للتبديل فورًا."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "تذكر حالة تشغيل/إيقاف الترجمة",
 				"saveByChannel": "تذكر حالة تشغيل/إيقاف الترجمة لكل قناة"
-			},
-			"tips": {
-				"save": "تذكر إعدادات الترجمة"
+			}
+		},
+		"functionButtons": {
+			"title": "أزرار الوظائف",
+			"checkbox": {
+				"enableRotateButton": "تفعيل زر تدوير الفيديو",
+				"enableMirrorButton": "تفعيل زر عكس الفيديو",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "طي أزرار الوظائف",
+				"inPageFullscreen": "إظهار زر ملء الشاشة داخل الصفحة"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "عدم الطي مطلقًا",
+				"always": "الطي دائمًا",
+				"auto": "طي تلقائي"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "الواجهة",
-			"checkbox": {
-				"hideCeElement": "جعل الفيديوهات/المؤلفين المقترحين في نهاية الفيديو شبه شفافة",
-				"progressEnable": "إظهار شريط التقدم أسفل الفيديو",
-				"progressHeight": "ارتفاع شريط التقدم (بكسل)",
-				"progressEnableTag": "إظهار وقت الفيديو في الزاوية السفلية اليسرى",
-				"progressTagFontSize": "حجم خط وقت الفيديو",
-				"progressTagPosition": "موضع وقت الفيديو",
-				"progressTagOffset": "المسافة عن الحافة (بكسل)"
-			},
-			"position": {
-				"bottomLeft": "الزاوية السفلية اليسرى",
-				"bottomRight": "الزاوية السفلية اليمنى",
-				"topLeft": "الزاوية العلوية اليسرى",
-				"topRight": "الزاوية العلوية اليمنى",
-				"bottomCenter": "منتصف الأسفل",
-				"topCenter": "منتصف الأعلى"
-			},
-			"tips": {
-				"timeTag": "ملصقات وقت الفيديو العائمة",
-				"progress": "شريط تقدم الفيديو"
-			}
-		},
-		"other": {
-			"title": "أخرى",
-			"checkbox": {
-				"maxVolume": "تعطيل معادل الصوت عند الحد الأقصى (100% حقيقي)",
-				"nonStop": "تعطيل الإيقاف التلقائي للفيديو (رسالة: \"تم إيقاف الفيديو مؤقتًا، هل تريد متابعة المشاهدة؟\")"
-			}
-		},
-		"functionButtons": {
-			"title": "أزرار الوظائف",
-			"checkbox": {
-				"enableRotateButton": "تفعيل زر تدوير الفيديو",
-				"enableMirrorButton": "تفعيل زر عكس الفيديو",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "طي أزرار الوظائف",
-				"inPageFullscreen": "إظهار زر ملء الشاشة داخل الصفحة"
-			}
-		},
-		"volumeBooster": {
-			"title": "معزز الصوت",
-			"checkbox": {
-				"showControl": "إظهار التحكم بالمعزز بجانب شريط السرعة",
-				"enableByDefault": "تفعيل المعزز افتراضيًا"
-			},
-			"select": {
-				"multiplier": "مستوى التعزيز"
-			},
-			"tips": {
-				"control": "يضيف مرحلة كسب حقيقية فوق مستوى الصوت 100% المدمج في YouTube. استخدم زر المشغل للتبديل فورًا."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "اجعل الفيديو الحالي عائمًا أثناء التمرير. يمكنك إغلاقه من المشغل في أي وقت."
+			}
+		},
+		"ui": {
+			"title": "الواجهة",
+			"checkbox": {
+				"hideCeElement": "جعل الفيديوهات/المؤلفين المقترحين في نهاية الفيديو شبه شفافة",
+				"progressEnable": "إظهار شريط التقدم أسفل الفيديو",
+				"progressHeight": "ارتفاع شريط التقدم (بكسل)",
+				"progressEnableTag": "إظهار وقت الفيديو في الزاوية السفلية اليسرى",
+				"progressTagFontSize": "حجم خط وقت الفيديو",
+				"progressTagPosition": "موضع وقت الفيديو",
+				"progressTagOffset": "المسافة عن الحافة (بكسل)"
+			},
+			"position": {
+				"bottomLeft": "الزاوية السفلية اليسرى",
+				"bottomRight": "الزاوية السفلية اليمنى",
+				"topLeft": "الزاوية العلوية اليسرى",
+				"topRight": "الزاوية العلوية اليمنى",
+				"bottomCenter": "منتصف الأسفل",
+				"topCenter": "منتصف الأعلى"
+			},
+			"tips": {
+				"timeTag": "ملصقات وقت الفيديو العائمة",
+				"progress": "شريط تقدم الفيديو"
+			},
+			"networkSpeed": {
+				"title": "سرعة الشبكة في الوقت الفعلي",
+				"label": "موضع سرعة الشبكة في الوقت الفعلي",
+				"option": {
+					"off": "إيقاف",
+					"controls": "شريط التحكم فقط",
+					"both": "أسفل يمين الفيديو وشريط التحكم"
+				},
+				"unit": {
+					"label": "وحدة السرعة",
+					"option": {
+						"mb": "ثابت MB/s",
+						"auto": "تلقائي KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "تتبّع استهلاك بيانات الصفحة"
+			}
+		},
+		"other": {
+			"title": "أخرى",
+			"checkbox": {
+				"nonStop": "تعطيل الإيقاف التلقائي للفيديو (رسالة: \"تم إيقاف الفيديو مؤقتًا، هل تريد متابعة المشاهدة؟\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "المظهر",
 			"checkbox": {
 				"premiumLogo": "محاكاة شعار Premium"
-			},
-			"networkSpeed": {
-				"title": "سرعة الشبكة في الوقت الفعلي",
-				"label": "موضع سرعة الشبكة في الوقت الفعلي",
-				"option": {
-					"off": "إيقاف",
-					"controls": "شريط التحكم فقط",
-					"both": "أسفل يمين الفيديو وشريط التحكم"
-				},
-				"unit": {
-					"label": "وحدة السرعة",
-					"option": {
-						"mb": "ثابت MB/s",
-						"auto": "تلقائي KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "تتبّع استهلاك بيانات الصفحة"
 			},
 			"logoCountryCode": "تعديل رمز بلد الشعار"
 		},

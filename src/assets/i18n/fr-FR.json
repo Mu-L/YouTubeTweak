@@ -45,19 +45,20 @@
 				"quality": "En cas d'absence de la qualité spécifiée, la meilleure qualité en dessous de ce niveau sera appliquée"
 			}
 		},
-		"speedButtons": {
-			"title": "Vitesse",
+		"playbackSpeed": {
+			"title": "Vitesse de lecture",
 			"checkbox": {
-				"enable": "Afficher les boutons/le curseur de vitesse",
 				"save": "Sauvegarder la vitesse du player",
 				"saveByChannel": "Sauvegarder les vitesses pour chaque chaîne",
-				"keepMusicVideosAtNormalSpeed": "Toujours lire les clips musicaux à la vitesse 1×",
-				"enableSlider": "Activer le curseur de vitesse",
-				"collapse": "Replier les boutons de vitesse"
+				"keepMusicVideosAtNormalSpeed": "Démarrer les clips musicaux à la vitesse 1×",
+				"enable": "Afficher les boutons/le curseur de vitesse",
+				"collapse": "Replier les boutons de vitesse",
+				"enableSlider": "Activer le curseur de vitesse"
 			},
 			"tips": {
+				"save": "Comportement de lecture",
+				"controls": "Commandes de vitesse",
 				"enabledButtons": "Boutons activés :",
-				"save": "Sauvegarder la vitesse",
 				"slider": "Une fois activé, faites glisser vers la gauche ou la droite pour régler la vitesse en continu ; la molette utilise le pas sélectionné."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "Préréglages"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "Ne jamais replier",
-				"always": "Toujours replier",
-				"auto": "Replier automatiquement"
+		"volumeBooster": {
+			"title": "Amplificateur de volume",
+			"checkbox": {
+				"showControl": "Afficher le contrôle de l’amplificateur à côté de la barre de vitesse",
+				"enableByDefault": "Activer l’amplificateur par défaut",
+				"maxVolume": "Désactiver l'equalizer quand le son est à son niveau maximal (100% en vrai)"
+			},
+			"select": {
+				"multiplier": "Niveau d’amplification"
+			},
+			"tips": {
+				"control": "Ajoute un véritable étage de gain au-delà du volume 100 % intégré de YouTube. Utilisez le bouton du lecteur pour l’activer ou le désactiver instantanément."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "Mémoriser l'état d'activation des sous-titres",
 				"saveByChannel": "Mémoriser l'état d'activation des sous-titres pour chaque chaîne"
-			},
-			"tips": {
-				"save": "Mémoriser les paramètres des sous-titres"
+			}
+		},
+		"functionButtons": {
+			"title": "Boutons de fonction",
+			"checkbox": {
+				"enableRotateButton": "Activer le bouton de rotation de la vidéo",
+				"enableMirrorButton": "Activer le bouton de miroir de la vidéo",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Replier les boutons de fonction",
+				"inPageFullscreen": "Afficher le bouton de plein écran dans la page"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Ne jamais replier",
+				"always": "Toujours replier",
+				"auto": "Replier automatiquement"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "Interface Graphique",
-			"checkbox": {
-				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin de la vidéo plus translucent",
-				"progressEnable": "Afficher la barre de progression sous la vidéo",
-				"progressHeight": "Hauteur de la barre de progression (px)",
-				"progressEnableTag": "Afficher l’heure de la vidéo en bas à gauche",
-				"progressTagFontSize": "Taille de police du temps vidéo",
-				"progressTagPosition": "Position de l’heure de la vidéo",
-				"progressTagOffset": "Distance du bord (px)"
-			},
-			"position": {
-				"bottomLeft": "Coin inférieur gauche",
-				"bottomRight": "Coin inférieur droit",
-				"topLeft": "Coin supérieur gauche",
-				"topRight": "Coin supérieur droit",
-				"bottomCenter": "En bas au centre",
-				"topCenter": "En haut au centre"
-			},
-			"tips": {
-				"timeTag": "Étiquettes de temps vidéo flottantes",
-				"progress": "Barre de progression de la vidéo"
-			}
-		},
-		"other": {
-			"title": "Autre",
-			"checkbox": {
-				"maxVolume": "Désactiver l'equalizer quand le son est à son niveau maximal (100% en vrai)",
-				"nonStop": "Désactiver la mise en pause automatique de la vidéo (invite : \"Vidéo mise en pause. Continuer la lecture ?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "Boutons de fonction",
-			"checkbox": {
-				"enableRotateButton": "Activer le bouton de rotation de la vidéo",
-				"enableMirrorButton": "Activer le bouton de miroir de la vidéo",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Replier les boutons de fonction",
-				"inPageFullscreen": "Afficher le bouton de plein écran dans la page"
-			}
-		},
-		"volumeBooster": {
-			"title": "Amplificateur de volume",
-			"checkbox": {
-				"showControl": "Afficher le contrôle de l’amplificateur à côté de la barre de vitesse",
-				"enableByDefault": "Activer l’amplificateur par défaut"
-			},
-			"select": {
-				"multiplier": "Niveau d’amplification"
-			},
-			"tips": {
-				"control": "Ajoute un véritable étage de gain au-delà du volume 100 % intégré de YouTube. Utilisez le bouton du lecteur pour l’activer ou le désactiver instantanément."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "Gardez la vidéo actuelle flottante pendant le défilement. Fermez-la depuis le lecteur à tout moment."
+			}
+		},
+		"ui": {
+			"title": "Interface Graphique",
+			"checkbox": {
+				"hideCeElement": "Rendre les vidéos/auteurs recommendés à la fin de la vidéo plus translucent",
+				"progressEnable": "Afficher la barre de progression sous la vidéo",
+				"progressHeight": "Hauteur de la barre de progression (px)",
+				"progressEnableTag": "Afficher l’heure de la vidéo en bas à gauche",
+				"progressTagFontSize": "Taille de police du temps vidéo",
+				"progressTagPosition": "Position de l’heure de la vidéo",
+				"progressTagOffset": "Distance du bord (px)"
+			},
+			"position": {
+				"bottomLeft": "Coin inférieur gauche",
+				"bottomRight": "Coin inférieur droit",
+				"topLeft": "Coin supérieur gauche",
+				"topRight": "Coin supérieur droit",
+				"bottomCenter": "En bas au centre",
+				"topCenter": "En haut au centre"
+			},
+			"tips": {
+				"timeTag": "Étiquettes de temps vidéo flottantes",
+				"progress": "Barre de progression de la vidéo"
+			},
+			"networkSpeed": {
+				"title": "Vitesse réseau en temps réel",
+				"label": "Position de la vitesse réseau en temps réel",
+				"option": {
+					"off": "Désactivé",
+					"controls": "Barre de contrôle uniquement",
+					"both": "En bas à droite de la vidéo et dans la barre de contrôle"
+				},
+				"unit": {
+					"label": "Unité de vitesse",
+					"option": {
+						"mb": "MB/s fixe",
+						"auto": "KB/s | MB/s automatique"
+					}
+				},
+				"trackPageTraffic": "Mesurer la consommation de données de la page"
+			}
+		},
+		"other": {
+			"title": "Autre",
+			"checkbox": {
+				"nonStop": "Désactiver la mise en pause automatique de la vidéo (invite : \"Vidéo mise en pause. Continuer la lecture ?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "Apparence",
 			"checkbox": {
 				"premiumLogo": "Simuler le logo Premium"
-			},
-			"networkSpeed": {
-				"title": "Vitesse réseau en temps réel",
-				"label": "Position de la vitesse réseau en temps réel",
-				"option": {
-					"off": "Désactivé",
-					"controls": "Barre de contrôle uniquement",
-					"both": "En bas à droite de la vidéo et dans la barre de contrôle"
-				},
-				"unit": {
-					"label": "Unité de vitesse",
-					"option": {
-						"mb": "MB/s fixe",
-						"auto": "KB/s | MB/s automatique"
-					}
-				},
-				"trackPageTraffic": "Mesurer la consommation de données de la page"
 			},
 			"logoCountryCode": "Modifier le code pays du logo"
 		},

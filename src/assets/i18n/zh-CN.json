@@ -45,19 +45,20 @@
 				"quality": "如果没有此画质，将会自动下降为此值以下的最高画质。"
 			}
 		},
-		"speedButtons": {
-			"title": "倍速按钮",
+		"playbackSpeed": {
+			"title": "播放速度",
 			"checkbox": {
-				"enable": "显示倍速按钮/倍速滑块",
 				"save": "记住播放器速度",
 				"saveByChannel": "为每个频道分别记住播放速度",
-				"keepMusicVideosAtNormalSpeed": "始终保持音乐视频1倍速",
-				"enableSlider": "启用倍速滑块",
-				"collapse": "折叠倍速按钮"
+				"keepMusicVideosAtNormalSpeed": "音乐视频加载时使用 1×",
+				"enable": "显示倍速按钮/倍速滑块",
+				"collapse": "折叠倍速按钮",
+				"enableSlider": "启用倍速滑块"
 			},
 			"tips": {
+				"save": "播放规则",
+				"controls": "调速控件",
 				"enabledButtons": "启用的按钮：",
-				"save": "记住速度",
 				"slider": "启用后可以按住左右拖拽连续调速；鼠标滚轮使用下面选择的步长。"
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "预设"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "始终不折叠",
-				"always": "始终折叠",
-				"auto": "自动折叠"
+		"volumeBooster": {
+			"title": "音量增强器",
+			"checkbox": {
+				"showControl": "在倍速栏旁显示增强控制",
+				"enableByDefault": "默认启用音量增强",
+				"maxVolume": "最大音量时关闭音量均衡(真正100%音量)"
+			},
+			"select": {
+				"multiplier": "增强级别"
+			},
+			"tips": {
+				"control": "在 YouTube 内置 100% 音量之上增加真实增益级。可用播放器内按钮即时开关。"
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "记住字幕启用状态",
 				"saveByChannel": "为每个频道分别记住字幕启用状态"
-			},
-			"tips": {
-				"save": "记住字幕设置"
+			}
+		},
+		"functionButtons": {
+			"title": "功能按钮",
+			"checkbox": {
+				"enableRotateButton": "启用旋转视频按钮",
+				"enableMirrorButton": "启用镜像视频按钮",
+				"enableScreenshotButton": "启用视频截图按钮",
+				"collapse": "折叠功能按钮",
+				"inPageFullscreen": "显示页内全屏按钮"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "始终不折叠",
+				"always": "始终折叠",
+				"auto": "自动折叠"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "自动",
 				"hide": "隐藏",
 				"show": "强制启用"
-			}
-		},
-		"ui": {
-			"title": "界面",
-			"checkbox": {
-				"hideCeElement": "半透明结尾的推荐视频/作者",
-				"progressEnable": "在视频下方显示进度条",
-				"progressHeight": "进度条高度(px)",
-				"progressEnableTag": "在角落显示视频时间",
-				"progressTagFontSize": "视频时间字体大小",
-				"progressTagPosition": "视频时间显示位置",
-				"progressTagOffset": "距离边缘(px)"
-			},
-			"position": {
-				"bottomLeft": "左下角",
-				"bottomRight": "右下角",
-				"topLeft": "左上角",
-				"topRight": "右上角",
-				"bottomCenter": "底部居中",
-				"topCenter": "顶部居中"
-			},
-			"tips": {
-				"timeTag": "悬浮视频时间",
-				"progress": "视频下方进度条"
-			}
-		},
-		"other": {
-			"title": "其他",
-			"checkbox": {
-				"maxVolume": "最大音量时关闭音量均衡(真正100%音量)",
-				"nonStop": "禁用自动暂停视频（提示“视频已暂停，继续播放？”）"
-			}
-		},
-		"functionButtons": {
-			"title": "功能按钮",
-			"checkbox": {
-				"enableRotateButton": "启用旋转视频按钮",
-				"enableMirrorButton": "启用镜像视频按钮",
-				"enableScreenshotButton": "启用视频截图按钮",
-				"collapse": "折叠功能按钮",
-				"inPageFullscreen": "显示页内全屏按钮"
-			}
-		},
-		"volumeBooster": {
-			"title": "音量增强器",
-			"checkbox": {
-				"showControl": "在倍速栏旁显示增强控制",
-				"enableByDefault": "默认启用音量增强"
-			},
-			"select": {
-				"multiplier": "增强级别"
-			},
-			"tips": {
-				"control": "在 YouTube 内置 100% 音量之上增加真实增益级。可用播放器内按钮即时开关。"
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "滚动页面时让当前视频悬浮显示，可随时从播放器关闭。"
+			}
+		},
+		"ui": {
+			"title": "界面",
+			"checkbox": {
+				"hideCeElement": "半透明结尾的推荐视频/作者",
+				"progressEnable": "在视频下方显示进度条",
+				"progressHeight": "进度条高度(px)",
+				"progressEnableTag": "在角落显示视频时间",
+				"progressTagFontSize": "视频时间字体大小",
+				"progressTagPosition": "视频时间显示位置",
+				"progressTagOffset": "距离边缘(px)"
+			},
+			"position": {
+				"bottomLeft": "左下角",
+				"bottomRight": "右下角",
+				"topLeft": "左上角",
+				"topRight": "右上角",
+				"bottomCenter": "底部居中",
+				"topCenter": "顶部居中"
+			},
+			"tips": {
+				"timeTag": "悬浮视频时间",
+				"progress": "视频下方进度条"
+			},
+			"networkSpeed": {
+				"title": "实时网络速度",
+				"label": "实时网络速度显示位置",
+				"option": {
+					"off": "关闭",
+					"controls": "仅显示在控制条",
+					"both": "视频右下角和控制条"
+				},
+				"unit": {
+					"label": "速率单位",
+					"option": {
+						"mb": "固定 MB/s",
+						"auto": "自动 KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "统计页面使用流量"
+			}
+		},
+		"other": {
+			"title": "其他",
+			"checkbox": {
+				"nonStop": "禁用自动暂停视频（提示“视频已暂停，继续播放？”）"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "外观",
 			"checkbox": {
 				"premiumLogo": "伪装 Premium logo"
-			},
-			"networkSpeed": {
-				"title": "实时网络速度",
-				"label": "实时网络速度显示位置",
-				"option": {
-					"off": "关闭",
-					"controls": "仅显示在控制条",
-					"both": "视频右下角和控制条"
-				},
-				"unit": {
-					"label": "速率单位",
-					"option": {
-						"mb": "固定 MB/s",
-						"auto": "自动 KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "统计页面使用流量"
 			},
 			"logoCountryCode": "修改 Logo 国家代码"
 		},

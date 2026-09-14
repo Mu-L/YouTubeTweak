@@ -49,10 +49,7 @@ import type { Component } from "vue";
 
 const APP_BRANDING = __APP_BRANDING__;
 const APP_LOGO = APP_BRANDING.isSafari ? appleLogo : logo;
-const tabs: Record<
-	string,
-	{ component: Component; icon: string; viewBox: string; filled?: boolean; strokeWidth?: number }
-> = {
+const tabs: Record<string, { component: Component; icon: string; viewBox: string; filled?: boolean; strokeWidth?: number }> = {
 	player: {
 		component: defineAsyncComponent(() => import("./pages/player.vue")),
 		icon: "M6 5h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z M10 9l5 3-5 3Z",
@@ -256,7 +253,7 @@ header {
 		}
 
 		&:focus-visible {
-			outline: 2px solid rgba(215, 57, 227, 0.4);
+			outline: 2px solid var(--settings-accent);
 			outline-offset: -3px;
 			border-radius: 7px;
 		}
@@ -295,7 +292,7 @@ header {
 			}
 
 			&:hover {
-				color: #8f5bff;
+				color: var(--settings-accent-ink);
 			}
 		}
 	}

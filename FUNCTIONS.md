@@ -8,13 +8,15 @@ YouTube Tweak is a browser extension for enhancing the YouTube web experience an
 
 This extension mainly takes effect on the desktop YouTube website. Some features only apply on video watch pages, the homepage, search pages, comment areas, or Shorts-related areas. The exact scope is explained in the corresponding feature sections.
 
-The question mark button beside a setting opens the corresponding section of this document directly. The default states mentioned in this document are the preset values used after resetting settings; existing settings do not change automatically after an upgrade.
+Hover over a setting or card title to reveal its question mark button, which opens the corresponding section of this document directly. The default states mentioned in this document are the preset values used after resetting settings; existing settings do not change automatically after an upgrade.
 
 <a name="player"></a>
 
 # Player
 
 These features enhance the viewing experience on video watch pages and mainly affect the YouTube player and the video watch page.
+
+Dependent settings are grouped below their main switch. Turning off quality locking, speed controls, the mini player, the progress bar, or corner video time grays out the related options without clearing their saved values. Turning off network speed display similarly disables its unit and traffic options.
 
 <a name="player-quality"></a>
 
@@ -47,34 +49,9 @@ Notes:
 
 <a name="player-speed-button"></a>
 
-## Speed Buttons
+## Playback Speed
 
-<a name="player-speed-button-show"></a>
-
-### Show Speed Buttons and Speed Slider
-
-Default: `On; show 0.5x, 1x, 1.5x, and 2x; speed slider on; mouse wheel follows button steps` | Version: `v1.0.0 (2025-05-19)`
-
-After enabling this, custom speed buttons will appear in the player control bar. You can click the buttons directly to change playback speed without opening YouTube's original settings menu.
-
-Suitable use cases:
-
-- You often switch between fixed speeds such as 1.5x and 2x.
-- You need to adjust speed quickly when watching tutorials, livestream replays, or long videos.
-- You want to place frequently used speeds directly on the player.
-
-Configurable options:
-
-- Show speed buttons/speed slider: controls whether the extension's speed entry is shown in the player.
-- Enabled buttons: you can select 0.25x, 0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x, 2.25x, 2.5x, 2.75x, 3x, 5x, or 10x.
-- Enable speed slider: after enabling this, you can hold and drag left or right on the speed area to adjust speed continuously.
-- Mouse wheel step: wheel speed adjustment can follow the enabled speed buttons, or use 0.0625, 0.125, 0.25, 0.5, 1, or a custom step.
-
-Notes:
-
-- The speed slider depends on "Show speed buttons/speed slider" being enabled and requires at least two speed buttons to be enabled.
-- When the mouse is over the speed area and you scroll the wheel, playback speed will be adjusted directly.
-- Custom wheel steps support very fine values, but values that are too small make adjustment slower, while values that are too large cause obvious speed jumps.
+Playback rules appear first, followed by "Speed controls" for the buttons, slider, and mouse wheel.
 
 <a name="player-speed-button-save"></a>
 
@@ -100,6 +77,50 @@ Notes:
 - When both global memory and per-channel memory are enabled, per-channel memory has priority.
 - Per-channel memory requires the extension to identify the channel that owns the current video.
 - Memory data can be exported together with settings from the general settings.
+
+<a name="player-speed-button-music"></a>
+
+### Start Music Videos at 1×
+
+Default: `Off` | Version: `Unreleased`
+
+When a video loads and YouTube identifies its category as music, this option starts playback at 1× instead of restoring a saved global or channel speed. It also works when speed memory is turned off.
+
+This is useful when you watch other videos at a faster speed but want music to start at its original tempo.
+
+Notes:
+
+- You can still change the speed manually afterward; this option does not keep forcing 1× during playback.
+- Starting at 1× does not overwrite saved speeds. Later changes made with the extension's speed controls still follow your enabled speed memory options.
+- Detection uses the video's category. A video that contains music but is not categorized as music may not be recognized.
+
+<a name="player-speed-button-show"></a>
+
+### Show Speed Buttons and Speed Slider
+
+Default: `On; show 0.5x, 1x, 1.5x, and 2x; automatic button collapsing; speed slider on; mouse wheel follows button steps` | Version: `v1.0.0 (2025-05-19)`
+
+After enabling this, custom speed buttons will appear in the player control bar. You can click the buttons directly to change playback speed without opening YouTube's original settings menu.
+
+Suitable use cases:
+
+- You often switch between fixed speeds such as 1.5x and 2x.
+- You need to adjust speed quickly when watching tutorials, livestream replays, or long videos.
+- You want to place frequently used speeds directly on the player.
+
+Configurable options:
+
+- Show speed buttons/speed slider: controls whether the extension's speed entry is shown in the player.
+- Enabled buttons: select the highlighted speed choices you want to show: 0.25x, 0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x, 2.25x, 2.5x, 2.75x, 3x, 5x, or 10x.
+- Collapse speed buttons: choose never, always, or automatically when the player control bar runs out of space.
+- Enable speed slider: after enabling this, you can hold and drag left or right on the speed area to adjust speed continuously.
+- Mouse wheel step: wheel speed adjustment can follow the enabled speed buttons, or use 0.0625, 0.125, 0.25, 0.5, 1, or a custom step.
+
+Notes:
+
+- The speed slider depends on "Show speed buttons/speed slider" being enabled and requires at least two speed buttons to be enabled.
+- When the mouse is over the speed area and you scroll the wheel, playback speed will be adjusted directly.
+- Custom wheel steps support very fine values, but values that are too small make adjustment slower, while values that are too large cause obvious speed jumps.
 
 <a name="player-volume-booster"></a>
 
@@ -136,36 +157,24 @@ Notes:
 - Some browsers may require the user to interact with the page before volume boosting can actually start working.
 - If the in-player button is hidden, the default enabled state can still take effect, but you cannot temporarily toggle it in the player.
 
-<a name="player-video-zoom"></a>
+<a name="player-other-max-volume"></a>
 
-## Video Zoom
+### Use True 100% Volume at Maximum Volume
 
-<a name="player-video-zoom-wheel"></a>
+Default: `On` | Version: `v1.0.0 (2025-05-19)`
 
-### Zoom the Video with the Mouse Wheel
-
-Default: `On` | Version: `v1.1.8 (2026-07-03)`
-
-After enabling this, you can scroll the mouse wheel over the video image to zoom in or out. After zooming in, you can drag the image to move the viewing area.
+After enabling this, when YouTube's volume bar is at 100%, the extension ensures the video element itself is also at a true full-volume state.
 
 Suitable use cases:
 
-- The video contains small text, fine details, or distant content that you need to see clearly.
-- You want to zoom into a local area of a landscape video.
-- You need to temporarily inspect details while watching teaching videos, screen recordings, or monitoring footage.
-
-Usage:
-
-- Move the mouse to the middle area of the video image and scroll up to zoom in.
-- After zooming in, scroll down to zoom out until the original size is restored.
-- After zooming in, hold the left mouse button and drag to move the image.
+- YouTube shows full volume, but the actual sound is still low.
+- You want to ensure the player is not additionally reducing volume.
 
 Notes:
 
-- The maximum zoom is 4x.
-- Video zoom will not trigger when the mouse is over player buttons, the control bar, links, input boxes, or similar areas.
-- When the video is at its original size, only the area in the center of the video where the zoom hint appears captures the mouse wheel; the rest of the page can still scroll normally.
-- This feature only affects the current video image and does not change the video source file.
+- This feature only intervenes when YouTube's volume bar is at 100%.
+- This is not extra volume amplification; if you need volume above 100%, use "Volume Booster".
+- When active, the volume slider uses a noticeable color indicator.
 
 <a name="player-subtitle"></a>
 
@@ -200,7 +209,7 @@ Notes:
 
 ## Function Buttons
 
-The rotate, mirror, and screenshot buttons can be enabled independently.
+The rotate, mirror, screenshot, and in-page fullscreen buttons can be enabled independently. For the function button group, choose never collapse, always collapse, or automatic collapsing when the player control bar runs out of space. Automatic collapsing is the default; the separate in-page fullscreen button is not part of this group.
 
 <a name="player-function-buttons-rotate"></a>
 
@@ -262,6 +271,16 @@ Notes:
 - If the current video frame is not ready yet, the screenshot may fail.
 - The screenshot filename will try to use the video title and current playback time.
 
+<a name="player-function-buttons-in-page-fullscreen"></a>
+
+### In-Page Fullscreen Button
+
+Default: `Off` | Version: `Unreleased`
+
+Shows an additional button beside YouTube's fullscreen button on normal video watch pages. Click it to fill the browser page with the video while keeping the browser tabs and toolbar available; click it again to leave this view.
+
+This is useful when you want a larger video without entering system fullscreen. Changing pages or turning off this setting exits in-page fullscreen.
+
 <a name="player-button-display"></a>
 
 ## Button Display Mode
@@ -301,6 +320,37 @@ Notes:
 
 - The subtitles button only supports "Auto" and "Hide"; it does not provide "Force enable".
 - If YouTube's page structure changes, display control for individual buttons may temporarily stop working.
+
+<a name="player-video-zoom"></a>
+
+## Video Zoom
+
+<a name="player-video-zoom-wheel"></a>
+
+### Zoom the Video with the Mouse Wheel
+
+Default: `On` | Version: `v1.1.8 (2026-07-03)`
+
+After enabling this, you can scroll the mouse wheel over the video image to zoom in or out. After zooming in, you can drag the image to move the viewing area.
+
+Suitable use cases:
+
+- The video contains small text, fine details, or distant content that you need to see clearly.
+- You want to zoom into a local area of a landscape video.
+- You need to temporarily inspect details while watching teaching videos, screen recordings, or monitoring footage.
+
+Usage:
+
+- Move the mouse to the middle area of the video image and scroll up to zoom in.
+- After zooming in, scroll down to zoom out until the original size is restored.
+- After zooming in, hold the left mouse button and drag to move the image.
+
+Notes:
+
+- The maximum zoom is 4x.
+- Video zoom will not trigger when the mouse is over player buttons, the control bar, links, input boxes, or similar areas.
+- When the video is at its original size, only the area in the center of the video where the zoom hint appears captures the mouse wheel; the rest of the page can still scroll normally.
+- This feature only affects the current video image and does not change the video source file.
 
 <a name="player-mini-player"></a>
 
@@ -397,36 +447,36 @@ Configurable options:
 
 - Whether to show video time.
 - Font size, supporting 8 to 48.
-- Display position: bottom-left, bottom-right, top-left, or top-right.
 - Offset from the edge, supporting 0 to 200 pixels.
+- Display position: bottom-left, bottom-right, top-left, or top-right.
 
 Notes:
 
 - The time badge is mainly shown when the player control bar is hidden.
 - Live videos usually only show the current playback time.
 
-<a name="player-other"></a>
+<a name="player-ui-network-speed"></a>
 
-## Other
+### Real-Time Network Speed
 
-<a name="player-other-max-volume"></a>
+Default: `Bottom-right of the video and control bar; fixed MB/s; page traffic total off` | Version: `Unreleased`
 
-### Use True 100% Volume at Maximum Volume
+Shows the current player transfer speed so you can tell when the video is loading data. These settings are under Player → UI.
 
-Default: `On` | Version: `v1.0.0 (2025-05-19)`
+Configurable options:
 
-After enabling this, when YouTube's volume bar is at 100%, the extension ensures the video element itself is also at a true full-volume state.
-
-Suitable use cases:
-
-- YouTube shows full volume, but the actual sound is still low.
-- You want to ensure the player is not additionally reducing volume.
+- Display location: off, control bar only, or both the bottom-right of the video and the control bar.
+- Rate unit: always show MB/s, or switch automatically between KB/s and MB/s.
+- Track page traffic: adds an estimated cumulative transfer total beside the speed. The total resets when you change videos, navigate to another page, or restart tracking.
 
 Notes:
 
-- This feature only intervenes when YouTube's volume bar is at 100%.
-- This is not extra volume amplification; if you need volume above 100%, use "Volume Booster".
-- When active, the volume slider uses a noticeable color indicator.
+- The figures reflect traffic reported by the player, not all traffic from the browser or device. They are approximate and can fall to zero when playback uses buffered data.
+- Turning the display off grays out the unit and traffic options without clearing their saved choices.
+
+<a name="player-other"></a>
+
+## Other
 
 <a name="player-other-nonstop"></a>
 

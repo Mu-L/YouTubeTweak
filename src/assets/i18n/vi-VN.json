@@ -45,19 +45,20 @@
 				"quality": "Nếu chất lượng đã chọn không có, sẽ dùng chất lượng cao nhất thấp hơn."
 			}
 		},
-		"speedButtons": {
-			"title": "Nút tốc độ",
+		"playbackSpeed": {
+			"title": "Tốc độ phát",
 			"checkbox": {
-				"enable": "Hiển thị nút/thanh trượt tốc độ",
 				"save": "Ghi nhớ tốc độ phát",
 				"saveByChannel": "Ghi nhớ tốc độ phát theo kênh",
-				"keepMusicVideosAtNormalSpeed": "Luôn phát video âm nhạc ở tốc độ 1×",
-				"enableSlider": "Bật thanh trượt tốc độ",
-				"collapse": "Thu gọn các nút tốc độ"
+				"keepMusicVideosAtNormalSpeed": "Bắt đầu phát video âm nhạc ở tốc độ 1×",
+				"enable": "Hiển thị nút/thanh trượt tốc độ",
+				"collapse": "Thu gọn các nút tốc độ",
+				"enableSlider": "Bật thanh trượt tốc độ"
 			},
 			"tips": {
+				"save": "Hành vi phát",
+				"controls": "Điều khiển tốc độ",
 				"enabledButtons": "Các nút đang bật:",
-				"save": "Ghi nhớ tốc độ",
 				"slider": "Khi bật, kéo sang trái hoặc phải để chỉnh tốc độ liên tục; con lăn chuột dùng bước đã chọn."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "Cài sẵn"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "Không bao giờ thu gọn",
-				"always": "Luôn thu gọn",
-				"auto": "Tự động thu gọn"
+		"volumeBooster": {
+			"title": "Bộ tăng âm lượng",
+			"checkbox": {
+				"showControl": "Hiển thị điều khiển tăng âm bên cạnh dải tốc độ",
+				"enableByDefault": "Bật bộ tăng âm theo mặc định",
+				"maxVolume": "Tắt bộ cân bằng ở âm lượng tối đa (đúng 100%)"
+			},
+			"select": {
+				"multiplier": "Mức tăng âm"
+			},
+			"tips": {
+				"control": "Thêm một tầng khuếch đại thật vượt trên mức âm lượng 100% tích hợp của YouTube. Dùng nút trong trình phát để bật/tắt ngay lập tức."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "Ghi nhớ trạng thái bật/tắt phụ đề",
 				"saveByChannel": "Ghi nhớ trạng thái phụ đề theo kênh"
-			},
-			"tips": {
-				"save": "Ghi nhớ cài đặt phụ đề"
+			}
+		},
+		"functionButtons": {
+			"title": "Nút chức năng",
+			"checkbox": {
+				"enableRotateButton": "Bật nút xoay video",
+				"enableMirrorButton": "Bật nút lật gương video",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Thu gọn các nút chức năng",
+				"inPageFullscreen": "Hiện nút toàn màn hình trong trang"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Không bao giờ thu gọn",
+				"always": "Luôn thu gọn",
+				"auto": "Tự động thu gọn"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "Giao diện",
-			"checkbox": {
-				"hideCeElement": "Làm mờ video/tác giả đề xuất ở cuối video",
-				"progressEnable": "Hiển thị thanh tiến trình dưới video",
-				"progressHeight": "Chiều cao thanh tiến trình (px)",
-				"progressEnableTag": "Hiển thị thời gian video ở góc dưới bên trái",
-				"progressTagFontSize": "Cỡ chữ thời gian video",
-				"progressTagPosition": "Vị trí hiển thị thời gian video",
-				"progressTagOffset": "Khoảng cách tới mép (px)"
-			},
-			"position": {
-				"bottomLeft": "Góc dưới bên trái",
-				"bottomRight": "Góc dưới bên phải",
-				"topLeft": "Góc trên bên trái",
-				"topRight": "Góc trên bên phải",
-				"bottomCenter": "Chính giữa phía dưới",
-				"topCenter": "Chính giữa phía trên"
-			},
-			"tips": {
-				"timeTag": "Nhãn thời gian nổi",
-				"progress": "Thanh tiến trình video"
-			}
-		},
-		"other": {
-			"title": "Khác",
-			"checkbox": {
-				"maxVolume": "Tắt bộ cân bằng ở âm lượng tối đa (đúng 100%)",
-				"nonStop": "Tắt tự động tạm dừng video (nhắc: \"Video đã tạm dừng, tiếp tục xem?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "Nút chức năng",
-			"checkbox": {
-				"enableRotateButton": "Bật nút xoay video",
-				"enableMirrorButton": "Bật nút lật gương video",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Thu gọn các nút chức năng",
-				"inPageFullscreen": "Hiện nút toàn màn hình trong trang"
-			}
-		},
-		"volumeBooster": {
-			"title": "Bộ tăng âm lượng",
-			"checkbox": {
-				"showControl": "Hiển thị điều khiển tăng âm bên cạnh dải tốc độ",
-				"enableByDefault": "Bật bộ tăng âm theo mặc định"
-			},
-			"select": {
-				"multiplier": "Mức tăng âm"
-			},
-			"tips": {
-				"control": "Thêm một tầng khuếch đại thật vượt trên mức âm lượng 100% tích hợp của YouTube. Dùng nút trong trình phát để bật/tắt ngay lập tức."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "Giữ video hiện tại nổi khi bạn cuộn. Đóng từ trình phát bất cứ lúc nào."
+			}
+		},
+		"ui": {
+			"title": "Giao diện",
+			"checkbox": {
+				"hideCeElement": "Làm mờ video/tác giả đề xuất ở cuối video",
+				"progressEnable": "Hiển thị thanh tiến trình dưới video",
+				"progressHeight": "Chiều cao thanh tiến trình (px)",
+				"progressEnableTag": "Hiển thị thời gian video ở góc dưới bên trái",
+				"progressTagFontSize": "Cỡ chữ thời gian video",
+				"progressTagPosition": "Vị trí hiển thị thời gian video",
+				"progressTagOffset": "Khoảng cách tới mép (px)"
+			},
+			"position": {
+				"bottomLeft": "Góc dưới bên trái",
+				"bottomRight": "Góc dưới bên phải",
+				"topLeft": "Góc trên bên trái",
+				"topRight": "Góc trên bên phải",
+				"bottomCenter": "Chính giữa phía dưới",
+				"topCenter": "Chính giữa phía trên"
+			},
+			"tips": {
+				"timeTag": "Nhãn thời gian nổi",
+				"progress": "Thanh tiến trình video"
+			},
+			"networkSpeed": {
+				"title": "Tốc độ mạng theo thời gian thực",
+				"label": "Vị trí tốc độ mạng theo thời gian thực",
+				"option": {
+					"off": "Tắt",
+					"controls": "Chỉ trên thanh điều khiển",
+					"both": "Góc dưới bên phải video và thanh điều khiển"
+				},
+				"unit": {
+					"label": "Đơn vị tốc độ",
+					"option": {
+						"mb": "MB/s cố định",
+						"auto": "KB/s | MB/s tự động"
+					}
+				},
+				"trackPageTraffic": "Thống kê mức sử dụng dữ liệu của trang"
+			}
+		},
+		"other": {
+			"title": "Khác",
+			"checkbox": {
+				"nonStop": "Tắt tự động tạm dừng video (nhắc: \"Video đã tạm dừng, tiếp tục xem?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "Giao diện",
 			"checkbox": {
 				"premiumLogo": "Ngụy trang thành logo Premium"
-			},
-			"networkSpeed": {
-				"title": "Tốc độ mạng theo thời gian thực",
-				"label": "Vị trí tốc độ mạng theo thời gian thực",
-				"option": {
-					"off": "Tắt",
-					"controls": "Chỉ trên thanh điều khiển",
-					"both": "Góc dưới bên phải video và thanh điều khiển"
-				},
-				"unit": {
-					"label": "Đơn vị tốc độ",
-					"option": {
-						"mb": "MB/s cố định",
-						"auto": "KB/s | MB/s tự động"
-					}
-				},
-				"trackPageTraffic": "Thống kê mức sử dụng dữ liệu của trang"
 			},
 			"logoCountryCode": "Thay đổi mã quốc gia của logo"
 		},

@@ -4,6 +4,9 @@
 }
 
 body {
+	--settings-accent: #c271ff;
+	--settings-accent-soft: #f5ebff;
+	--settings-accent-ink: #763aa3;
 	background: #f4f5f8;
 	color: #30313d;
 	margin: 0;
@@ -156,10 +159,10 @@ hr {
 
 .btn {
 	cursor: pointer;
-	background: #409eff;
+	background: var(--settings-accent);
 	border: none;
 	outline: 0;
-	color: white;
+	color: #351549;
 	padding: 6px 11px;
 	border-radius: 7px;
 	font-size: 12px;
@@ -169,15 +172,15 @@ hr {
 		box-shadow 0.18s;
 
 	&:hover {
-		background: #66b1ff;
+		background: #ce8fff;
 	}
 
 	&:active {
-		background: #2691ff;
+		background: #b962f4;
 	}
 
 	&:focus-visible {
-		box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.2);
+		box-shadow: 0 0 0 3px var(--settings-accent-soft);
 	}
 }
 
@@ -189,7 +192,8 @@ textarea {
 	padding: 6px 8px;
 	background: #fff;
 	color: inherit;
-	font-size: 14px;
+	font-size: 13px;
+	min-height: 32px;
 
 	transition:
 		border-color 0.18s,
@@ -200,9 +204,9 @@ textarea {
 	}
 
 	&:focus {
-		border-color: #86b7fe !important;
+		border-color: var(--settings-accent) !important;
 		outline: 0;
-		box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2) !important;
+		box-shadow: 0 0 0 3px var(--settings-accent-soft) !important;
 	}
 
 	&:disabled {
@@ -230,8 +234,8 @@ input[type="checkbox"] {
 		box-shadow 0.18s;
 
 	&:checked {
-		background-color: #2196f3;
-		border-color: #2196f3;
+		background-color: var(--settings-accent);
+		border-color: var(--settings-accent);
 
 		&::after {
 			content: "";
@@ -246,14 +250,14 @@ input[type="checkbox"] {
 		}
 
 		&:hover {
-			background-color: #0062c4;
-			border-color: #0062c4;
+			background-color: #b962f4;
+			border-color: #b962f4;
 		}
 	}
 
 	&:focus-visible {
 		outline: none;
-		box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.18);
+		box-shadow: 0 0 0 3px var(--settings-accent-soft);
 	}
 
 	&:disabled {

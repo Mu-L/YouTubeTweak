@@ -45,19 +45,20 @@
 				"quality": "If the selected quality is not available, the highest lower quality will be used."
 			}
 		},
-		"speedButtons": {
-			"title": "Speed buttons",
+		"playbackSpeed": {
+			"title": "Playback speed",
 			"checkbox": {
-				"enable": "Show speed buttons/speed slider",
 				"save": "Remember playback speed",
 				"saveByChannel": "Remember playback speed per channel",
-				"keepMusicVideosAtNormalSpeed": "Always play music videos at 1× speed",
-				"enableSlider": "Enable speed slider",
-				"collapse": "Collapse speed buttons"
+				"keepMusicVideosAtNormalSpeed": "Start music videos at 1× speed",
+				"enable": "Show speed buttons/speed slider",
+				"collapse": "Collapse speed buttons",
+				"enableSlider": "Enable speed slider"
 			},
 			"tips": {
+				"save": "Playback behavior",
+				"controls": "Speed controls",
 				"enabledButtons": "Enabled buttons:",
-				"save": "Remember speed",
 				"slider": "When enabled, drag left or right for continuous speed; the mouse wheel uses the selected wheel step."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "Presets"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "Never collapse",
-				"always": "Always collapse",
-				"auto": "Auto collapse"
+		"volumeBooster": {
+			"title": "Volume booster",
+			"checkbox": {
+				"showControl": "Show booster control beside the speed strip",
+				"enableByDefault": "Enable booster by default",
+				"maxVolume": "Disable equalizer at max volume (true 100%)"
+			},
+			"select": {
+				"multiplier": "Boost level"
+			},
+			"tips": {
+				"control": "Adds a real gain stage above YouTube's built-in 100% volume. Use the in-player button to toggle it instantly."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "Remember subtitle on/off status",
 				"saveByChannel": "Remember subtitle on/off status per channel"
-			},
-			"tips": {
-				"save": "Remember subtitle settings"
+			}
+		},
+		"functionButtons": {
+			"title": "Function Buttons",
+			"checkbox": {
+				"enableRotateButton": "Enable video rotation button",
+				"enableMirrorButton": "Enable video mirror button",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Collapse function buttons",
+				"inPageFullscreen": "Show in-page fullscreen button"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Never collapse",
+				"always": "Always collapse",
+				"auto": "Auto collapse"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "UI",
-			"checkbox": {
-				"hideCeElement": "Translucent the recommended videos/authors at the end of videos",
-				"progressEnable": "Show the progress bar below the video",
-				"progressHeight": "Progress bar height (px)",
-				"progressEnableTag": "Show the video time in the corner",
-				"progressTagFontSize": "Video time font size",
-				"progressTagPosition": "Video time position",
-				"progressTagOffset": "Distance from edge (px)"
-			},
-			"position": {
-				"bottomLeft": "Bottom-left corner",
-				"bottomRight": "Bottom-right corner",
-				"topLeft": "Top-left corner",
-				"topRight": "Top-right corner",
-				"bottomCenter": "Bottom-center",
-				"topCenter": "Top-center"
-			},
-			"tips": {
-				"timeTag": "Floating video time tags",
-				"progress": "Video progress bar"
-			}
-		},
-		"other": {
-			"title": "Other",
-			"checkbox": {
-				"maxVolume": "Disable equalizer at max volume (true 100%)",
-				"nonStop": "Disable automatic video pausing (prompt: \"Video paused. Continue watching?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "Function Buttons",
-			"checkbox": {
-				"enableRotateButton": "Enable video rotation button",
-				"enableMirrorButton": "Enable video mirror button",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Collapse function buttons",
-				"inPageFullscreen": "Show in-page fullscreen button"
-			}
-		},
-		"volumeBooster": {
-			"title": "Volume booster",
-			"checkbox": {
-				"showControl": "Show booster control beside the speed strip",
-				"enableByDefault": "Enable booster by default"
-			},
-			"select": {
-				"multiplier": "Boost level"
-			},
-			"tips": {
-				"control": "Adds a real gain stage above YouTube's built-in 100% volume. Use the in-player button to toggle it instantly."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "Float the current video while you scroll. Dismiss it from the player anytime."
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "Translucent the recommended videos/authors at the end of videos",
+				"progressEnable": "Show the progress bar below the video",
+				"progressHeight": "Progress bar height (px)",
+				"progressEnableTag": "Show the video time in the corner",
+				"progressTagFontSize": "Video time font size",
+				"progressTagPosition": "Video time position",
+				"progressTagOffset": "Distance from edge (px)"
+			},
+			"position": {
+				"bottomLeft": "Bottom-left corner",
+				"bottomRight": "Bottom-right corner",
+				"topLeft": "Top-left corner",
+				"topRight": "Top-right corner",
+				"bottomCenter": "Bottom-center",
+				"topCenter": "Top-center"
+			},
+			"tips": {
+				"timeTag": "Floating video time tags",
+				"progress": "Video progress bar"
+			},
+			"networkSpeed": {
+				"title": "Real-time network speed",
+				"label": "Real-time network speed position",
+				"option": {
+					"off": "Off",
+					"controls": "Control bar only",
+					"both": "Video bottom-right and control bar"
+				},
+				"unit": {
+					"label": "Speed unit",
+					"option": {
+						"mb": "Fixed MB/s",
+						"auto": "Automatic KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "Track page data usage"
+			}
+		},
+		"other": {
+			"title": "Other",
+			"checkbox": {
+				"nonStop": "Disable automatic video pausing (prompt: \"Video paused. Continue watching?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "Appearance",
 			"checkbox": {
 				"premiumLogo": "Disguise as the Premium logo"
-			},
-			"networkSpeed": {
-				"title": "Real-time network speed",
-				"label": "Real-time network speed position",
-				"option": {
-					"off": "Off",
-					"controls": "Control bar only",
-					"both": "Video bottom-right and control bar"
-				},
-				"unit": {
-					"label": "Speed unit",
-					"option": {
-						"mb": "Fixed MB/s",
-						"auto": "Automatic KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "Track page data usage"
 			},
 			"logoCountryCode": "Modify logo country code"
 		},

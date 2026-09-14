@@ -45,19 +45,20 @@
 				"quality": "اگر کیفیت انتخابی موجود نباشد، بالاترین کیفیت پایین‌تر استفاده می‌شود."
 			}
 		},
-		"speedButtons": {
-			"title": "دکمه‌های سرعت",
+		"playbackSpeed": {
+			"title": "سرعت پخش",
 			"checkbox": {
-				"enable": "نمایش دکمه‌های سرعت/نوار لغزنده سرعت",
 				"save": "سرعت پخش را به خاطر بسپار",
 				"saveByChannel": "سرعت پخش را برای هر کانال به خاطر بسپار",
-				"keepMusicVideosAtNormalSpeed": "ویدیوهای موسیقی را همیشه با سرعت ۱× پخش کن",
-				"enableSlider": "فعال کردن نوار لغزنده سرعت",
-				"collapse": "جمع کردن دکمه‌های سرعت"
+				"keepMusicVideosAtNormalSpeed": "پخش ویدیوهای موسیقی را با سرعت ۱× شروع کن",
+				"enable": "نمایش دکمه‌های سرعت/نوار لغزنده سرعت",
+				"collapse": "جمع کردن دکمه‌های سرعت",
+				"enableSlider": "فعال کردن نوار لغزنده سرعت"
 			},
 			"tips": {
+				"save": "رفتار پخش",
+				"controls": "کنترل‌های سرعت",
 				"enabledButtons": "دکمه‌های فعال:",
-				"save": "سرعت را ذخیره کن",
 				"slider": "پس از فعال‌سازی، برای تنظیم پیوسته سرعت به چپ یا راست بکشید؛ چرخ ماوس از گام انتخاب‌شده استفاده می‌کند."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "پیش‌فرض‌ها"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "هرگز جمع نشود",
-				"always": "همیشه جمع شود",
-				"auto": "جمع شدن خودکار"
+		"volumeBooster": {
+			"title": "تقویت‌کننده صدا",
+			"checkbox": {
+				"showControl": "نمایش کنترل تقویت‌کننده کنار نوار سرعت",
+				"enableByDefault": "فعال‌سازی تقویت‌کننده به‌صورت پیش‌فرض",
+				"maxVolume": "غیرفعال کردن اکولایزر در حداکثر صدا (۱۰۰٪ واقعی)"
+			},
+			"select": {
+				"multiplier": "سطح تقویت"
+			},
+			"tips": {
+				"control": "یک مرحله تقویت واقعی بالاتر از صدای داخلی ۱۰۰٪ YouTube اضافه می‌کند. برای تغییر فوری، از دکمه داخل پخش‌کننده استفاده کنید."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "وضعیت روشن/خاموش زیرنویس را به خاطر بسپار",
 				"saveByChannel": "وضعیت زیرنویس برای هر کانال را به خاطر بسپار"
-			},
-			"tips": {
-				"save": "تنظیمات زیرنویس را حفظ کن"
+			}
+		},
+		"functionButtons": {
+			"title": "دکمه‌های عملکردی",
+			"checkbox": {
+				"enableRotateButton": "فعال کردن دکمه چرخش ویدیو",
+				"enableMirrorButton": "فعال کردن دکمه آینه کردن ویدیو",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "جمع کردن دکمه‌های عملکردی",
+				"inPageFullscreen": "نمایش دکمه تمام‌صفحه درون صفحه"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "هرگز جمع نشود",
+				"always": "همیشه جمع شود",
+				"auto": "جمع شدن خودکار"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "رابط کاربری",
-			"checkbox": {
-				"hideCeElement": "ویدیوها/نویسندگان پیشنهادی پایان ویدیو را نیمه‌شفاف کن",
-				"progressEnable": "نوار پیشرفت را زیر ویدیو نشان بده",
-				"progressHeight": "ارتفاع نوار پیشرفت (px)",
-				"progressEnableTag": "زمان ویدیو را در گوشه پایین چپ نمایش بده",
-				"progressTagFontSize": "اندازه فونت زمان ویدیو",
-				"progressTagPosition": "موقعیت زمان ویدیو",
-				"progressTagOffset": "فاصله از لبه (px)"
-			},
-			"position": {
-				"bottomLeft": "گوشه چپ پایین",
-				"bottomRight": "گوشه راست پایین",
-				"topLeft": "گوشه چپ بالا",
-				"topRight": "گوشه راست بالا",
-				"bottomCenter": "پایین وسط",
-				"topCenter": "بالای وسط"
-			},
-			"tips": {
-				"timeTag": "برچسب زمان شناور ویدیو",
-				"progress": "نوار پیشرفت ویدیو"
-			}
-		},
-		"other": {
-			"title": "سایر",
-			"checkbox": {
-				"maxVolume": "غیرفعال کردن اکولایزر در حداکثر صدا (۱۰۰٪ واقعی)",
-				"nonStop": "غیرفعال کردن توقف خودکار ویدیو (پیام: \"ویدیو متوقف شد، به تماشا ادامه می‌دهید؟\")"
-			}
-		},
-		"functionButtons": {
-			"title": "دکمه‌های عملکردی",
-			"checkbox": {
-				"enableRotateButton": "فعال کردن دکمه چرخش ویدیو",
-				"enableMirrorButton": "فعال کردن دکمه آینه کردن ویدیو",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "جمع کردن دکمه‌های عملکردی",
-				"inPageFullscreen": "نمایش دکمه تمام‌صفحه درون صفحه"
-			}
-		},
-		"volumeBooster": {
-			"title": "تقویت‌کننده صدا",
-			"checkbox": {
-				"showControl": "نمایش کنترل تقویت‌کننده کنار نوار سرعت",
-				"enableByDefault": "فعال‌سازی تقویت‌کننده به‌صورت پیش‌فرض"
-			},
-			"select": {
-				"multiplier": "سطح تقویت"
-			},
-			"tips": {
-				"control": "یک مرحله تقویت واقعی بالاتر از صدای داخلی ۱۰۰٪ YouTube اضافه می‌کند. برای تغییر فوری، از دکمه داخل پخش‌کننده استفاده کنید."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "هنگام پیمایش، ویدیوی فعلی را شناور کن. هر زمان می‌توانی آن را از پخش‌کننده ببندی."
+			}
+		},
+		"ui": {
+			"title": "رابط کاربری",
+			"checkbox": {
+				"hideCeElement": "ویدیوها/نویسندگان پیشنهادی پایان ویدیو را نیمه‌شفاف کن",
+				"progressEnable": "نوار پیشرفت را زیر ویدیو نشان بده",
+				"progressHeight": "ارتفاع نوار پیشرفت (px)",
+				"progressEnableTag": "زمان ویدیو را در گوشه پایین چپ نمایش بده",
+				"progressTagFontSize": "اندازه فونت زمان ویدیو",
+				"progressTagPosition": "موقعیت زمان ویدیو",
+				"progressTagOffset": "فاصله از لبه (px)"
+			},
+			"position": {
+				"bottomLeft": "گوشه چپ پایین",
+				"bottomRight": "گوشه راست پایین",
+				"topLeft": "گوشه چپ بالا",
+				"topRight": "گوشه راست بالا",
+				"bottomCenter": "پایین وسط",
+				"topCenter": "بالای وسط"
+			},
+			"tips": {
+				"timeTag": "برچسب زمان شناور ویدیو",
+				"progress": "نوار پیشرفت ویدیو"
+			},
+			"networkSpeed": {
+				"title": "سرعت لحظه‌ای شبکه",
+				"label": "موقعیت سرعت لحظه‌ای شبکه",
+				"option": {
+					"off": "خاموش",
+					"controls": "فقط نوار کنترل",
+					"both": "پایین سمت راست ویدیو و نوار کنترل"
+				},
+				"unit": {
+					"label": "واحد سرعت",
+					"option": {
+						"mb": "MB/s ثابت",
+						"auto": "KB/s | MB/s خودکار"
+					}
+				},
+				"trackPageTraffic": "محاسبه مصرف داده صفحه"
+			}
+		},
+		"other": {
+			"title": "سایر",
+			"checkbox": {
+				"nonStop": "غیرفعال کردن توقف خودکار ویدیو (پیام: \"ویدیو متوقف شد، به تماشا ادامه می‌دهید؟\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "ظاهر",
 			"checkbox": {
 				"premiumLogo": "نمایش لوگو به‌شکل Premium"
-			},
-			"networkSpeed": {
-				"title": "سرعت لحظه‌ای شبکه",
-				"label": "موقعیت سرعت لحظه‌ای شبکه",
-				"option": {
-					"off": "خاموش",
-					"controls": "فقط نوار کنترل",
-					"both": "پایین سمت راست ویدیو و نوار کنترل"
-				},
-				"unit": {
-					"label": "واحد سرعت",
-					"option": {
-						"mb": "MB/s ثابت",
-						"auto": "KB/s | MB/s خودکار"
-					}
-				},
-				"trackPageTraffic": "محاسبه مصرف داده صفحه"
 			},
 			"logoCountryCode": "تغییر کد کشور لوگو"
 		},

@@ -269,7 +269,7 @@ function saveCustomCss() {
 	color: #24292f;
 	background: #fff;
 	border: 1px solid #dfdfdf;
-	border-radius: 5px;
+	border-radius: 7px;
 	resize: vertical;
 	user-select: text;
 	outline: 0;
@@ -281,12 +281,12 @@ function saveCustomCss() {
 	}
 
 	&:hover {
-		border-color: #c0c4cc;
+		border-color: var(--settings-accent);
 	}
 
 	&:focus {
-		border-color: #86b7fe;
-		box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+		border-color: var(--settings-accent);
+		box-shadow: 0 0 0 3px var(--settings-accent-soft);
 	}
 
 	& :deep(.token.comment) {
@@ -325,6 +325,10 @@ function saveCustomCss() {
 		text-decoration-color: black;
 	}
 	button {
+		pointer-events: none;
+	}
+
+	&:hover > .docs-help-link {
 		pointer-events: none;
 	}
 }

@@ -45,19 +45,20 @@
 				"quality": "Falls die gewählte Qualität nicht verfügbar ist, wird die nächst niedrigere höchste Qualität verwendet."
 			}
 		},
-		"speedButtons": {
-			"title": "Geschwindigkeits-Schaltflächen",
+		"playbackSpeed": {
+			"title": "Wiedergabegeschwindigkeit",
 			"checkbox": {
-				"enable": "Geschwindigkeitsschaltflächen/Regler anzeigen",
 				"save": "Wiedergabegeschwindigkeit merken",
 				"saveByChannel": "Wiedergabegeschwindigkeit pro Kanal merken",
-				"keepMusicVideosAtNormalSpeed": "Musikvideos immer mit 1×-Geschwindigkeit abspielen",
-				"enableSlider": "Geschwindigkeitsregler aktivieren",
-				"collapse": "Geschwindigkeits-Schaltflächen einklappen"
+				"keepMusicVideosAtNormalSpeed": "Musikvideos mit 1×-Geschwindigkeit starten",
+				"enable": "Geschwindigkeitsschaltflächen/Regler anzeigen",
+				"collapse": "Geschwindigkeits-Schaltflächen einklappen",
+				"enableSlider": "Geschwindigkeitsregler aktivieren"
 			},
 			"tips": {
+				"save": "Wiedergabeverhalten",
+				"controls": "Geschwindigkeitsregler",
 				"enabledButtons": "Aktivierte Schaltflächen:",
-				"save": "Geschwindigkeit merken",
 				"slider": "Wenn aktiviert, kannst du zum stufenlosen Anpassen nach links oder rechts ziehen; das Mausrad nutzt die gewählte Rad-Schrittweite."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "Vorgaben"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "Nie einklappen",
-				"always": "Immer einklappen",
-				"auto": "Automatisch einklappen"
+		"volumeBooster": {
+			"title": "Lautstärkeverstärker",
+			"checkbox": {
+				"showControl": "Booster-Steuerung neben der Geschwindigkeitsleiste anzeigen",
+				"enableByDefault": "Booster standardmäßig aktivieren",
+				"maxVolume": "Equalizer bei maximaler Lautstärke deaktivieren (echte 100 %)"
+			},
+			"select": {
+				"multiplier": "Verstärkungsstufe"
+			},
+			"tips": {
+				"control": "Fügt eine echte Verstärkungsstufe oberhalb der integrierten 100-%-Lautstärke von YouTube hinzu. Mit der Schaltfläche im Player kannst du sie sofort umschalten."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "Untertitel An/Aus merken",
 				"saveByChannel": "Untertitel-An/Aus pro Kanal merken"
-			},
-			"tips": {
-				"save": "Untertitel-Einstellungen merken"
+			}
+		},
+		"functionButtons": {
+			"title": "Funktionsschaltflächen",
+			"checkbox": {
+				"enableRotateButton": "Schaltfläche zum Drehen des Videos aktivieren",
+				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Funktionsschaltflächen einklappen",
+				"inPageFullscreen": "Schaltfläche für Vollbild innerhalb der Seite anzeigen"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Nie einklappen",
+				"always": "Immer einklappen",
+				"auto": "Automatisch einklappen"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "Oberfläche",
-			"checkbox": {
-				"hideCeElement": "Empfohlene Videos/Autoren am Ende von Videos halbtransparent machen",
-				"progressEnable": "Fortschrittsbalken unter dem Video anzeigen",
-				"progressHeight": "Höhe der Fortschrittsleiste (px)",
-				"progressEnableTag": "Videozeit unten links anzeigen",
-				"progressTagFontSize": "Schriftgröße der Videozeit",
-				"progressTagPosition": "Position der Videozeit",
-				"progressTagOffset": "Abstand zum Rand (px)"
-			},
-			"position": {
-				"bottomLeft": "Unten links",
-				"bottomRight": "Unten rechts",
-				"topLeft": "Oben links",
-				"topRight": "Oben rechts",
-				"bottomCenter": "Unten mittig",
-				"topCenter": "Oben mittig"
-			},
-			"tips": {
-				"timeTag": "Schwebende Videozeit",
-				"progress": "Video-Fortschrittsleiste"
-			}
-		},
-		"other": {
-			"title": "Sonstiges",
-			"checkbox": {
-				"maxVolume": "Equalizer bei maximaler Lautstärke deaktivieren (echte 100 %)",
-				"nonStop": "Automatisches Pausieren des Videos deaktivieren (Hinweis: \"Video pausiert. Weiter ansehen?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "Funktionsschaltflächen",
-			"checkbox": {
-				"enableRotateButton": "Schaltfläche zum Drehen des Videos aktivieren",
-				"enableMirrorButton": "Schaltfläche zum Spiegeln des Videos aktivieren",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Funktionsschaltflächen einklappen",
-				"inPageFullscreen": "Schaltfläche für Vollbild innerhalb der Seite anzeigen"
-			}
-		},
-		"volumeBooster": {
-			"title": "Lautstärkeverstärker",
-			"checkbox": {
-				"showControl": "Booster-Steuerung neben der Geschwindigkeitsleiste anzeigen",
-				"enableByDefault": "Booster standardmäßig aktivieren"
-			},
-			"select": {
-				"multiplier": "Verstärkungsstufe"
-			},
-			"tips": {
-				"control": "Fügt eine echte Verstärkungsstufe oberhalb der integrierten 100-%-Lautstärke von YouTube hinzu. Mit der Schaltfläche im Player kannst du sie sofort umschalten."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "Video beim Scrollen schwebend anzeigen. Du kannst es jederzeit im Player schließen."
+			}
+		},
+		"ui": {
+			"title": "Oberfläche",
+			"checkbox": {
+				"hideCeElement": "Empfohlene Videos/Autoren am Ende von Videos halbtransparent machen",
+				"progressEnable": "Fortschrittsbalken unter dem Video anzeigen",
+				"progressHeight": "Höhe der Fortschrittsleiste (px)",
+				"progressEnableTag": "Videozeit unten links anzeigen",
+				"progressTagFontSize": "Schriftgröße der Videozeit",
+				"progressTagPosition": "Position der Videozeit",
+				"progressTagOffset": "Abstand zum Rand (px)"
+			},
+			"position": {
+				"bottomLeft": "Unten links",
+				"bottomRight": "Unten rechts",
+				"topLeft": "Oben links",
+				"topRight": "Oben rechts",
+				"bottomCenter": "Unten mittig",
+				"topCenter": "Oben mittig"
+			},
+			"tips": {
+				"timeTag": "Schwebende Videozeit",
+				"progress": "Video-Fortschrittsleiste"
+			},
+			"networkSpeed": {
+				"title": "Echtzeit-Netzwerkgeschwindigkeit",
+				"label": "Position der Echtzeit-Netzwerkgeschwindigkeit",
+				"option": {
+					"off": "Aus",
+					"controls": "Nur Steuerleiste",
+					"both": "Unten rechts im Video und in der Steuerleiste"
+				},
+				"unit": {
+					"label": "Geschwindigkeitseinheit",
+					"option": {
+						"mb": "Fest MB/s",
+						"auto": "Automatisch KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "Seitendatenverbrauch erfassen"
+			}
+		},
+		"other": {
+			"title": "Sonstiges",
+			"checkbox": {
+				"nonStop": "Automatisches Pausieren des Videos deaktivieren (Hinweis: \"Video pausiert. Weiter ansehen?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "Erscheinungsbild",
 			"checkbox": {
 				"premiumLogo": "Premium-Logo vortäuschen"
-			},
-			"networkSpeed": {
-				"title": "Echtzeit-Netzwerkgeschwindigkeit",
-				"label": "Position der Echtzeit-Netzwerkgeschwindigkeit",
-				"option": {
-					"off": "Aus",
-					"controls": "Nur Steuerleiste",
-					"both": "Unten rechts im Video und in der Steuerleiste"
-				},
-				"unit": {
-					"label": "Geschwindigkeitseinheit",
-					"option": {
-						"mb": "Fest MB/s",
-						"auto": "Automatisch KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "Seitendatenverbrauch erfassen"
 			},
 			"logoCountryCode": "Ländercode des Logos ändern"
 		},

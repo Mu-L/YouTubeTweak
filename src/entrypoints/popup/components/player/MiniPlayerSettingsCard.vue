@@ -13,39 +13,39 @@
 
 			<p>{{ $t("player.miniPlayer.tips.enable") }}</p>
 
-			<label class="form-item form-item-select">
-				<span>{{ $t("player.miniPlayer.select.size") }}</span>
-				<select class="w-100" v-model="config['player.miniPlayer.size']">
-					<option v-for="option in sizeOptions" :key="option" :value="option">
-						{{ option.replace("x", "×") }}
-					</option>
-				</select>
-			</label>
+			<fieldset
+				class="settings-dependent"
+				:disabled="!config['player.miniPlayer.enable']"
+				:aria-label="$t('player.miniPlayer.title')"
+			>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.miniPlayer.select.size") }}</span>
+					<select class="w-100" v-model="config['player.miniPlayer.size']">
+						<option v-for="option in sizeOptions" :key="option" :value="option">
+							{{ option.replace("x", "×") }}
+						</option>
+					</select>
+				</label>
 
-			<label class="form-item form-item-select">
-				<span>{{ $t("player.miniPlayer.select.position") }}</span>
-				<select class="w-100" v-model="config['player.miniPlayer.position']">
-					<option v-for="option in positionOptions" :key="option.value" :value="option.value">
-						{{ option.arrow }} {{ $t(option.labelKey) }}
-					</option>
-				</select>
-			</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.miniPlayer.select.position") }}</span>
+					<select class="w-100" v-model="config['player.miniPlayer.position']">
+						<option v-for="option in positionOptions" :key="option.value" :value="option.value">
+							{{ option.arrow }} {{ $t(option.labelKey) }}
+						</option>
+					</select>
+				</label>
 
-			<label class="form-item form-item-select">
-				<span>{{ $t("player.miniPlayer.select.offset") }}</span>
-				<input type="number" min="0" max="96" style="width: 90px" v-model.number="config['player.miniPlayer.offset']" />
-			</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.miniPlayer.select.offset") }}</span>
+					<input type="number" min="0" max="96" v-model.number="config['player.miniPlayer.offset']" />
+				</label>
 
-			<label class="form-item form-item-select">
-				<span>{{ $t("player.miniPlayer.select.triggerOffset") }}</span>
-				<input
-					type="number"
-					min="0"
-					max="400"
-					style="width: 90px"
-					v-model.number="config['player.miniPlayer.triggerOffset']"
-				/>
-			</label>
+				<label class="form-item form-item-select">
+					<span>{{ $t("player.miniPlayer.select.triggerOffset") }}</span>
+					<input type="number" min="0" max="400" v-model.number="config['player.miniPlayer.triggerOffset']" />
+				</label>
+			</fieldset>
 		</div>
 	</div>
 </template>

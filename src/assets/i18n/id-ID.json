@@ -45,19 +45,20 @@
 				"quality": "Jika kualitas yang dipilih tidak tersedia, kualitas tertinggi di bawahnya akan digunakan."
 			}
 		},
-		"speedButtons": {
-			"title": "Tombol kecepatan",
+		"playbackSpeed": {
+			"title": "Kecepatan pemutaran",
 			"checkbox": {
-				"enable": "Tampilkan tombol/slider kecepatan",
 				"save": "Ingat kecepatan pemutaran",
 				"saveByChannel": "Ingat kecepatan pemutaran per kanal",
-				"keepMusicVideosAtNormalSpeed": "Selalu putar video musik pada kecepatan 1×",
-				"enableSlider": "Aktifkan slider kecepatan",
-				"collapse": "Ciutkan tombol kecepatan"
+				"keepMusicVideosAtNormalSpeed": "Mulai video musik pada kecepatan 1×",
+				"enable": "Tampilkan tombol/slider kecepatan",
+				"collapse": "Ciutkan tombol kecepatan",
+				"enableSlider": "Aktifkan slider kecepatan"
 			},
 			"tips": {
+				"save": "Perilaku pemutaran",
+				"controls": "Kontrol kecepatan",
 				"enabledButtons": "Tombol yang diaktifkan:",
-				"save": "Ingat kecepatan",
 				"slider": "Saat diaktifkan, seret ke kiri atau kanan untuk mengatur kecepatan secara kontinu; roda mouse memakai langkah yang dipilih."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "Preset"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "Jangan pernah ciutkan",
-				"always": "Selalu ciutkan",
-				"auto": "Ciutkan otomatis"
+		"volumeBooster": {
+			"title": "Penguat volume",
+			"checkbox": {
+				"showControl": "Tampilkan kontrol penguat di samping strip kecepatan",
+				"enableByDefault": "Aktifkan penguat secara default",
+				"maxVolume": "Nonaktifkan equalizer di volume maksimum (benar 100%)"
+			},
+			"select": {
+				"multiplier": "Tingkat penguatan"
+			},
+			"tips": {
+				"control": "Menambahkan tahap gain nyata di atas volume bawaan 100% YouTube. Gunakan tombol di pemutar untuk mengaktifkan/menonaktifkannya seketika."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "Ingat status subtitle hidup/mati",
 				"saveByChannel": "Ingat status subtitle per kanal"
-			},
-			"tips": {
-				"save": "Ingat pengaturan subtitle"
+			}
+		},
+		"functionButtons": {
+			"title": "Tombol Fungsi",
+			"checkbox": {
+				"enableRotateButton": "Aktifkan tombol rotasi video",
+				"enableMirrorButton": "Aktifkan tombol mirror video",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Ciutkan tombol fungsi",
+				"inPageFullscreen": "Tampilkan tombol layar penuh dalam halaman"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Jangan pernah ciutkan",
+				"always": "Selalu ciutkan",
+				"auto": "Ciutkan otomatis"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "Antarmuka",
-			"checkbox": {
-				"hideCeElement": "Buat transparan video/penulis rekomendasi di akhir video",
-				"progressEnable": "Tampilkan bilah progres di bawah video",
-				"progressHeight": "Tinggi bilah progres (px)",
-				"progressEnableTag": "Tampilkan waktu video di pojok kiri bawah",
-				"progressTagFontSize": "Ukuran font waktu video",
-				"progressTagPosition": "Posisi waktu video",
-				"progressTagOffset": "Jarak dari tepi (px)"
-			},
-			"position": {
-				"bottomLeft": "Sudut kiri bawah",
-				"bottomRight": "Sudut kanan bawah",
-				"topLeft": "Sudut kiri atas",
-				"topRight": "Sudut kanan atas",
-				"bottomCenter": "Tengah bawah",
-				"topCenter": "Tengah atas"
-			},
-			"tips": {
-				"timeTag": "Label waktu video mengambang",
-				"progress": "Bilah progres video"
-			}
-		},
-		"other": {
-			"title": "Lainnya",
-			"checkbox": {
-				"maxVolume": "Nonaktifkan equalizer di volume maksimum (benar 100%)",
-				"nonStop": "Nonaktifkan jeda video otomatis (prompt: \"Video dijeda. Lanjut menonton?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "Tombol Fungsi",
-			"checkbox": {
-				"enableRotateButton": "Aktifkan tombol rotasi video",
-				"enableMirrorButton": "Aktifkan tombol mirror video",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Ciutkan tombol fungsi",
-				"inPageFullscreen": "Tampilkan tombol layar penuh dalam halaman"
-			}
-		},
-		"volumeBooster": {
-			"title": "Penguat volume",
-			"checkbox": {
-				"showControl": "Tampilkan kontrol penguat di samping strip kecepatan",
-				"enableByDefault": "Aktifkan penguat secara default"
-			},
-			"select": {
-				"multiplier": "Tingkat penguatan"
-			},
-			"tips": {
-				"control": "Menambahkan tahap gain nyata di atas volume bawaan 100% YouTube. Gunakan tombol di pemutar untuk mengaktifkan/menonaktifkannya seketika."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "Apungkan video saat ini saat Anda menggulir. Tutup dari pemutar kapan saja."
+			}
+		},
+		"ui": {
+			"title": "Antarmuka",
+			"checkbox": {
+				"hideCeElement": "Buat transparan video/penulis rekomendasi di akhir video",
+				"progressEnable": "Tampilkan bilah progres di bawah video",
+				"progressHeight": "Tinggi bilah progres (px)",
+				"progressEnableTag": "Tampilkan waktu video di pojok kiri bawah",
+				"progressTagFontSize": "Ukuran font waktu video",
+				"progressTagPosition": "Posisi waktu video",
+				"progressTagOffset": "Jarak dari tepi (px)"
+			},
+			"position": {
+				"bottomLeft": "Sudut kiri bawah",
+				"bottomRight": "Sudut kanan bawah",
+				"topLeft": "Sudut kiri atas",
+				"topRight": "Sudut kanan atas",
+				"bottomCenter": "Tengah bawah",
+				"topCenter": "Tengah atas"
+			},
+			"tips": {
+				"timeTag": "Label waktu video mengambang",
+				"progress": "Bilah progres video"
+			},
+			"networkSpeed": {
+				"title": "Kecepatan jaringan real-time",
+				"label": "Posisi kecepatan jaringan real-time",
+				"option": {
+					"off": "Nonaktif",
+					"controls": "Hanya di bilah kontrol",
+					"both": "Kanan bawah video dan bilah kontrol"
+				},
+				"unit": {
+					"label": "Satuan kecepatan",
+					"option": {
+						"mb": "MB/s tetap",
+						"auto": "KB/s | MB/s otomatis"
+					}
+				},
+				"trackPageTraffic": "Hitung penggunaan data halaman"
+			}
+		},
+		"other": {
+			"title": "Lainnya",
+			"checkbox": {
+				"nonStop": "Nonaktifkan jeda video otomatis (prompt: \"Video dijeda. Lanjut menonton?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "Tampilan",
 			"checkbox": {
 				"premiumLogo": "Samarkan sebagai logo Premium"
-			},
-			"networkSpeed": {
-				"title": "Kecepatan jaringan real-time",
-				"label": "Posisi kecepatan jaringan real-time",
-				"option": {
-					"off": "Nonaktif",
-					"controls": "Hanya di bilah kontrol",
-					"both": "Kanan bawah video dan bilah kontrol"
-				},
-				"unit": {
-					"label": "Satuan kecepatan",
-					"option": {
-						"mb": "MB/s tetap",
-						"auto": "KB/s | MB/s otomatis"
-					}
-				},
-				"trackPageTraffic": "Hitung penggunaan data halaman"
 			},
 			"logoCountryCode": "Ubah kode negara logo"
 		},

@@ -1,10 +1,5 @@
 <template>
 	<div class="volume-booster-settings">
-		<div class="form-item volume-booster-settings-title">
-			<span>{{ $t("player.volumeBooster.title") }}</span>
-			<DocsHelpLink anchor="player-volume-booster" />
-		</div>
-
 		<label class="form-item">
 			<input type="checkbox" v-model="config['player.ui.enableVolumeBooster']" />
 			<span>{{ $t("player.volumeBooster.checkbox.showControl") }}</span>
@@ -42,12 +37,3 @@ function formatMultiplier(value: number) {
 		.replace(/(\.\d)0$/, "$1");
 }
 </script>
-
-<style lang="scss" scoped>
-.volume-booster-settings {
-	&-title {
-		color: #343542;
-		font-weight: 650;
-	}
-}
-</style>

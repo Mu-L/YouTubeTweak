@@ -45,19 +45,20 @@
 				"quality": "جے منتخب کوالٹی دستیاب نئیں، تاں اس توں تھوڑی سبھ توں اچھی کوالٹی استعمال ہووے گی۔"
 			}
 		},
-		"speedButtons": {
-			"title": "رفتار دے بٹن",
+		"playbackSpeed": {
+			"title": "پلے بیک دی رفتار",
 			"checkbox": {
-				"enable": "رفتار بٹن/رفتار سلائیڈر دکھاؤ",
 				"save": "پلے بیک رفتار یاد رکھو",
 				"saveByChannel": "ہر چینل لئی الگ رفتار یاد رکھو",
-				"keepMusicVideosAtNormalSpeed": "میوزک ویڈیوز نوں ہمیشہ 1× رفتار تے چلاؤ",
-				"enableSlider": "رفتار سلائیڈر چالو کرو",
-				"collapse": "رفتار دے بٹن سمیٹو"
+				"keepMusicVideosAtNormalSpeed": "میوزک ویڈیوز نوں 1× رفتار تے شروع کرو",
+				"enable": "رفتار بٹن/رفتار سلائیڈر دکھاؤ",
+				"collapse": "رفتار دے بٹن سمیٹو",
+				"enableSlider": "رفتار سلائیڈر چالو کرو"
 			},
 			"tips": {
+				"save": "پلے بیک دا رویہ",
+				"controls": "رفتار دے کنٹرول",
 				"enabledButtons": "فعال بٹن:",
-				"save": "رفتار یاد رکھو",
 				"slider": "فعال کرنے کے بعد رفتار کو مسلسل بدلنے کے لیے بائیں یا دائیں گھسیٹیں؛ ماؤس وہیل منتخب کردہ قدم استعمال کرے گا۔"
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "پری سیٹ"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "کدے نہ سمیٹو",
-				"always": "ہمیشہ سمیٹو",
-				"auto": "آپے سمیٹو"
+		"volumeBooster": {
+			"title": "والیوم بوسٹر",
+			"checkbox": {
+				"showControl": "رفتار پٹی دے نال بوسٹر کنٹرول وکھاؤ",
+				"enableByDefault": "بوسٹر نوں پہلے توں چالو کرو",
+				"maxVolume": "وَدھ توں وادھ آواز اُتے ایکو لائزر بند کرو (اصلی 100%)"
+			},
+			"select": {
+				"multiplier": "بوسٹ سطح"
+			},
+			"tips": {
+				"control": "YouTube دے اندرلے 100% والیوم توں اُتے حقیقی گین سٹیج شامل کردا اے۔ پلیئر دے بٹن نال فوراً چالو/بند کرو۔"
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "سب ٹائٹل آن/آف حالت یاد رکھو",
 				"saveByChannel": "ہر چینل لئی سب ٹائٹل آن/آف حالت یاد رکھو"
-			},
-			"tips": {
-				"save": "سب ٹائٹل سیٹنگز یاد رکھو"
+			}
+		},
+		"functionButtons": {
+			"title": "فنکشن بٹن",
+			"checkbox": {
+				"enableRotateButton": "ویڈیو گھماؤن والا بٹن فعال کرو",
+				"enableMirrorButton": "ویڈیو دا عکس والا بٹن فعال کرو",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "فنکشن بٹن سمیٹو",
+				"inPageFullscreen": "صفحے وچ پوری سکرین دا بٹن وکھاؤ"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "کدے نہ سمیٹو",
+				"always": "ہمیشہ سمیٹو",
+				"auto": "آپے سمیٹو"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "UI",
-			"checkbox": {
-				"hideCeElement": "ویڈیو دے آخر وچ سفارش کردہ ویڈیو/مصنف نوں نیم شفاف کرو",
-				"progressEnable": "ویڈیو تھلے پیش رفت بار وکھاؤ",
-				"progressHeight": "پیش رفت بار دی اونچائی (px)",
-				"progressEnableTag": "کھبے ہِٹھّلے کونے وچ ویڈیو دا ویلہ وکھاؤ",
-				"progressTagFontSize": "ویڈیو وقت دا فونٹ سائز",
-				"progressTagPosition": "ویڈیو وقت دا مقام",
-				"progressTagOffset": "کنارے توں فاصلہ (px)"
-			},
-			"position": {
-				"bottomLeft": "کھبّا ہِٹھّلا کونا",
-				"bottomRight": "سجّا ہِٹھّلا کونا",
-				"topLeft": "کھبّا اُپرلا کونا",
-				"topRight": "سجّا اُپرلا کونا",
-				"bottomCenter": "وچ ہِٹھّے",
-				"topCenter": "وچ اُتے"
-			},
-			"tips": {
-				"timeTag": "تیرتا ویڈیو ویلہ ٹیگ",
-				"progress": "ویڈیو پیش رفت بار"
-			}
-		},
-		"other": {
-			"title": "ہور",
-			"checkbox": {
-				"maxVolume": "وَدھ توں وادھ آواز اُتے ایکو لائزر بند کرو (اصلی 100%)",
-				"nonStop": "ویڈیو دا خودکار وقفہ بند کرو (پیغام: \"ویڈیو روک دی گئی ہے، دیکھنا جاری رکھنا ہے؟\")"
-			}
-		},
-		"functionButtons": {
-			"title": "فنکشن بٹن",
-			"checkbox": {
-				"enableRotateButton": "ویڈیو گھماؤن والا بٹن فعال کرو",
-				"enableMirrorButton": "ویڈیو دا عکس والا بٹن فعال کرو",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "فنکشن بٹن سمیٹو",
-				"inPageFullscreen": "صفحے وچ پوری سکرین دا بٹن وکھاؤ"
-			}
-		},
-		"volumeBooster": {
-			"title": "والیوم بوسٹر",
-			"checkbox": {
-				"showControl": "رفتار پٹی دے نال بوسٹر کنٹرول وکھاؤ",
-				"enableByDefault": "بوسٹر نوں پہلے توں چالو کرو"
-			},
-			"select": {
-				"multiplier": "بوسٹ سطح"
-			},
-			"tips": {
-				"control": "YouTube دے اندرلے 100% والیوم توں اُتے حقیقی گین سٹیج شامل کردا اے۔ پلیئر دے بٹن نال فوراً چالو/بند کرو۔"
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "سکرول کردے ویلے موجودہ ویڈیو نوں تیرن دیو۔ پلیئر توں کسے وی ویلے بند کرو۔"
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "ویڈیو دے آخر وچ سفارش کردہ ویڈیو/مصنف نوں نیم شفاف کرو",
+				"progressEnable": "ویڈیو تھلے پیش رفت بار وکھاؤ",
+				"progressHeight": "پیش رفت بار دی اونچائی (px)",
+				"progressEnableTag": "کھبے ہِٹھّلے کونے وچ ویڈیو دا ویلہ وکھاؤ",
+				"progressTagFontSize": "ویڈیو وقت دا فونٹ سائز",
+				"progressTagPosition": "ویڈیو وقت دا مقام",
+				"progressTagOffset": "کنارے توں فاصلہ (px)"
+			},
+			"position": {
+				"bottomLeft": "کھبّا ہِٹھّلا کونا",
+				"bottomRight": "سجّا ہِٹھّلا کونا",
+				"topLeft": "کھبّا اُپرلا کونا",
+				"topRight": "سجّا اُپرلا کونا",
+				"bottomCenter": "وچ ہِٹھّے",
+				"topCenter": "وچ اُتے"
+			},
+			"tips": {
+				"timeTag": "تیرتا ویڈیو ویلہ ٹیگ",
+				"progress": "ویڈیو پیش رفت بار"
+			},
+			"networkSpeed": {
+				"title": "ریئل ٹائم نیٹ ورک سپیڈ",
+				"label": "ریئل ٹائم نیٹ ورک سپیڈ دی جگہ",
+				"option": {
+					"off": "بند",
+					"controls": "صرف کنٹرول بار وچ",
+					"both": "ویڈیو دے تھلے سجے پاسے تے کنٹرول بار وچ"
+				},
+				"unit": {
+					"label": "سپیڈ دی اکائی",
+					"option": {
+						"mb": "مقررہ MB/s",
+						"auto": "خودکار KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "صفحے دی ڈیٹا ورتوں گنو"
+			}
+		},
+		"other": {
+			"title": "ہور",
+			"checkbox": {
+				"nonStop": "ویڈیو دا خودکار وقفہ بند کرو (پیغام: \"ویڈیو روک دی گئی ہے، دیکھنا جاری رکھنا ہے؟\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "دِکھ",
 			"checkbox": {
 				"premiumLogo": "Premium لوگو دے روپ وچ دکھاؤ"
-			},
-			"networkSpeed": {
-				"title": "ریئل ٹائم نیٹ ورک سپیڈ",
-				"label": "ریئل ٹائم نیٹ ورک سپیڈ دی جگہ",
-				"option": {
-					"off": "بند",
-					"controls": "صرف کنٹرول بار وچ",
-					"both": "ویڈیو دے تھلے سجے پاسے تے کنٹرول بار وچ"
-				},
-				"unit": {
-					"label": "سپیڈ دی اکائی",
-					"option": {
-						"mb": "مقررہ MB/s",
-						"auto": "خودکار KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "صفحے دی ڈیٹا ورتوں گنو"
 			},
 			"logoCountryCode": "لوگو دا ملک کوڈ بدلو"
 		},

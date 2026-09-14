@@ -45,19 +45,20 @@
 				"quality": "指定された画質が存在しない場合は、存在する最高画質に自動的に切り替えます。"
 			}
 		},
-		"speedButtons": {
-			"title": "再生速度ボタン",
+		"playbackSpeed": {
+			"title": "再生速度",
 			"checkbox": {
-				"enable": "再生速度ボタン/スライダーを表示する",
 				"save": "再生速度を記憶する",
 				"saveByChannel": "チャンネルごとに再生速度を記憶する",
-				"keepMusicVideosAtNormalSpeed": "ミュージックビデオを常に1倍速で再生する",
-				"enableSlider": "再生速度スライダーを有効にする",
-				"collapse": "再生速度ボタンを折りたたむ"
+				"keepMusicVideosAtNormalSpeed": "ミュージックビデオの再生を1倍速で開始する",
+				"enable": "再生速度ボタン/スライダーを表示する",
+				"collapse": "再生速度ボタンを折りたたむ",
+				"enableSlider": "再生速度スライダーを有効にする"
 			},
 			"tips": {
+				"save": "再生動作",
+				"controls": "速度調整コントロール",
 				"enabledButtons": "有効になったボタン",
-				"save": "再生速度を記憶する",
 				"slider": "有効にすると、左右にドラッグして連続的に速度を調整できます。マウスホイールは選択した刻み幅を使います。"
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "プリセット"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "常に折りたたまない",
-				"always": "常に折りたたむ",
-				"auto": "自動で折りたたむ"
+		"volumeBooster": {
+			"title": "音量ブースター",
+			"checkbox": {
+				"showControl": "速度バーの横にブースターコントロールを表示",
+				"enableByDefault": "デフォルトでブースターを有効化",
+				"maxVolume": "音量最大時に音量均衡を無効化（真の100％音量）"
+			},
+			"select": {
+				"multiplier": "ブーストレベル"
+			},
+			"tips": {
+				"control": "YouTube内蔵の100%音量を超える実際のゲイン段を追加します。プレーヤー内のボタンですぐに切り替えられます。"
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "字幕の有効状態を記憶する",
 				"saveByChannel": "チャンネルごとに字幕の有効状態を記憶する"
-			},
-			"tips": {
-				"save": "字幕設定を記憶する"
+			}
+		},
+		"functionButtons": {
+			"title": "機能ボタン",
+			"checkbox": {
+				"enableRotateButton": "動画の回転ボタンを有効にする",
+				"enableMirrorButton": "動画のミラーボタンを有効にする",
+				"enableScreenshotButton": "動画スクリーンショットボタンを有効にする",
+				"collapse": "機能ボタンを折りたたむ",
+				"inPageFullscreen": "ページ内全画面表示ボタンを表示する"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "常に折りたたまない",
+				"always": "常に折りたたむ",
+				"auto": "自動で折りたたむ"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "自動",
 				"hide": "非表示",
 				"show": "強制有効化"
-			}
-		},
-		"ui": {
-			"title": "UI",
-			"checkbox": {
-				"hideCeElement": "動画の終わりに表示されるおすすめまたはチャンネルを半透明にする",
-				"progressEnable": "動画の下に進行バーを表示する",
-				"progressHeight": "進行バーの高さ(px)",
-				"progressEnableTag": "左下に動画の再生時間を表示する",
-				"progressTagFontSize": "動画時間のフォントサイズ",
-				"progressTagPosition": "動画時間の表示位置",
-				"progressTagOffset": "端からの距離(px)"
-			},
-			"position": {
-				"bottomLeft": "左下隅",
-				"bottomRight": "右下隅",
-				"topLeft": "左上隅",
-				"topRight": "右上隅",
-				"bottomCenter": "下部中央",
-				"topCenter": "上部中央"
-			},
-			"tips": {
-				"timeTag": "浮動表示の動画時間",
-				"progress": "動画の進行バー"
-			}
-		},
-		"other": {
-			"title": "その他",
-			"checkbox": {
-				"maxVolume": "音量最大時に音量均衡を無効化（真の100％音量）",
-				"nonStop": "動画の自動一時停止を無効にする（「動画が一時停止しました。視聴を続けますか？」という表示）"
-			}
-		},
-		"functionButtons": {
-			"title": "機能ボタン",
-			"checkbox": {
-				"enableRotateButton": "動画の回転ボタンを有効にする",
-				"enableMirrorButton": "動画のミラーボタンを有効にする",
-				"enableScreenshotButton": "動画スクリーンショットボタンを有効にする",
-				"collapse": "機能ボタンを折りたたむ",
-				"inPageFullscreen": "ページ内全画面表示ボタンを表示する"
-			}
-		},
-		"volumeBooster": {
-			"title": "音量ブースター",
-			"checkbox": {
-				"showControl": "速度バーの横にブースターコントロールを表示",
-				"enableByDefault": "デフォルトでブースターを有効化"
-			},
-			"select": {
-				"multiplier": "ブーストレベル"
-			},
-			"tips": {
-				"control": "YouTube内蔵の100%音量を超える実際のゲイン段を追加します。プレーヤー内のボタンですぐに切り替えられます。"
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "スクロール中に現在の動画をフローティング表示します。いつでもプレーヤーから閉じられます。"
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "動画の終わりに表示されるおすすめまたはチャンネルを半透明にする",
+				"progressEnable": "動画の下に進行バーを表示する",
+				"progressHeight": "進行バーの高さ(px)",
+				"progressEnableTag": "左下に動画の再生時間を表示する",
+				"progressTagFontSize": "動画時間のフォントサイズ",
+				"progressTagPosition": "動画時間の表示位置",
+				"progressTagOffset": "端からの距離(px)"
+			},
+			"position": {
+				"bottomLeft": "左下隅",
+				"bottomRight": "右下隅",
+				"topLeft": "左上隅",
+				"topRight": "右上隅",
+				"bottomCenter": "下部中央",
+				"topCenter": "上部中央"
+			},
+			"tips": {
+				"timeTag": "浮動表示の動画時間",
+				"progress": "動画の進行バー"
+			},
+			"networkSpeed": {
+				"title": "リアルタイムネットワーク速度",
+				"label": "リアルタイムネットワーク速度の表示位置",
+				"option": {
+					"off": "オフ",
+					"controls": "コントロールバーのみ",
+					"both": "動画の右下とコントロールバー"
+				},
+				"unit": {
+					"label": "速度単位",
+					"option": {
+						"mb": "MB/s 固定",
+						"auto": "KB/s | MB/s 自動"
+					}
+				},
+				"trackPageTraffic": "ページのデータ使用量を計測"
+			}
+		},
+		"other": {
+			"title": "その他",
+			"checkbox": {
+				"nonStop": "動画の自動一時停止を無効にする（「動画が一時停止しました。視聴を続けますか？」という表示）"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "外観",
 			"checkbox": {
 				"premiumLogo": "Premium ロゴに偽装"
-			},
-			"networkSpeed": {
-				"title": "リアルタイムネットワーク速度",
-				"label": "リアルタイムネットワーク速度の表示位置",
-				"option": {
-					"off": "オフ",
-					"controls": "コントロールバーのみ",
-					"both": "動画の右下とコントロールバー"
-				},
-				"unit": {
-					"label": "速度単位",
-					"option": {
-						"mb": "MB/s 固定",
-						"auto": "KB/s | MB/s 自動"
-					}
-				},
-				"trackPageTraffic": "ページのデータ使用量を計測"
 			},
 			"logoCountryCode": "ロゴの国コードを変更"
 		},

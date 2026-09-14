@@ -45,19 +45,20 @@
 				"quality": "선택한 화질이 없으면 가장 가까운 낮은 화질로 적용됩니다."
 			}
 		},
-		"speedButtons": {
-			"title": "재생 속도 버튼",
+		"playbackSpeed": {
+			"title": "재생 속도",
 			"checkbox": {
-				"enable": "속도 버튼/속도 슬라이더 표시",
 				"save": "재생 속도 기억",
 				"saveByChannel": "채널별 재생 속도 기억",
-				"keepMusicVideosAtNormalSpeed": "뮤직비디오는 항상 1배속으로 재생",
-				"enableSlider": "속도 슬라이더 사용",
-				"collapse": "재생 속도 버튼 접기"
+				"keepMusicVideosAtNormalSpeed": "뮤직비디오 재생을 1배속으로 시작",
+				"enable": "속도 버튼/속도 슬라이더 표시",
+				"collapse": "재생 속도 버튼 접기",
+				"enableSlider": "속도 슬라이더 사용"
 			},
 			"tips": {
+				"save": "재생 동작",
+				"controls": "속도 조절 컨트롤",
 				"enabledButtons": "사용 중인 버튼:",
-				"save": "속도 기억",
 				"slider": "활성화하면 좌우로 드래그해 속도를 연속으로 조절할 수 있으며, 마우스 휠은 선택한 휠 단계를 사용합니다."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "프리셋"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "접지 않음",
-				"always": "항상 접기",
-				"auto": "자동으로 접기"
+		"volumeBooster": {
+			"title": "볼륨 부스터",
+			"checkbox": {
+				"showControl": "속도 표시줄 옆에 부스터 컨트롤 표시",
+				"enableByDefault": "기본적으로 부스터 활성화",
+				"maxVolume": "최대 음량에서 이퀄라이저 끄기 (실제 100%)"
+			},
+			"select": {
+				"multiplier": "증폭 수준"
+			},
+			"tips": {
+				"control": "YouTube 내장 100% 볼륨보다 높은 실제 게인 단계를 추가합니다. 플레이어 안의 버튼으로 즉시 켜거나 끌 수 있습니다."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "자막 켜짐/꺼짐 상태 기억",
 				"saveByChannel": "채널별 자막 켜짐/꺼짐 상태 기억"
-			},
-			"tips": {
-				"save": "자막 설정 기억"
+			}
+		},
+		"functionButtons": {
+			"title": "기능 버튼",
+			"checkbox": {
+				"enableRotateButton": "회전 버튼 사용",
+				"enableMirrorButton": "좌우 반전 버튼 사용",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "기능 버튼 접기",
+				"inPageFullscreen": "페이지 내 전체 화면 버튼 표시"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "접지 않음",
+				"always": "항상 접기",
+				"auto": "자동으로 접기"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "UI",
-			"checkbox": {
-				"hideCeElement": "영상 끝의 추천 영상/작성자 반투명 처리",
-				"progressEnable": "영상 아래에 진행 막대 표시",
-				"progressHeight": "진행 막대 높이(px)",
-				"progressEnableTag": "왼쪽 하단에 영상 시간 표시",
-				"progressTagFontSize": "영상 시간 글꼴 크기",
-				"progressTagPosition": "영상 시간 표시 위치",
-				"progressTagOffset": "가장자리와의 거리(px)"
-			},
-			"position": {
-				"bottomLeft": "왼쪽 아래 모서리",
-				"bottomRight": "오른쪽 아래 모서리",
-				"topLeft": "왼쪽 위 모서리",
-				"topRight": "오른쪽 위 모서리",
-				"bottomCenter": "하단 중앙",
-				"topCenter": "상단 중앙"
-			},
-			"tips": {
-				"timeTag": "떠 있는 영상 시간 태그",
-				"progress": "동영상 진행 막대"
-			}
-		},
-		"other": {
-			"title": "기타",
-			"checkbox": {
-				"maxVolume": "최대 음량에서 이퀄라이저 끄기 (실제 100%)",
-				"nonStop": "동영상 자동 일시중지를 비활성화합니다(\"동영상이 일시중지되었습니다. 계속 시청하시겠습니까?\" 안내)"
-			}
-		},
-		"functionButtons": {
-			"title": "기능 버튼",
-			"checkbox": {
-				"enableRotateButton": "회전 버튼 사용",
-				"enableMirrorButton": "좌우 반전 버튼 사용",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "기능 버튼 접기",
-				"inPageFullscreen": "페이지 내 전체 화면 버튼 표시"
-			}
-		},
-		"volumeBooster": {
-			"title": "볼륨 부스터",
-			"checkbox": {
-				"showControl": "속도 표시줄 옆에 부스터 컨트롤 표시",
-				"enableByDefault": "기본적으로 부스터 활성화"
-			},
-			"select": {
-				"multiplier": "증폭 수준"
-			},
-			"tips": {
-				"control": "YouTube 내장 100% 볼륨보다 높은 실제 게인 단계를 추가합니다. 플레이어 안의 버튼으로 즉시 켜거나 끌 수 있습니다."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "스크롤하는 동안 현재 동영상을 띄워 둡니다. 언제든 플레이어에서 닫을 수 있습니다."
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "영상 끝의 추천 영상/작성자 반투명 처리",
+				"progressEnable": "영상 아래에 진행 막대 표시",
+				"progressHeight": "진행 막대 높이(px)",
+				"progressEnableTag": "왼쪽 하단에 영상 시간 표시",
+				"progressTagFontSize": "영상 시간 글꼴 크기",
+				"progressTagPosition": "영상 시간 표시 위치",
+				"progressTagOffset": "가장자리와의 거리(px)"
+			},
+			"position": {
+				"bottomLeft": "왼쪽 아래 모서리",
+				"bottomRight": "오른쪽 아래 모서리",
+				"topLeft": "왼쪽 위 모서리",
+				"topRight": "오른쪽 위 모서리",
+				"bottomCenter": "하단 중앙",
+				"topCenter": "상단 중앙"
+			},
+			"tips": {
+				"timeTag": "떠 있는 영상 시간 태그",
+				"progress": "동영상 진행 막대"
+			},
+			"networkSpeed": {
+				"title": "실시간 네트워크 속도",
+				"label": "실시간 네트워크 속도 표시 위치",
+				"option": {
+					"off": "끄기",
+					"controls": "컨트롤 바에만 표시",
+					"both": "동영상 오른쪽 하단 및 컨트롤 바"
+				},
+				"unit": {
+					"label": "속도 단위",
+					"option": {
+						"mb": "고정 MB/s",
+						"auto": "자동 KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "페이지 데이터 사용량 집계"
+			}
+		},
+		"other": {
+			"title": "기타",
+			"checkbox": {
+				"nonStop": "동영상 자동 일시중지를 비활성화합니다(\"동영상이 일시중지되었습니다. 계속 시청하시겠습니까?\" 안내)"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "모양",
 			"checkbox": {
 				"premiumLogo": "Premium 로고로 위장"
-			},
-			"networkSpeed": {
-				"title": "실시간 네트워크 속도",
-				"label": "실시간 네트워크 속도 표시 위치",
-				"option": {
-					"off": "끄기",
-					"controls": "컨트롤 바에만 표시",
-					"both": "동영상 오른쪽 하단 및 컨트롤 바"
-				},
-				"unit": {
-					"label": "속도 단위",
-					"option": {
-						"mb": "고정 MB/s",
-						"auto": "자동 KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "페이지 데이터 사용량 집계"
 			},
 			"logoCountryCode": "로고 국가 코드 변경"
 		},

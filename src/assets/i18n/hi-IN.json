@@ -45,19 +45,20 @@
 				"quality": "यदि चुनी गई गुणवत्ता उपलब्ध नहीं है, तो उससे नीचे उपलब्ध सर्वोच्च गुणवत्ता इस्तेमाल होगी।"
 			}
 		},
-		"speedButtons": {
-			"title": "गति बटन",
+		"playbackSpeed": {
+			"title": "प्लेबैक गति",
 			"checkbox": {
-				"enable": "गति बटन/गति स्लाइडर दिखाएँ",
 				"save": "प्लेबैक गति याद रखें",
 				"saveByChannel": "हर चैनल के लिए प्लेबैक गति याद रखें",
-				"keepMusicVideosAtNormalSpeed": "संगीत वीडियो हमेशा 1× गति पर चलाएँ",
-				"enableSlider": "गति स्लाइडर सक्षम करें",
-				"collapse": "गति बटन समेटें"
+				"keepMusicVideosAtNormalSpeed": "संगीत वीडियो 1× गति से शुरू करें",
+				"enable": "गति बटन/गति स्लाइडर दिखाएँ",
+				"collapse": "गति बटन समेटें",
+				"enableSlider": "गति स्लाइडर सक्षम करें"
 			},
 			"tips": {
+				"save": "प्लेबैक व्यवहार",
+				"controls": "गति नियंत्रण",
 				"enabledButtons": "सक्रिय बटन:",
-				"save": "गति याद रखें",
 				"slider": "सक्षम होने पर गति को लगातार बदलने के लिए बाएँ या दाएँ खींचें; माउस व्हील चुने गए व्हील स्टेप का उपयोग करेगा।"
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "प्रीसेट"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "कभी न समेटें",
-				"always": "हमेशा समेटें",
-				"auto": "अपने आप समेटें"
+		"volumeBooster": {
+			"title": "वॉल्यूम बूस्टर",
+			"checkbox": {
+				"showControl": "स्पीड स्ट्रिप के पास बूस्टर कंट्रोल दिखाएं",
+				"enableByDefault": "बूस्टर को डिफ़ॉल्ट रूप से चालू करें",
+				"maxVolume": "अधिकतम ध्वनि पर इक्वलाइज़र अक्षम करें (सच्चा 100%)"
+			},
+			"select": {
+				"multiplier": "बूस्ट स्तर"
+			},
+			"tips": {
+				"control": "YouTube के बिल्ट-इन 100% वॉल्यूम से ऊपर एक वास्तविक गेन स्टेज जोड़ता है। इसे तुरंत चालू/बंद करने के लिए प्लेयर के बटन का उपयोग करें।"
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "उपशीर्षक ऑन/ऑफ स्थिति याद रखें",
 				"saveByChannel": "हर चैनल के लिए उपशीर्षक ऑन/ऑफ स्थिति याद रखें"
-			},
-			"tips": {
-				"save": "उपशीर्षक सेटिंग्स याद रखें"
+			}
+		},
+		"functionButtons": {
+			"title": "फ़ंक्शन बटन",
+			"checkbox": {
+				"enableRotateButton": "वीडियो घुमाने का बटन सक्षम करें",
+				"enableMirrorButton": "वीडियो मिरर करने का बटन सक्षम करें",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "फ़ंक्शन बटन समेटें",
+				"inPageFullscreen": "पेज के अंदर फ़ुलस्क्रीन बटन दिखाएँ"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "कभी न समेटें",
+				"always": "हमेशा समेटें",
+				"auto": "अपने आप समेटें"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "UI",
-			"checkbox": {
-				"hideCeElement": "वीडियो के अंत में अनुशंसित वीडियो/लेखकों को अर्धपारदर्शी करें",
-				"progressEnable": "वीडियो के नीचे प्रगति बार दिखाएँ",
-				"progressHeight": "प्रोग्रेस बार की ऊँचाई (px)",
-				"progressEnableTag": "बाएँ नीचे कोने में वीडियो समय दिखाएँ",
-				"progressTagFontSize": "वीडियो समय का फ़ॉन्ट आकार",
-				"progressTagPosition": "वीडियो समय का स्थान",
-				"progressTagOffset": "किनारे से दूरी (px)"
-			},
-			"position": {
-				"bottomLeft": "बायां निचला कोना",
-				"bottomRight": "दायां निचला कोना",
-				"topLeft": "बायां ऊपरी कोना",
-				"topRight": "दायां ऊपरी कोना",
-				"bottomCenter": "नीचे बीच में",
-				"topCenter": "ऊपर बीच में"
-			},
-			"tips": {
-				"timeTag": "तैरते वीडियो समय टैग",
-				"progress": "वीडियो प्रोग्रेस बार"
-			}
-		},
-		"other": {
-			"title": "अन्य",
-			"checkbox": {
-				"maxVolume": "अधिकतम ध्वनि पर इक्वलाइज़र अक्षम करें (सच्चा 100%)",
-				"nonStop": "वीडियो का स्वचालित पॉज़ बंद करें (संकेत: \"वीडियो पॉज़ हो गया है, देखते रहना है?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "फ़ंक्शन बटन",
-			"checkbox": {
-				"enableRotateButton": "वीडियो घुमाने का बटन सक्षम करें",
-				"enableMirrorButton": "वीडियो मिरर करने का बटन सक्षम करें",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "फ़ंक्शन बटन समेटें",
-				"inPageFullscreen": "पेज के अंदर फ़ुलस्क्रीन बटन दिखाएँ"
-			}
-		},
-		"volumeBooster": {
-			"title": "वॉल्यूम बूस्टर",
-			"checkbox": {
-				"showControl": "स्पीड स्ट्रिप के पास बूस्टर कंट्रोल दिखाएं",
-				"enableByDefault": "बूस्टर को डिफ़ॉल्ट रूप से चालू करें"
-			},
-			"select": {
-				"multiplier": "बूस्ट स्तर"
-			},
-			"tips": {
-				"control": "YouTube के बिल्ट-इन 100% वॉल्यूम से ऊपर एक वास्तविक गेन स्टेज जोड़ता है। इसे तुरंत चालू/बंद करने के लिए प्लेयर के बटन का उपयोग करें।"
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "स्क्रॉल करते समय मौजूदा वीडियो को फ्लोटिंग रखें। इसे कभी भी प्लेयर से बंद करें।"
+			}
+		},
+		"ui": {
+			"title": "UI",
+			"checkbox": {
+				"hideCeElement": "वीडियो के अंत में अनुशंसित वीडियो/लेखकों को अर्धपारदर्शी करें",
+				"progressEnable": "वीडियो के नीचे प्रगति बार दिखाएँ",
+				"progressHeight": "प्रोग्रेस बार की ऊँचाई (px)",
+				"progressEnableTag": "बाएँ नीचे कोने में वीडियो समय दिखाएँ",
+				"progressTagFontSize": "वीडियो समय का फ़ॉन्ट आकार",
+				"progressTagPosition": "वीडियो समय का स्थान",
+				"progressTagOffset": "किनारे से दूरी (px)"
+			},
+			"position": {
+				"bottomLeft": "बायां निचला कोना",
+				"bottomRight": "दायां निचला कोना",
+				"topLeft": "बायां ऊपरी कोना",
+				"topRight": "दायां ऊपरी कोना",
+				"bottomCenter": "नीचे बीच में",
+				"topCenter": "ऊपर बीच में"
+			},
+			"tips": {
+				"timeTag": "तैरते वीडियो समय टैग",
+				"progress": "वीडियो प्रोग्रेस बार"
+			},
+			"networkSpeed": {
+				"title": "रीयल-टाइम नेटवर्क गति",
+				"label": "रीयल-टाइम नेटवर्क गति की स्थिति",
+				"option": {
+					"off": "बंद",
+					"controls": "केवल कंट्रोल बार में",
+					"both": "वीडियो के नीचे दाईं ओर और कंट्रोल बार में"
+				},
+				"unit": {
+					"label": "गति इकाई",
+					"option": {
+						"mb": "निश्चित MB/s",
+						"auto": "स्वचालित KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "पेज डेटा उपयोग की गणना करें"
+			}
+		},
+		"other": {
+			"title": "अन्य",
+			"checkbox": {
+				"nonStop": "वीडियो का स्वचालित पॉज़ बंद करें (संकेत: \"वीडियो पॉज़ हो गया है, देखते रहना है?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "दिखावट",
 			"checkbox": {
 				"premiumLogo": "Premium लोगो के रूप में दिखाएँ"
-			},
-			"networkSpeed": {
-				"title": "रीयल-टाइम नेटवर्क गति",
-				"label": "रीयल-टाइम नेटवर्क गति की स्थिति",
-				"option": {
-					"off": "बंद",
-					"controls": "केवल कंट्रोल बार में",
-					"both": "वीडियो के नीचे दाईं ओर और कंट्रोल बार में"
-				},
-				"unit": {
-					"label": "गति इकाई",
-					"option": {
-						"mb": "निश्चित MB/s",
-						"auto": "स्वचालित KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "पेज डेटा उपयोग की गणना करें"
 			},
 			"logoCountryCode": "लोगो का देश कोड बदलें"
 		},

@@ -45,19 +45,20 @@
 				"quality": "Seçilen kalite yoksa, bir altındaki en yüksek kalite kullanılacak."
 			}
 		},
-		"speedButtons": {
-			"title": "Hız düğmeleri",
+		"playbackSpeed": {
+			"title": "Oynatma hızı",
 			"checkbox": {
-				"enable": "Hız düğmelerini/kaydırıcısını göster",
 				"save": "Oynatma hızını hatırla",
 				"saveByChannel": "Kanal başına oynatma hızını hatırla",
-				"keepMusicVideosAtNormalSpeed": "Müzik videolarını her zaman 1× hızında oynat",
-				"enableSlider": "Hız kaydırıcısını etkinleştir",
-				"collapse": "Hız düğmelerini daralt"
+				"keepMusicVideosAtNormalSpeed": "Müzik videolarını 1× hızında başlat",
+				"enable": "Hız düğmelerini/kaydırıcısını göster",
+				"collapse": "Hız düğmelerini daralt",
+				"enableSlider": "Hız kaydırıcısını etkinleştir"
 			},
 			"tips": {
+				"save": "Oynatma davranışı",
+				"controls": "Hız kontrolleri",
 				"enabledButtons": "Etkin düğmeler:",
-				"save": "Hızı hatırla",
 				"slider": "Etkinleştirildiğinde hızı sürekli ayarlamak için sola veya sağa sürükleyin; fare tekerleği seçilen adımı kullanır."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "Ön ayarlar"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "Hiçbir zaman daraltma",
-				"always": "Her zaman daralt",
-				"auto": "Otomatik daralt"
+		"volumeBooster": {
+			"title": "Ses yükseltici",
+			"checkbox": {
+				"showControl": "Hız şeridinin yanında yükseltici kontrolünü göster",
+				"enableByDefault": "Yükselticiyi varsayılan olarak etkinleştir",
+				"maxVolume": "Maksimum seste ekolayzeri devre dışı bırak (gerçek 100%)"
+			},
+			"select": {
+				"multiplier": "Yükseltme seviyesi"
+			},
+			"tips": {
+				"control": "YouTube’un yerleşik %100 sesinin üstüne gerçek bir kazanç aşaması ekler. Anında açıp kapatmak için oynatıcıdaki düğmeyi kullanın."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "Altyazı açık/kapalı durumunu hatırla",
 				"saveByChannel": "Kanal başına altyazı durumunu hatırla"
-			},
-			"tips": {
-				"save": "Altyazı ayarlarını hatırla"
+			}
+		},
+		"functionButtons": {
+			"title": "Fonksiyon Düğmeleri",
+			"checkbox": {
+				"enableRotateButton": "Video döndürme düğmesini etkinleştir",
+				"enableMirrorButton": "Video ayna düğmesini etkinleştir",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Fonksiyon düğmelerini daralt",
+				"inPageFullscreen": "Sayfa içi tam ekran düğmesini göster"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Hiçbir zaman daraltma",
+				"always": "Her zaman daralt",
+				"auto": "Otomatik daralt"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "Arayüz",
-			"checkbox": {
-				"hideCeElement": "Videonun sonunda önerilen video/yazarları yarı saydam yap",
-				"progressEnable": "Videonun altında ilerleme çubuğunu göster",
-				"progressHeight": "İlerleme çubuğu yüksekliği (px)",
-				"progressEnableTag": "Video süresini sol alt köşede göster",
-				"progressTagFontSize": "Video süresi yazı tipi boyutu",
-				"progressTagPosition": "Video süresi konumu",
-				"progressTagOffset": "Kenardan uzaklık (px)"
-			},
-			"position": {
-				"bottomLeft": "Sol alt köşe",
-				"bottomRight": "Sağ alt köşe",
-				"topLeft": "Sol üst köşe",
-				"topRight": "Sağ üst köşe",
-				"bottomCenter": "Alt orta",
-				"topCenter": "Üst orta"
-			},
-			"tips": {
-				"timeTag": "Yüzen video süre etiketi",
-				"progress": "Video ilerleme çubuğu"
-			}
-		},
-		"other": {
-			"title": "Diğer",
-			"checkbox": {
-				"maxVolume": "Maksimum seste ekolayzeri devre dışı bırak (gerçek 100%)",
-				"nonStop": "Videonun otomatik duraklatılmasını devre dışı bırak (istem: \"Video duraklatıldı. İzlemeye devam edilsin mi?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "Fonksiyon Düğmeleri",
-			"checkbox": {
-				"enableRotateButton": "Video döndürme düğmesini etkinleştir",
-				"enableMirrorButton": "Video ayna düğmesini etkinleştir",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Fonksiyon düğmelerini daralt",
-				"inPageFullscreen": "Sayfa içi tam ekran düğmesini göster"
-			}
-		},
-		"volumeBooster": {
-			"title": "Ses yükseltici",
-			"checkbox": {
-				"showControl": "Hız şeridinin yanında yükseltici kontrolünü göster",
-				"enableByDefault": "Yükselticiyi varsayılan olarak etkinleştir"
-			},
-			"select": {
-				"multiplier": "Yükseltme seviyesi"
-			},
-			"tips": {
-				"control": "YouTube’un yerleşik %100 sesinin üstüne gerçek bir kazanç aşaması ekler. Anında açıp kapatmak için oynatıcıdaki düğmeyi kullanın."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "Kaydırırken geçerli videoyu yüzer halde tutar. İstediğiniz zaman oynatıcıdan kapatabilirsiniz."
+			}
+		},
+		"ui": {
+			"title": "Arayüz",
+			"checkbox": {
+				"hideCeElement": "Videonun sonunda önerilen video/yazarları yarı saydam yap",
+				"progressEnable": "Videonun altında ilerleme çubuğunu göster",
+				"progressHeight": "İlerleme çubuğu yüksekliği (px)",
+				"progressEnableTag": "Video süresini sol alt köşede göster",
+				"progressTagFontSize": "Video süresi yazı tipi boyutu",
+				"progressTagPosition": "Video süresi konumu",
+				"progressTagOffset": "Kenardan uzaklık (px)"
+			},
+			"position": {
+				"bottomLeft": "Sol alt köşe",
+				"bottomRight": "Sağ alt köşe",
+				"topLeft": "Sol üst köşe",
+				"topRight": "Sağ üst köşe",
+				"bottomCenter": "Alt orta",
+				"topCenter": "Üst orta"
+			},
+			"tips": {
+				"timeTag": "Yüzen video süre etiketi",
+				"progress": "Video ilerleme çubuğu"
+			},
+			"networkSpeed": {
+				"title": "Gerçek zamanlı ağ hızı",
+				"label": "Gerçek zamanlı ağ hızı konumu",
+				"option": {
+					"off": "Kapalı",
+					"controls": "Yalnızca kontrol çubuğu",
+					"both": "Videonun sağ alt köşesi ve kontrol çubuğu"
+				},
+				"unit": {
+					"label": "Hız birimi",
+					"option": {
+						"mb": "Sabit MB/s",
+						"auto": "Otomatik KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "Sayfanın veri kullanımını hesapla"
+			}
+		},
+		"other": {
+			"title": "Diğer",
+			"checkbox": {
+				"nonStop": "Videonun otomatik duraklatılmasını devre dışı bırak (istem: \"Video duraklatıldı. İzlemeye devam edilsin mi?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "Görünüm",
 			"checkbox": {
 				"premiumLogo": "Premium logosunu taklit et"
-			},
-			"networkSpeed": {
-				"title": "Gerçek zamanlı ağ hızı",
-				"label": "Gerçek zamanlı ağ hızı konumu",
-				"option": {
-					"off": "Kapalı",
-					"controls": "Yalnızca kontrol çubuğu",
-					"both": "Videonun sağ alt köşesi ve kontrol çubuğu"
-				},
-				"unit": {
-					"label": "Hız birimi",
-					"option": {
-						"mb": "Sabit MB/s",
-						"auto": "Otomatik KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "Sayfanın veri kullanımını hesapla"
 			},
 			"logoCountryCode": "Logo ülke kodunu değiştir"
 		},

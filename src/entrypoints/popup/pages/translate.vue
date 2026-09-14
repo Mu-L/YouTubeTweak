@@ -15,8 +15,8 @@
 					</select>
 				</label>
 
-				<label class="form-item form-item-select">
-					<span style="white-space: break-spaces">{{ $t("comment.context.select.neverTranslate") }}</span>
+				<label class="form-item form-item-select settings-stack">
+					<span>{{ $t("comment.context.select.neverTranslate") }}</span>
 					<DocsHelpLink anchor="translate-settings-never-translate" />
 					<select v-model="config['comment.neverTranslateLanguages']" multiple>
 						<option v-for="(v, k) in locales" :value="k" :key="k">{{ v }}</option>
@@ -196,3 +196,13 @@ const locales: Record<string, string> = {
 	ko: "한국어",
 };
 </script>
+
+<style lang="scss" scoped>
+#page-translate {
+	select[multiple] {
+		height: 112px;
+		width: 100%;
+		max-width: none;
+	}
+}
+</style>

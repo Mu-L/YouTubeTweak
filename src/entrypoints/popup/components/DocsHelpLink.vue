@@ -2,27 +2,19 @@
 	<button
 		type="button"
 		class="docs-help-link"
-		:class="{ 'is-hovering': isHovering }"
 		:title="$t('common.getHelp')"
 		:aria-label="$t('common.getHelp')"
 		@click.stop.prevent="openDocs"
 		@mousedown.stop.prevent
-		@pointermove="isHovering = true"
-		@pointerleave="isHovering = false"
-		@blur="isHovering = false"
 	>
 		<span aria-hidden="true">?</span>
 	</button>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
 const props = defineProps<{
 	anchor: string;
 }>();
-
-const isHovering = ref(false);
 
 function openDocs() {
 	const locale = localStorage.getItem("lang") || document.documentElement.lang;

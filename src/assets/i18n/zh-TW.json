@@ -45,19 +45,20 @@
 				"quality": "如果沒有此解析度，將會自動順延至其他的最高解析度。"
 			}
 		},
-		"speedButtons": {
-			"title": "倍速按鈕",
+		"playbackSpeed": {
+			"title": "播放速度",
 			"checkbox": {
-				"enable": "顯示倍速按鈕/倍速滑桿",
 				"save": "記住播放速度",
 				"saveByChannel": "為每個頻道分別記住播放速度",
-				"keepMusicVideosAtNormalSpeed": "音樂影片始終保持 1 倍速",
-				"enableSlider": "啟用倍速滑桿",
-				"collapse": "摺疊倍速按鈕"
+				"keepMusicVideosAtNormalSpeed": "音樂影片載入時使用 1×",
+				"enable": "顯示倍速按鈕/倍速滑桿",
+				"collapse": "摺疊倍速按鈕",
+				"enableSlider": "啟用倍速滑桿"
 			},
 			"tips": {
+				"save": "播放規則",
+				"controls": "調速控制項",
 				"enabledButtons": "啟用的按鈕：",
-				"save": "記住速度",
 				"slider": "啟用後可以按住左右拖曳連續調速；滑鼠滾輪使用下方選擇的步長。"
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "預設"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "始終不摺疊",
-				"always": "始終摺疊",
-				"auto": "自動摺疊"
+		"volumeBooster": {
+			"title": "音量增強器",
+			"checkbox": {
+				"showControl": "在播放速度列旁顯示增強控制",
+				"enableByDefault": "預設啟用音量增強",
+				"maxVolume": "最大音量時關閉統一音量 (真·100%音量)"
+			},
+			"select": {
+				"multiplier": "增強級別"
+			},
+			"tips": {
+				"control": "在 YouTube 內建 100% 音量之上加入真正的增益級。可用播放器內按鈕立即切換。"
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "記住字幕啟用狀態",
 				"saveByChannel": "為每個頻道分別記住字幕啟用狀態"
-			},
-			"tips": {
-				"save": "記住字幕設定"
+			}
+		},
+		"functionButtons": {
+			"title": "功能按鈕",
+			"checkbox": {
+				"enableRotateButton": "啟用旋轉影片按鈕",
+				"enableMirrorButton": "啟用鏡像影片按鈕",
+				"enableScreenshotButton": "啟用影片截圖按鈕",
+				"collapse": "摺疊功能按鈕",
+				"inPageFullscreen": "顯示頁內全螢幕按鈕"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "始終不摺疊",
+				"always": "始終摺疊",
+				"auto": "自動摺疊"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "自動",
 				"hide": "隱藏",
 				"show": "強制啟用"
-			}
-		},
-		"ui": {
-			"title": "介面",
-			"checkbox": {
-				"hideCeElement": "半透明化結尾的推薦影片、作者",
-				"progressEnable": "在影片下方顯示進度條",
-				"progressHeight": "進度條高度(px)",
-				"progressEnableTag": "在角落顯示影片時間",
-				"progressTagFontSize": "影片時間字體大小",
-				"progressTagPosition": "影片時間顯示位置",
-				"progressTagOffset": "距離邊緣(px)"
-			},
-			"position": {
-				"bottomLeft": "左下角",
-				"bottomRight": "右下角",
-				"topLeft": "左上角",
-				"topRight": "右上角",
-				"bottomCenter": "底部置中",
-				"topCenter": "頂部置中"
-			},
-			"tips": {
-				"timeTag": "浮動影片時間",
-				"progress": "影片下方進度條"
-			}
-		},
-		"other": {
-			"title": "其他",
-			"checkbox": {
-				"maxVolume": "最大音量時關閉統一音量 (真·100%音量)",
-				"nonStop": "停用影片自動暫停（提示「影片已暫停，繼續播放？」）"
-			}
-		},
-		"functionButtons": {
-			"title": "功能按鈕",
-			"checkbox": {
-				"enableRotateButton": "啟用旋轉影片按鈕",
-				"enableMirrorButton": "啟用鏡像影片按鈕",
-				"enableScreenshotButton": "啟用影片截圖按鈕",
-				"collapse": "摺疊功能按鈕",
-				"inPageFullscreen": "顯示頁內全螢幕按鈕"
-			}
-		},
-		"volumeBooster": {
-			"title": "音量增強器",
-			"checkbox": {
-				"showControl": "在播放速度列旁顯示增強控制",
-				"enableByDefault": "預設啟用音量增強"
-			},
-			"select": {
-				"multiplier": "增強級別"
-			},
-			"tips": {
-				"control": "在 YouTube 內建 100% 音量之上加入真正的增益級。可用播放器內按鈕立即切換。"
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "捲動頁面時讓目前影片浮動顯示，可隨時從播放器關閉。"
+			}
+		},
+		"ui": {
+			"title": "介面",
+			"checkbox": {
+				"hideCeElement": "半透明化結尾的推薦影片、作者",
+				"progressEnable": "在影片下方顯示進度條",
+				"progressHeight": "進度條高度(px)",
+				"progressEnableTag": "在角落顯示影片時間",
+				"progressTagFontSize": "影片時間字體大小",
+				"progressTagPosition": "影片時間顯示位置",
+				"progressTagOffset": "距離邊緣(px)"
+			},
+			"position": {
+				"bottomLeft": "左下角",
+				"bottomRight": "右下角",
+				"topLeft": "左上角",
+				"topRight": "右上角",
+				"bottomCenter": "底部置中",
+				"topCenter": "頂部置中"
+			},
+			"tips": {
+				"timeTag": "浮動影片時間",
+				"progress": "影片下方進度條"
+			},
+			"networkSpeed": {
+				"title": "即時網路速度",
+				"label": "即時網路速度顯示位置",
+				"option": {
+					"off": "關閉",
+					"controls": "僅顯示於控制列",
+					"both": "影片右下角和控制列"
+				},
+				"unit": {
+					"label": "速率單位",
+					"option": {
+						"mb": "固定 MB/s",
+						"auto": "自動 KB/s | MB/s"
+					}
+				},
+				"trackPageTraffic": "統計頁面使用流量"
+			}
+		},
+		"other": {
+			"title": "其他",
+			"checkbox": {
+				"nonStop": "停用影片自動暫停（提示「影片已暫停，繼續播放？」）"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "外觀",
 			"checkbox": {
 				"premiumLogo": "偽裝 Premium logo"
-			},
-			"networkSpeed": {
-				"title": "即時網路速度",
-				"label": "即時網路速度顯示位置",
-				"option": {
-					"off": "關閉",
-					"controls": "僅顯示於控制列",
-					"both": "影片右下角和控制列"
-				},
-				"unit": {
-					"label": "速率單位",
-					"option": {
-						"mb": "固定 MB/s",
-						"auto": "自動 KB/s | MB/s"
-					}
-				},
-				"trackPageTraffic": "統計頁面使用流量"
 			},
 			"logoCountryCode": "修改 Logo 國家代碼"
 		},

@@ -45,19 +45,20 @@
 				"quality": "Jika kualiti dipilih tidak tersedia, kualiti tertinggi di bawahnya akan digunakan."
 			}
 		},
-		"speedButtons": {
-			"title": "Butang kelajuan",
+		"playbackSpeed": {
+			"title": "Kelajuan main balik",
 			"checkbox": {
-				"enable": "Tunjukkan butang/peluncur kelajuan",
 				"save": "Ingat kelajuan main balik",
 				"saveByChannel": "Ingat kelajuan main balik mengikut saluran",
-				"keepMusicVideosAtNormalSpeed": "Sentiasa mainkan video muzik pada kelajuan 1×",
-				"enableSlider": "Dayakan peluncur kelajuan",
-				"collapse": "Lipat butang kelajuan"
+				"keepMusicVideosAtNormalSpeed": "Mulakan video muzik pada kelajuan 1×",
+				"enable": "Tunjukkan butang/peluncur kelajuan",
+				"collapse": "Lipat butang kelajuan",
+				"enableSlider": "Dayakan peluncur kelajuan"
 			},
 			"tips": {
+				"save": "Tingkah laku main balik",
+				"controls": "Kawalan kelajuan",
 				"enabledButtons": "Butang diaktifkan:",
-				"save": "Ingat kelajuan",
 				"slider": "Apabila diaktifkan, seret ke kiri atau kanan untuk melaras kelajuan secara berterusan; roda tetikus menggunakan langkah yang dipilih."
 			},
 			"select": {
@@ -67,11 +68,18 @@
 				"sliderWheelStepPresets": "Pratetap"
 			}
 		},
-		"buttonCollapse": {
-			"option": {
-				"never": "Jangan lipat",
-				"always": "Sentiasa lipat",
-				"auto": "Lipat secara automatik"
+		"volumeBooster": {
+			"title": "Penguat volum",
+			"checkbox": {
+				"showControl": "Tunjukkan kawalan penguat di sebelah jalur kelajuan",
+				"enableByDefault": "Dayakan penguat secara lalai",
+				"maxVolume": "Nyahaktif penyama pada volum maksimum (100% sebenar)"
+			},
+			"select": {
+				"multiplier": "Tahap penguatan"
+			},
+			"tips": {
+				"control": "Menambah peringkat gain sebenar melebihi volum terbina dalam YouTube 100%. Gunakan butang dalam pemain untuk menogolnya serta-merta."
 			}
 		},
 		"subtitles": {
@@ -79,9 +87,23 @@
 			"checkbox": {
 				"save": "Ingat status sarikata hidup/mati",
 				"saveByChannel": "Ingat status sarikata mengikut saluran"
-			},
-			"tips": {
-				"save": "Ingat tetapan sarikata"
+			}
+		},
+		"functionButtons": {
+			"title": "Butang Fungsi",
+			"checkbox": {
+				"enableRotateButton": "Aktifkan butang putar video",
+				"enableMirrorButton": "Aktifkan butang cermin video",
+				"enableScreenshotButton": "Enable video screenshot button",
+				"collapse": "Lipat butang fungsi",
+				"inPageFullscreen": "Tunjukkan butang skrin penuh dalam halaman"
+			}
+		},
+		"buttonCollapse": {
+			"option": {
+				"never": "Jangan lipat",
+				"always": "Sentiasa lipat",
+				"auto": "Lipat secara automatik"
 			}
 		},
 		"hidePlayerButtons": {
@@ -100,60 +122,6 @@
 				"auto": "Auto",
 				"hide": "Hide",
 				"show": "Force enable"
-			}
-		},
-		"ui": {
-			"title": "Antara muka",
-			"checkbox": {
-				"hideCeElement": "Jadikan video/penulis cadangan di hujung video separa telus",
-				"progressEnable": "Tunjukkan bar kemajuan di bawah video",
-				"progressHeight": "Ketinggian bar kemajuan (px)",
-				"progressEnableTag": "Tunjukkan masa video di sudut kiri bawah",
-				"progressTagFontSize": "Saiz fon masa video",
-				"progressTagPosition": "Kedudukan masa video",
-				"progressTagOffset": "Jarak dari tepi (px)"
-			},
-			"position": {
-				"bottomLeft": "Sudut kiri bawah",
-				"bottomRight": "Sudut kanan bawah",
-				"topLeft": "Sudut kiri atas",
-				"topRight": "Sudut kanan atas",
-				"bottomCenter": "Tengah bawah",
-				"topCenter": "Tengah atas"
-			},
-			"tips": {
-				"timeTag": "Tag masa video terapung",
-				"progress": "Bar kemajuan video"
-			}
-		},
-		"other": {
-			"title": "Lain-lain",
-			"checkbox": {
-				"maxVolume": "Nyahaktif penyama pada volum maksimum (100% sebenar)",
-				"nonStop": "Lumpuhkan jeda video automatik (gesaan: \"Video dijeda. Teruskan menonton?\")"
-			}
-		},
-		"functionButtons": {
-			"title": "Butang Fungsi",
-			"checkbox": {
-				"enableRotateButton": "Aktifkan butang putar video",
-				"enableMirrorButton": "Aktifkan butang cermin video",
-				"enableScreenshotButton": "Enable video screenshot button",
-				"collapse": "Lipat butang fungsi",
-				"inPageFullscreen": "Tunjukkan butang skrin penuh dalam halaman"
-			}
-		},
-		"volumeBooster": {
-			"title": "Penguat volum",
-			"checkbox": {
-				"showControl": "Tunjukkan kawalan penguat di sebelah jalur kelajuan",
-				"enableByDefault": "Dayakan penguat secara lalai"
-			},
-			"select": {
-				"multiplier": "Tahap penguatan"
-			},
-			"tips": {
-				"control": "Menambah peringkat gain sebenar melebihi volum terbina dalam YouTube 100%. Gunakan butang dalam pemain untuk menogolnya serta-merta."
 			}
 		},
 		"videoZoom": {
@@ -178,6 +146,53 @@
 			},
 			"tips": {
 				"enable": "Apungkan video semasa ketika anda menatal. Tutupnya daripada pemain pada bila-bila masa."
+			}
+		},
+		"ui": {
+			"title": "Antara muka",
+			"checkbox": {
+				"hideCeElement": "Jadikan video/penulis cadangan di hujung video separa telus",
+				"progressEnable": "Tunjukkan bar kemajuan di bawah video",
+				"progressHeight": "Ketinggian bar kemajuan (px)",
+				"progressEnableTag": "Tunjukkan masa video di sudut kiri bawah",
+				"progressTagFontSize": "Saiz fon masa video",
+				"progressTagPosition": "Kedudukan masa video",
+				"progressTagOffset": "Jarak dari tepi (px)"
+			},
+			"position": {
+				"bottomLeft": "Sudut kiri bawah",
+				"bottomRight": "Sudut kanan bawah",
+				"topLeft": "Sudut kiri atas",
+				"topRight": "Sudut kanan atas",
+				"bottomCenter": "Tengah bawah",
+				"topCenter": "Tengah atas"
+			},
+			"tips": {
+				"timeTag": "Tag masa video terapung",
+				"progress": "Bar kemajuan video"
+			},
+			"networkSpeed": {
+				"title": "Kelajuan rangkaian masa nyata",
+				"label": "Kedudukan kelajuan rangkaian masa nyata",
+				"option": {
+					"off": "Mati",
+					"controls": "Bar kawalan sahaja",
+					"both": "Bahagian bawah kanan video dan bar kawalan"
+				},
+				"unit": {
+					"label": "Unit kelajuan",
+					"option": {
+						"mb": "MB/s tetap",
+						"auto": "KB/s | MB/s automatik"
+					}
+				},
+				"trackPageTraffic": "Kira penggunaan data halaman"
+			}
+		},
+		"other": {
+			"title": "Lain-lain",
+			"checkbox": {
+				"nonStop": "Lumpuhkan jeda video automatik (gesaan: \"Video dijeda. Teruskan menonton?\")"
 			}
 		}
 	},
@@ -250,23 +265,6 @@
 			"title": "Penampilan",
 			"checkbox": {
 				"premiumLogo": "Samarkan sebagai logo Premium"
-			},
-			"networkSpeed": {
-				"title": "Kelajuan rangkaian masa nyata",
-				"label": "Kedudukan kelajuan rangkaian masa nyata",
-				"option": {
-					"off": "Mati",
-					"controls": "Bar kawalan sahaja",
-					"both": "Bahagian bawah kanan video dan bar kawalan"
-				},
-				"unit": {
-					"label": "Unit kelajuan",
-					"option": {
-						"mb": "MB/s tetap",
-						"auto": "KB/s | MB/s automatik"
-					}
-				},
-				"trackPageTraffic": "Kira penggunaan data halaman"
 			},
 			"logoCountryCode": "Ubah kod negara logo"
 		},
