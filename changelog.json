@@ -7,6 +7,192 @@
 	},
 	"releases": [
 		{
+			"version": "2.0.0",
+			"date": "2026-09-14",
+			"changes": {
+				"zh-CN": {
+					"updated": [
+						{
+							"scope": "设置界面",
+							"text": "优化设置分组、选项顺序和导航图标，统一各页面的卡片与控件样式。"
+						},
+						{
+							"scope": "评论翻译",
+							"text": "不再为目标语言相同、译文与原文一致或仅含数字和标点的评论显示多余的手动翻译按钮。"
+						},
+						{
+							"scope": "更新提示",
+							"text": "优化扩展更新后需要刷新页面的提示样式，并支持多语言显示。"
+						}
+					],
+					"added": [
+						{
+							"scope": "设置生效提示",
+							"text": "切换需要刷新才能生效的设置后显示提示，可自行选择刷新当前页或全部 YouTube 页面。"
+						},
+						{
+							"scope": "播放器按钮",
+							"text": "新增倍速按钮和功能按钮的折叠选项，支持空间不足时自动折叠或始终折叠，鼠标悬停即可展开。"
+						},
+						{
+							"scope": "播放速度",
+							"text": "新增音乐视频默认原速播放选项，加载音乐视频时使用 1 倍速，仍可手动调整播放速度。"
+						},
+						{
+							"scope": "页内全屏",
+							"text": "新增页内全屏按钮，可让视频铺满浏览器页面，支持按 Esc 退出。"
+						},
+						{
+							"scope": "网速显示",
+							"text": "新增播放器网速显示，支持选择显示位置、切换单位，并查看当前视频的累计流量估算。"
+						},
+						{
+							"scope": "洞察",
+							"text": "新增视频信息面板，可查看视频与频道资料、视频画质、音频格式、字幕、音轨、地区可用性和内容限制，以及批量查询视频在不同语言下的封面、标题和描述。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "评论昵称",
+							"text": "修复切换评论排序或评论内容更新后，昵称未刷新或与作者不对应的问题。"
+						},
+						{
+							"scope": "倍速记忆",
+							"text": "修复快速切换视频时，上一视频的倍速恢复操作覆盖当前视频播放速度的问题。"
+						},
+						{
+							"scope": "页面兼容性",
+							"text": "修复读取播放器信息或处理网络响应失败时中断后续功能的问题，避免单项功能异常影响其他功能运行。"
+						},
+						{
+							"scope": "双语字幕",
+							"text": "修复在首页将鼠标悬停于视频上进行静音预览时，双语字幕显示被截断的问题。"
+						}
+					]
+				},
+				"en": {
+					"updated": [
+						{
+							"scope": "Settings UI",
+							"text": "Improved setting groups, option order, and navigation icons, and unified card and control styles across pages."
+						},
+						{
+							"scope": "Comment translation",
+							"text": "No longer shows unnecessary manual translation buttons for comments in the target language, comments whose translation matches the original, or comments containing only numbers and punctuation."
+						},
+						{
+							"scope": "Update notifications",
+							"text": "Improved the appearance of the prompt to reload the page after an extension update and added multilingual support."
+						}
+					],
+					"added": [
+						{
+							"scope": "Settings reload prompt",
+							"text": "A prompt now appears after changing settings that require a page reload, allowing you to choose whether to reload the current page or all YouTube pages."
+						},
+						{
+							"scope": "Player buttons",
+							"text": "Added collapse options for playback speed buttons and function buttons, with automatic collapsing when space is limited or an always-collapsed mode. Hover over them to expand."
+						},
+						{
+							"scope": "Playback speed",
+							"text": "Added an option to start music videos at normal speed. Music videos load at 1x speed, and playback speed can still be adjusted manually."
+						},
+						{
+							"scope": "In-page fullscreen",
+							"text": "Added an in-page fullscreen button to fill the browser page with the video. Press Esc to exit."
+						},
+						{
+							"scope": "Network speed display",
+							"text": "Added a player network speed display, with options to choose its location, switch units, and view estimated cumulative traffic for the current video."
+						},
+						{
+							"scope": "Insights",
+							"text": "Added a video information panel for viewing video and channel details, video quality, audio formats, subtitles, audio tracks, regional availability, and content restrictions, as well as querying thumbnails, titles, and descriptions in different languages in batches."
+						}
+					],
+					"fixed": [
+						{
+							"scope": "Comment nicknames",
+							"text": "Fixed nicknames not refreshing or not matching the author after changing the comment sort order or updating comment content."
+						},
+						{
+							"scope": "Playback speed memory",
+							"text": "Fixed the previous video's speed restoration overriding the current video's playback speed when switching videos quickly."
+						},
+						{
+							"scope": "Page compatibility",
+							"text": "Fixed failures when reading player information or processing network responses interrupting subsequent features, preventing errors in one feature from affecting others."
+						},
+						{
+							"scope": "Bilingual subtitles",
+							"text": "Fixed bilingual subtitles being cut off during muted video previews when hovering over videos on the homepage."
+						}
+					]
+				},
+				"ja": {
+					"updated": [
+						{
+							"scope": "設定画面",
+							"text": "設定のグループ分け、項目の順序、ナビゲーションアイコンを改善し、各ページのカードと操作部品のスタイルを統一しました。"
+						},
+						{
+							"scope": "コメント翻訳",
+							"text": "翻訳先言語と同じ言語のコメント、訳文が原文と同じコメント、数字と句読点のみのコメントには、不要な手動翻訳ボタンを表示しなくなりました。"
+						},
+						{
+							"scope": "更新通知",
+							"text": "拡張機能の更新後にページの再読み込みを促す通知のデザインを改善し、多言語表示に対応しました。"
+						}
+					],
+					"added": [
+						{
+							"scope": "設定反映の通知",
+							"text": "再読み込みが必要な設定を切り替えると通知を表示し、現在のページまたはすべての YouTube ページを再読み込みするか選べるようになりました。"
+						},
+						{
+							"scope": "プレーヤーボタン",
+							"text": "倍速ボタンと機能ボタンの折りたたみ設定を追加しました。空きスペースが不足した場合の自動折りたたみと常時折りたたみに対応し、マウスを重ねると展開できます。"
+						},
+						{
+							"scope": "再生速度",
+							"text": "音楽動画を通常速度で再生開始するオプションを追加しました。音楽動画の読み込み時に 1 倍速を適用し、その後も手動で再生速度を調整できます。"
+						},
+						{
+							"scope": "ページ内全画面",
+							"text": "動画をブラウザーのページ全体に表示するページ内全画面ボタンを追加しました。Esc キーで終了できます。"
+						},
+						{
+							"scope": "通信速度表示",
+							"text": "プレーヤーに通信速度表示を追加し、表示位置の選択、単位の切り替え、現在の動画の推定累積通信量の確認に対応しました。"
+						},
+						{
+							"scope": "インサイト",
+							"text": "動画とチャンネルの情報、動画の画質、音声形式、字幕、音声トラック、地域ごとの視聴可否、コンテンツ制限を確認できる動画情報パネルを追加しました。各言語のサムネイル、タイトル、説明をまとめて取得することもできます。"
+						}
+					],
+					"fixed": [
+						{
+							"scope": "コメントのニックネーム",
+							"text": "コメントの並び順を切り替えたりコメント内容が更新されたりした後に、ニックネームが更新されない、または投稿者と一致しない問題を修正しました。"
+						},
+						{
+							"scope": "倍速記憶",
+							"text": "動画を素早く切り替えると、前の動画の倍速復元処理が現在の動画の再生速度を上書きする問題を修正しました。"
+						},
+						{
+							"scope": "ページ互換性",
+							"text": "プレーヤー情報の読み取りやネットワーク応答の処理に失敗すると後続の機能が中断される問題を修正し、個別機能のエラーが他の機能の動作に影響しないようにしました。"
+						},
+						{
+							"scope": "バイリンガル字幕",
+							"text": "ホームで動画にマウスを重ねてミュートプレビューを再生した際に、バイリンガル字幕が見切れる問題を修正しました。"
+						}
+					]
+				}
+			}
+		},
+		{
 			"version": "1.2.2",
 			"date": "2026-07-25",
 			"changes": {
@@ -47,10 +233,6 @@
 						{
 							"scope": "Comment translation",
 							"text": "Improved processing efficiency when translating multiple items at once and updated the manual translation button icon."
-						},
-						{
-							"scope": "Apple version",
-							"text": "Updated the Safari extension and companion app branding to YouTweak with a dedicated icon, and added portrait orientation support on iPhone and iPad."
 						}
 					],
 					"added": [
@@ -73,10 +255,6 @@
 							"text": "Fixed patch versions being misidentified as feature updates, causing incorrect `new` badge display and inaccurate changelog version ranges."
 						},
 						{
-							"scope": "Settings UI",
-							"text": "Fixed the scrolling layout on Apple devices and the previous tab's scroll position persisting after switching tabs."
-						},
-						{
 							"scope": "Video zoom",
 							"text": "Fixed dragging a zoomed video potentially triggering other player actions."
 						}
@@ -87,10 +265,6 @@
 						{
 							"scope": "コメント翻訳",
 							"text": "複数の内容を同時に翻訳する際の処理効率を改善し、手動翻訳ボタンのアイコンを更新しました。"
-						},
-						{
-							"scope": "Apple 版",
-							"text": "Safari 拡張機能と付属アプリのブランドを YouTweak と専用アイコンに更新し、iPhone と iPad の縦向き表示に対応しました。"
 						}
 					],
 					"added": [
@@ -111,10 +285,6 @@
 						{
 							"scope": "更新通知",
 							"text": "パッチバージョンが機能更新と誤判定されて `new` マークが正しく表示されない問題と、更新履歴のバージョン範囲が不正確になる問題を修正しました。"
-						},
-						{
-							"scope": "設定画面",
-							"text": "Apple デバイスでのスクロールレイアウトと、タブを切り替えた後も前のタブのスクロール位置が保持される問題を修正しました。"
 						},
 						{
 							"scope": "画面ズーム",
@@ -822,7 +992,7 @@
 					"updated": [
 						{
 							"scope": "Popup Window",
-							"text": "Added a \"Translation\" page; moved the previous \"Comments\" features to other locations."
+							"text": "Adjusted the layout, added a \"Translation\" page, and moved the previous \"Comments\" features to other locations."
 						}
 					],
 					"added": [
@@ -1396,7 +1566,7 @@
 						},
 						{
 							"scope": "Video timestamp",
-							"text": "Added an option to display the `current time/total duration` of the video in the bottom-left corner."
+							"text": "Added an option to display the video's `current time/total duration` in the bottom-left corner."
 						}
 					]
 				},
@@ -1422,7 +1592,7 @@
 					"updated": [
 						{
 							"scope": "1 行あたりの動画数",
-							"text": "`每行视频数量` オプションの最大値を `10` から `15` に引き上げました。"
+							"text": "`1 行あたりの動画数` オプションの最大値を `10` から `15` に引き上げました。"
 						}
 					],
 					"added": [
@@ -1432,7 +1602,7 @@
 						},
 						{
 							"scope": "動画時間",
-							"text": "左下に動画の `当前时间/长度` を表示する機能を追加しました。"
+							"text": "左下に動画の `現在の再生時間/動画の長さ` を表示する機能を追加しました。"
 						}
 					]
 				}
@@ -1468,7 +1638,7 @@
 						},
 						{
 							"scope": "shorts-blocker",
-							"text": "Fixed an issue where `Shorts` still appeared in the `recommended videos` on the watch page."
+							"text": "Fixed an issue where Shorts still appeared in the `recommended videos` on the watch page."
 						},
 						{
 							"scope": "Popup Window",
@@ -1518,29 +1688,29 @@
 						},
 						{
 							"scope": "Shorts を非表示",
-							"text": "ホームで Shorts を非表示にすると、`搜索结果中的Shorts视频` も同時に非表示になります。"
+							"text": "ホームで Shorts を非表示にすると、`検索結果の Shorts 動画` も同時に非表示になります。"
 						},
 						{
 							"scope": "広告ブロック",
-							"text": "「チャンネル主の商品おすすめをブロック」をチェックすると、`播放器` 内の `“推荐商品”悬浮按钮` が非表示になります。"
+							"text": "「チャンネル主の商品おすすめをブロック」をチェックすると、`プレーヤー` 内の `「おすすめ商品」のフローティングボタン` が非表示になります。"
 						},
 						{
 							"scope": "広告ブロック",
-							"text": "「チャンネル主の商品おすすめをブロック」をチェックすると、動画説明欄の下にある `演出门票信息` が非表示になります。"
+							"text": "「チャンネル主の商品おすすめをブロック」をチェックすると、動画説明欄の下にある `公演チケット情報` が非表示になります。"
 						}
 					],
 					"fixed": [
 						{
 							"scope": "コメント投稿者のニックネーム表示",
-							"text": "`暗色模式` でコメント投稿者のニックネーム色が異常になる問題を修正しました。"
+							"text": "`ダークモード` でコメント投稿者のニックネーム色が異常になる問題を修正しました。"
 						},
 						{
 							"scope": "Shorts を非表示",
-							"text": "再生ページの `推荐视频` に Shorts が残る問題を修正しました。"
+							"text": "再生ページの `おすすめ動画` に Shorts が残る問題を修正しました。"
 						},
 						{
 							"scope": "ポップアップウィンドウ",
-							"text": "一部のブラウザーで `弹出窗口` の幅が異常になる問題を修正しました。"
+							"text": "一部のブラウザーで `ポップアップウィンドウ` の幅が異常になる問題を修正しました。"
 						}
 					]
 				}

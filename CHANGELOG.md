@@ -6,6 +6,30 @@ All release version update records are listed in this file.
 
 If you have questions, bug reports, or feature suggestions, please go to the [GitHub Issues page](https://github.com/xlch88/YouTubeTweak/issues) to submit them.
 
+## [2.0.0] - 2026-09-14
+
+### Updated
+
+- **Settings UI:** Improved setting groups, option order, and navigation icons, and unified card and control styles across pages.
+- **Comment translation:** No longer shows unnecessary manual translation buttons for comments in the target language, comments whose translation matches the original, or comments containing only numbers and punctuation.
+- **Update notifications:** Improved the appearance of the prompt to reload the page after an extension update and added multilingual support.
+
+### Added
+
+- **Settings reload prompt:** A prompt now appears after changing settings that require a page reload, allowing you to choose whether to reload the current page or all YouTube pages.
+- **Player buttons:** Added collapse options for playback speed buttons and function buttons, with automatic collapsing when space is limited or an always-collapsed mode. Hover over them to expand.
+- **Playback speed:** Added an option to start music videos at normal speed. Music videos load at 1x speed, and playback speed can still be adjusted manually.
+- **In-page fullscreen:** Added an in-page fullscreen button to fill the browser page with the video. Press Esc to exit.
+- **Network speed display:** Added a player network speed display, with options to choose its location, switch units, and view estimated cumulative traffic for the current video.
+- **Insights:** Added a video information panel for viewing video and channel details, video quality, audio formats, subtitles, audio tracks, regional availability, and content restrictions, as well as querying thumbnails, titles, and descriptions in different languages in batches.
+
+### Fixed
+
+- **Comment nicknames:** Fixed nicknames not refreshing or not matching the author after changing the comment sort order or updating comment content.
+- **Playback speed memory:** Fixed the previous video's speed restoration overriding the current video's playback speed when switching videos quickly.
+- **Page compatibility:** Fixed failures when reading player information or processing network responses interrupting subsequent features, preventing errors in one feature from affecting others.
+- **Bilingual subtitles:** Fixed bilingual subtitles being cut off during muted video previews when hovering over videos on the homepage.
+
 ## [1.2.2] - 2026-07-25
 
 ### Updated
@@ -134,7 +158,7 @@ If you have questions, bug reports, or feature suggestions, please go to the [Gi
 
 ### Updated
 
-- **Popup Window:** Added a "Translation" page; moved the previous "Comments" features to other locations.
+- **Popup Window:** Adjusted the layout, added a "Translation" page, and moved the previous "Comments" features to other locations.
 
 ### Added
 
@@ -211,24 +235,24 @@ If you have questions, bug reports, or feature suggestions, please go to the [Gi
 
 ### Updated
 
-- **Videos per row:** Increased the maximum value of the `Videos per row` option from `10` to `15`.
+- Videos per row: Increased the maximum value of the `Videos per row` option from `10` to `15`.
 
 ### Added
 
-- **Video progress bar:** Added an option to always display the progress bar below the video.
-- **Video timestamp:** Added an option to display the `current time/total duration` of the video in the bottom-left corner.
+- Video progress bar: Added an option to always display the progress bar below the video.
+- Video timestamp: Added an option to display the video's `current time/total duration` in the bottom-left corner.
 
 ## [1.0.7] - 2025-11-12
 
 ### Added
 
-- **player-speedButton:** Added more options `(2.25x, 2.5x)` and redesigned the related UI.
-- **shorts-blocker:** When “Hide Shorts on homepage” is checked, it will also hide `Shorts videos in search results`.
-- **anti-ad:** When “Block creator’s product recommendations” is checked, it will hide the `“Recommended Products” floating button` in the `player`.
-- **anti-ad:** When “Block creator’s product recommendations” is checked, it will hide the `Event Tickets section` below the video description.
+- player-speedButton: Added more options `(2.25x, 2.5x)` and redesigned the related UI.
+- shorts-blocker: When “Hide Shorts on homepage” is checked, it will also hide `Shorts videos in search results`.
+- anti-ad: When “Block creator’s product recommendations” is checked, it will hide the `“Recommended Products” floating button` in the `player`.
+- anti-ad: When “Block creator’s product recommendations” is checked, it will hide the `Event Tickets section` below the video description.
 
 ### Fixed
 
-- **comment-nickname:** Fixed the issue where comment usernames displayed abnormal colors in `dark mode`.
-- **shorts-blocker:** Fixed an issue where `Shorts` still appeared in the `recommended videos` on the watch page.
-- **Popup Window:** Fixed an issue where the `popup window` width was abnormal in certain browsers.
+- comment-nickname: Fixed the issue where comment usernames displayed abnormal colors in `dark mode`.
+- shorts-blocker: Fixed an issue where Shorts still appeared in the `recommended videos` on the watch page.
+- Popup Window: Fixed an issue where the `popup window` width was abnormal in certain browsers.
