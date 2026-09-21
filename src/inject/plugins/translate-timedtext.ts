@@ -10,11 +10,15 @@ import {
 } from "../util/translate";
 import config from "../config";
 import { videoPlayer } from "../mainWorld";
+
 const logger = createLogger("Translate-timedtext");
 const TIMEDTEXT_TRANSLATE_MAX_TEXT_LENGTH = 30000;
 const textEncoder = new TextEncoder();
 
 type TimedtextResponse = {
+	pens?: Array<{
+		foForeAlpha?: number;
+	}>;
 	wpWinPositions: Array<{
 		rcRows: number;
 	}>;
@@ -23,6 +27,7 @@ type TimedtextResponse = {
 		tStartMs: number;
 		segs?: Array<{
 			utf8: string;
+			pPenId?: number;
 		}>;
 	}>;
 };
@@ -130,19 +135,42 @@ export default {
 								continue;
 							}
 
+							const translatedText = translatedHtmlToText(translatedTexts[index], "").replace("---", "");
+							const sourceSegment = event.segs.find((segment) => {
+								if (segment.pPenId === undefined) return false;
+								const pen = data.pens?.[segment.pPenId];
+								return pen?.foForeAlpha !== 0 && segment.utf8.replace(/[\s\u200B-\u200D\uFEFF]/g, "");
+							});
+
+							const pPenId = sourceSegment?.pPenId;
+
 							if (isAsr) {
-								const translatedText = translatedHtmlToText(translatedTexts[index], "").replace("---", "");
-								event.segs[0].utf8 = isTranslationOnly
-									? translatedText
-									: translatedText + "\n" + event.segs.map((v) => v.utf8).join("");
-								event.segs.length = 1;
-							} else {
-								const translatedText = translatedHtmlToText(translatedTexts[index], "");
-								event.segs[0].utf8 = isTranslationOnly
-									? translatedText.replace("---", "")
-									: translatedText + "\n" + event.segs[0].utf8;
 								if (isTranslationOnly) {
-									event.segs.length = 1;
+									event.segs = [
+										{
+											utf8: translatedText,
+											pPenId,
+										},
+									];
+								} else {
+									event.segs.unshift({
+										utf8: translatedText + "\n",
+										pPenId,
+									});
+								}
+							} else {
+								if (isTranslationOnly) {
+									event.segs = [
+										{
+											utf8: translatedText,
+											pPenId,
+										},
+									];
+								} else {
+									event.segs.unshift({
+										utf8: translatedText + "\n",
+										pPenId,
+									});
 								}
 							}
 						} catch (e) {
@@ -155,6 +183,14 @@ export default {
 							data.wpWinPositions[1].rcRows = 3;
 						}
 					}
+
+					logger.debug("Timedtext translation completed:", {
+						srcLang,
+						targetLanguage,
+						originalTexts: needTranslateList,
+						translatedTexts,
+						data,
+					});
 
 					return data;
 				},
